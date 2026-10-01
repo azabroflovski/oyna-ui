@@ -32,6 +32,10 @@ const isCurrent = (link: string) => path.value === withBase(link)
 
     <Home v-if="frontmatter.layout === 'home'" />
 
+    <main v-else-if="frontmatter.layout === 'example'" class="example content">
+      <Content />
+    </main>
+
     <div v-else-if="page.isNotFound" class="not-found">
       <h1>404</h1>
       <OButton :href="withBase('/')">

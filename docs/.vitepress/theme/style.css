@@ -197,6 +197,15 @@ a {
   font-weight: 600;
 }
 
+/* a full-width example screen, with its notes and source below */
+.example {
+  padding: 20px 0 96px;
+}
+
+.example > div > :is(h2, p, ul, div[class*='language-']) {
+  max-width: 760px;
+}
+
 .not-found {
   padding: 96px 0;
   display: flex;

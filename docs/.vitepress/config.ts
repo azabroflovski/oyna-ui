@@ -29,6 +29,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     nav: [
       { text: 'Guide', link: '/guide/installation', match: '/guide/' },
       { text: 'Components', link: '/components/surface', match: '/components/' },
+      { text: 'Examples', link: '/examples/dashboard', match: '/examples/' },
     ],
     sidebar: [
       {

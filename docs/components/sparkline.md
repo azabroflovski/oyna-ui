@@ -27,6 +27,18 @@ For times, ranks and error counts, turn the chart over so that an improvement st
 <OSparkline :values="laps" lower-is-better :width="160" :height="40" label="Lap times, down to 7.8 s" />
 ```
 
+## Tone
+
+The dot is accent by default. Make it `danger` when the series ends somewhere bad.
+
+<Demo>
+  <OSparkline :values="[210, 230, 260, 310, 420, 560, 710]" lower-is-better tone="danger" :width="160" :height="40" label="Latency, climbing to 710 ms" />
+</Demo>
+
+```vue
+<OSparkline :values="latency" lower-is-better tone="danger" label="Latency, climbing to 710 ms" />
+```
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -36,3 +48,4 @@ For times, ranks and error counts, turn the chart over so that an improvement st
 | `width` | `number` | `240` | Shrinks to its container when narrower |
 | `height` | `number` | `56` | |
 | `lowerIsBetter` | `boolean` | `false` | Smaller values sit higher |
+| `tone` | `'accent' \| 'danger'` | `'accent'` | Colour of the last point |

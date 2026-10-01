@@ -4,6 +4,7 @@
     "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "paths": { "oyna": ["./src/index.ts"] },
     "types": ["vite/client"],
     "strict": true,
     "noUncheckedIndexedAccess": true,
@@ -12,6 +13,6 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
-  "include": ["*.ts", "src/**/*.ts", "src/**/*.vue", "playground/**/*.ts", "playground/**/*.vue", "docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.vue"],
+  "include": ["*.ts", "src/**/*.ts", "src/**/*.vue", "playground/**/*.ts", "playground/**/*.vue", "docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.vue", "docs/examples/**/*.vue"],
   "exclude": ["docs/.vitepress/cache", "docs/.vitepress/dist"]
 }

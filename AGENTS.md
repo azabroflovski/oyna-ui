@@ -75,6 +75,7 @@ src/
   styles/                        tokens.css, base.css
   index.ts                       plugin + named exports
 docs/                            VitePress site with its own theme (.vitepress/theme), built from src/
+  examples/                      full screens built only from library components (layout: example)
 playground/                      Vite app for developing components
 planning/                        inventory.md, mockup.html: what was agreed before building
 ```
@@ -112,6 +113,13 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 - Before a release: bump `version`, add a section to CHANGELOG.md, then `npm pack` and install the
   tarball in a fresh Vite project (typecheck + build) — the library is otherwise only tested from
   inside the repo. License: MIT (`LICENSE`).
+- An example screen (`docs/examples/`) may add layout and text styling only. If it needs to restyle
+  a component, the component is missing something: fix the component. Building the dashboard this
+  way found three gaps (Sparkline `tone`, Pips' empty marker space, wrapping numbers in Table).
+- `oyna` resolves to `src/index.ts` both in the docs build (Vite alias) and in typecheck
+  (`paths` in tsconfig.json), so neither needs a built `dist`.
+- Headless Chrome cannot go narrower than about 500px: a "phone" screenshot at 420px is a cropped
+  500px layout, not a real one.
 - In docs pages a live example is `<Demo>…</Demo>` followed by the code block showing the same markup.
 
 Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
@@ -133,7 +141,9 @@ details, so the component list and the scales in `planning/inventory.md` are wor
    screens were checked by tests and screenshots only, never by hand.
 2. Icons: decide how Lucide icons reach a component (a slot is enough so far).
 3. The owner publishes `0.1.0` to npm, picks the GitHub repository name and hosts the docs.
-4. Nuxt module. Full example screens in the docs.
+4. More example screens (settings, a landing page); the dashboard is done.
+5. Missing basic controls: Checkbox, Switch, Textarea, Radio, a dropdown menu, Popover.
+6. Nuxt module.
 
 ## Conventions
 
