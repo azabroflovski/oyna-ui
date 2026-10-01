@@ -141,6 +141,13 @@ export async function launch() {
       await send('Input.dispatchKeyEvent', { type: 'keyDown', code, key })
       await send('Input.dispatchKeyEvent', { type: 'keyUp', code, key })
     },
+    /** Types text into the focused field, a character at a time, as a keyboard would. `press` sends keys without characters. */
+    async type(text: string) {
+      for (const char of text) {
+        await send('Input.dispatchKeyEvent', { type: 'keyDown', key: char, text: char })
+        await send('Input.dispatchKeyEvent', { type: 'keyUp', key: char })
+      }
+    },
     wait: (ms: number) => Bun.sleep(ms),
     /** A `.jpg` name gives a JPEG (much smaller for a picture full of gradients), anything else a PNG. */
     async screenshot(file: string, clip?: { x: number; y: number; width: number; height: number }) {

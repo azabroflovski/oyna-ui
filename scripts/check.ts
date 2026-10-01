@@ -123,6 +123,7 @@ try {
     '/examples/projects',
     '/examples/',
     '/components/alert',
+    '/components/pin-input',
     '/components/timeline',
     '/theme',
     '/guide/why',
