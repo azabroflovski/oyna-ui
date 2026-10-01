@@ -1,6 +1,6 @@
 # Oyna UI
 
-![Oyna UI: glass, not boxes. Vue 3 components in plain CSS.](.github/banner.jpg)
+![Oyna UI](.github/banner.jpg)
 
 > Status: early. The API may still change between 0.x versions.
 

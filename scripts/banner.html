@@ -15,7 +15,8 @@
       html,
       body {
         width: 1280px;
-        height: 400px;
+        height: 320px;
+        margin: 0;
         overflow: hidden;
       }
 
@@ -33,12 +34,11 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 18px;
       }
 
       .title h1 {
         margin: 0;
-        font: 800 132px/0.9 var(--o-font-display);
+        font: 800 104px/0.9 var(--o-font-display);
         letter-spacing: 0.02em;
         text-transform: uppercase;
       }
@@ -48,25 +48,20 @@
         color: var(--o-accent);
       }
 
-      .title p {
-        margin: 0;
-        font-size: 22px;
-        color: var(--o-text-2);
-      }
-
       /* the components: a board that runs off the right, top and bottom edges */
       .board {
         position: absolute;
         z-index: 1;
-        top: -22px;
+        top: -60px;
         right: -40px;
         width: 760px;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
         align-items: start;
-        /* fades towards the title, so the words stay readable */
-        mask-image: linear-gradient(to right, transparent 0%, #000 34%);
+        /* held back and faded towards the title: the name is the subject, the components the setting */
+        opacity: 0.75;
+        mask-image: linear-gradient(to right, transparent 0%, #000 45%);
       }
 
       .col {
@@ -102,14 +97,42 @@
         --o-bar-chart-height: 120px;
         gap: 8px;
       }
+
+      /* the mark from the favicon: an accent ring on a dark tile */
+      .mark {
+        flex-shrink: 0;
+        width: 76px;
+        height: 76px;
+        border-radius: 19px;
+        background: rgb(0 0 0 / 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mark::before {
+        content: '';
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 9px var(--o-accent);
+      }
+
+      .lockup {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
     </style>
   </head>
   <body>
     <div class="o-background"></div>
 
     <div class="title">
-      <h1>Oyna <em>UI</em></h1>
-      <p>Glass, not boxes. Vue 3 components in plain CSS.</p>
+      <div class="lockup">
+        <span class="mark"></span>
+        <h1>Oyna <em>UI</em></h1>
+      </div>
     </div>
 
     <div class="board">
