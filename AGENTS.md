@@ -9,9 +9,11 @@ General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-01: both planned waves are built and documented — tokens, base stylesheet,
 `useHotkey` and 21 components (see `src/index.ts`). Nothing is published, and `package.json` is
-`private` until the first release. *Oyna* is Uzbek for "glass". The npm name `oyna` was free that
-day but is NOT registered yet — take it before the first public mention. `oyna` is taken on GitHub:
-the owner is choosing the repository name.
+`private` until the first release. *Oyna* is Uzbek for "glass". Names, decided by the owner on
+2026-10-01: the npm package is the unscoped `oyna` (Vue only, so no `@oyna/vue`); the owner holds
+the npm organization `oyna`, kept for later satellites such as `@oyna/nuxt`. The unscoped name is
+held by a placeholder `0.0.0` once the owner publishes it, so the first real release is `0.1.0`.
+`oyna` is taken on GitHub: the owner is choosing the repository name. Planned site: `oyna-ui.com`.
 
 ## Design language (the product — don't dilute it)
 
@@ -112,8 +114,6 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 ## Open decisions (the owner's to make)
 
 - npm package (proposed) vs a shadcn-style copy-in registry.
-- Package name `oyna` (current) vs `@oyna/ui`, if more packages are likely (`@oyna/nuxt`); the
-  `@oyna` scope has not been checked.
 - GitHub repository name: `oyna` is taken there.
 - Light theme: none planned; decide whether the tokens should allow one.
 - Mobile: the source style is desktop-first; decide how far components must adapt.
