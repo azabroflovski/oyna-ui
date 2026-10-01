@@ -978,3 +978,11 @@ a {
     margin-bottom: 16px;
   }
 }
+
+/* on a phone there are no keys to hint at */
+@media (pointer: coarse) {
+  .hint:has(.o-kbd),
+  [class*='__note']:has(.o-kbd) {
+    display: none;
+  }
+}

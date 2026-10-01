@@ -127,6 +127,13 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   the keyboard work for free. `useSplitAttrs` sends `class` / `style` to the label and the rest to
   the input.
 - Everything that floats (dialog, popover, menu, select list, tooltip, toast) uses `--o-layer`.
+- Touch (the owner's decision on 2026-10-02): the library adapts to a finger only inside
+  `@media (pointer: coarse)`, at the end of each component's `<style>`; the desktop look does not
+  change. There: key hints are hidden (the hotkey stays registered), a small control grows its
+  target to about 44px with an invisible `::after` instead of changing shape (Tabs use padding: the
+  list scrolls and would clip it), fields use 16px text (iOS zooms on anything smaller). Tooltip
+  does not open on touch; the docs say so. `scripts/browser.ts` emulates a coarse pointer when
+  `size()` is called with `mobile`.
 - Icons: the library ships none. An `<svg>` in the slot of Button, Toggle or Badge is sized in `em`;
   a Menu item takes an icon component. The docs use `@lucide/vue` (a dev dependency only).
 - Card has an optional header (`label`, `title`, an `actions` slot) and a `footer` slot; examples use
@@ -206,7 +213,6 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 
 - npm package (proposed) vs a shadcn-style copy-in registry.
 - Light theme: none planned; decide whether the tokens should allow one.
-- Mobile: the source style is desktop-first; decide how far components must adapt.
 
 ## Next steps
 

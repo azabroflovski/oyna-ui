@@ -111,6 +111,16 @@ export async function launch() {
     /** `mobile` makes it a phone: touch, and a width Chrome's window cannot go down to by itself. */
     async size(width: number, height: number, mobile = false, scale = 1) {
       await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: scale, mobile })
+      // a finger, not a mouse: `@media (pointer: coarse)` rules apply, as they do on a real phone
+      await send('Emulation.setTouchEmulationEnabled', { enabled: mobile })
+      await send('Emulation.setEmulatedMedia', {
+        features: mobile
+          ? [
+              { name: 'pointer', value: 'coarse' },
+              { name: 'hover', value: 'none' },
+            ]
+          : [],
+      })
     },
     async goto(url: string) {
       const loaded = once('Page.loadEventFired')
