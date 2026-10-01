@@ -27,6 +27,7 @@ import OSwitch from './components/Switch/Switch.vue'
 import OTable from './components/Table/Table.vue'
 import OTabs from './components/Tabs/Tabs.vue'
 import OTextarea from './components/Textarea/Textarea.vue'
+import OTimeline from './components/Timeline/Timeline.vue'
 import OToaster from './components/Toast/Toaster.vue'
 import OToggle from './components/Toggle/Toggle.vue'
 import OTooltip from './components/Tooltip/Tooltip.vue'
@@ -65,6 +66,7 @@ export {
   OTable,
   OTabs,
   OTextarea,
+  OTimeline,
   OToaster,
   OToggle,
   OTooltip,
@@ -98,6 +100,7 @@ const components = {
   OTable,
   OTabs,
   OTextarea,
+  OTimeline,
   OToaster,
   OToggle,
   OTooltip,
@@ -139,6 +142,7 @@ declare module 'vue' {
     OTable: typeof OTable
     OTabs: typeof OTabs
     OTextarea: typeof OTextarea
+    OTimeline: typeof OTimeline
     OToaster: typeof OToaster
     OToggle: typeof OToggle
     OTooltip: typeof OTooltip
