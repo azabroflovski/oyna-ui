@@ -103,6 +103,11 @@ export async function launch() {
   return {
     evaluate,
     waitFor,
+    /** Makes requests to these addresses fail (`*` is a wildcard), e.g. to see a page without its web fonts. */
+    async block(urls: string[]) {
+      await send('Network.enable')
+      await send('Network.setBlockedURLs', { urls })
+    },
     /** `mobile` makes it a phone: touch, and a width Chrome's window cannot go down to by itself. */
     async size(width: number, height: number, mobile = false, scale = 1) {
       await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: scale, mobile })
@@ -117,8 +122,10 @@ export async function launch() {
         for (let attempt = 0; attempt < 50; attempt++) {
           await document.fonts.ready
           const faces = [...document.fonts]
+          // a font that failed to load (blocked, offline) is not waited for
           if (faces.length && faces.every(face => face.status !== 'loading')
-            && document.fonts.check('700 20px "Barlow Condensed"') && document.fonts.check('400 14px "Noto Sans"')) break
+            && (document.fonts.check('700 20px "Barlow Condensed"') || faces.some(face => face.status === 'error'))) break
+          if (!faces.length && attempt > 15) break
           await new Promise(r => setTimeout(r, 100))
         }
         await new Promise(r => setTimeout(r, 400))
