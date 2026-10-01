@@ -1,5 +1,6 @@
 import type { App } from 'vue'
 
+import OAlert from './components/Alert/Alert.vue'
 import OBackground from './components/Background/Background.vue'
 import OBadge from './components/Badge/Badge.vue'
 import OBarChart from './components/BarChart/BarChart.vue'
@@ -39,6 +40,7 @@ export type { MenuItem } from './components/Menu/Menu.vue'
 export { dismissToast, toast } from './components/Toast/toast'
 export { hotkeyLabel, useHotkey } from './composables/useHotkey'
 export {
+  OAlert,
   OBackground,
   OBadge,
   OBarChart,
@@ -73,6 +75,7 @@ export {
 }
 
 const components = {
+  OAlert,
   OBackground,
   OBadge,
   OBarChart,
@@ -115,6 +118,7 @@ export default {
 
 declare module 'vue' {
   interface GlobalComponents {
+    OAlert: typeof OAlert
     OBackground: typeof OBackground
     OBadge: typeof OBadge
     OBarChart: typeof OBarChart

@@ -38,6 +38,14 @@ describe('oTable', () => {
     expect(second!.classes()).toEqual(['o-table__row--accent'])
   })
 
+  it('takes a column that is not a field of the row, drawn by its slot', () => {
+    const wrapper = mount(OTable, {
+      props: { columns: [...columns, { key: 'actions', label: 'Actions' }], rows },
+      slots: { actions: ({ row }: { row: Record<string, unknown> }) => h('button', `Open ${row.name}`) },
+    })
+    expect(wrapper.findAll('tbody button').map((b) => b.text())).toEqual(['Open ada', 'Open you'])
+  })
+
   it('lets a slot named after a column draw its cells', () => {
     const wrapper = mount(OTable, {
       props: { columns, rows },

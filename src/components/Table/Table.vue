@@ -1,7 +1,11 @@
 <script setup lang="ts" generic="Row extends Record<string, unknown>">
 defineProps<{
-  /** `numeric` sets the column in the display face, right-aligned, with figures that line up. */
-  columns: readonly { key: keyof Row & string; label: string; numeric?: boolean }[]
+  /**
+   * `key` is usually a field of the row, but need not be: a column that is all slot (a menu of
+   * actions) takes any name. `numeric` sets the column in the display face, right-aligned, with
+   * figures that line up.
+   */
+  columns: readonly { key: string; label: string; numeric?: boolean }[]
   rows: readonly Row[]
   /** The field that identifies a row; by default its position. */
   rowKey?: keyof Row & string
