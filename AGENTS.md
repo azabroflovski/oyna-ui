@@ -163,6 +163,10 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - Before a release: bump `version`, add a section to CHANGELOG.md, then `npm pack` and install the
   tarball in a fresh Vite project (typecheck + build) — the library is otherwise only tested from
   inside the repo. License: MIT (`LICENSE`).
+- A release, in this order: push `master`; the owner runs `npm publish`; only then tag that commit
+  `vX.Y.Z`, push the tag and create a GitHub Release with the version's CHANGELOG section as its
+  notes (`gh release create`). The tag comes after a successful publish, so it never points at a
+  commit that is not on npm. No publishing from CI for now.
 - The panel on the docs home (`HomeDemo.vue`) is one small product screen, a deploy console, not a
   pile of unrelated components: pressing D runs a fake deploy through Button's loading state,
   Progress, Pips, a new Table row and a Toast. Sample content everywhere is from a developer's world
