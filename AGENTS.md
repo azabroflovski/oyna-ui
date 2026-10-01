@@ -128,6 +128,9 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 - Everything that floats (dialog, popover, menu, select list, tooltip, toast) uses `--o-layer`.
 - Icons: the library ships none. An `<svg>` in the slot of Button, Toggle or Badge is sized in `em`;
   a Menu item takes an icon component. The docs use `@lucide/vue` (a dev dependency only).
+- A state change is either instant or one fade, never half of each. Switch has no transition at all:
+  its thumb jumps sides, and colours fading under a thumb that has already jumped looked like a
+  stutter (the owner noticed it).
 - Loops (Spinner, Skeleton) are the one exception to "every transition uses `--o-duration`": each
   has its own `prefers-reduced-motion` rule that stops it. They pulse light; nothing rotates or slides.
 - Contrast: text never goes below `--o-text-3` (white at 50 %), which stays above 4.5:1 even over
@@ -168,6 +171,8 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 - Docs prose rules (`p`, `li`) are written with `:where(.content)` so they never beat a component's
   own styles: a `<p>` inside a component is not prose.
 - A Table column's `key` need not be a field of the row (a column of actions drawn by its slot).
+- Not every example is an emergency: most alerts in the examples are plain ones (unsaved changes,
+  plan usage, where keys are stored). Danger is for the Incident screen and for real mistakes.
 - An example lives in `docs/examples/<name>/` (a component plus its data file) with a page
   `docs/examples/<name>.md`. The page shows no code inline: `<ExampleSource dir files>` adds a
   "View source" button (a dialog with a file list, the code of the chosen file, and a link to that

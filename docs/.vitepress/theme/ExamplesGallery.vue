@@ -24,7 +24,7 @@ const examples = [
   {
     name: 'settings',
     title: 'Settings',
-    text: 'A real form with checked fields, switches, key bindings and a guarded delete.',
+    text: 'Five tabs: a form that knows it is unsaved, a team, API tokens shown once, notifications, key bindings.',
   },
 ]
 </script>

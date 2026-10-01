@@ -4,6 +4,7 @@ import {
   ArchiveRestore,
   Ellipsis,
   FolderOpen,
+  Info,
   ListFilter,
   Plus,
   RefreshCw,
@@ -29,6 +30,11 @@ const shown = computed(() =>
     (project) => project.name.includes(query.value.trim().toLowerCase()) && (!onlyFailing.value || project.failing),
   ),
 )
+// the plan allows so many active projects; the note about it is information, not a warning
+const limit = 6
+const active = computed(() => projects.value.filter((project) => !project.archived).length)
+const noteShown = ref(true)
+
 const filtered = computed(() => query.value.trim() !== '' || onlyFailing.value)
 
 function clearFilters() {
@@ -108,8 +114,24 @@ function create() {
       <h1>Projects</h1>
       <OTabs v-model="tab" :items="tabs" />
       <span class="projects__spacer" />
-      <OButton variant="primary" hotkey="KeyN" @click="creating = true"><Plus /> New project</OButton>
+      <OButton variant="primary" hotkey="KeyN" :disabled="active >= limit" @click="creating = true">
+        <Plus /> New project
+      </OButton>
     </header>
+
+    <OAlert
+      v-if="noteShown"
+      :title="`${active} of ${limit} projects on the Pro plan`"
+      closable
+      @close="noteShown = false"
+    >
+      <template #icon><Info /></template>
+      {{
+        active < limit
+          ? 'Archived projects do not count. Archive one you no longer deploy to make room.'
+          : 'That is the limit. Archive a project to make room for a new one.'
+      }}
+    </OAlert>
 
     <div class="projects__tools">
       <OInput v-model="query" class="projects__search" placeholder="Filter by name" aria-label="Filter by name" />

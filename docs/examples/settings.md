@@ -23,9 +23,10 @@ import Settings from './settings/Settings.vue'
 
 ## How it is built
 
-Every control on this screen is a library component; the example adds only layout.
+Five tabs, each a different kind of settings page. Most alerts here are plain ones: information, not alarm.
 
-- The profile is a real `<form>`: the handle and the text are checked as you type, and Enter in a field saves.
-- The delete button of the dialog is the primary one, yet it stays disabled until the checkbox is ticked.
-- On the Keys tab, a key you are choosing never triggers anything else on the page.
-- Nothing here has a ring: a settings page has no "main thing" and nothing at stake until you open the delete dialog.
+- **Profile.** The form knows when it differs from what is saved: a plain alert offers to save or discard, and the Save button wakes up.
+- **Team.** A table with a control in every row: the role is a select, the rest is in a menu. Your own row has the accent ring and cannot be removed.
+- **API tokens.** A new token is shown in full once, in an accent alert, then only its first characters remain. Revoking asks first.
+- **Notifications.** A plain alert explains why no email arrives yet.
+- **Keys.** A plain note says where the keys are stored. Put two actions on one key and it turns into a danger alert that names both.

@@ -28,4 +28,5 @@ A list is mostly its states: full, loading, filtered to nothing, empty. This exa
 - **Loading.** Refresh swaps the rows for skeletons as tall as a row, so the card keeps its height.
 - **Three kinds of empty.** A filter that matches nothing offers to clear it; an empty archive explains what the archive is; no projects at all offers to make one. Each says what is missing and gives the way out.
 - **Row actions** sit in a menu at the end of the row. Deleting asks first, in a dialog; archiving does not, because it can be undone.
+- The alert at the top is a plain one: how much of the plan is used is a fact, not a problem. Reach the limit and the text changes and "New project" switches off; still no red.
 - The danger ring is on one row, the project that is failing.

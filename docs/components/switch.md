@@ -29,7 +29,7 @@ const email = ref(true)
 </template>
 ```
 
-The thumb changes sides without sliding: the library answers with light, not movement.
+The switch changes at once: the thumb does not slide and the colour does not fade. The library answers with light, not movement, and a fade under a thumb that has already jumped looks like a stutter.
 
 ## Switch, toggle or checkbox
 
