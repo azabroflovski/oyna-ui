@@ -1,5 +1,5 @@
 <script setup>
-import { toast } from 'oyna'
+import { toast } from 'oyna-ui'
 
 const release = [
   { title: 'v1.4.1 is live', time: '2 min ago', text: 'Production · 3 commits from main', tone: 'accent' },

@@ -10,6 +10,6 @@ One look, your colours. Change a value and the whole site follows — the header
 
 ## Using it
 
-Copy the CSS above into your own stylesheet, after `oyna/style.css`. Only the values you changed are listed.
+Copy the CSS above into your own stylesheet, after `oyna-ui/style.css`. Only the values you changed are listed.
 
 The editor covers the tokens people change most. The full list is on the [Theming](/guide/theming) page; fonts are set the same way. A reload brings the defaults back.

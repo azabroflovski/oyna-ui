@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { CircleCheck, Copy, Ellipsis, PhoneCall, TriangleAlert, Undo2 } from '@lucide/vue'
-import type { MenuItem } from 'oyna'
-import { toast } from 'oyna'
+import type { MenuItem } from 'oyna-ui'
+import { toast } from 'oyna-ui'
 import { computed, onBeforeUnmount, ref } from 'vue'
 
 import { columns, endpoints, errorRate, events, versions } from './data'

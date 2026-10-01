@@ -11,8 +11,8 @@ import {
   SearchX,
   Trash2,
 } from '@lucide/vue'
-import type { MenuItem } from 'oyna'
-import { toast } from 'oyna'
+import type { MenuItem } from 'oyna-ui'
+import { toast } from 'oyna-ui'
 import { computed, onBeforeUnmount, ref } from 'vue'
 
 import type { Project } from './data'

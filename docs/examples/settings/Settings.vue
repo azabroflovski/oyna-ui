@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Copy, Ellipsis, Info, KeyRound, MailCheck, RotateCcw, Trash2, TriangleAlert, UserPlus } from '@lucide/vue'
-import type { MenuItem } from 'oyna'
-import { hotkeyLabel, toast } from 'oyna'
+import type { MenuItem } from 'oyna-ui'
+import { hotkeyLabel, toast } from 'oyna-ui'
 import { computed, reactive, ref } from 'vue'
 
 import type { Member, Token } from './options'

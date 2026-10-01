@@ -5,19 +5,19 @@
 ::: code-group
 
 ```bash [npm]
-npm install oyna
+npm install oyna-ui
 ```
 
 ```bash [pnpm]
-pnpm add oyna
+pnpm add oyna-ui
 ```
 
 ```bash [yarn]
-yarn add oyna
+yarn add oyna-ui
 ```
 
 ```bash [bun]
-bun add oyna
+bun add oyna-ui
 ```
 
 :::
@@ -29,10 +29,10 @@ bun add oyna
 Import the stylesheet once and register the components:
 
 ```ts
-import oyna from 'oyna'
+import oyna from 'oyna-ui'
 import { createApp } from 'vue'
 import App from './App.vue'
-import 'oyna/style.css'
+import 'oyna-ui/style.css'
 
 createApp(App).use(oyna).mount('#app')
 ```
@@ -41,7 +41,7 @@ Or import only what you use; the rest is left out of your bundle:
 
 ```vue
 <script setup lang="ts">
-import { OButton, OCard } from 'oyna'
+import { OButton, OCard } from 'oyna-ui'
 </script>
 ```
 
@@ -54,8 +54,8 @@ The look relies on two typefaces: a condensed display face for numbers and headi
 **From Google Fonts, in one import.** The quickest:
 
 ```ts
-import 'oyna/style.css'
-import 'oyna/fonts.css'
+import 'oyna-ui/style.css'
+import 'oyna-ui/fonts.css'
 ```
 
 The files come from Google's servers. If that is a problem for you — privacy rules, an offline app — use the next way.

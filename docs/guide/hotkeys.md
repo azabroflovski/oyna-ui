@@ -34,7 +34,7 @@ For anything that is not a button. The listener lives as long as the component.
 
 ```vue
 <script setup lang="ts">
-import { useHotkey } from 'oyna'
+import { useHotkey } from 'oyna-ui'
 import { ref } from 'vue'
 
 const muted = ref(false)

@@ -4,17 +4,17 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 
 ## What this is
 
-**Oyna UI** (npm package `oyna`) — an open-source Vue 3 UI component library with a dark glass look, good docs and examples.
+**Oyna UI** (npm package `oyna-ui`) — an open-source Vue 3 UI component library with a dark glass look, good docs and examples.
 General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-01: both planned waves are built and documented — tokens, base stylesheet,
 `useHotkey` and 34 components (see `src/index.ts`). The package is ready to publish
 as `0.1.0` (`npm publish` builds it through `prepack`); publishing is the owner's to run. _Oyna_ is Uzbek for "glass". In prose the
-library is always "Oyna UI" (the bare word is too common to search for); `oyna` is only the package
-name, and the short logo in the docs header stays "OYNA". Names, decided by the owner on
-2026-10-01: the npm package is the unscoped `oyna` (Vue only, so no `@oyna/vue`); the owner holds
-the npm organization `oyna`, kept for later satellites such as `@oyna/nuxt`. Until the owner
-publishes, the unscoped name is not held by anyone.
+library is always "Oyna UI" (the bare word is too common to search for); the short logo in the docs
+header stays "OYNA". Names: the npm package is the unscoped `oyna-ui`, the same as the repository
+and the site (the owner's choice on 2026-10-02: npm refuses the bare `oyna` as too similar to `opn`,
+`ora` and `yn`). Vue only, so no `@oyna/vue`; the owner holds the npm organization `oyna`, kept for
+later satellites such as `@oyna/nuxt`.
 The repository is `github.com/azabroflovski/oyna-ui`, default branch `master`. Site: `oyna-ui.org`
 (the owner chose `.org` over `.com` on 2026-10-02, to avoid a commercial association). The docs are
 hosted on Cloudflare Workers as static assets (`wrangler.jsonc`), built from `master` by Cloudflare.
@@ -32,7 +32,7 @@ These rules are what makes the library recognisable. A component that breaks one
 - **Type.** `display` (Barlow Condensed, with Fira Sans Condensed filling in Cyrillic) for numbers and
   headings; `sans` (Noto Sans) for text. The library sets font variables and does not bundle font
   files. Load every weight the components use: a missing weight is synthesized and looks lighter.
-  Three ways to load them are offered (`oyna/fonts.css`, a one-line import from Google Fonts;
+  Three ways to load them are offered (`oyna-ui/fonts.css`, a one-line import from Google Fonts;
   Fontsource packages; the consumer's own faces through the variables). Both variables end in system
   fonts, the display one in condensed system faces, so the look holds up without the web fonts.
 - **Motion.** Light, not movement: no scale or slide on routine changes. Feedback under ~300 ms.
@@ -174,7 +174,7 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - An example screen (`docs/examples/`) may add layout and text styling only. If it needs to restyle
   a component, the component is missing something: fix the component. Building the dashboard this
   way found three gaps (Sparkline `tone`, Pips' empty marker space, wrapping numbers in Table).
-- `oyna` resolves to `src/index.ts` both in the docs build (Vite alias) and in typecheck
+- `oyna-ui` resolves to `src/index.ts` both in the docs build (Vite alias) and in typecheck
   (`paths` in tsconfig.json), so neither needs a built `dist`.
 - Headless Chrome's window cannot go narrower than about 500px: a `--window-size=420` screenshot is
   a cropped 500px layout. `scripts/browser.ts` emulates a real phone width instead.

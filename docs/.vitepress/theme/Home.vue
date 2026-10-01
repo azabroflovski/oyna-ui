@@ -23,11 +23,11 @@ const facts = [
 
 /** Everything a consumer writes to start; shown as it is. */
 const setup = `# or pnpm, yarn, bun
-npm install oyna
+npm install oyna-ui
 
 // main.ts
-import 'oyna/style.css'
-import 'oyna/fonts.css'
+import 'oyna-ui/style.css'
+import 'oyna-ui/fonts.css'
 
 <!-- any component -->
 <OButton variant="primary" hotkey="Enter">

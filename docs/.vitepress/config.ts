@@ -42,7 +42,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   vite: {
     resolve: {
       // examples import the library the way a consumer does
-      alias: { oyna: fileURLToPath(new URL('../../src/index.ts', import.meta.url)) },
+      alias: { 'oyna-ui': fileURLToPath(new URL('../../src/index.ts', import.meta.url)) },
     },
   },
   themeConfig: {

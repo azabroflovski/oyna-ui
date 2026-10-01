@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight, TriangleAlert } from '@lucide/vue'
-import { toast } from 'oyna'
+import { toast } from 'oyna-ui'
 import { withBase } from 'vitepress'
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 

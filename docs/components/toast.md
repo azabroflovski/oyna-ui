@@ -1,5 +1,5 @@
 <script setup>
-import { toast } from 'oyna'
+import { toast } from 'oyna-ui'
 </script>
 
 # Toast
@@ -25,7 +25,7 @@ Put one `OToaster` in your app, then call `toast()` from anywhere:
 ```
 
 ```ts
-import { toast } from 'oyna'
+import { toast } from 'oyna-ui'
 
 toast('Link copied')
 toast('Saved', { tone: 'accent' })

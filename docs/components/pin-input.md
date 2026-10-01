@@ -1,5 +1,5 @@
 <script setup>
-import { toast } from 'oyna'
+import { toast } from 'oyna-ui'
 import { ref } from 'vue'
 
 const code = ref('')

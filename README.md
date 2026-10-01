@@ -51,15 +51,15 @@ It is for interfaces that want character: dashboards, tools, landing pages, side
 ## Usage
 
 ```bash
-npm install oyna
-# or: pnpm add oyna · yarn add oyna · bun add oyna
+npm install oyna-ui
+# or: pnpm add oyna-ui · yarn add oyna-ui · bun add oyna-ui
 ```
 
 ```ts
-import oyna from 'oyna'
+import oyna from 'oyna-ui'
 import { createApp } from 'vue'
-import 'oyna/style.css'
-import 'oyna/fonts.css' // the typefaces, from Google Fonts; or load them your own way
+import 'oyna-ui/style.css'
+import 'oyna-ui/fonts.css' // the typefaces, from Google Fonts; or load them your own way
 
 createApp(App).use(oyna).mount('#app')
 ```

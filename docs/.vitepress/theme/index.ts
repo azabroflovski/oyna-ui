@@ -1,4 +1,4 @@
-import oyna from 'oyna'
+import oyna from 'oyna-ui'
 import type { Theme } from 'vitepress'
 
 import Demo from './Demo.vue'

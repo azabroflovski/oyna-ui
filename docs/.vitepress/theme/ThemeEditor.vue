@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Check, Copy, RotateCcw } from '@lucide/vue'
-import { toast } from 'oyna'
+import { toast } from 'oyna-ui'
 import { computed, onMounted, reactive, ref, watch } from 'vue'
 
 /** The tokens the editor changes, with the library's defaults. */

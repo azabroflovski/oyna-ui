@@ -1,7 +1,7 @@
 /*
   The fonts Oyna UI is drawn with, from Google Fonts, in one import:
 
-    import 'oyna/fonts.css'
+    import 'oyna-ui/fonts.css'
 
   It loads only the weights the components use. The files come from Google's servers; to serve them
   yourself, use the Fontsource packages instead (see the Installation page of the docs).

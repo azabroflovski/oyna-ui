@@ -1,6 +1,6 @@
 <script setup>
 import { Archive, Copy, Ellipsis, Pencil, Trash2 } from '@lucide/vue'
-import { toast } from 'oyna'
+import { toast } from 'oyna-ui'
 
 const items = [
   { label: 'Rename', icon: Pencil, hint: 'F2', onSelect: () => toast('Rename') },
@@ -26,7 +26,7 @@ A list of actions behind a button. Arrow keys move through it, typing jumps to a
 
 ```vue
 <script setup lang="ts">
-import type { MenuItem } from 'oyna'
+import type { MenuItem } from 'oyna-ui'
 import { Archive, Copy, Pencil, Trash2 } from '@lucide/vue'
 
 const items: MenuItem[] = [
