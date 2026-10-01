@@ -64,7 +64,6 @@ function focusDialog(event: Event) {
   animation: o-fade-in var(--o-duration) ease;
 }
 
-/* nearly opaque on purpose: glass over blurred glass over a busy background is hard to read */
 .o-dialog {
   position: fixed;
   top: 50%;
@@ -79,7 +78,7 @@ function focusDialog(event: Event) {
   gap: 20px;
   padding: 28px;
   border-radius: var(--o-radius-lg);
-  background: rgb(18 18 24 / 0.96);
+  background: var(--o-layer);
   box-shadow: 0 30px 80px rgb(0 0 0 / 0.6);
   color: var(--o-text);
   font-family: var(--o-font-sans);

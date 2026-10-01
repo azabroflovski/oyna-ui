@@ -9,6 +9,8 @@
   /* glass: a dark translucent fill over the background */
   --o-surface: rgb(0 0 0 / 0.3);
   --o-surface-strong: rgb(0 0 0 / 0.4);
+  /* what floats over the page (dialog, menu, tooltip, toast): nearly opaque, glass over glass is hard to read */
+  --o-layer: rgb(20 20 26 / 0.97);
 
   /* white fills: stripes, controls, hover / active, bars */
   --o-fill-1: rgb(255 255 255 / 0.04);

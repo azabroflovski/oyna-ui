@@ -94,7 +94,6 @@ useLayer(open)
   }
 }
 
-/* nearly opaque, like the dialog: a list over glass has to be readable */
 .o-select__list {
   z-index: 110;
   box-sizing: border-box;
@@ -103,7 +102,7 @@ useLayer(open)
   overflow-y: auto;
   padding: 6px 0;
   border-radius: 12px;
-  background: rgb(22 22 28 / 0.97);
+  background: var(--o-layer);
   box-shadow: 0 16px 40px rgb(0 0 0 / 0.5);
   color: var(--o-text-2);
   font: 400 14px/1.4 var(--o-font-sans);

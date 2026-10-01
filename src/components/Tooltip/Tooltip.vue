@@ -35,7 +35,7 @@ withDefaults(defineProps<{
   max-width: 260px;
   padding: 6px 10px;
   border-radius: var(--o-radius-sm);
-  background: rgb(22 22 28 / 0.97);
+  background: var(--o-layer);
   box-shadow: 0 8px 24px rgb(0 0 0 / 0.5);
   color: var(--o-text);
   font: 400 12px/1.4 var(--o-font-sans);
