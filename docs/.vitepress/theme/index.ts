@@ -4,6 +4,7 @@ import type { Theme } from 'vitepress'
 import Demo from './Demo.vue'
 import ExampleSource from './ExampleSource.vue'
 import Layout from './Layout.vue'
+import ThemeEditor from './ThemeEditor.vue'
 
 import './style.css'
 
@@ -13,5 +14,6 @@ export default {
     app.use(oyna)
     app.component('Demo', Demo)
     app.component('ExampleSource', ExampleSource)
+    app.component('ThemeEditor', ThemeEditor)
   },
 } satisfies Theme

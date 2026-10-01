@@ -9,12 +9,23 @@ export interface ThemeConfig {
   sidebar: { text: string; items: { text: string; link: string }[] }[]
 }
 
+// where the docs are meant to live; link previews need absolute addresses
+const site = 'https://oyna-ui.com'
+const description = 'A Vue 3 component library with a dark glass look. Plain CSS, no Tailwind.'
+
 export default defineConfigWithTheme<ThemeConfig>({
   title: 'Oyna UI',
-  description: 'A Vue 3 component library with a dark glass look',
+  description,
   lang: 'en',
   cleanUrls: true,
   head: [
+    ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
+    ['meta', { name: 'theme-color', content: '#0b0b0f' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: 'Oyna UI' }],
+    ['meta', { property: 'og:description', content: description }],
+    ['meta', { property: 'og:image', content: `${site}/og.png` }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     [
@@ -41,6 +52,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       { text: 'Guide', link: '/guide/installation', match: '/guide/' },
       { text: 'Components', link: '/components/surface', match: '/components/' },
       { text: 'Examples', link: '/examples/dashboard', match: '/examples/' },
+      { text: 'Theme', link: '/theme', match: '/theme' },
     ],
     sidebar: [
       {
@@ -111,6 +123,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         items: [
           { text: 'Dashboard', link: '/examples/dashboard' },
           { text: 'Settings', link: '/examples/settings' },
+          { text: 'Theme editor', link: '/theme' },
         ],
       },
     ],

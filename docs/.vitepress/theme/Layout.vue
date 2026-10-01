@@ -5,6 +5,8 @@ import { computed } from 'vue'
 
 import type { ThemeConfig } from '../config'
 import Home from './Home.vue'
+import Outline from './Outline.vue'
+import Search from './Search.vue'
 
 const { frontmatter, theme, page } = useData<ThemeConfig>()
 const route = useRoute()
@@ -20,6 +22,7 @@ const isCurrent = (link: string) => path.value === withBase(link)
     <header class="top">
       <a class="brand" :href="withBase('/')" aria-label="Oyna UI">OYNA</a>
       <nav class="top-nav">
+        <Search />
         <OButton
           v-for="item in theme.nav"
           :key="item.link"
@@ -35,10 +38,16 @@ const isCurrent = (link: string) => path.value === withBase(link)
 
     <Home v-if="frontmatter.layout === 'home'" />
 
+    <main v-else-if="frontmatter.layout === 'wide'" class="example content">
+      <Content />
+    </main>
+
     <main v-else-if="frontmatter.layout === 'example'" class="example content">
       <nav class="example-nav" aria-label="Examples">
         <OButton
-          v-for="item in theme.sidebar.find((group) => group.text === 'Examples')?.items"
+          v-for="item in theme.sidebar
+            .find((group) => group.text === 'Examples')
+            ?.items.filter((item) => item.link.startsWith('/examples/'))"
           :key="item.link"
           size="sm"
           shape="pill"
@@ -74,6 +83,7 @@ const isCurrent = (link: string) => path.value === withBase(link)
       <main class="content">
         <Content />
       </main>
+      <Outline />
     </div>
   </div>
 </template>

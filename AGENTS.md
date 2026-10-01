@@ -87,6 +87,7 @@ src/
 docs/                            VitePress site with its own theme (.vitepress/theme), built from src/
   examples/                      full screens built only from library components (layout: example)
 playground/                      Vite app for developing components
+scripts/                         browser.ts (a small headless-Chrome driver), check.ts (see Commands)
 planning/                        inventory.md, mockup.html: what was agreed before building
 ```
 
@@ -96,6 +97,10 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 - `bun run fmt` formats everything; run it before committing.
 - `bun run lint`, `bun run fmt:check`, `bun run typecheck`, `bun run test`, `bun run build`,
   `bun run docs:build` — what CI runs.
+- `bun scripts/check.ts <folder> [base url]`, with `bun run docs:dev` running: opens every layer
+  (select, menu, popover, tooltip, toasts, dialog, search), takes screenshots at desktop and at a real
+  phone width, and runs axe-core on a set of pages. Look at the screenshots after any change to a
+  layer or to the docs layout: unit tests do not show how things look. Not part of CI (needs Chrome).
 - `typecheck` needs Node on `PATH`: `vue-tsc` does not work under the Bun runtime (it patches `tsc`
   through `fs.readFileSync`, which Bun's module loader bypasses). Everything else runs on Bun alone.
 - TypeScript stays on 6.x: `vue-tsc` does not support 7 yet.
@@ -122,6 +127,15 @@ planning/                        inventory.md, mockup.html: what was agreed befo
   a Menu item takes an icon component. The docs use `@lucide/vue` (a dev dependency only).
 - Loops (Spinner, Skeleton) are the one exception to "every transition uses `--o-duration`": each
   has its own `prefers-reduced-motion` rule that stops it. They pulse light; nothing rotates or slides.
+- Contrast: text never goes below `--o-text-3` (white at 50 %), which stays above 4.5:1 even over
+  the brightest glow of the default background; the edge of an empty checkbox or radio is white at
+  40 %. axe-core cannot judge contrast over gradients, so this was worked out by hand: recheck it if
+  the background or the text tokens change. Links in running text are underlined, not only coloured.
+- Docs site: `layout: example` (full width, with the examples switch), `layout: wide` (full width,
+  used by the theme editor at `/theme`), otherwise sidebar + content + page outline. On a phone the
+  sidebar is hidden and Search (hotkey `/`, page names only) is the navigation. The link-preview
+  image `docs/public/og.png` is a screenshot of a hand-made HTML page; `site` in the config must be
+  the real address of the docs.
 - Toast is not Reka: a module-level list (`toast()`) shown by one `OToaster`.
 - `OKeyCapture` takes its key press in the capture phase and stops it, so no hotkey sees it.
 - The closed `OSelect` takes its label from `items`: Reka does not render the options while closed.
@@ -138,8 +152,8 @@ planning/                        inventory.md, mockup.html: what was agreed befo
   way found three gaps (Sparkline `tone`, Pips' empty marker space, wrapping numbers in Table).
 - `oyna` resolves to `src/index.ts` both in the docs build (Vite alias) and in typecheck
   (`paths` in tsconfig.json), so neither needs a built `dist`.
-- Headless Chrome cannot go narrower than about 500px: a "phone" screenshot at 420px is a cropped
-  500px layout, not a real one.
+- Headless Chrome's window cannot go narrower than about 500px: a `--window-size=420` screenshot is
+  a cropped 500px layout. `scripts/browser.ts` emulates a real phone width instead.
 - An example lives in `docs/examples/<name>/` (a component plus its data file) with a page
   `docs/examples/<name>.md`. The page shows no code inline: `<ExampleSource dir files>` adds a
   "View source" button (a dialog with a file list, the code of the chosen file, and a link to that
@@ -157,17 +171,15 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 
 ## Next steps
 
-Done: inventory and mockup (`planning/`), scaffold, foundation, both waves of components, docs site.
-The owner said to go on after seeing the inventory and the mockup but has not commented on their
-details, so the component list and the scales in `planning/inventory.md` are working assumptions.
+Done: the library (30 components), the docs site with two example screens and a theme editor, the
+browser check. The owner has looked at the result in a browser. The scales in
+`planning/inventory.md` were never discussed in detail and remain the working choice.
 
-1. Owner's review of the look in a real browser: hotkeys, dialog, select, tooltip, toast and narrow
-   screens were checked by tests and screenshots only, never by hand.
-2. The owner publishes `0.1.0` to npm, picks the GitHub repository name and hosts the docs.
-3. Docs polish: copy button on code, page outline, favicon and social image, search.
-4. A browser test run that opens the layers (select, menu, popover, tooltip, toast, dialog): they
-   have never been looked at, only unit-tested.
-5. Nuxt module.
+1. The owner hosts the docs and points `oyna-ui.com` at them, then publishes `0.1.0` to npm
+   (the owner decided to keep polishing first).
+2. Fonts: a consumer who skips loading them gets a visibly worse look; make that one line or pick
+   system fallbacks that hold up.
+3. Not planned (owner's call): a Nuxt module, a light theme, moving invoke.wtf to the library.
 
 ## Conventions
 

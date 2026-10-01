@@ -54,6 +54,6 @@ useHotkey('Escape', () => (open.value = false), { enabled: () => open.value })
 
 ## hotkeyLabel
 
-`hotkeyLabel(code)` returns what to print for a key: `KeyR` → `R`, `Digit1` → `1`, `Escape` → `Esc`, `ArrowUp` → `↑`.
+`hotkeyLabel(code)` returns what to print for a key: `KeyR` → `R`, `Digit1` → `1`, `Escape` → `Esc`, `ArrowUp` → `↑`, `Slash` → `/`.
 
 The label names the key's position on a QWERTY keyboard. On another layout the same key may carry another letter; pass your own text where that matters.

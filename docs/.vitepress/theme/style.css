@@ -17,16 +17,17 @@ a {
 }
 
 .wrap {
-  max-width: 1180px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 32px;
 }
 
 .top {
-  height: 76px;
+  min-height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
 
 .brand {
@@ -157,8 +158,8 @@ a {
 /* a docs page */
 .docs {
   display: grid;
-  grid-template-columns: 210px minmax(0, 760px);
-  gap: 48px;
+  grid-template-columns: 200px minmax(0, 1fr) 150px;
+  gap: 40px;
   padding: 28px 0 96px;
   align-items: start;
 }
@@ -303,8 +304,189 @@ a {
   margin-bottom: 20px;
 }
 
-.example > div > :is(h2, p, ul, div[class*='language-']) {
+.example > div > :is(h1 + p, h2, p, ul, div[class*='language-']) {
   max-width: 760px;
+}
+
+/* the sections of the page, to the right of it */
+.outline {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+}
+
+.outline .label {
+  margin-bottom: 6px;
+}
+
+.outline a {
+  padding: 3px 0;
+  color: var(--o-text-3);
+  transition: color var(--o-duration) ease;
+}
+
+.outline a:hover {
+  color: var(--o-text);
+}
+
+@media (max-width: 1100px) {
+  .docs {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
+
+  .outline {
+    display: none;
+  }
+}
+
+/* the page finder */
+.search__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: min(340px, 50dvh);
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.search__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 12px;
+  border-radius: var(--o-radius-sm);
+  color: var(--o-text-2);
+  font-size: 14px;
+}
+
+.search__item span {
+  font-size: 12px;
+  color: var(--o-text-3);
+}
+
+.search__item[aria-current] {
+  background: var(--o-fill-3);
+  color: var(--o-text);
+}
+
+/* the theme editor: controls on the left, a board of components on the right */
+.editor {
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  margin: 24px 0 16px;
+}
+
+.editor__panel {
+  position: sticky;
+  top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.editor__group,
+.editor__preview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.editor__group {
+  gap: 10px;
+}
+
+.editor__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.editor__pair,
+.editor__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.editor__stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.editor__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.editor__colour {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* the browser's own colour and range inputs: the library has no colour picker or slider */
+.editor input[type='color'] {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--o-radius-sm);
+  background: none;
+  cursor: pointer;
+}
+
+.editor input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.editor input[type='color']::-webkit-color-swatch {
+  border: 0;
+  border-radius: var(--o-radius-sm);
+}
+
+.editor input[type='range'] {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--o-accent);
+}
+
+.editor__reset {
+  align-self: flex-start;
+}
+
+.editor__css {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 760px;
+}
+
+.editor__css > div {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .editor,
+  .editor__pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .editor__panel {
+    position: static;
+  }
 }
 
 .not-found {
@@ -350,8 +532,16 @@ a {
   margin: 10px 0;
 }
 
+/* underlined as well as coloured: a link must not be told apart by colour alone */
 .content :is(p, li) a {
   color: var(--o-accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--o-accent) 45%, transparent);
+  text-underline-offset: 3px;
+}
+
+.content :is(p, li) a:hover {
+  text-decoration-color: currentColor;
 }
 
 .content .header-anchor {
@@ -374,8 +564,61 @@ a {
   overflow: hidden;
 }
 
-.content div[class*='language-'] > :is(button.copy, span.lang) {
+.content div[class*='language-'] {
+  position: relative;
+}
+
+.content div[class*='language-'] > span.lang {
   display: none;
+}
+
+/* VitePress puts an empty button in every code block and handles the click; this is only its look */
+.content div[class*='language-'] > button.copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  margin: 0;
+  padding: 4px 10px;
+  border: 0;
+  border-radius: var(--o-radius-sm);
+  background: var(--o-fill-2);
+  color: var(--o-text-2);
+  font: 600 12px/1.4 var(--o-font-sans);
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity var(--o-duration) ease,
+    background-color var(--o-duration) ease,
+    color var(--o-duration) ease;
+}
+
+.content div[class*='language-'] > button.copy::before {
+  content: 'Copy';
+}
+
+.content div[class*='language-']:hover > button.copy,
+.content div[class*='language-'] > button.copy:focus-visible,
+.content div[class*='language-'] > button.copy.copied {
+  opacity: 1;
+}
+
+.content div[class*='language-'] > button.copy:hover {
+  background: var(--o-fill-3);
+  color: var(--o-text);
+}
+
+.content div[class*='language-'] > button.copy:focus-visible {
+  outline: 2px solid var(--o-accent);
+  outline-offset: 2px;
+}
+
+.content div[class*='language-'] > button.copy.copied {
+  color: var(--o-accent);
+}
+
+.content div[class*='language-'] > button.copy.copied::before {
+  content: 'Copied';
 }
 
 .content pre {
@@ -466,14 +709,35 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .principles,
-  .docs {
+  .principles {
     grid-template-columns: 1fr;
   }
 
+  /* minmax(0, …): a wide code block scrolls inside the page instead of stretching it */
+  .docs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* on a phone the page list lives in Search, which shows every page before you type */
   .side {
-    position: static;
-    flex-direction: row;
+    display: none;
+  }
+
+  .top {
     flex-wrap: wrap;
+    padding: 12px 0;
+  }
+
+  /* one row that scrolls sideways, not three wrapped rows over the content */
+  .top-nav {
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .example-source {
+    position: static;
+    margin-bottom: 16px;
   }
 }
