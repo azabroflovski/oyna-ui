@@ -1,6 +1,10 @@
 {
   "name": "oyna-ui",
   "compatibility_date": "2026-10-01",
+  // one address only: without these every deploy turns the workers.dev copy back on
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "oyna-ui.org", "custom_domain": true }],
   // the docs site, served as static files; built by `bun run docs:build`
   "assets": {
     "directory": "docs/.vitepress/dist",
