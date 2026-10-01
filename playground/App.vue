@@ -28,7 +28,7 @@ const open = ref(location.hash === '#dialog')
 <template>
   <OBackground />
   <main class="page">
-    <h1>oyna playground</h1>
+    <h1>Oyna UI playground</h1>
 
     <OCard class="block">
       <h2>Button</h2>

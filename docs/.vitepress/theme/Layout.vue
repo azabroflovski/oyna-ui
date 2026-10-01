@@ -16,7 +16,7 @@ const isCurrent = (link: string) => path.value === withBase(link)
   <OToaster />
   <div class="wrap">
     <header class="top">
-      <a class="brand" :href="withBase('/')">OYNA</a>
+      <a class="brand" :href="withBase('/')" aria-label="Oyna UI">OYNA</a>
       <nav class="top-nav">
         <OButton
           v-for="item in theme.nav"

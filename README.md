@@ -1,4 +1,4 @@
-# oyna
+# Oyna UI
 
 > Status: early development. Nothing is published yet.
 
@@ -9,7 +9,7 @@ no borders, light used as a signal, condensed display type for numbers and headi
 
 ## Why
 
-Most Vue UI kits look like admin panels: white cards, grey borders, the same blue button. oyna is
+Most Vue UI kits look like admin panels: white cards, grey borders, the same blue button. Oyna UI is
 for interfaces that want character — landing pages, dashboards, tools, side projects — without
 writing a design system from scratch.
 

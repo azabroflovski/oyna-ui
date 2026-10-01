@@ -4,12 +4,14 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 
 ## What this is
 
-**oyna** — an open-source Vue 3 UI component library with a dark glass look, good docs and examples.
+**Oyna UI** (npm package `oyna`) — an open-source Vue 3 UI component library with a dark glass look, good docs and examples.
 General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-01: both planned waves are built and documented — tokens, base stylesheet,
 `useHotkey` and 21 components (see `src/index.ts`). Nothing is published, and `package.json` is
-`private` until the first release. *Oyna* is Uzbek for "glass". Names, decided by the owner on
+`private` until the first release. *Oyna* is Uzbek for "glass". In prose the
+library is always "Oyna UI" (the bare word is too common to search for); `oyna` is only the package
+name, and the short logo in the docs header stays "OYNA". Names, decided by the owner on
 2026-10-01: the npm package is the unscoped `oyna` (Vue only, so no `@oyna/vue`); the owner holds
 the npm organization `oyna`, kept for later satellites such as `@oyna/nuxt`. The unscoped name is
 held by a placeholder `0.0.0` once the owner publishes it, so the first real release is `0.1.0`.

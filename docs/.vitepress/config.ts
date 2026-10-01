@@ -7,7 +7,7 @@ export interface ThemeConfig {
 }
 
 export default defineConfigWithTheme<ThemeConfig>({
-  title: 'oyna',
+  title: 'Oyna UI',
   description: 'A Vue 3 component library with a dark glass look',
   lang: 'en',
   cleanUrls: true,
