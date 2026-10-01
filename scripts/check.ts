@@ -68,6 +68,29 @@ try {
   await page.wait(200)
   await shot('theme-css')
 
+  await page.goto(`${base}/examples/incident`)
+  await page.press('KeyR')
+  await page.wait(300)
+  await shot('incident-dialog')
+  await page.press('Enter')
+  await page.wait(2400)
+  await shot('incident-resolved')
+
+  await page.goto(`${base}/examples/projects`)
+  await page.click('.projects .o-table .o-button')
+  await page.wait(300)
+  await shot('projects-menu')
+  await page.press('Escape')
+  await page.click('.projects__search')
+  await page.evaluate(
+    `(() => { const el = document.querySelector('.projects__search'); el.value = 'zzz'; el.dispatchEvent(new Event('input')) })()`,
+  )
+  await page.wait(200)
+  await shot('projects-nothing-found')
+
+  await page.goto(`${base}/examples/`)
+  await shot('examples-index')
+
   // a phone
   await page.size(390, 844, true)
   for (const [name, path] of [
@@ -75,6 +98,9 @@ try {
     ['phone-button', '/components/button'],
     ['phone-dashboard', '/examples/dashboard'],
     ['phone-settings', '/examples/settings'],
+    ['phone-incident', '/examples/incident'],
+    ['phone-projects', '/examples/projects'],
+    ['phone-examples', '/examples/'],
     ['phone-theme', '/theme'],
   ] as const) {
     await page.goto(`${base}${path}`)
@@ -94,6 +120,11 @@ try {
     '/components/tabs',
     '/examples/dashboard',
     '/examples/settings',
+    '/examples/incident',
+    '/examples/projects',
+    '/examples/',
+    '/components/alert',
+    '/components/timeline',
     '/theme',
     '/guide/why',
   ]) {
