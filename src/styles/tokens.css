@@ -26,10 +26,20 @@
   --o-radius: 14px;
   --o-radius-lg: 24px;
 
-  /* the library doesn't bundle font files: load these families yourself (weights 400, 600, 700, 800) */
-  --o-font-sans: 'Noto Sans', sans-serif;
-  /* Barlow Condensed has no Cyrillic: Fira Sans Condensed fills in those glyphs only */
-  --o-font-display: 'Barlow Condensed', 'Fira Sans Condensed', sans-serif;
+  /*
+    The library doesn't bundle font files: load the first family of each list (weights 400, 600, 700
+    for the text, 700 and 800 for the display face). The rest of each list is what the system has,
+    so the look holds up before the fonts arrive, and when they never do.
+  */
+  --o-font-sans: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /*
+    Barlow Condensed has no Cyrillic: Fira Sans Condensed fills in those glyphs only. After them,
+    the condensed faces that ship with macOS and iOS, Windows, Android and Linux, in that order: a
+    wide system face in a heading is what makes the library look unlike itself.
+  */
+  --o-font-display:
+    'Barlow Condensed', 'Fira Sans Condensed', 'Avenir Next Condensed', 'Arial Narrow', 'Roboto Condensed',
+    'sans-serif-condensed', 'DejaVu Sans Condensed', 'Liberation Sans Narrow', sans-serif;
 
   /* every transition in the library uses this, so reduced motion turns them all off below */
   --o-duration: 160ms;
