@@ -108,4 +108,4 @@ See [AGENTS.md](./AGENTS.md) for the structure, conventions and open decisions.
 
 ## License
 
-MIT (planned).
+[MIT](./LICENSE)
