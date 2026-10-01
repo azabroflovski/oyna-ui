@@ -106,14 +106,27 @@ a {
   color: var(--o-text-2);
 }
 
-.showcase {
+/* the product panel on the home page */
+.demo-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 20px;
+}
+
+.demo-panel__stats {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
-.showcase .wide {
-  grid-column: 1 / -1;
+.demo-panel code {
+  font:
+    400 13px ui-monospace,
+    'SF Mono',
+    Menlo,
+    monospace;
 }
 
 .facts {
@@ -795,6 +808,10 @@ a {
 
   .facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .demo-panel__stats {
+    gap: 8px;
   }
 
   .principles,

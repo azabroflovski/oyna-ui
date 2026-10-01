@@ -150,6 +150,10 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 - Before a release: bump `version`, add a section to CHANGELOG.md, then `npm pack` and install the
   tarball in a fresh Vite project (typecheck + build) — the library is otherwise only tested from
   inside the repo. License: MIT (`LICENSE`).
+- The panel on the docs home (`HomeDemo.vue`) is one small product screen, a deploy console, not a
+  pile of unrelated components: pressing D runs a fake deploy through Button's loading state,
+  Progress, Pips, a new Table row and a Toast. Sample content everywhere is from a developer's world
+  (deploys, versions, endpoints); nothing from the game the look came from.
 - An example screen (`docs/examples/`) may add layout and text styling only. If it needs to restyle
   a component, the component is missing something: fix the component. Building the dashboard this
   way found three gaps (Sparkline `tone`, Pips' empty marker space, wrapping numbers in Table).
