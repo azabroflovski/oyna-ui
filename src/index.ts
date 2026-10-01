@@ -7,6 +7,7 @@ import OButton from './components/Button/Button.vue'
 import OCard from './components/Card/Card.vue'
 import OCheckbox from './components/Checkbox/Checkbox.vue'
 import ODialog from './components/Dialog/Dialog.vue'
+import OEmpty from './components/Empty/Empty.vue'
 import OField from './components/Field/Field.vue'
 import OInput from './components/Input/Input.vue'
 import OKbd from './components/Kbd/Kbd.vue'
@@ -17,7 +18,9 @@ import OPopover from './components/Popover/Popover.vue'
 import OProgress from './components/Progress/Progress.vue'
 import ORadio from './components/Radio/Radio.vue'
 import OSelect from './components/Select/Select.vue'
+import OSkeleton from './components/Skeleton/Skeleton.vue'
 import OSparkline from './components/Sparkline/Sparkline.vue'
+import OSpinner from './components/Spinner/Spinner.vue'
 import OStat from './components/Stat/Stat.vue'
 import OSurface from './components/Surface/Surface.vue'
 import OSwitch from './components/Switch/Switch.vue'
@@ -42,6 +45,7 @@ export {
   OCard,
   OCheckbox,
   ODialog,
+  OEmpty,
   OField,
   OInput,
   OKbd,
@@ -52,7 +56,9 @@ export {
   OProgress,
   ORadio,
   OSelect,
+  OSkeleton,
   OSparkline,
+  OSpinner,
   OStat,
   OSurface,
   OSwitch,
@@ -72,6 +78,7 @@ const components = {
   OCard,
   OCheckbox,
   ODialog,
+  OEmpty,
   OField,
   OInput,
   OKbd,
@@ -82,7 +89,9 @@ const components = {
   OProgress,
   ORadio,
   OSelect,
+  OSkeleton,
   OSparkline,
+  OSpinner,
   OStat,
   OSurface,
   OSwitch,
@@ -110,6 +119,7 @@ declare module 'vue' {
     OCard: typeof OCard
     OCheckbox: typeof OCheckbox
     ODialog: typeof ODialog
+    OEmpty: typeof OEmpty
     OField: typeof OField
     OInput: typeof OInput
     OKbd: typeof OKbd
@@ -120,7 +130,9 @@ declare module 'vue' {
     OProgress: typeof OProgress
     ORadio: typeof ORadio
     OSelect: typeof OSelect
+    OSkeleton: typeof OSkeleton
     OSparkline: typeof OSparkline
+    OSpinner: typeof OSpinner
     OStat: typeof OStat
     OSurface: typeof OSurface
     OSwitch: typeof OSwitch

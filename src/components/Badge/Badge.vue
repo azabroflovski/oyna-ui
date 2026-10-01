@@ -21,6 +21,12 @@ defineProps<{
   white-space: nowrap;
 }
 
+.o-badge svg {
+  flex-shrink: 0;
+  width: 1.1em;
+  height: 1.1em;
+}
+
 .o-badge--accent {
   background: color-mix(in srgb, var(--o-accent) 15%, transparent);
   color: var(--o-accent);

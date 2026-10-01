@@ -7,12 +7,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from 'reka-ui'
+import type { Component } from 'vue'
 import { ref } from 'vue'
 
 import { useLayer } from '../../composables/layers'
 
 export type MenuItem =
-  | { label: string; hint?: string; tone?: 'danger'; disabled?: boolean; onSelect?: () => void }
+  | { label: string; icon?: Component; hint?: string; tone?: 'danger'; disabled?: boolean; onSelect?: () => void }
   | { separator: true }
 
 withDefaults(
@@ -47,7 +48,10 @@ useLayer(open)
             :disabled="item.disabled"
             @select="item.onSelect?.()"
           >
-            {{ item.label }}
+            <span class="o-menu__label">
+              <component :is="item.icon" v-if="item.icon" aria-hidden="true" />
+              {{ item.label }}
+            </span>
             <span v-if="item.hint" class="o-menu__hint">{{ item.hint }}</span>
           </DropdownMenuItem>
         </template>
@@ -100,6 +104,18 @@ useLayer(open)
 .o-menu__item[data-disabled] {
   opacity: 0.4;
   cursor: default;
+}
+
+.o-menu__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.o-menu__label svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
 }
 
 .o-menu__hint {

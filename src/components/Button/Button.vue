@@ -2,6 +2,7 @@
 import { computed, ref, useTemplateRef } from 'vue'
 
 import { hotkeyLabel as labelFor, useHotkey } from '../../composables/useHotkey'
+import OSpinner from '../Spinner/Spinner.vue'
 
 const props = withDefaults(
   defineProps<{
@@ -18,6 +19,8 @@ const props = withDefaults(
     hotkeyLabel?: string
     /** Also turns the hotkey off. */
     disabled?: boolean
+    /** Work is under way: shows a spinner and does not react to clicks or to the hotkey. */
+    loading?: boolean
     /** Renders a link instead of a button. */
     href?: string
     type?: 'button' | 'submit' | 'reset'
@@ -37,7 +40,7 @@ useHotkey(
     setTimeout(() => (flashing.value = false), 140)
     el.value?.click()
   },
-  { enabled: () => !props.disabled },
+  { enabled: () => !props.disabled && !props.loading },
 )
 </script>
 
@@ -52,13 +55,16 @@ useHotkey(
       shape === 'pill' && 'o-button--pill',
       icon && 'o-button--icon',
       flashing && 'o-button--flash',
+      loading && 'o-button--loading',
     ]"
     :href="disabled ? undefined : href"
     :type="href ? undefined : type"
     :disabled="href ? undefined : disabled"
     :aria-disabled="href && disabled ? true : undefined"
     :aria-keyshortcuts="hotkey?.replace(/^(Key|Digit)/, '')"
+    :aria-busy="loading || undefined"
   >
+    <OSpinner v-if="loading" />
     <slot />
     <kbd v-if="keyText" class="o-button__key">{{ keyText }}</kbd>
   </component>
@@ -184,6 +190,19 @@ useHotkey(
 .o-button--icon.o-button--lg {
   width: 58px;
   height: 58px;
+}
+
+/* still fully lit, unlike a disabled button: it is busy, not unavailable */
+.o-button--loading {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* an icon in the slot takes the size of the text next to it */
+.o-button svg {
+  flex-shrink: 0;
+  width: 1.2em;
+  height: 1.2em;
 }
 
 .o-button--flash {

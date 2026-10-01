@@ -55,6 +55,12 @@ useHotkey(
     color var(--o-duration) ease;
 }
 
+.o-toggle svg {
+  flex-shrink: 0;
+  width: 1.2em;
+  height: 1.2em;
+}
+
 .o-toggle:hover {
   background: var(--o-fill-3);
 }
