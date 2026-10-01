@@ -6,9 +6,25 @@ import { ArrowRight, Check, CircleHelp, Rocket, Settings, Trash2 } from '@lucide
 
 Oyna UI ships no icons. Put any SVG in a component's slot and it takes the size of the text next to it. The examples on this site use [Lucide](https://lucide.dev): restrained line icons that match the look.
 
-```bash
+::: code-group
+
+```bash [npm]
+npm install @lucide/vue
+```
+
+```bash [pnpm]
+pnpm add @lucide/vue
+```
+
+```bash [yarn]
+yarn add @lucide/vue
+```
+
+```bash [bun]
 bun add @lucide/vue
 ```
+
+:::
 
 <Demo>
   <OButton variant="primary"><Rocket /> Deploy</OButton>

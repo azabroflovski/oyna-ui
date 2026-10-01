@@ -653,6 +653,62 @@ a {
   content: 'Copied';
 }
 
+/* tabs over a set of code blocks (`::: code-group`); VitePress switches them, this is only the look */
+.content .vp-code-group {
+  margin: 14px 0;
+}
+
+.content .vp-code-group .tabs {
+  display: flex;
+  gap: 4px;
+  padding: 6px 6px 0;
+  border-radius: var(--o-radius) var(--o-radius) 0 0;
+  background: rgb(0 0 0 / 0.45);
+}
+
+.content .vp-code-group .tabs input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.content .vp-code-group .tabs label {
+  padding: 5px 12px;
+  border-radius: 999px;
+  color: var(--o-text-2);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--o-duration) ease,
+    color var(--o-duration) ease;
+}
+
+.content .vp-code-group .tabs label:hover {
+  color: var(--o-text);
+}
+
+.content .vp-code-group .tabs input:checked + label {
+  background: rgb(255 255 255 / 0.14);
+  color: var(--o-text);
+}
+
+.content .vp-code-group .tabs input:focus-visible + label {
+  outline: 2px solid var(--o-accent);
+  outline-offset: 2px;
+}
+
+.content .vp-code-group .blocks > div[class*='language-'] {
+  display: none;
+  margin: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.content .vp-code-group .blocks > div[class*='language-'].active {
+  display: block;
+}
+
 .content pre {
   margin: 0;
   padding: 16px 18px;

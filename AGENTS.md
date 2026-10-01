@@ -162,6 +162,9 @@ planning/                        inventory.md, mockup.html: what was agreed befo
   "View source" button (a dialog with a file list, the code of the chosen file, and a link to that
   file on GitHub) and a "GitHub" link to the folder. The repository URL and branch are `repo` and
   `branch` in `docs/.vitepress/config.ts`.
+- Install commands for consumers are shown for npm, pnpm, yarn and bun (`::: code-group` in the
+  docs, one block with a comment in README): the owner uses Bun, most users do not. Commands for
+  working on this repository stay Bun only.
 - In docs pages a live example is `<Demo>…</Demo>` followed by the code block showing the same markup.
 
 Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.

@@ -49,7 +49,8 @@ It is for interfaces that want character: dashboards, tools, landing pages, side
 ## Usage
 
 ```bash
-bun add oyna
+npm install oyna
+# or: pnpm add oyna · yarn add oyna · bun add oyna
 ```
 
 ```ts
@@ -87,7 +88,6 @@ Theme with CSS variables:
 - [x] More components: Select, Tooltip, Toast, KeyCapture, Pips, Sparkline, BarChart, Table.
 - [x] Form controls and layers: Checkbox, Radio, Switch, Textarea, Menu, Popover.
 - [x] Example screens: a dashboard and a settings page.
-- [ ] Nuxt module.
 - [ ] First public release.
 
 ## Development
@@ -100,7 +100,8 @@ bun run fmt        # format with oxfmt
 bun run lint && bun run typecheck && bun run test && bun run build
 ```
 
-`typecheck` needs Node on your `PATH`; the rest runs on Bun alone.
+The repository itself is developed with [Bun](https://bun.sh); to use the library, any package manager
+works. `typecheck` needs Node on your `PATH`; the rest runs on Bun alone.
 
 See [AGENTS.md](./AGENTS.md) for the structure, conventions and open decisions.
 

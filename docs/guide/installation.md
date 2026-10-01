@@ -2,9 +2,25 @@
 
 ## Install
 
-```bash
+::: code-group
+
+```bash [npm]
+npm install oyna
+```
+
+```bash [pnpm]
+pnpm add oyna
+```
+
+```bash [yarn]
+yarn add oyna
+```
+
+```bash [bun]
 bun add oyna
 ```
+
+:::
 
 `vue` 3.5 or newer is a peer dependency.
 

@@ -27,8 +27,8 @@ const facts = [
 ] as const
 
 /** Everything a consumer writes to start; shown as it is. */
-const setup = `# install
-bun add oyna
+const setup = `# or pnpm, yarn, bun
+npm install oyna
 
 // main.ts
 import 'oyna/style.css'
