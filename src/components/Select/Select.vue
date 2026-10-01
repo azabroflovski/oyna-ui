@@ -1,20 +1,30 @@
 <script setup lang="ts" generic="T extends string">
-import { SelectContent, SelectItem, SelectItemText, SelectPortal, SelectRoot, SelectTrigger, SelectValue, SelectViewport } from 'reka-ui'
+import {
+  SelectContent,
+  SelectItem,
+  SelectItemText,
+  SelectPortal,
+  SelectRoot,
+  SelectTrigger,
+  SelectValue,
+  SelectViewport,
+} from 'reka-ui'
 import { computed, ref } from 'vue'
+
 import { useLayer } from '../../composables/layers'
 
 defineOptions({ inheritAttrs: false })
 
 const props = defineProps<{
   /** `hint` is a dim note at the end of an option, e.g. a code or a shortcut. */
-  items: readonly { value: T, label: string, hint?: string, disabled?: boolean }[]
+  items: readonly { value: T; label: string; hint?: string; disabled?: boolean }[]
   placeholder?: string
   disabled?: boolean
 }>()
 
 const model = defineModel<T>()
 // the list is not rendered while closed, so the trigger takes the label from the items itself
-const current = computed(() => props.items.find(item => item.value === model.value))
+const current = computed(() => props.items.find((item) => item.value === model.value))
 
 // typing in an open list searches it; page hotkeys must not fire on those keys
 const open = ref(false)
@@ -32,7 +42,13 @@ useLayer(open)
     <SelectPortal>
       <SelectContent class="o-select__list" position="popper" :side-offset="8">
         <SelectViewport>
-          <SelectItem v-for="item in items" :key="item.value" :value="item.value" :disabled="item.disabled" class="o-select__option">
+          <SelectItem
+            v-for="item in items"
+            :key="item.value"
+            :value="item.value"
+            :disabled="item.disabled"
+            class="o-select__option"
+          >
             <SelectItemText>{{ item.label }}</SelectItemText>
             <span v-if="item.hint" class="o-select__hint">{{ item.hint }}</span>
           </SelectItem>

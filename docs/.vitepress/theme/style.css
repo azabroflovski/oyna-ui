@@ -233,7 +233,11 @@ a {
 /* a path, so it is set like one: no capitals, no tracking */
 .source__files .label {
   padding: 0 12px 8px;
-  font: 400 11px/1.5 ui-monospace, 'SF Mono', Menlo, monospace;
+  font:
+    400 11px/1.5 ui-monospace,
+    'SF Mono',
+    Menlo,
+    monospace;
   letter-spacing: 0;
   text-transform: none;
   overflow-wrap: anywhere;
@@ -246,7 +250,11 @@ a {
   border-radius: var(--o-radius-sm);
   background: none;
   color: var(--o-text-2);
-  font: 400 13px/1.5 ui-monospace, 'SF Mono', Menlo, monospace;
+  font:
+    400 13px/1.5 ui-monospace,
+    'SF Mono',
+    Menlo,
+    monospace;
   text-align: left;
   cursor: pointer;
   transition:

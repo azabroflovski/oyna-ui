@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+
 import { hotkeyLabel as labelFor, useHotkey } from '../../composables/useHotkey'
 
 const props = defineProps<{
@@ -12,9 +13,13 @@ const props = defineProps<{
 }>()
 
 const on = defineModel<boolean>({ default: false })
-const keyText = computed(() => props.hotkey ? props.hotkeyLabel ?? labelFor(props.hotkey) : undefined)
+const keyText = computed(() => (props.hotkey ? (props.hotkeyLabel ?? labelFor(props.hotkey)) : undefined))
 
-useHotkey(() => props.hotkey, () => on.value = !on.value, { enabled: () => !props.disabled })
+useHotkey(
+  () => props.hotkey,
+  () => (on.value = !on.value),
+  { enabled: () => !props.disabled },
+)
 </script>
 
 <template>

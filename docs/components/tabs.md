@@ -66,10 +66,10 @@ For the sections of a page. A slot named after an item's `value` is its panel. W
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `items` | `{ value: string, label: string, disabled?: boolean }[]` | required | |
-| `v-model` | `string` | first item | The open tab's `value` |
-| `variant` | `'segmented' \| 'underline'` | `'segmented'` | |
+| Prop      | Type                                                     | Default       | Description            |
+| --------- | -------------------------------------------------------- | ------------- | ---------------------- |
+| `items`   | `{ value: string, label: string, disabled?: boolean }[]` | required      |                        |
+| `v-model` | `string`                                                 | first item    | The open tab's `value` |
+| `variant` | `'segmented' \| 'underline'`                             | `'segmented'` |                        |
 
 Built on [Reka UI](https://reka-ui.com) Tabs.

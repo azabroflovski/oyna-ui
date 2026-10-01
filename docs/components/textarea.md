@@ -26,7 +26,7 @@ Hotkeys are ignored while the user types in it, as in any field.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `v-model` | `string` | — | |
+| Prop      | Type      | Default | Description                                                       |
+| --------- | --------- | ------- | ----------------------------------------------------------------- |
+| `v-model` | `string`  | —       |                                                                   |
 | `invalid` | `boolean` | `false` | A danger ring. Inside an `OField` with an error it is set for you |

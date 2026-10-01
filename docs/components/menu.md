@@ -54,10 +54,10 @@ While the menu is open, page hotkeys are off.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `items` | `MenuItem[]` | required | `{ label, hint?, tone?, disabled?, onSelect? }` or `{ separator: true }` |
-| `side` | `'top' \| 'right' \| 'bottom' \| 'left'` | `'bottom'` | Flips when there is no room |
-| `align` | `'start' \| 'center' \| 'end'` | `'start'` | Which edge of the trigger the menu lines up with |
+| Prop    | Type                                     | Default    | Description                                                              |
+| ------- | ---------------------------------------- | ---------- | ------------------------------------------------------------------------ |
+| `items` | `MenuItem[]`                             | required   | `{ label, hint?, tone?, disabled?, onSelect? }` or `{ separator: true }` |
+| `side`  | `'top' \| 'right' \| 'bottom' \| 'left'` | `'bottom'` | Flips when there is no room                                              |
+| `align` | `'start' \| 'center' \| 'end'`           | `'start'`  | Which edge of the trigger the menu lines up with                         |
 
 Built on [Reka UI](https://reka-ui.com) DropdownMenu.

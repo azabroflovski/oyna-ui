@@ -32,6 +32,6 @@ A key shown by a [button's hotkey](/components/button#hotkey) is drawn by the bu
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `variant` | `'plain' \| 'outline' \| 'cap'` | `'plain'` | |
+| Prop      | Type                            | Default   | Description |
+| --------- | ------------------------------- | --------- | ----------- |
+| `variant` | `'plain' \| 'outline' \| 'cap'` | `'plain'` |             |

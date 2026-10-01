@@ -17,4 +17,4 @@ Interfaces that want character: dashboards, tools, landing pages, side projects.
 
 ## The name
 
-*Oyna* is Uzbek for "glass", and also for "window" and "mirror".
+_Oyna_ is Uzbek for "glass", and also for "window" and "mirror".

@@ -139,14 +139,14 @@ A disabled button does not react to its hotkey either.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `variant` | `'primary' \| 'secondary' \| 'soft' \| 'ghost' \| 'link'` | `'secondary'` | Visual weight |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | |
-| `shape` | `'rounded' \| 'pill'` | `'rounded'` | Pill for navigation and chips |
-| `icon` | `boolean` | `false` | A square (or round, with `pill`) button holding only an icon |
-| `hotkey` | `string` | — | Physical key (`KeyboardEvent.code`) that clicks the button; shown inside it |
-| `hotkeyLabel` | `string` | from `hotkey` | Text shown for the key |
-| `disabled` | `boolean` | `false` | Also turns the hotkey off |
-| `href` | `string` | — | Renders a link instead of a button |
-| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | Set `submit` inside a form |
+| Prop          | Type                                                      | Default       | Description                                                                 |
+| ------------- | --------------------------------------------------------- | ------------- | --------------------------------------------------------------------------- |
+| `variant`     | `'primary' \| 'secondary' \| 'soft' \| 'ghost' \| 'link'` | `'secondary'` | Visual weight                                                               |
+| `size`        | `'sm' \| 'md' \| 'lg'`                                    | `'md'`        |                                                                             |
+| `shape`       | `'rounded' \| 'pill'`                                     | `'rounded'`   | Pill for navigation and chips                                               |
+| `icon`        | `boolean`                                                 | `false`       | A square (or round, with `pill`) button holding only an icon                |
+| `hotkey`      | `string`                                                  | —             | Physical key (`KeyboardEvent.code`) that clicks the button; shown inside it |
+| `hotkeyLabel` | `string`                                                  | from `hotkey` | Text shown for the key                                                      |
+| `disabled`    | `boolean`                                                 | `false`       | Also turns the hotkey off                                                   |
+| `href`        | `string`                                                  | —             | Renders a link instead of a button                                          |
+| `type`        | `'button' \| 'submit' \| 'reset'`                         | `'button'`    | Set `submit` inside a form                                                  |

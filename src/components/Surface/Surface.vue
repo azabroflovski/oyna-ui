@@ -1,12 +1,15 @@
 <script setup lang="ts">
-withDefaults(defineProps<{
-  /** Element to render. */
-  as?: string
-  /** A darker fill, for text-heavy content over a busy background. */
-  strong?: boolean
-  /** A ring that means something: `accent` is the main thing, `danger` is something at stake. */
-  signal?: 'accent' | 'danger'
-}>(), { as: 'div' })
+withDefaults(
+  defineProps<{
+    /** Element to render. */
+    as?: string
+    /** A darker fill, for text-heavy content over a busy background. */
+    strong?: boolean
+    /** A ring that means something: `accent` is the main thing, `danger` is something at stake. */
+    signal?: 'accent' | 'danger'
+  }>(),
+  { as: 'div' },
+)
 </script>
 
 <template>

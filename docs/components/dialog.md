@@ -32,20 +32,14 @@ const open = ref(false)
 </script>
 
 <template>
-  <OButton hotkey="KeyD" @click="open = true">
-    Open dialog
-  </OButton>
+  <OButton hotkey="KeyD" @click="open = true"> Open dialog </OButton>
 
   <ODialog v-model:open="open" title="Settings" description="Kept on this device.">
     <OField label="Name" hint="2–16 characters">
       <OInput v-model="name" />
     </OField>
-    <OToggle v-model="sound" hotkey="KeyM">
-      Sound
-    </OToggle>
-    <OButton variant="primary" hotkey="Enter" @click="save">
-      Save
-    </OButton>
+    <OToggle v-model="sound" hotkey="KeyM"> Sound </OToggle>
+    <OButton variant="primary" hotkey="Enter" @click="save"> Save </OButton>
   </ODialog>
 </template>
 ```
@@ -66,11 +60,11 @@ The dialog is nearly opaque on purpose: glass over blurred glass over a busy bac
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `v-model:open` | `boolean` | `false` | |
-| `title` | `string` | required | |
-| `description` | `string` | — | A line under the title, read out with it |
-| `closeLabel` | `string` | `'Close'` | Text of the close button, after the `Esc` key |
+| Prop           | Type      | Default   | Description                                   |
+| -------------- | --------- | --------- | --------------------------------------------- |
+| `v-model:open` | `boolean` | `false`   |                                               |
+| `title`        | `string`  | required  |                                               |
+| `description`  | `string`  | —         | A line under the title, read out with it      |
+| `closeLabel`   | `string`  | `'Close'` | Text of the close button, after the `Esc` key |
 
 Built on [Reka UI](https://reka-ui.com) Dialog.

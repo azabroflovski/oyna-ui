@@ -50,11 +50,11 @@ While the list is open, page hotkeys are off: typing a letter searches the list 
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `items` | `{ value: string, label: string, hint?: string, disabled?: boolean }[]` | required | |
-| `v-model` | `string` | — | The chosen item's `value` |
-| `placeholder` | `string` | — | Shown while nothing is chosen |
-| `disabled` | `boolean` | `false` | |
+| Prop          | Type                                                                    | Default  | Description                   |
+| ------------- | ----------------------------------------------------------------------- | -------- | ----------------------------- |
+| `items`       | `{ value: string, label: string, hint?: string, disabled?: boolean }[]` | required |                               |
+| `v-model`     | `string`                                                                | —        | The chosen item's `value`     |
+| `placeholder` | `string`                                                                | —        | Shown while nothing is chosen |
+| `disabled`    | `boolean`                                                               | `false`  |                               |
 
 Built on [Reka UI](https://reka-ui.com) Select.

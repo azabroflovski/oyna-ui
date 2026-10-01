@@ -5,7 +5,7 @@
 A Vue 3 component library with a dark glass look: translucent surfaces over a rich background,
 no borders, light used as a signal, condensed display type for numbers and headings.
 
-*Oyna* is Uzbek for "glass" — and for "window" and "mirror".
+_Oyna_ is Uzbek for "glass" — and for "window" and "mirror".
 
 ## Why it exists
 
@@ -61,9 +61,7 @@ createApp(App).use(oyna).mount('#app')
 ```vue
 <template>
   <OCard>
-    <OButton hotkey="Enter" @click="save">
-      Save
-    </OButton>
+    <OButton hotkey="Enter" @click="save"> Save </OButton>
   </OCard>
 </template>
 ```
@@ -96,6 +94,7 @@ Theme with CSS variables:
 bun install
 bun run dev        # playground
 bun run docs:dev   # docs site
+bun run fmt        # format with oxfmt
 bun run lint && bun run typecheck && bun run test && bun run build
 ```
 

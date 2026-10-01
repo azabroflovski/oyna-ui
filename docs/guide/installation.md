@@ -36,16 +36,19 @@ The stylesheet is plain CSS. You need neither Tailwind nor UnoCSS.
 The library sets font variables and does not bundle font files. Load these families yourself, with
 every weight listed: a missing weight is synthesized by the browser and looks lighter.
 
-| Family | Weights | Used for |
-| --- | --- | --- |
-| Noto Sans | 400, 600, 700 | text |
-| Barlow Condensed | 700, 800 | numbers and headings |
-| Fira Sans Condensed | 700, 800 | Cyrillic numbers and headings |
+| Family              | Weights       | Used for                      |
+| ------------------- | ------------- | ----------------------------- |
+| Noto Sans           | 400, 600, 700 | text                          |
+| Barlow Condensed    | 700, 800      | numbers and headings          |
+| Fira Sans Condensed | 700, 800      | Cyrillic numbers and headings |
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Fira+Sans+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Fira+Sans+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&display=swap"
+  rel="stylesheet"
+/>
 ```
 
 ## Background

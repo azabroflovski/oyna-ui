@@ -69,15 +69,15 @@ Without an `OField`, give the input an `aria-label`.
 
 ### OInput
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `v-model` | `string \| number` | — | |
-| `invalid` | `boolean` | `false` | A danger ring. Inside an `OField` with an error it is set for you |
+| Prop      | Type               | Default | Description                                                       |
+| --------- | ------------------ | ------- | ----------------------------------------------------------------- |
+| `v-model` | `string \| number` | —       |                                                                   |
+| `invalid` | `boolean`          | `false` | A danger ring. Inside an `OField` with an error it is set for you |
 
 ### OField
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `label` | `string` | required | |
-| `hint` | `string` | — | Shown under the control |
-| `error` | `string` | — | Replaces the hint and marks the control invalid |
+| Prop    | Type     | Default  | Description                                     |
+| ------- | -------- | -------- | ----------------------------------------------- |
+| `label` | `string` | required |                                                 |
+| `hint`  | `string` | —        | Shown under the control                         |
+| `error` | `string` | —        | Replaces the hint and marks the control invalid |

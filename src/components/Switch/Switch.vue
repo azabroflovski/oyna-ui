@@ -14,7 +14,7 @@ const parts = useSplitAttrs()
 <template>
   <label class="o-switch" v-bind="parts.root">
     <span v-if="$slots.default" class="o-switch__label"><slot /></span>
-    <input v-model="model" type="checkbox" role="switch" class="o-switch__input" :disabled v-bind="parts.control">
+    <input v-model="model" type="checkbox" role="switch" class="o-switch__input" :disabled v-bind="parts.control" />
     <span class="o-switch__track" aria-hidden="true"><span class="o-switch__thumb" /></span>
   </label>
 </template>

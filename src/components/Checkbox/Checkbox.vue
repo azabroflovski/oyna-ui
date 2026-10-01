@@ -13,7 +13,7 @@ const parts = useSplitAttrs()
 
 <template>
   <label class="o-checkbox" v-bind="parts.root">
-    <input v-model="model" type="checkbox" class="o-checkbox__input" :disabled v-bind="parts.control">
+    <input v-model="model" type="checkbox" class="o-checkbox__input" :disabled v-bind="parts.control" />
     <span class="o-checkbox__box" aria-hidden="true">
       <svg viewBox="0 0 12 12"><path d="M2.5 6.5 5 9l4.5-5.5" /></svg>
     </span>

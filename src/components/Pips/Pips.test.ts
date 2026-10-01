@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
+
 import OSparkline from '../Sparkline/Sparkline.vue'
 import OPips from './Pips.vue'
 
@@ -14,7 +15,10 @@ describe('oPips', () => {
   })
 
   it('puts the marker on the boundary after that many pips, within the row', () => {
-    const left = (marker: number) => mount(OPips, { props: { done: 0, total: 5, marker } }).find('.o-pips__marker').attributes('style')
+    const left = (marker: number) =>
+      mount(OPips, { props: { done: 0, total: 5, marker } })
+        .find('.o-pips__marker')
+        .attributes('style')
     expect(left(2)).toContain('left: 37px')
     expect(left(0)).toContain('left: -11px')
     expect(left(9)).toContain('left: 109px')
@@ -22,7 +26,8 @@ describe('oPips', () => {
 })
 
 describe('oSparkline', () => {
-  const points = (props: object) => mount(OSparkline, { props: { values: [1, 3, 2], label: 'Runs', width: 104, height: 24, ...props } })
+  const points = (props: object) =>
+    mount(OSparkline, { props: { values: [1, 3, 2], label: 'Runs', width: 104, height: 24, ...props } })
 
   it('draws larger values higher and marks the last one', () => {
     const wrapper = points({})
@@ -38,7 +43,11 @@ describe('oSparkline', () => {
   })
 
   it('survives one value and none', () => {
-    expect(points({ values: [5] }).find('polyline').attributes('points')).toBe('4.0,20.0')
+    expect(
+      points({ values: [5] })
+        .find('polyline')
+        .attributes('points'),
+    ).toBe('4.0,20.0')
     expect(points({ values: [] }).find('circle').exists()).toBe(false)
   })
 })

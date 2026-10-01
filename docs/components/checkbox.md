@@ -23,9 +23,7 @@ const agree = ref(false)
 </script>
 
 <template>
-  <OCheckbox v-model="agree">
-    I accept the terms
-  </OCheckbox>
+  <OCheckbox v-model="agree"> I accept the terms </OCheckbox>
 </template>
 ```
 
@@ -35,7 +33,7 @@ Without text in the slot, give it an `aria-label`.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `v-model` | `boolean` | `false` | |
-| `disabled` | `boolean` | `false` | |
+| Prop       | Type      | Default | Description |
+| ---------- | --------- | ------- | ----------- |
+| `v-model`  | `boolean` | `false` |             |
+| `disabled` | `boolean` | `false` |             |

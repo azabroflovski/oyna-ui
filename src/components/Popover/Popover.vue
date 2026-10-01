@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { PopoverContent, PopoverPortal, PopoverRoot, PopoverTrigger } from 'reka-ui'
+
 import { useLayer } from '../../composables/layers'
 
-withDefaults(defineProps<{
-  side?: 'top' | 'right' | 'bottom' | 'left'
-  align?: 'start' | 'center' | 'end'
-}>(), { side: 'bottom', align: 'start' })
+withDefaults(
+  defineProps<{
+    side?: 'top' | 'right' | 'bottom' | 'left'
+    align?: 'start' | 'center' | 'end'
+  }>(),
+  { side: 'bottom', align: 'start' },
+)
 
 defineSlots<{
   /** One focusable element: it becomes the trigger. */
@@ -26,7 +30,7 @@ useLayer(open)
     </PopoverTrigger>
     <PopoverPortal>
       <PopoverContent class="o-popover" :side :align :side-offset="8">
-        <slot name="content" :close="() => open = false" />
+        <slot name="content" :close="() => (open = false)" />
       </PopoverContent>
     </PopoverPortal>
   </PopoverRoot>

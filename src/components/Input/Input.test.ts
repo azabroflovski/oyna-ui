@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import { h } from 'vue'
+
 import OField from '../Field/Field.vue'
 import OInput from './Input.vue'
 
@@ -21,7 +22,7 @@ describe('oInput', () => {
 })
 
 describe('oField', () => {
-  const field = (props: { hint?: string, error?: string }) =>
+  const field = (props: { hint?: string; error?: string }) =>
     mount(OField, { props: { label: 'Name', ...props }, slots: { default: () => h(OInput) } })
 
   it('ties the label and the hint to the input', () => {

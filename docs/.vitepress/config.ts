@@ -1,11 +1,12 @@
 import { fileURLToPath } from 'node:url'
+
 import { defineConfigWithTheme } from 'vitepress'
 
 export interface ThemeConfig {
   repo: string
   branch: string
-  nav: { text: string, link: string, match: string }[]
-  sidebar: { text: string, items: { text: string, link: string }[] }[]
+  nav: { text: string; link: string; match: string }[]
+  sidebar: { text: string; items: { text: string; link: string }[] }[]
 }
 
 export default defineConfigWithTheme<ThemeConfig>({
@@ -16,7 +17,13 @@ export default defineConfigWithTheme<ThemeConfig>({
   head: [
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
-    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Fira+Sans+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&display=swap' }],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Fira+Sans+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&display=swap',
+      },
+    ],
   ],
   markdown: {
     theme: 'vitesse-dark',

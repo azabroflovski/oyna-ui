@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { inject } from 'vue'
+
 import { fieldKey } from '../Field/context'
 
 const props = defineProps<{
@@ -18,7 +19,7 @@ const field = inject(fieldKey, undefined)
     class="o-input"
     :aria-invalid="props.invalid || field?.invalid.value || undefined"
     :aria-describedby="field?.messageId.value"
-  >
+  />
 </template>
 
 <style>

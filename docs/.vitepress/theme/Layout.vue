@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { ThemeConfig } from '../config'
 import { useData, useRoute, withBase } from 'vitepress'
 import { computed } from 'vue'
+
+import type { ThemeConfig } from '../config'
 import Home from './Home.vue'
 
 const { frontmatter, theme, page } = useData<ThemeConfig>()
@@ -27,9 +28,7 @@ const isCurrent = (link: string) => path.value === withBase(link)
         >
           {{ item.text }}
         </OButton>
-        <OButton shape="pill" :href="theme.repo" target="_blank" rel="noopener">
-          GitHub ↗
-        </OButton>
+        <OButton shape="pill" :href="theme.repo" target="_blank" rel="noopener"> GitHub ↗ </OButton>
       </nav>
     </header>
 
@@ -38,7 +37,7 @@ const isCurrent = (link: string) => path.value === withBase(link)
     <main v-else-if="frontmatter.layout === 'example'" class="example content">
       <nav class="example-nav" aria-label="Examples">
         <OButton
-          v-for="item in theme.sidebar.find(group => group.text === 'Examples')?.items"
+          v-for="item in theme.sidebar.find((group) => group.text === 'Examples')?.items"
           :key="item.link"
           size="sm"
           shape="pill"
@@ -53,9 +52,7 @@ const isCurrent = (link: string) => path.value === withBase(link)
 
     <div v-else-if="page.isNotFound" class="not-found">
       <h1>404</h1>
-      <OButton :href="withBase('/')">
-        Home
-      </OButton>
+      <OButton :href="withBase('/')"> Home </OButton>
     </div>
 
     <div v-else class="docs">
@@ -69,7 +66,8 @@ const isCurrent = (link: string) => path.value === withBase(link)
             :key="item.link"
             :href="withBase(item.link)"
             :aria-current="isCurrent(item.link) ? 'page' : undefined"
-          >{{ item.text }}</a>
+            >{{ item.text }}</a
+          >
         </nav>
       </aside>
       <main class="content">

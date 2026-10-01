@@ -47,15 +47,15 @@ Streak at risk
 
 ### OSurface
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `as` | `string` | `'div'` | Element to render |
-| `strong` | `boolean` | `false` | A darker fill, for text-heavy content over a busy background |
-| `signal` | `'accent' \| 'danger'` | — | A ring that means something |
+| Prop     | Type                   | Default | Description                                                  |
+| -------- | ---------------------- | ------- | ------------------------------------------------------------ |
+| `as`     | `string`               | `'div'` | Element to render                                            |
+| `strong` | `boolean`              | `false` | A darker fill, for text-heavy content over a busy background |
+| `signal` | `'accent' \| 'danger'` | —       | A ring that means something                                  |
 
 ### OCard
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `as` | `string` | `'div'` | Element to render |
-| `signal` | `'accent' \| 'danger'` | — | A ring that means something |
+| Prop     | Type                   | Default | Description                 |
+| -------- | ---------------------- | ------- | --------------------------- |
+| `as`     | `string`               | `'div'` | Element to render           |
+| `signal` | `'accent' \| 'danger'` | —       | A ring that means something |

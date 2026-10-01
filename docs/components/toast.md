@@ -39,9 +39,9 @@ A toast is plain by default. The ring is a signal here as everywhere: `accent` f
 
 `toast(message, options?)` returns the toast's id.
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `tone` | `'accent' \| 'danger'` | — | |
-| `duration` | `number` | `4000` | In ms; `0` keeps the toast until it is clicked |
+| Option     | Type                   | Default | Description                                    |
+| ---------- | ---------------------- | ------- | ---------------------------------------------- |
+| `tone`     | `'accent' \| 'danger'` | —       |                                                |
+| `duration` | `number`               | `4000`  | In ms; `0` keeps the toast until it is clicked |
 
 `dismissToast(id)` removes a toast.

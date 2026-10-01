@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, provide, useId } from 'vue'
+
 import { fieldKey } from './context'
 
 const props = defineProps<{
@@ -11,7 +12,7 @@ const props = defineProps<{
 }>()
 
 const id = useId()
-const messageId = computed(() => props.error || props.hint ? `${id}-message` : undefined)
+const messageId = computed(() => (props.error || props.hint ? `${id}-message` : undefined))
 provide(fieldKey, { id, messageId, invalid: computed(() => !!props.error) })
 </script>
 

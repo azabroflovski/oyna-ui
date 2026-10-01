@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
+
 import OBadge from '../Badge/Badge.vue'
 import OProgress from '../Progress/Progress.vue'
 import OStat from './Stat.vue'
@@ -16,10 +17,18 @@ describe('oStat', () => {
 describe('oProgress', () => {
   it('is a progressbar filled by value / max, kept within the track', () => {
     const wrapper = mount(OProgress, { props: { value: 3, max: 4 } })
-    expect(wrapper.attributes()).toMatchObject({ 'role': 'progressbar', 'aria-valuenow': '3', 'aria-valuemax': '4' })
+    expect(wrapper.attributes()).toMatchObject({ role: 'progressbar', 'aria-valuenow': '3', 'aria-valuemax': '4' })
     expect(wrapper.find('.o-progress__bar').attributes('style')).toContain('width: 75%')
-    expect(mount(OProgress, { props: { value: 150 } }).find('.o-progress__bar').attributes('style')).toContain('width: 100%')
-    expect(mount(OProgress, { props: { value: -5 } }).find('.o-progress__bar').attributes('style')).toContain('width: 0%')
+    expect(
+      mount(OProgress, { props: { value: 150 } })
+        .find('.o-progress__bar')
+        .attributes('style'),
+    ).toContain('width: 100%')
+    expect(
+      mount(OProgress, { props: { value: -5 } })
+        .find('.o-progress__bar')
+        .attributes('style'),
+    ).toContain('width: 0%')
   })
 })
 

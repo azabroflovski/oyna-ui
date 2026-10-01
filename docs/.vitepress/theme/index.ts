@@ -1,8 +1,10 @@
-import type { Theme } from 'vitepress'
 import oyna from 'oyna'
+import type { Theme } from 'vitepress'
+
 import Demo from './Demo.vue'
 import ExampleSource from './ExampleSource.vue'
 import Layout from './Layout.vue'
+
 import './style.css'
 
 export default {

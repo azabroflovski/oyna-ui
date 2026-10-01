@@ -1,36 +1,44 @@
 <script setup lang="ts">
 import { computed, ref, useTemplateRef } from 'vue'
+
 import { hotkeyLabel as labelFor, useHotkey } from '../../composables/useHotkey'
 
-const props = withDefaults(defineProps<{
-  /** Visual weight. Use `primary` once per screen. */
-  variant?: 'primary' | 'secondary' | 'soft' | 'ghost' | 'link'
-  size?: 'sm' | 'md' | 'lg'
-  /** `pill` for navigation and chips. */
-  shape?: 'rounded' | 'pill'
-  /** A square (or round, with `pill`) button holding only an icon. Give it an `aria-label`. */
-  icon?: boolean
-  /** Physical key (`KeyboardEvent.code`, e.g. `Enter`, `KeyR`) that clicks the button. Shown inside it. */
-  hotkey?: string
-  /** Text shown for the key; by default made from `hotkey`. */
-  hotkeyLabel?: string
-  /** Also turns the hotkey off. */
-  disabled?: boolean
-  /** Renders a link instead of a button. */
-  href?: string
-  type?: 'button' | 'submit' | 'reset'
-}>(), { variant: 'secondary', size: 'md', shape: 'rounded', type: 'button' })
+const props = withDefaults(
+  defineProps<{
+    /** Visual weight. Use `primary` once per screen. */
+    variant?: 'primary' | 'secondary' | 'soft' | 'ghost' | 'link'
+    size?: 'sm' | 'md' | 'lg'
+    /** `pill` for navigation and chips. */
+    shape?: 'rounded' | 'pill'
+    /** A square (or round, with `pill`) button holding only an icon. Give it an `aria-label`. */
+    icon?: boolean
+    /** Physical key (`KeyboardEvent.code`, e.g. `Enter`, `KeyR`) that clicks the button. Shown inside it. */
+    hotkey?: string
+    /** Text shown for the key; by default made from `hotkey`. */
+    hotkeyLabel?: string
+    /** Also turns the hotkey off. */
+    disabled?: boolean
+    /** Renders a link instead of a button. */
+    href?: string
+    type?: 'button' | 'submit' | 'reset'
+  }>(),
+  { variant: 'secondary', size: 'md', shape: 'rounded', type: 'button' },
+)
 
 const el = useTemplateRef<HTMLElement>('el')
-const keyText = computed(() => props.hotkey ? props.hotkeyLabel ?? labelFor(props.hotkey) : undefined)
+const keyText = computed(() => (props.hotkey ? (props.hotkeyLabel ?? labelFor(props.hotkey)) : undefined))
 
 // a short brightening, so a key press is seen on the button it belongs to
 const flashing = ref(false)
-useHotkey(() => props.hotkey, () => {
-  flashing.value = true
-  setTimeout(() => flashing.value = false, 140)
-  el.value?.click()
-}, { enabled: () => !props.disabled })
+useHotkey(
+  () => props.hotkey,
+  () => {
+    flashing.value = true
+    setTimeout(() => (flashing.value = false), 140)
+    el.value?.click()
+  },
+  { enabled: () => !props.disabled },
+)
 </script>
 
 <template>
@@ -38,7 +46,13 @@ useHotkey(() => props.hotkey, () => {
     :is="href ? 'a' : 'button'"
     ref="el"
     class="o-button"
-    :class="[`o-button--${variant}`, `o-button--${size}`, shape === 'pill' && 'o-button--pill', icon && 'o-button--icon', flashing && 'o-button--flash']"
+    :class="[
+      `o-button--${variant}`,
+      `o-button--${size}`,
+      shape === 'pill' && 'o-button--pill',
+      icon && 'o-button--icon',
+      flashing && 'o-button--flash',
+    ]"
     :href="disabled ? undefined : href"
     :type="href ? undefined : type"
     :disabled="href ? undefined : disabled"

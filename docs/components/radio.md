@@ -40,9 +40,9 @@ const plans = [
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `items` | `{ value: string, label: string, hint?: string, disabled?: boolean }[]` | required | |
-| `v-model` | `string` | — | The chosen item's `value` |
-| `label` | `string` | — | The question the options answer |
-| `disabled` | `boolean` | `false` | Disables every option |
+| Prop       | Type                                                                    | Default  | Description                     |
+| ---------- | ----------------------------------------------------------------------- | -------- | ------------------------------- |
+| `items`    | `{ value: string, label: string, hint?: string, disabled?: boolean }[]` | required |                                 |
+| `v-model`  | `string`                                                                | —        | The chosen item's `value`       |
+| `label`    | `string`                                                                | —        | The question the options answer |
+| `disabled` | `boolean`                                                               | `false`  | Disables every option           |

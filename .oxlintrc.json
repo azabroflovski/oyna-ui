@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "import", "vue", "vitest"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "rules": {
+    "import/no-unassigned-import": "off",
+    "unicorn/consistent-function-scoping": "off"
+  },
+  "ignorePatterns": ["planning", "dist", "docs/.vitepress/cache", "docs/.vitepress/dist"]
+}

@@ -35,28 +35,22 @@ const search = ref('')
   <main>
     <section class="hero">
       <div>
-        <h1>Glass,<br>not <em>boxes</em></h1>
+        <h1>Glass,<br />not <em>boxes</em></h1>
         <p class="lead">
-          A Vue 3 component library with a dark glass look: translucent surfaces over a rich background,
-          no borders, light used as a signal, and a keyboard-first feel.
+          A Vue 3 component library with a dark glass look: translucent surfaces over a rich background, no borders,
+          light used as a signal, and a keyboard-first feel.
         </p>
         <div class="row">
           <OButton variant="primary" size="lg" hotkey="Enter" :href="withBase('/guide/installation')">
             Get started
           </OButton>
-          <OButton size="lg" :href="withBase('/components/button')">
-            Components
-          </OButton>
+          <OButton size="lg" :href="withBase('/components/button')"> Components </OButton>
         </div>
       </div>
 
       <div class="showcase">
-        <OStat label="Requests">
-          18 204
-        </OStat>
-        <OStat label="Median">
-          142 ms
-        </OStat>
+        <OStat label="Requests"> 18 204 </OStat>
+        <OStat label="Median"> 142 ms </OStat>
 
         <OCard signal="accent" class="col wide">
           <div class="row between">
@@ -65,9 +59,7 @@ const search = ref('')
           </div>
           <div class="row between">
             <span class="number">72%</span>
-            <OButton variant="soft">
-              Upgrade
-            </OButton>
+            <OButton variant="soft"> Upgrade </OButton>
           </div>
           <OProgress :value="72" aria-label="Plan usage" />
           <span class="hint">An accent ring marks the main thing on the screen.</span>
@@ -81,15 +73,9 @@ const search = ref('')
         <OCard class="col">
           <span class="label">Keys</span>
           <div class="row">
-            <OKbd variant="cap">
-              Q
-            </OKbd>
-            <OKbd variant="cap">
-              W
-            </OKbd>
-            <OKbd variant="cap">
-              E
-            </OKbd>
+            <OKbd variant="cap"> Q </OKbd>
+            <OKbd variant="cap"> W </OKbd>
+            <OKbd variant="cap"> E </OKbd>
           </div>
         </OCard>
 
@@ -97,23 +83,17 @@ const search = ref('')
           <div class="row between">
             <OTabs :items="periods" />
             <div class="row">
-              <OToggle v-model="sound" hotkey="KeyM">
-                Sound
-              </OToggle>
-              <OToggle v-model="hints" hotkey="KeyH">
-                Hints
-              </OToggle>
+              <OToggle v-model="sound" hotkey="KeyM"> Sound </OToggle>
+              <OToggle v-model="hints" hotkey="KeyH"> Hints </OToggle>
             </div>
           </div>
           <div class="row nowrap">
             <OInput v-model="search" placeholder="Search…" aria-label="Search" />
-            <OButton hotkey="KeyD" @click="open = true">
-              Dialog
-            </OButton>
+            <OButton hotkey="KeyD" @click="open = true"> Dialog </OButton>
           </div>
           <span class="hint">
-            Try <OKbd>M</OKbd>, <OKbd>H</OKbd>, <OKbd>D</OKbd>, <OKbd>Esc</OKbd> and <OKbd>Enter</OKbd> — on any keyboard layout.
-            Keys are ignored while you type in the field.
+            Try <OKbd>M</OKbd>, <OKbd>H</OKbd>, <OKbd>D</OKbd>, <OKbd>Esc</OKbd> and <OKbd>Enter</OKbd> — on any
+            keyboard layout. Keys are ignored while you type in the field.
           </span>
         </OCard>
       </div>
@@ -123,12 +103,8 @@ const search = ref('')
           <OInput />
         </OField>
         <div class="row between">
-          <OToggle v-model="sound" hotkey="KeyM">
-            Sound
-          </OToggle>
-          <OButton variant="primary" hotkey="Enter" @click="open = false">
-            Done
-          </OButton>
+          <OToggle v-model="sound" hotkey="KeyM"> Sound </OToggle>
+          <OButton variant="primary" hotkey="Enter" @click="open = false"> Done </OButton>
         </div>
       </ODialog>
     </section>
@@ -139,13 +115,11 @@ const search = ref('')
       </OStat>
     </section>
     <p class="facts-note">
-      No Tailwind, no UnoCSS, nothing to configure: import one plain stylesheet and use the components.
-      Theme it with CSS variables. The one dependency is Reka UI, under the dialog, select, tabs and tooltip.
+      No Tailwind, no UnoCSS, nothing to configure: import one plain stylesheet and use the components. Theme it with
+      CSS variables. The one dependency is Reka UI, under the dialog, select, tabs and tooltip.
     </p>
 
-    <h2 class="section">
-      The look
-    </h2>
+    <h2 class="section">The look</h2>
     <section class="principles">
       <OCard v-for="[title, text] in principles" :key="title">
         <h3>{{ title }}</h3>

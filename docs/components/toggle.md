@@ -25,12 +25,8 @@ const hints = ref(false)
 </script>
 
 <template>
-  <OToggle v-model="sound" hotkey="KeyM">
-    Sound
-  </OToggle>
-  <OToggle v-model="hints" hotkey="KeyH">
-    Hints
-  </OToggle>
+  <OToggle v-model="sound" hotkey="KeyM"> Sound </OToggle>
+  <OToggle v-model="hints" hotkey="KeyH"> Hints </OToggle>
 </template>
 ```
 
@@ -38,9 +34,9 @@ Press <OKbd>M</OKbd> or <OKbd>H</OKbd> on this page. See [Hotkeys](/guide/hotkey
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `v-model` | `boolean` | `false` | |
-| `hotkey` | `string` | — | Physical key (`KeyboardEvent.code`) that flips the toggle; shown inside it |
-| `hotkeyLabel` | `string` | from `hotkey` | Text shown for the key |
-| `disabled` | `boolean` | `false` | Also turns the hotkey off |
+| Prop          | Type      | Default       | Description                                                                |
+| ------------- | --------- | ------------- | -------------------------------------------------------------------------- |
+| `v-model`     | `boolean` | `false`       |                                                                            |
+| `hotkey`      | `string`  | —             | Physical key (`KeyboardEvent.code`) that flips the toggle; shown inside it |
+| `hotkeyLabel` | `string`  | from `hotkey` | Text shown for the key                                                     |
+| `disabled`    | `boolean` | `false`       | Also turns the hotkey off                                                  |

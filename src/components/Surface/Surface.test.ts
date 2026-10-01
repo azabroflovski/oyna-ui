@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
+
 import OCard from '../Card/Card.vue'
 import OSurface from './Surface.vue'
 
@@ -17,7 +18,9 @@ describe('oSurface', () => {
 describe('oCard', () => {
   it('is a padded strong surface that passes the signal on', () => {
     const wrapper = mount(OCard, { props: { signal: 'accent' }, slots: { default: 'Plan' } })
-    expect(wrapper.classes()).toEqual(expect.arrayContaining(['o-surface', 'o-surface--strong', 'o-surface--accent', 'o-card']))
+    expect(wrapper.classes()).toEqual(
+      expect.arrayContaining(['o-surface', 'o-surface--strong', 'o-surface--accent', 'o-card']),
+    )
     expect(wrapper.text()).toBe('Plan')
   })
 })

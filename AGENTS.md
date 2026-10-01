@@ -9,7 +9,7 @@ General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-01: both planned waves are built and documented — tokens, base stylesheet,
 `useHotkey` and 27 components (see `src/index.ts`). The package is ready to publish
-as `0.1.0` (`npm publish` builds it through `prepack`); publishing is the owner's to run. *Oyna* is Uzbek for "glass". In prose the
+as `0.1.0` (`npm publish` builds it through `prepack`); publishing is the owner's to run. _Oyna_ is Uzbek for "glass". In prose the
 library is always "Oyna UI" (the bare word is too common to search for); `oyna` is only the package
 name, and the short logo in the docs header stays "OYNA". Names, decided by the owner on
 2026-10-01: the npm package is the unscoped `oyna` (Vue only, so no `@oyna/vue`); the owner holds
@@ -45,7 +45,7 @@ The style was first built in the owner's project [invoke.wtf](https://invoke.wtf
 Invoker from Dota 2 (Nuxt 4 + UnoCSS; a private repository, on the owner's machine at
 `~/invoker-game`). The owner wanted a UI kit with this look, found none, drew the interface by hand,
 and then made the library out of it — for himself first, open for anyone who likes it. README.md
-and `docs/guide/why.md` tell this story in his voice. In public text, say the look *comes from*
+and `docs/guide/why.md` tell this story in his voice. In public text, say the look _comes from_
 invoke.wtf; never say that site is built with Oyna UI — it is not.
 
 Use that project as a visual reference when porting: `uno.config.ts` (tokens, the `surface` / `card` shortcuts),
@@ -69,7 +69,11 @@ components, and none of that project's images, icons or sounds (they are third-p
 - **VitePress** for the docs, built with the library itself, with live examples.
 - **Vitest** + `@vue/test-utils` for component tests.
 - **Bun** as package manager and script runner.
-- ESLint + `@antfu/eslint-config` (no Prettier): 2 spaces, single quotes, no semicolons.
+- **oxlint** and **oxfmt** (Oxc, from the Vite team), not ESLint or Prettier; the owner's choice
+  on 2026-10-02. Style: 2 spaces, single quotes, no semicolons, 120 columns, sorted imports
+  (`.oxfmtrc.json`). Both are pinned to exact versions: oxfmt is before 1.0 and its output may
+  change between versions. oxlint does not check Vue templates yet (a missing `key` in `v-for` goes
+  unnoticed); `vue-tsc` still catches type errors there.
 - TypeScript, `<script setup lang="ts">`.
 
 Layout (one package until a second is really needed):
@@ -89,7 +93,9 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 ## Commands
 
 - `bun run dev` — playground. `bun run docs:dev` — docs site.
-- `bun run lint`, `bun run typecheck`, `bun run test`, `bun run build`, `bun run docs:build` — what CI runs.
+- `bun run fmt` formats everything; run it before committing.
+- `bun run lint`, `bun run fmt:check`, `bun run typecheck`, `bun run test`, `bun run build`,
+  `bun run docs:build` — what CI runs.
 - `typecheck` needs Node on `PATH`: `vue-tsc` does not work under the Bun runtime (it patches `tsc`
   through `fs.readFileSync`, which Bun's module loader bypasses). Everything else runs on Bun alone.
 - TypeScript stays on 6.x: `vue-tsc` does not support 7 yet.

@@ -2,6 +2,7 @@
 import type { MenuItem } from 'oyna'
 import { toast } from 'oyna'
 import { computed, ref } from 'vue'
+
 import { densities, languages, sections } from './options'
 
 const name = ref('Ada Lovelace')
@@ -10,8 +11,10 @@ const bio = ref('')
 const language = ref('en')
 const density = ref('comfortable')
 
-const handleError = computed(() => /^[a-z0-9_]{2,16}$/.test(handle.value) ? undefined : '2–16 characters: a–z, 0–9, underscore')
-const bioError = computed(() => bio.value.length > 160 ? `${bio.value.length - 160} characters too many` : undefined)
+const handleError = computed(() =>
+  /^[a-z0-9_]{2,16}$/.test(handle.value) ? undefined : '2–16 characters: a–z, 0–9, underscore',
+)
+const bioError = computed(() => (bio.value.length > 160 ? `${bio.value.length - 160} characters too many` : undefined))
 
 const notify = ref({ deploys: true, errors: true, digest: false, marketing: false })
 
@@ -24,7 +27,7 @@ const sessionActions: MenuItem[] = [
   { label: 'Sign out everywhere else', onSelect: () => toast('Signed out of 2 other sessions') },
   { label: 'Export my data', hint: 'JSON', onSelect: () => toast('The export will arrive by email') },
   { separator: true },
-  { label: 'Delete account', tone: 'danger', onSelect: () => deleteOpen.value = true },
+  { label: 'Delete account', tone: 'danger', onSelect: () => (deleteOpen.value = true) },
 ]
 
 function save() {
@@ -80,9 +83,7 @@ function remove() {
           </OCard>
 
           <div class="settings__row">
-            <OButton variant="primary" type="submit">
-              Save changes
-            </OButton>
+            <OButton variant="primary" type="submit"> Save changes </OButton>
             <span class="settings__note">Enter in a field saves too</span>
           </div>
         </form>
@@ -90,23 +91,13 @@ function remove() {
 
       <template #notifications>
         <OCard class="settings__col settings__narrow">
-          <OSwitch v-model="notify.deploys">
-            Deploys
-          </OSwitch>
-          <OSwitch v-model="notify.errors">
-            Error spikes
-          </OSwitch>
-          <OSwitch v-model="notify.digest">
-            Weekly digest
-          </OSwitch>
+          <OSwitch v-model="notify.deploys"> Deploys </OSwitch>
+          <OSwitch v-model="notify.errors"> Error spikes </OSwitch>
+          <OSwitch v-model="notify.digest"> Weekly digest </OSwitch>
           <div class="settings__row">
-            <OSwitch v-model="notify.marketing" class="settings__grow">
-              Product news
-            </OSwitch>
+            <OSwitch v-model="notify.marketing" class="settings__grow"> Product news </OSwitch>
             <OPopover side="top" align="end">
-              <OButton icon size="sm" shape="pill" aria-label="What is product news?">
-                ?
-              </OButton>
+              <OButton icon size="sm" shape="pill" aria-label="What is product news?"> ? </OButton>
               <template #content>
                 About one email a month: new features and nothing else. The other three are about your own projects.
               </template>
@@ -118,32 +109,24 @@ function remove() {
       <template #keys>
         <OCard class="settings__col">
           <div class="settings__keys">
-            <OKeyCapture v-model="keys.search">
-              Search
-            </OKeyCapture>
-            <OKeyCapture v-model="keys.deploy">
-              New deploy
-            </OKeyCapture>
-            <OKeyCapture v-model="keys.live">
-              Live updates
-            </OKeyCapture>
+            <OKeyCapture v-model="keys.search"> Search </OKeyCapture>
+            <OKeyCapture v-model="keys.deploy"> New deploy </OKeyCapture>
+            <OKeyCapture v-model="keys.live"> Live updates </OKeyCapture>
           </div>
           <span class="settings__note">Click a key, then press the new one. <OKbd>Esc</OKbd> cancels.</span>
         </OCard>
       </template>
     </OTabs>
 
-    <ODialog v-model:open="deleteOpen" title="Delete account" description="Projects, deploys and history go with it. This cannot be undone.">
-      <OCheckbox v-model="understood">
-        I understand that everything will be deleted
-      </OCheckbox>
+    <ODialog
+      v-model:open="deleteOpen"
+      title="Delete account"
+      description="Projects, deploys and history go with it. This cannot be undone."
+    >
+      <OCheckbox v-model="understood"> I understand that everything will be deleted </OCheckbox>
       <div class="settings__row settings__end">
-        <OButton @click="deleteOpen = false">
-          Keep it
-        </OButton>
-        <OButton variant="primary" :disabled="!understood" @click="remove">
-          Delete
-        </OButton>
+        <OButton @click="deleteOpen = false"> Keep it </OButton>
+        <OButton variant="primary" :disabled="!understood" @click="remove"> Delete </OButton>
       </div>
     </ODialog>
   </div>

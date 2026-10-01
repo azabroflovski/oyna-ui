@@ -38,8 +38,8 @@ A point to compare with: a previous best, a rival, a deadline. It is counted in 
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `done` | `number` | required | |
-| `total` | `number` | required | |
-| `marker` | `number` | — | A point to compare with, in steps |
+| Prop     | Type     | Default  | Description                       |
+| -------- | -------- | -------- | --------------------------------- |
+| `done`   | `number` | required |                                   |
+| `total`  | `number` | required |                                   |
+| `marker` | `number` | —        | A point to compare with, in steps |

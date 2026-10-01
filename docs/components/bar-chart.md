@@ -67,6 +67,6 @@ The chart is `180px` high; set `--o-bar-chart-height` to change it. The `label` 
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `items` | `{ label: string, value: number, display?: string, tone?: 'accent' \| 'danger', dot?: boolean }[]` | required | |
+| Prop    | Type                                                                                               | Default  | Description |
+| ------- | -------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| `items` | `{ label: string, value: number, display?: string, tone?: 'accent' \| 'danger', dot?: boolean }[]` | required |             |

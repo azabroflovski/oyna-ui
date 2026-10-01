@@ -1,10 +1,12 @@
 import { mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
 import { defineComponent, h, ref } from 'vue'
+
 import OButton from '../Button/Button.vue'
 import OKeyCapture from './KeyCapture.vue'
 
-const press = (code: string) => document.body.dispatchEvent(new KeyboardEvent('keydown', { code, bubbles: true, cancelable: true }))
+const press = (code: string) =>
+  document.body.dispatchEvent(new KeyboardEvent('keydown', { code, bubbles: true, cancelable: true }))
 
 describe('oKeyCapture', () => {
   afterEach(() => document.body.replaceChildren())
@@ -40,7 +42,7 @@ describe('oKeyCapture', () => {
     const code = ref('KeyQ')
     const App = defineComponent(() => () => [
       h(OButton, { hotkey: 'KeyR', onClick: () => clicks++ }, () => 'Retry'),
-      h(OKeyCapture, { 'modelValue': code.value, 'onUpdate:modelValue': (value?: string) => code.value = value! }),
+      h(OKeyCapture, { modelValue: code.value, 'onUpdate:modelValue': (value?: string) => (code.value = value!) }),
     ])
     const wrapper = mount(App, { attachTo: document.body })
     await wrapper.find('.o-key-capture').trigger('click')

@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<{
-  /** Oldest first. */
-  values: readonly number[]
-  /** What the chart shows, for screen readers. */
-  label: string
-  width?: number
-  height?: number
-  /** Smaller values sit higher: times, ranks, errors. */
-  lowerIsBetter?: boolean
-  /** Colour of the last point: `danger` when the series ends somewhere bad. */
-  tone?: 'accent' | 'danger'
-}>(), { width: 240, height: 56, tone: 'accent' })
+const props = withDefaults(
+  defineProps<{
+    /** Oldest first. */
+    values: readonly number[]
+    /** What the chart shows, for screen readers. */
+    label: string
+    width?: number
+    height?: number
+    /** Smaller values sit higher: times, ranks, errors. */
+    lowerIsBetter?: boolean
+    /** Colour of the last point: `danger` when the series ends somewhere bad. */
+    tone?: 'accent' | 'danger'
+  }>(),
+  { width: 240, height: 56, tone: 'accent' },
+)
 
 // room for the dot on the last point
 const pad = 4
@@ -29,14 +32,21 @@ const points = computed(() => {
     }
   })
 })
-const polyline = computed(() => points.value.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' '))
+const polyline = computed(() => points.value.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' '))
 const last = computed(() => points.value.at(-1))
 </script>
 
 <template>
   <svg class="o-sparkline" :viewBox="`0 0 ${width} ${height}`" :width :height role="img" :aria-label="label">
     <polyline class="o-sparkline__line" :points="polyline" />
-    <circle v-if="last" class="o-sparkline__dot" :class="`o-sparkline__dot--${tone}`" :cx="last.x" :cy="last.y" r="3.5" />
+    <circle
+      v-if="last"
+      class="o-sparkline__dot"
+      :class="`o-sparkline__dot--${tone}`"
+      :cx="last.x"
+      :cy="last.y"
+      r="3.5"
+    />
   </svg>
 </template>
 

@@ -34,8 +34,8 @@ Switch the tone to `danger` when what is left gets low. The threshold is yours t
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `number` | required | |
-| `max` | `number` | `100` | |
-| `tone` | `'accent' \| 'danger'` | `'accent'` | |
+| Prop    | Type                   | Default    | Description |
+| ------- | ---------------------- | ---------- | ----------- |
+| `value` | `number`               | required   |             |
+| `max`   | `number`               | `100`      |             |
+| `tone`  | `'accent' \| 'danger'` | `'accent'` |             |

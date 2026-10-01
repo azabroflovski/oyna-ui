@@ -57,10 +57,10 @@ The panel is `280px` wide; set `--o-popover-width` on an element around it, or o
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `v-model:open` | `boolean` | `false` | |
-| `side` | `'top' \| 'right' \| 'bottom' \| 'left'` | `'bottom'` | Flips when there is no room |
-| `align` | `'start' \| 'center' \| 'end'` | `'start'` | Which edge of the trigger the panel lines up with |
+| Prop           | Type                                     | Default    | Description                                       |
+| -------------- | ---------------------------------------- | ---------- | ------------------------------------------------- |
+| `v-model:open` | `boolean`                                | `false`    |                                                   |
+| `side`         | `'top' \| 'right' \| 'bottom' \| 'left'` | `'bottom'` | Flips when there is no room                       |
+| `align`        | `'start' \| 'center' \| 'end'`           | `'start'`  | Which edge of the trigger the panel lines up with |
 
 Built on [Reka UI](https://reka-ui.com) Popover.

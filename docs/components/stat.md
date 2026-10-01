@@ -41,7 +41,7 @@ A stat is as wide as its content; put several in a grid to make them equal.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `label` | `string` | required | |
-| `tone` | `'accent' \| 'danger'` | — | Colours the value |
+| Prop    | Type                   | Default  | Description       |
+| ------- | ---------------------- | -------- | ----------------- |
+| `label` | `string`               | required |                   |
+| `tone`  | `'accent' \| 'danger'` | —        | Colours the value |

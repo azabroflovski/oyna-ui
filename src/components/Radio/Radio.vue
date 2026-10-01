@@ -3,7 +3,7 @@ import { useId } from 'vue'
 
 defineProps<{
   /** `hint` is a line of explanation under an option. */
-  items: readonly { value: T, label: string, hint?: string, disabled?: boolean }[]
+  items: readonly { value: T; label: string; hint?: string; disabled?: boolean }[]
   /** The question the options answer. Without it, give the group an `aria-label`. */
   label?: string
   disabled?: boolean
@@ -20,7 +20,7 @@ const name = useId()
       {{ label }}
     </legend>
     <label v-for="item in items" :key="item.value" class="o-radio__option">
-      <input v-model="model" type="radio" class="o-radio__input" :name :value="item.value" :disabled="item.disabled">
+      <input v-model="model" type="radio" class="o-radio__input" :name :value="item.value" :disabled="item.disabled" />
       <span class="o-radio__dot" aria-hidden="true" />
       <span class="o-radio__text">
         {{ item.label }}

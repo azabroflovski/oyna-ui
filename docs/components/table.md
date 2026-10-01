@@ -42,16 +42,9 @@ const rows = [
 </script>
 
 <template>
-  <OTable
-    :columns="columns"
-    :rows="rows"
-    row-key="name"
-    :signal="row => row.name === 'you' ? 'accent' : undefined"
-  >
+  <OTable :columns="columns" :rows="rows" row-key="name" :signal="(row) => (row.name === 'you' ? 'accent' : undefined)">
     <template #name="{ row, value }">
-      <b>{{ value }}</b> <OBadge v-if="row.place === 1" tone="accent">
-        Leader
-      </OBadge>
+      <b>{{ value }}</b> <OBadge v-if="row.place === 1" tone="accent"> Leader </OBadge>
     </template>
   </OTable>
 </template>
@@ -67,11 +60,11 @@ A slot named after a column's `key` draws that column's cells. It gets the `row`
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `columns` | `{ key: string, label: string, numeric?: boolean }[]` | required | |
-| `rows` | `object[]` | required | |
-| `rowKey` | `string` | position | The field that identifies a row |
-| `signal` | `(row) => 'accent' \| 'danger' \| undefined` | — | A ring for a row that means something |
+| Prop      | Type                                                  | Default  | Description                           |
+| --------- | ----------------------------------------------------- | -------- | ------------------------------------- |
+| `columns` | `{ key: string, label: string, numeric?: boolean }[]` | required |                                       |
+| `rows`    | `object[]`                                            | required |                                       |
+| `rowKey`  | `string`                                              | position | The field that identifies a row       |
+| `signal`  | `(row) => 'accent' \| 'danger' \| undefined`          | —        | A ring for a row that means something |
 
 The table does not sort, page or scroll by itself. On a narrow screen, wrap it in an element with `overflow-x: auto`.

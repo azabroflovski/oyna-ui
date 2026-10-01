@@ -1,4 +1,5 @@
 import type { App } from 'vue'
+
 import OBackground from './components/Background/Background.vue'
 import OBadge from './components/Badge/Badge.vue'
 import OBarChart from './components/BarChart/BarChart.vue'
@@ -26,21 +27,77 @@ import OTextarea from './components/Textarea/Textarea.vue'
 import OToaster from './components/Toast/Toaster.vue'
 import OToggle from './components/Toggle/Toggle.vue'
 import OTooltip from './components/Tooltip/Tooltip.vue'
+
 import './styles/tokens.css'
 import './styles/base.css'
 
 export type { MenuItem } from './components/Menu/Menu.vue'
 export { dismissToast, toast } from './components/Toast/toast'
 export { hotkeyLabel, useHotkey } from './composables/useHotkey'
-export { OBackground, OBadge, OBarChart, OButton, OCard, OCheckbox, ODialog, OField, OInput, OKbd, OKeyCapture, OMenu, OPips, OPopover, OProgress, ORadio, OSelect, OSparkline, OStat, OSurface, OSwitch, OTable, OTabs, OTextarea, OToaster, OToggle, OTooltip }
+export {
+  OBackground,
+  OBadge,
+  OBarChart,
+  OButton,
+  OCard,
+  OCheckbox,
+  ODialog,
+  OField,
+  OInput,
+  OKbd,
+  OKeyCapture,
+  OMenu,
+  OPips,
+  OPopover,
+  OProgress,
+  ORadio,
+  OSelect,
+  OSparkline,
+  OStat,
+  OSurface,
+  OSwitch,
+  OTable,
+  OTabs,
+  OTextarea,
+  OToaster,
+  OToggle,
+  OTooltip,
+}
 
-const components = { OBackground, OBadge, OBarChart, OButton, OCard, OCheckbox, ODialog, OField, OInput, OKbd, OKeyCapture, OMenu, OPips, OPopover, OProgress, ORadio, OSelect, OSparkline, OStat, OSurface, OSwitch, OTable, OTabs, OTextarea, OToaster, OToggle, OTooltip }
+const components = {
+  OBackground,
+  OBadge,
+  OBarChart,
+  OButton,
+  OCard,
+  OCheckbox,
+  ODialog,
+  OField,
+  OInput,
+  OKbd,
+  OKeyCapture,
+  OMenu,
+  OPips,
+  OPopover,
+  OProgress,
+  ORadio,
+  OSelect,
+  OSparkline,
+  OStat,
+  OSurface,
+  OSwitch,
+  OTable,
+  OTabs,
+  OTextarea,
+  OToaster,
+  OToggle,
+  OTooltip,
+}
 
 /** `app.use(oyna)` registers every component globally. */
 export default {
   install(app: App) {
-    for (const [name, component] of Object.entries(components))
-      app.component(name, component)
+    for (const [name, component] of Object.entries(components)) app.component(name, component)
   },
 }
 

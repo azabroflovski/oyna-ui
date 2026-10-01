@@ -13,8 +13,7 @@
     radial-gradient(60vw 50vh at 12% 8%, var(--o-bg-1) 0%, transparent 70%),
     radial-gradient(55vw 55vh at 92% 18%, var(--o-bg-2) 0%, transparent 70%),
     radial-gradient(60vw 50vh at 70% 100%, var(--o-bg-3) 0%, transparent 70%),
-    radial-gradient(45vw 45vh at 8% 95%, var(--o-bg-4) 0%, transparent 70%),
-    var(--o-bg);
+    radial-gradient(45vw 45vh at 8% 95%, var(--o-bg-4) 0%, transparent 70%), var(--o-bg);
 }
 
 .o-background::after {

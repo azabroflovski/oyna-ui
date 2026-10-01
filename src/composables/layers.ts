@@ -17,13 +17,15 @@ export function useLayer(open: Ref<boolean>) {
 
   function leave() {
     const index = openLayers.indexOf(layer)
-    if (index !== -1)
-      openLayers.splice(index, 1)
+    if (index !== -1) openLayers.splice(index, 1)
   }
-  watch(open, (isOpen) => {
-    leave()
-    if (isOpen)
-      openLayers.push(layer)
-  }, { immediate: true })
+  watch(
+    open,
+    (isOpen) => {
+      leave()
+      if (isOpen) openLayers.push(layer)
+    },
+    { immediate: true },
+  )
   onBeforeUnmount(leave)
 }

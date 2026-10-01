@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<{
-  value: number
-  max?: number
-  /** `danger` when what is left is running out. */
-  tone?: 'accent' | 'danger'
-}>(), { max: 100, tone: 'accent' })
+const props = withDefaults(
+  defineProps<{
+    value: number
+    max?: number
+    /** `danger` when what is left is running out. */
+    tone?: 'accent' | 'danger'
+  }>(),
+  { max: 100, tone: 'accent' },
+)
 
 const percent = computed(() => Math.min(1, Math.max(0, props.value / props.max)) * 100)
 </script>

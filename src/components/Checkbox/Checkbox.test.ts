@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import { h } from 'vue'
+
 import OField from '../Field/Field.vue'
 import ORadio from '../Radio/Radio.vue'
 import OSwitch from '../Switch/Switch.vue'
@@ -18,7 +19,10 @@ describe('oCheckbox', () => {
   })
 
   it('puts class on the label and the rest on the input', () => {
-    const wrapper = mount(OCheckbox, { attrs: { class: 'mine', name: 'terms', required: '' }, props: { disabled: true } })
+    const wrapper = mount(OCheckbox, {
+      attrs: { class: 'mine', name: 'terms', required: '' },
+      props: { disabled: true },
+    })
     expect(wrapper.classes()).toEqual(expect.arrayContaining(['o-checkbox', 'mine']))
     expect(wrapper.find('input').attributes()).toMatchObject({ name: 'terms', required: '', disabled: '' })
     expect(wrapper.attributes('name')).toBeUndefined()
@@ -27,7 +31,11 @@ describe('oCheckbox', () => {
 
 describe('oSwitch', () => {
   it('is a checkbox announced as a switch', async () => {
-    const wrapper = mount(OSwitch, { props: { modelValue: true }, slots: { default: 'Email' }, attrs: { name: 'email' } })
+    const wrapper = mount(OSwitch, {
+      props: { modelValue: true },
+      slots: { default: 'Email' },
+      attrs: { name: 'email' },
+    })
     const input = wrapper.find('input')
     expect(input.attributes()).toMatchObject({ type: 'checkbox', role: 'switch', name: 'email' })
     expect((input.element as HTMLInputElement).checked).toBe(true)
@@ -47,7 +55,10 @@ describe('oTextarea', () => {
   })
 
   it('is tied to its field and marked invalid by the field error', () => {
-    const wrapper = mount(OField, { props: { label: 'Bio', error: 'Too long' }, slots: { default: () => h(OTextarea) } })
+    const wrapper = mount(OField, {
+      props: { label: 'Bio', error: 'Too long' },
+      slots: { default: () => h(OTextarea) },
+    })
     const area = wrapper.find('textarea')
     expect(wrapper.find('label').attributes('for')).toBe(area.attributes('id'))
     expect(area.attributes('aria-invalid')).toBe('true')
@@ -55,14 +66,18 @@ describe('oTextarea', () => {
 })
 
 describe('oRadio', () => {
-  const items = [{ value: 'a', label: 'Alpha', hint: 'First' }, { value: 'b', label: 'Beta' }, { value: 'c', label: 'Gamma', disabled: true }]
+  const items = [
+    { value: 'a', label: 'Alpha', hint: 'First' },
+    { value: 'b', label: 'Beta' },
+    { value: 'c', label: 'Gamma', disabled: true },
+  ]
 
   it('renders one group of radios under a legend', () => {
     const wrapper = mount(ORadio, { props: { items, modelValue: 'b', label: 'Plan' } })
     const inputs = wrapper.findAll('input')
     expect(wrapper.find('legend').text()).toBe('Plan')
-    expect(new Set(inputs.map(input => input.attributes('name'))).size).toBe(1)
-    expect(inputs.map(input => (input.element as HTMLInputElement).checked)).toEqual([false, true, false])
+    expect(new Set(inputs.map((input) => input.attributes('name'))).size).toBe(1)
+    expect(inputs.map((input) => (input.element as HTMLInputElement).checked)).toEqual([false, true, false])
     expect(inputs[2]!.attributes('disabled')).toBe('')
     expect(wrapper.find('.o-radio__hint').text()).toBe('First')
   })

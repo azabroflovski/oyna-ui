@@ -3,10 +3,7 @@ import dts from 'vite-plugin-dts'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    dts({ tsconfigPath: './tsconfig.json', include: ['src'], exclude: ['src/**/*.test.ts'] }),
-  ],
+  plugins: [vue(), dts({ tsconfigPath: './tsconfig.json', include: ['src'], exclude: ['src/**/*.test.ts'] })],
   build: {
     lib: {
       entry: 'src/index.ts',

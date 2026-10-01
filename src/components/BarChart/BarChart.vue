@@ -1,4 +1,8 @@
-<script setup lang="ts" generic="Item extends { value: number, label: string, display?: string, tone?: 'accent' | 'danger', dot?: boolean }">
+<script
+  setup
+  lang="ts"
+  generic="Item extends { value: number; label: string; display?: string; tone?: 'accent' | 'danger'; dot?: boolean }"
+>
 import { computed } from 'vue'
 
 const props = defineProps<{
@@ -16,7 +20,7 @@ defineSlots<{
 
 /** Many bars get thin, without the text above and below; the values stay in the hover titles. */
 const dense = computed(() => props.items.length > 12)
-const highest = computed(() => Math.max(...props.items.map(item => item.value), 0) || 1)
+const highest = computed(() => Math.max(...props.items.map((item) => item.value), 0) || 1)
 const text = (item: Item) => item.display ?? String(item.value)
 </script>
 
@@ -29,12 +33,14 @@ const text = (item: Item) => item.display ?? String(item.value)
       :title="`${item.label} — ${text(item)}`"
       :aria-label="`${item.label}: ${text(item)}`"
     >
-      <span v-if="!dense" class="o-bar-chart__value" :class="item.tone && `o-bar-chart__value--${item.tone}`">{{ text(item) }}</span>
+      <span v-if="!dense" class="o-bar-chart__value" :class="item.tone && `o-bar-chart__value--${item.tone}`">{{
+        text(item)
+      }}</span>
       <span class="o-bar-chart__track">
         <span
           class="o-bar-chart__bar"
           :class="item.tone && `o-bar-chart__bar--${item.tone}`"
-          :style="{ height: `${Math.max(0, item.value) / highest * 100}%` }"
+          :style="{ height: `${(Math.max(0, item.value) / highest) * 100}%` }"
         >
           <span v-if="item.dot" class="o-bar-chart__dot" />
         </span>

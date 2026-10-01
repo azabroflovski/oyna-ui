@@ -40,17 +40,17 @@ import { ref } from 'vue'
 const muted = ref(false)
 const open = ref(true)
 
-useHotkey('KeyM', () => muted.value = !muted.value)
+useHotkey('KeyM', () => (muted.value = !muted.value))
 // the key can be reactive, and the hotkey can be switched off
-useHotkey('Escape', () => open.value = false, { enabled: () => open.value })
+useHotkey('Escape', () => (open.value = false), { enabled: () => open.value })
 </script>
 ```
 
-| Argument | Type | Description |
-| --- | --- | --- |
-| `code` | `MaybeRefOrGetter<string \| undefined>` | Physical key, e.g. `KeyR`, `Digit1`, `Enter`, `Escape` |
-| `handler` | `(event: KeyboardEvent) => void` | Called on the key press; the default action is prevented |
-| `options.enabled` | `MaybeRefOrGetter<boolean>` | `false` switches the hotkey off |
+| Argument          | Type                                    | Description                                              |
+| ----------------- | --------------------------------------- | -------------------------------------------------------- |
+| `code`            | `MaybeRefOrGetter<string \| undefined>` | Physical key, e.g. `KeyR`, `Digit1`, `Enter`, `Escape`   |
+| `handler`         | `(event: KeyboardEvent) => void`        | Called on the key press; the default action is prevented |
+| `options.enabled` | `MaybeRefOrGetter<boolean>`             | `false` switches the hotkey off                          |
 
 ## hotkeyLabel
 

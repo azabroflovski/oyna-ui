@@ -1,16 +1,28 @@
 <script setup lang="ts">
-import { DialogClose, DialogContent, DialogDescription, DialogOverlay, DialogPortal, DialogRoot, DialogTitle } from 'reka-ui'
+import {
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogOverlay,
+  DialogPortal,
+  DialogRoot,
+  DialogTitle,
+} from 'reka-ui'
+
 import { useLayer } from '../../composables/layers'
 
 defineOptions({ inheritAttrs: false })
 
-withDefaults(defineProps<{
-  title: string
-  /** A line under the title, read out with it. */
-  description?: string
-  /** Text of the close button, after the `Esc` key. */
-  closeLabel?: string
-}>(), { closeLabel: 'Close' })
+withDefaults(
+  defineProps<{
+    title: string
+    /** A line under the title, read out with it. */
+    description?: string
+    /** Text of the close button, after the `Esc` key. */
+    closeLabel?: string
+  }>(),
+  { closeLabel: 'Close' },
+)
 
 const open = defineModel<boolean>('open', { default: false })
 
@@ -21,8 +33,7 @@ useLayer(open)
 // close the dialog instead of reaching the hotkey of its main button.
 function focusDialog(event: Event) {
   event.preventDefault()
-  if (event.target instanceof HTMLElement)
-    event.target.focus()
+  if (event.target instanceof HTMLElement) event.target.focus()
 }
 </script>
 
@@ -30,14 +41,16 @@ function focusDialog(event: Event) {
   <DialogRoot v-model:open="open">
     <DialogPortal>
       <DialogOverlay class="o-dialog__overlay" />
-      <DialogContent class="o-dialog" v-bind="{ ...$attrs, ...(description ? {} : { 'aria-describedby': undefined }) }" @open-auto-focus="focusDialog">
+      <DialogContent
+        class="o-dialog"
+        v-bind="{ ...$attrs, ...(description ? {} : { 'aria-describedby': undefined }) }"
+        @open-auto-focus="focusDialog"
+      >
         <header class="o-dialog__header">
           <DialogTitle class="o-dialog__title">
             {{ title }}
           </DialogTitle>
-          <DialogClose class="o-dialog__close">
-            <kbd>Esc</kbd> {{ closeLabel }}
-          </DialogClose>
+          <DialogClose class="o-dialog__close"> <kbd>Esc</kbd> {{ closeLabel }} </DialogClose>
         </header>
         <DialogDescription v-if="description" class="o-dialog__description">
           {{ description }}

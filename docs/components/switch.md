@@ -25,9 +25,7 @@ const email = ref(true)
 </script>
 
 <template>
-  <OSwitch v-model="email">
-    Email notifications
-  </OSwitch>
+  <OSwitch v-model="email"> Email notifications </OSwitch>
 </template>
 ```
 
@@ -41,9 +39,9 @@ The thumb changes sides without sliding: the library answers with light, not mov
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `v-model` | `boolean` | `false` | |
-| `disabled` | `boolean` | `false` | |
+| Prop       | Type      | Default | Description |
+| ---------- | --------- | ------- | ----------- |
+| `v-model`  | `boolean` | `false` |             |
+| `disabled` | `boolean` | `false` |             |
 
 `class` and `style` go to the label; every other attribute goes to the input inside.

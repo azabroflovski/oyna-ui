@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+
 import oyna from '../src'
 import App from './App.vue'
 

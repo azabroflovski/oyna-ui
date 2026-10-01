@@ -26,6 +26,6 @@ Put an icon before the text; the badge sets the gap.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `tone` | `'accent' \| 'danger'` | — | |
+| Prop   | Type                   | Default | Description |
+| ------ | ---------------------- | ------- | ----------- |
+| `tone` | `'accent' \| 'danger'` | —       |             |

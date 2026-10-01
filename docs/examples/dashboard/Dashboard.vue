@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { Period } from './data'
 import { toast } from 'oyna'
 import { computed, ref } from 'vue'
+
+import type { Period } from './data'
 import { columns, data, endpoints, environments, periods, projects } from './data'
 
 const period = ref<Period>('week')
@@ -9,21 +10,24 @@ const project = ref('api')
 const live = ref(true)
 
 const current = computed(() => data[period.value])
-const bars = computed(() => current.value.bars.map(([label, value]) => ({
-  label,
-  value,
-  display: value >= 1000 ? `${(value / 1000).toFixed(1)}k` : String(value),
-  tone: label === current.value.worst ? 'danger' as const : undefined,
-})))
+const bars = computed(() =>
+  current.value.bars.map(([label, value]) => ({
+    label,
+    value,
+    display: value >= 1000 ? `${(value / 1000).toFixed(1)}k` : String(value),
+    tone: label === current.value.worst ? ('danger' as const) : undefined,
+  })),
+)
 
 const deployOpen = ref(false)
 const version = ref('')
 const environment = ref('staging')
-const versionError = computed(() => version.value && !/^\d+\.\d+\.\d+$/.test(version.value) ? 'Use three numbers: 1.4.0' : undefined)
+const versionError = computed(() =>
+  version.value && !/^\d+\.\d+\.\d+$/.test(version.value) ? 'Use three numbers: 1.4.0' : undefined,
+)
 
 function deploy() {
-  if (!version.value || versionError.value)
-    return
+  if (!version.value || versionError.value) return
   deployOpen.value = false
   toast(`Deploying ${version.value} to ${environment.value}`, { tone: 'accent' })
   version.value = ''
@@ -37,12 +41,8 @@ function deploy() {
       <OSelect v-model="project" :items="projects" aria-label="Project" />
       <OTabs v-model="period" :items="periods" />
       <span class="dash__spacer" />
-      <OToggle v-model="live" hotkey="KeyL">
-        Live
-      </OToggle>
-      <OButton variant="primary" hotkey="KeyN" @click="deployOpen = true">
-        New deploy
-      </OButton>
+      <OToggle v-model="live" hotkey="KeyL"> Live </OToggle>
+      <OButton variant="primary" hotkey="KeyN" @click="deployOpen = true"> New deploy </OButton>
     </header>
 
     <section class="dash__stats">
@@ -77,9 +77,7 @@ function deploy() {
           </div>
           <div class="dash__row">
             <span class="dash__number">72%</span>
-            <OButton variant="soft" @click="toast('Nothing to upgrade to in an example')">
-              Upgrade
-            </OButton>
+            <OButton variant="soft" @click="toast('Nothing to upgrade to in an example')"> Upgrade </OButton>
           </div>
           <OProgress :value="72" aria-label="Plan usage" />
         </OCard>
@@ -99,14 +97,19 @@ function deploy() {
     <OCard class="dash__col">
       <span class="dash__label">Endpoints</span>
       <div class="dash__scroll">
-        <OTable :columns :rows="endpoints" row-key="endpoint" :signal="row => row.failing ? 'danger' : undefined">
+        <OTable :columns :rows="endpoints" row-key="endpoint" :signal="(row) => (row.failing ? 'danger' : undefined)">
           <template #endpoint="{ row }">
-            <code>{{ row.endpoint }}</code> <OBadge v-if="row.failing" tone="danger">
-              Degraded
-            </OBadge>
+            <code>{{ row.endpoint }}</code> <OBadge v-if="row.failing" tone="danger"> Degraded </OBadge>
           </template>
           <template #trend="{ row }">
-            <OSparkline :values="row.trend" lower-is-better :tone="row.failing ? 'danger' : 'accent'" :width="120" :height="28" :label="`Latency of ${row.endpoint} over 24 hours`" />
+            <OSparkline
+              :values="row.trend"
+              lower-is-better
+              :tone="row.failing ? 'danger' : 'accent'"
+              :width="120"
+              :height="28"
+              :label="`Latency of ${row.endpoint} over 24 hours`"
+            />
           </template>
         </OTable>
       </div>

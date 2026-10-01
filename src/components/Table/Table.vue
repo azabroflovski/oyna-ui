@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="Row extends Record<string, unknown>">
 defineProps<{
   /** `numeric` sets the column in the display face, right-aligned, with figures that line up. */
-  columns: readonly { key: keyof Row & string, label: string, numeric?: boolean }[]
+  columns: readonly { key: keyof Row & string; label: string; numeric?: boolean }[]
   rows: readonly Row[]
   /** The field that identifies a row; by default its position. */
   rowKey?: keyof Row & string
@@ -9,7 +9,7 @@ defineProps<{
   signal?: (row: Row) => 'accent' | 'danger' | undefined
 }>()
 
-defineSlots<Partial<Record<string, (props: { row: Row, value: unknown }) => unknown>>>()
+defineSlots<Partial<Record<string, (props: { row: Row; value: unknown }) => unknown>>>()
 </script>
 
 <template>

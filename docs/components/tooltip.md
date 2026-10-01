@@ -30,9 +30,9 @@ A tooltip is not a place for something the user must read: it is not shown on to
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `text` | `string` | required | |
-| `side` | `'top' \| 'right' \| 'bottom' \| 'left'` | `'top'` | Flips when there is no room |
+| Prop   | Type                                     | Default  | Description                 |
+| ------ | ---------------------------------------- | -------- | --------------------------- |
+| `text` | `string`                                 | required |                             |
+| `side` | `'top' \| 'right' \| 'bottom' \| 'left'` | `'top'`  | Flips when there is no room |
 
 Built on [Reka UI](https://reka-ui.com) Tooltip.

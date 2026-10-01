@@ -1,8 +1,10 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
+
 import OToggle from './Toggle.vue'
 
-const press = (code: string) => window.dispatchEvent(new KeyboardEvent('keydown', { code, bubbles: true, cancelable: true }))
+const press = (code: string) =>
+  window.dispatchEvent(new KeyboardEvent('keydown', { code, bubbles: true, cancelable: true }))
 
 describe('oToggle', () => {
   it('flips on click', async () => {

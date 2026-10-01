@@ -24,12 +24,8 @@ const retry = ref('KeyR')
 </script>
 
 <template>
-  <OKeyCapture v-model="retry">
-    Retry
-  </OKeyCapture>
-  <OButton variant="soft" :hotkey="retry" @click="retry">
-    Retry
-  </OButton>
+  <OKeyCapture v-model="retry"> Retry </OKeyCapture>
+  <OButton variant="soft" :hotkey="retry" @click="retry"> Retry </OButton>
 </template>
 ```
 
@@ -41,9 +37,9 @@ Checking that two actions do not share a key is up to you.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `v-model` | `string` | — | Physical key (`KeyboardEvent.code`) |
-| `disabled` | `boolean` | `false` | |
+| Prop       | Type      | Default | Description                         |
+| ---------- | --------- | ------- | ----------------------------------- |
+| `v-model`  | `string`  | —       | Physical key (`KeyboardEvent.code`) |
+| `disabled` | `boolean` | `false` |                                     |
 
 The slot is the caption under the key.

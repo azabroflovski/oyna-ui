@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { nextTick } from 'vue'
+
 import { toast, toasts } from './toast'
 import OToaster from './Toaster.vue'
 
@@ -18,10 +19,13 @@ describe('toast', () => {
     toast('Failed', { tone: 'danger', duration: 1000 })
     await nextTick()
     const shown = [...document.querySelectorAll('.o-toast')]
-    expect(shown.map(el => [el.textContent?.trim(), el.getAttribute('role')])).toEqual([['Saved', 'status'], ['Failed', 'alert']])
+    expect(shown.map((el) => [el.textContent?.trim(), el.getAttribute('role')])).toEqual([
+      ['Saved', 'status'],
+      ['Failed', 'alert'],
+    ])
 
     vi.advanceTimersByTime(1000)
-    expect(toasts.value.map(t => t.message)).toEqual(['Saved'])
+    expect(toasts.value.map((t) => t.message)).toEqual(['Saved'])
     vi.advanceTimersByTime(3000)
     expect(toasts.value).toEqual([])
     wrapper.unmount()

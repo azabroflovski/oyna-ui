@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { ThemeConfig } from '../config'
 import { useData } from 'vitepress'
 import { computed, onMounted, ref } from 'vue'
+
+import type { ThemeConfig } from '../config'
 
 const props = defineProps<{
   /** Folder of the example, from the repository root. */
@@ -14,21 +15,19 @@ const { theme } = useData<ThemeConfig>()
 const open = ref(false)
 const current = ref(0)
 // a link ending in #source opens the page with the source already shown
-onMounted(() => open.value = location.hash === '#source')
+onMounted(() => (open.value = location.hash === '#source'))
 
 const folderUrl = computed(() => `${theme.value.repo}/tree/${theme.value.branch}/${props.dir}`)
-const fileUrl = computed(() => `${theme.value.repo}/blob/${theme.value.branch}/${props.dir}/${props.files[current.value]}`)
+const fileUrl = computed(
+  () => `${theme.value.repo}/blob/${theme.value.branch}/${props.dir}/${props.files[current.value]}`,
+)
 </script>
 
 <template>
   <!-- sits in the row of the examples switch, at its right end -->
   <div class="example-source">
-    <OButton size="sm" shape="pill" variant="soft" @click="open = true">
-      View source
-    </OButton>
-    <OButton size="sm" shape="pill" :href="folderUrl" target="_blank" rel="noopener">
-      GitHub ↗
-    </OButton>
+    <OButton size="sm" shape="pill" variant="soft" @click="open = true"> View source </OButton>
+    <OButton size="sm" shape="pill" :href="folderUrl" target="_blank" rel="noopener"> GitHub ↗ </OButton>
 
     <ODialog v-model:open="open" title="Source" class="content" style="--o-dialog-width: 1080px">
       <div class="source">

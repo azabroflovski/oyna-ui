@@ -1,11 +1,14 @@
 <script setup lang="ts" generic="T extends string">
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'reka-ui'
 
-withDefaults(defineProps<{
-  items: readonly { value: T, label: string, disabled?: boolean }[]
-  /** `segmented`: pills in a dark track, for a switch. `underline`: for the sections of a page. */
-  variant?: 'segmented' | 'underline'
-}>(), { variant: 'segmented' })
+withDefaults(
+  defineProps<{
+    items: readonly { value: T; label: string; disabled?: boolean }[]
+    /** `segmented`: pills in a dark track, for a switch. `underline`: for the sections of a page. */
+    variant?: 'segmented' | 'underline'
+  }>(),
+  { variant: 'segmented' },
+)
 
 defineSlots<Partial<Record<T, () => unknown>>>()
 
@@ -16,7 +19,13 @@ const model = defineModel<T>()
 <template>
   <TabsRoot v-model="model" :default-value="items[0]?.value" class="o-tabs" :class="`o-tabs--${variant}`">
     <TabsList class="o-tabs__list">
-      <TabsTrigger v-for="item in items" :key="item.value" :value="item.value" :disabled="item.disabled" class="o-tabs__tab">
+      <TabsTrigger
+        v-for="item in items"
+        :key="item.value"
+        :value="item.value"
+        :disabled="item.disabled"
+        class="o-tabs__tab"
+      >
         {{ item.label }}
       </TabsTrigger>
     </TabsList>

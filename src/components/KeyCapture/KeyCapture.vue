@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref, watch } from 'vue'
+
 import { hotkeyLabel } from '../../composables/useHotkey'
 
 defineProps<{
@@ -14,19 +15,21 @@ function onKeydown(event: KeyboardEvent) {
   // the key is ours: it must not reach the page's hotkeys or the browser
   event.preventDefault()
   event.stopPropagation()
-  if (event.code !== 'Escape')
-    code.value = event.code
+  if (event.code !== 'Escape') code.value = event.code
   waiting.value = false
 }
 
 // in the capture phase, so the press is taken before any hotkey sees it
 const stop = () => window.removeEventListener('keydown', onKeydown, true)
-watch(waiting, (isWaiting) => {
-  stop()
-  if (isWaiting)
-    window.addEventListener('keydown', onKeydown, true)
-// sync: the very next press after a capture must already be an ordinary one
-}, { flush: 'sync' })
+watch(
+  waiting,
+  (isWaiting) => {
+    stop()
+    if (isWaiting) window.addEventListener('keydown', onKeydown, true)
+    // sync: the very next press after a capture must already be an ordinary one
+  },
+  { flush: 'sync' },
+)
 onBeforeUnmount(stop)
 </script>
 

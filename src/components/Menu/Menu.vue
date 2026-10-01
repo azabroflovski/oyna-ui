@@ -1,18 +1,29 @@
 <script setup lang="ts">
-import { DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuRoot, DropdownMenuSeparator, DropdownMenuTrigger } from 'reka-ui'
+import {
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuPortal,
+  DropdownMenuRoot,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from 'reka-ui'
 import { ref } from 'vue'
+
 import { useLayer } from '../../composables/layers'
 
-export type MenuItem
-  = | { label: string, hint?: string, tone?: 'danger', disabled?: boolean, onSelect?: () => void }
-    | { separator: true }
+export type MenuItem =
+  | { label: string; hint?: string; tone?: 'danger'; disabled?: boolean; onSelect?: () => void }
+  | { separator: true }
 
-withDefaults(defineProps<{
-  /** `hint` is a dim note at the end of an item. `{ separator: true }` draws a line between groups. */
-  items: readonly MenuItem[]
-  side?: 'top' | 'right' | 'bottom' | 'left'
-  align?: 'start' | 'center' | 'end'
-}>(), { side: 'bottom', align: 'start' })
+withDefaults(
+  defineProps<{
+    /** `hint` is a dim note at the end of an item. `{ separator: true }` draws a line between groups. */
+    items: readonly MenuItem[]
+    side?: 'top' | 'right' | 'bottom' | 'left'
+    align?: 'start' | 'center' | 'end'
+  }>(),
+  { side: 'bottom', align: 'start' },
+)
 
 // typing in an open menu jumps to an item; page hotkeys must not fire on those keys
 const open = ref(false)

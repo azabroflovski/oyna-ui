@@ -1,8 +1,11 @@
 <script setup lang="ts">
-withDefaults(defineProps<{
-  /** `plain`: bold text in a sentence. `outline`: a key inside a control. `cap`: a key cap on its own. */
-  variant?: 'plain' | 'outline' | 'cap'
-}>(), { variant: 'plain' })
+withDefaults(
+  defineProps<{
+    /** `plain`: bold text in a sentence. `outline`: a key inside a control. `cap`: a key cap on its own. */
+    variant?: 'plain' | 'outline' | 'cap'
+  }>(),
+  { variant: 'plain' },
+)
 </script>
 
 <template>

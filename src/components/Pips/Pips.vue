@@ -9,13 +9,20 @@ const props = defineProps<{
 }>()
 
 // a pip is 14px and the gap 10px; the marker (12px wide) points at the boundary after `marker` pips
-const markerLeft = computed(() => props.marker === undefined
-  ? undefined
-  : Math.min(Math.max(props.marker, 0), props.total) * 24 - 5 - 6)
+const markerLeft = computed(() =>
+  props.marker === undefined ? undefined : Math.min(Math.max(props.marker, 0), props.total) * 24 - 5 - 6,
+)
 </script>
 
 <template>
-  <div class="o-pips" :class="markerLeft !== undefined && 'o-pips--marked'" role="progressbar" :aria-valuenow="done" aria-valuemin="0" :aria-valuemax="total">
+  <div
+    class="o-pips"
+    :class="markerLeft !== undefined && 'o-pips--marked'"
+    role="progressbar"
+    :aria-valuenow="done"
+    aria-valuemin="0"
+    :aria-valuemax="total"
+  >
     <span v-for="i in total" :key="i" class="o-pips__pip" :class="i <= done && 'o-pips__pip--done'" />
     <span v-if="markerLeft !== undefined" class="o-pips__marker" :style="{ left: `${markerLeft}px` }" />
   </div>

@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
+
 import OButton from './Button.vue'
 
 function press(code: string, init: KeyboardEventInit = {}, target: EventTarget = window) {
