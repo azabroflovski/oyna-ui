@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { Rocket } from '@lucide/vue'
+import { ArrowRight, Rocket } from '@lucide/vue'
 import { toast } from 'oyna'
+import { withBase } from 'vitepress'
 import { computed, onBeforeUnmount, ref } from 'vue'
 
 /** The panel on the home page: one small product screen instead of a pile of unrelated components. */
@@ -57,57 +58,86 @@ function deploy() {
 }
 onBeforeUnmount(() => clearInterval(timer))
 
+/** What the panel is made of: said out loud, so it reads as a demo of the library and not as a product. */
+const used = [
+  ['Select', 'select'],
+  ['Tabs', 'tabs'],
+  ['Toggle', 'toggle'],
+  ['Card', 'surface'],
+  ['Badge', 'badge'],
+  ['Button', 'button'],
+  ['Progress', 'progress'],
+  ['Pips', 'pips'],
+  ['Stat', 'stat'],
+  ['Table', 'table'],
+  ['Toast', 'toast'],
+  ['Kbd', 'kbd'],
+] as const
+
 const tone = (status: unknown) => (status === 'Live' ? 'accent' : status === 'Failed' ? 'danger' : undefined)
 </script>
 
 <template>
-  <OSurface class="demo-panel">
-    <div class="row between">
-      <div class="row">
-        <OSelect v-model="project" :items="projects" aria-label="Project" />
-        <OTabs v-model="environment" :items="environments" />
-      </div>
-      <OToggle v-model="live" hotkey="KeyL">Live</OToggle>
-    </div>
-
-    <OCard signal="accent" class="col">
+  <figure class="demo-frame">
+    <figcaption class="demo-frame__caption">
+      <span class="label"><span class="demo-frame__dot" /> Live example</span>
+      <OButton variant="link" :href="withBase('/examples/dashboard')">More examples <ArrowRight /></OButton>
+    </figcaption>
+    <OSurface class="demo-panel">
       <div class="row between">
-        <span class="label">Next release</span>
-        <OBadge>3 commits · main</OBadge>
+        <div class="row">
+          <OSelect v-model="project" :items="projects" aria-label="Project" />
+          <OTabs v-model="environment" :items="environments" />
+        </div>
+        <OToggle v-model="live" hotkey="KeyL">Live</OToggle>
       </div>
-      <div class="row between">
-        <span class="number">{{ next }}</span>
-        <OButton variant="primary" hotkey="KeyD" :loading="progress !== undefined" @click="deploy">
-          <Rocket v-if="progress === undefined" /> {{ progress === undefined ? 'Deploy' : steps[step - 1] }}
-        </OButton>
+
+      <OCard signal="accent" class="col">
+        <div class="row between">
+          <span class="label">Next release</span>
+          <OBadge>3 commits · main</OBadge>
+        </div>
+        <div class="row between">
+          <span class="number">{{ next }}</span>
+          <OButton variant="primary" hotkey="KeyD" :loading="progress !== undefined" @click="deploy">
+            <Rocket v-if="progress === undefined" /> {{ progress === undefined ? 'Deploy' : steps[step - 1] }}
+          </OButton>
+        </div>
+        <OProgress :value="progress ?? 0" aria-label="Deploy progress" />
+        <div class="row between">
+          <OPips :done="step" :total="3" aria-label="Deploy steps done" />
+          <span class="hint">{{ progress === undefined ? 'Build · Test · Ship' : `${steps[step - 1]}…` }}</span>
+        </div>
+      </OCard>
+
+      <div class="demo-panel__stats">
+        <OStat label="Requests">{{ stats[environment].requests }}</OStat>
+        <OStat label="p95">{{ stats[environment].p95 }}</OStat>
+        <OStat label="Errors" :tone="environment === 'staging' ? 'danger' : undefined">
+          {{ stats[environment].errors }}
+        </OStat>
       </div>
-      <OProgress :value="progress ?? 0" aria-label="Deploy progress" />
-      <div class="row between">
-        <OPips :done="step" :total="3" aria-label="Deploy steps done" />
-        <span class="hint">{{ progress === undefined ? 'Build · Test · Ship' : `${steps[step - 1]}…` }}</span>
-      </div>
-    </OCard>
 
-    <div class="demo-panel__stats">
-      <OStat label="Requests">{{ stats[environment].requests }}</OStat>
-      <OStat label="p95">{{ stats[environment].p95 }}</OStat>
-      <OStat label="Errors" :tone="environment === 'staging' ? 'danger' : undefined">
-        {{ stats[environment].errors }}
-      </OStat>
-    </div>
+      <OTable :columns :rows="deploys" row-key="version">
+        <template #version="{ value }">
+          <code>{{ value }}</code>
+        </template>
+        <template #status="{ value }">
+          <OBadge :tone="tone(value)">{{ value }}</OBadge>
+        </template>
+      </OTable>
 
-    <OTable :columns :rows="deploys" row-key="version">
-      <template #version="{ value }">
-        <code>{{ value }}</code>
-      </template>
-      <template #status="{ value }">
-        <OBadge :tone="tone(value)">{{ value }}</OBadge>
-      </template>
-    </OTable>
-
-    <span class="hint">
-      <OKbd>D</OKbd> deploys · <OKbd>L</OKbd> live updates · <OKbd>/</OKbd> search · <OKbd>Enter</OKbd> get started.
-      Keys work on any keyboard layout.
-    </span>
-  </OSurface>
+      <span class="hint">
+        <OKbd>D</OKbd> deploys · <OKbd>L</OKbd> live updates · <OKbd>/</OKbd> search · <OKbd>Enter</OKbd> get started.
+        Keys work on any keyboard layout.
+      </span>
+    </OSurface>
+    <p class="demo-frame__used">
+      Built only from Oyna UI components:
+      <template v-for="([name, page], index) in used" :key="page">
+        <a :href="withBase(`/components/${page}`)">{{ name }}</a
+        ><template v-if="index < used.length - 1">, </template> </template
+      >.
+    </p>
+  </figure>
 </template>
