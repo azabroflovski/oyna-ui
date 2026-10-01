@@ -70,9 +70,11 @@ export default defineConfigWithTheme<ThemeConfig>({
         items: [
           { text: 'Background', link: '/components/background' },
           { text: 'Surface', link: '/components/surface' },
+          { text: 'Card', link: '/components/card' },
           { text: 'Button', link: '/components/button' },
           { text: 'Kbd', link: '/components/kbd' },
           { text: 'Badge', link: '/components/badge' },
+          { text: 'Tag', link: '/components/tag' },
         ],
       },
       {

@@ -16,8 +16,8 @@ const principles = [
 // refresh on a release: the count from src/index.ts, the size from the `bun run build` output
 const facts = [
   ['CSS framework', 'None'],
-  ['Stylesheet, gzip', '5.4 kB'],
-  ['Components', '33'],
+  ['Stylesheet, gzip', '5.6 kB'],
+  ['Components', '34'],
   ['Runtime dependencies', '1'],
 ] as const
 

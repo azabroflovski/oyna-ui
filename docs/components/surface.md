@@ -1,6 +1,6 @@
 # Surface
 
-Glass: a translucent dark fill over the background. No borders. `OCard` is a surface with padding and the darker fill.
+Glass: a translucent dark fill over the background. No borders. [`OCard`](/components/card) is a surface with padding, the darker fill, and an optional header and footer.
 
 <Demo>
   <OSurface style="padding: 20px">Surface</OSurface>
@@ -30,7 +30,7 @@ A ring appears only when it means something. `accent` marks the main thing on th
 
 <Demo>
   <OCard signal="accent">Your plan</OCard>
-  <OCard signal="danger">Streak at risk</OCard>
+  <OCard signal="danger">Quota runs out</OCard>
 </Demo>
 
 ```vue
@@ -39,7 +39,7 @@ Your plan
 </OCard>
 
 <OCard signal="danger">
-Streak at risk
+Quota runs out
 </OCard>
 ```
 
@@ -53,9 +53,4 @@ Streak at risk
 | `strong` | `boolean`              | `false` | A darker fill, for text-heavy content over a busy background |
 | `signal` | `'accent' \| 'danger'` | —       | A ring that means something                                  |
 
-### OCard
-
-| Prop     | Type                   | Default | Description                 |
-| -------- | ---------------------- | ------- | --------------------------- |
-| `as`     | `string`               | `'div'` | Element to render           |
-| `signal` | `'accent' \| 'danger'` | —       | A ring that means something |
+For `OCard`, see [Card](/components/card).

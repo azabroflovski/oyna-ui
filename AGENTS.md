@@ -8,7 +8,7 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-01: both planned waves are built and documented — tokens, base stylesheet,
-`useHotkey` and 33 components (see `src/index.ts`). The package is ready to publish
+`useHotkey` and 34 components (see `src/index.ts`). The package is ready to publish
 as `0.1.0` (`npm publish` builds it through `prepack`); publishing is the owner's to run. _Oyna_ is Uzbek for "glass". In prose the
 library is always "Oyna UI" (the bare word is too common to search for); `oyna` is only the package
 name, and the short logo in the docs header stays "OYNA". Names, decided by the owner on
@@ -128,6 +128,10 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 - Everything that floats (dialog, popover, menu, select list, tooltip, toast) uses `--o-layer`.
 - Icons: the library ships none. An `<svg>` in the slot of Button, Toggle or Badge is sized in `em`;
   a Menu item takes an icon component. The docs use `@lucide/vue` (a dev dependency only).
+- Card has an optional header (`label`, `title`, an `actions` slot) and a `footer` slot; examples use
+  them instead of hand-made header rows. Tag is for what the user applied (a filter, a label) and can
+  be removed; Badge is for what the system says (a status). Tag has squarer corners to tell them apart.
+- The owner said the component set is enough for now (2026-10-02): do not add components unasked.
 - A key looks like a key cap everywhere (`o-kbd`: a face lit from above on a dark lip); KeyCapture and
   the dialog's close button reuse that class. With a `code` an `OKbd` lights up while that physical
   key is held (`composables/pressedKeys.ts`, one listener for all). Hints under the docs screens pass
@@ -198,7 +202,7 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 
 ## Next steps
 
-Done: the library (33 components), the docs site with four example screens and a theme editor, the
+Done: the library (34 components), the docs site with four example screens and a theme editor, the
 browser check. The owner has looked at the result in a browser. The scales in
 `planning/inventory.md` were never discussed in detail and remain the working choice.
 

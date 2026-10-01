@@ -6,6 +6,6 @@ The first release.
 
 - Tokens, the base stylesheet and the generated background.
 - Hotkeys read from physical keys: `useHotkey`, and the `hotkey` prop of Button and Toggle.
-- Components: Alert, Background, Surface, Card, Button, Kbd, Badge, Input, Textarea, PinInput, Field, Checkbox,
+- Components: Alert, Background, Surface, Card, Button, Kbd, Badge, Tag, Input, Textarea, PinInput, Field, Checkbox,
   Radio, Switch, Toggle, Tabs, Select, KeyCapture, Dialog, Popover, Menu, Tooltip, Toaster, Spinner,
   Skeleton, Empty, Stat, Progress, Pips, Sparkline, BarChart, Table, Timeline.

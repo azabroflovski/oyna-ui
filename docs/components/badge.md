@@ -24,6 +24,8 @@ Expired
 
 Put an [icon](/guide/icons) before the text: the badge sizes it and sets the gap.
 
+For something the user applied and can remove, use a [tag](/components/tag).
+
 ## Props
 
 | Prop   | Type                   | Default | Description |

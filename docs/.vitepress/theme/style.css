@@ -621,7 +621,8 @@ a {
   gap: 16px;
 }
 
-.content h1,
+/* :where() keeps the prose rules below weaker than any component's own: a heading inside a card is not prose */
+:where(.content) h1,
 .not-found h1 {
   margin: 0;
   font: 800 64px/1 var(--o-font-display);
@@ -635,19 +636,18 @@ a {
   color: var(--o-text-2);
 }
 
-.content h2 {
+:where(.content) h2 {
   margin: 44px 0 6px;
   font: 700 30px/1.1 var(--o-font-display);
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
-.content h3 {
+:where(.content) h3 {
   margin: 28px 0 4px;
   font-size: 16px;
 }
 
-/* :where() keeps these weaker than any component's own rule: a <p> inside a component is not prose */
 :where(.content) p,
 :where(.content) li {
   color: var(--o-text-2);

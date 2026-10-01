@@ -146,6 +146,22 @@ function create() {
       </OTooltip>
     </div>
 
+    <div v-if="filtered" class="projects__tools">
+      <span class="projects__note">Filtered by</span>
+      <OTag v-if="query.trim()" removable remove-label="Remove the name filter" @remove="query = ''">
+        name: {{ query.trim() }}
+      </OTag>
+      <OTag
+        v-if="onlyFailing"
+        tone="danger"
+        removable
+        remove-label="Remove the failing filter"
+        @remove="onlyFailing = false"
+      >
+        failing
+      </OTag>
+    </div>
+
     <OCard class="projects__list" :aria-busy="loading">
       <div v-if="loading" class="projects__loading">
         <OSkeleton v-for="row in 4" :key="row" class="projects__skeleton" />

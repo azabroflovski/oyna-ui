@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TriangleAlert } from '@lucide/vue'
+import { ArrowRight, TriangleAlert } from '@lucide/vue'
 import { toast } from 'oyna'
 import { withBase } from 'vitepress'
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
@@ -86,40 +86,38 @@ function deploy() {
     </section>
 
     <section class="dash__main">
-      <OCard class="dash__col">
-        <div class="dash__row">
-          <span class="dash__label">Requests</span>
+      <OCard label="Requests" class="dash__col">
+        <template #actions>
           <span class="dash__note"><span class="dash__swatch" /> busiest</span>
-        </div>
+        </template>
         <OBarChart :items="bars" />
       </OCard>
 
       <div class="dash__col">
-        <OCard signal="accent" class="dash__col">
-          <div class="dash__row">
-            <span class="dash__label">Your plan</span>
+        <OCard signal="accent" label="Your plan" class="dash__col">
+          <template #actions>
             <OBadge>Pro</OBadge>
-          </div>
+          </template>
           <div class="dash__row">
             <span class="dash__number">72%</span>
             <OButton variant="soft" @click="toast('Nothing to upgrade to in an example')"> Upgrade </OButton>
           </div>
           <OProgress :value="72" aria-label="Plan usage" />
         </OCard>
-        <OCard signal="danger" class="dash__col">
-          <span class="dash__label">Quota runs out in</span>
+        <OCard signal="danger" label="Quota runs out in" class="dash__col">
           <span class="dash__number dash__number--small">3 days</span>
           <OProgress :value="12" tone="danger" aria-label="Quota left" />
         </OCard>
-        <OCard class="dash__col">
-          <span class="dash__label">Activity</span>
+        <OCard label="Activity">
           <OTimeline :items="activity" />
+          <template #footer>
+            <OButton variant="link" :href="withBase('/examples/incident')">Open the incident <ArrowRight /></OButton>
+          </template>
         </OCard>
       </div>
     </section>
 
-    <OCard class="dash__col">
-      <span class="dash__label">Endpoints</span>
+    <OCard label="Endpoints">
       <div class="dash__scroll">
         <OTable :columns :rows="endpoints" row-key="endpoint" :signal="(row) => (row.failing ? 'danger' : undefined)">
           <template #endpoint="{ row }">
@@ -200,14 +198,6 @@ function deploy() {
   display: grid;
   grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
   gap: 12px;
-}
-
-.dash__label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--o-text-3);
 }
 
 .dash__note {

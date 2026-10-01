@@ -124,6 +124,8 @@ try {
     '/examples/',
     '/components/alert',
     '/components/pin-input',
+    '/components/card',
+    '/components/tag',
     '/components/timeline',
     '/theme',
     '/guide/why',
