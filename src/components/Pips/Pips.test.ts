@@ -10,6 +10,7 @@ describe('oPips', () => {
     expect(wrapper.findAll('.o-pips__pip--done')).toHaveLength(2)
     expect(wrapper.attributes()).toMatchObject({ 'aria-valuenow': '2', 'aria-valuemax': '5' })
     expect(wrapper.find('.o-pips__marker').exists()).toBe(false)
+    expect(wrapper.classes()).toEqual(['o-pips'])
   })
 
   it('puts the marker on the boundary after that many pips, within the row', () => {
@@ -28,6 +29,8 @@ describe('oSparkline', () => {
     expect(wrapper.attributes('aria-label')).toBe('Runs')
     expect(wrapper.find('polyline').attributes('points')).toBe('4.0,20.0 52.0,4.0 100.0,12.0')
     expect(wrapper.find('circle').attributes()).toMatchObject({ cx: '100', cy: '12' })
+    expect(wrapper.find('circle').classes()).toContain('o-sparkline__dot--accent')
+    expect(points({ tone: 'danger' }).find('circle').classes()).toContain('o-sparkline__dot--danger')
   })
 
   it('draws smaller values higher when lower is better', () => {

@@ -10,7 +10,9 @@ const props = withDefaults(defineProps<{
   height?: number
   /** Smaller values sit higher: times, ranks, errors. */
   lowerIsBetter?: boolean
-}>(), { width: 240, height: 56 })
+  /** Colour of the last point: `danger` when the series ends somewhere bad. */
+  tone?: 'accent' | 'danger'
+}>(), { width: 240, height: 56, tone: 'accent' })
 
 // room for the dot on the last point
 const pad = 4
@@ -34,7 +36,7 @@ const last = computed(() => points.value.at(-1))
 <template>
   <svg class="o-sparkline" :viewBox="`0 0 ${width} ${height}`" :width :height role="img" :aria-label="label">
     <polyline class="o-sparkline__line" :points="polyline" />
-    <circle v-if="last" class="o-sparkline__dot" :cx="last.x" :cy="last.y" r="3.5" />
+    <circle v-if="last" class="o-sparkline__dot" :class="`o-sparkline__dot--${tone}`" :cx="last.x" :cy="last.y" r="3.5" />
   </svg>
 </template>
 
@@ -56,5 +58,9 @@ const last = computed(() => points.value.at(-1))
 /* the latest value is the one that matters */
 .o-sparkline__dot {
   fill: var(--o-accent);
+}
+
+.o-sparkline__dot--danger {
+  fill: var(--o-danger);
 }
 </style>

@@ -15,7 +15,7 @@ const markerLeft = computed(() => props.marker === undefined
 </script>
 
 <template>
-  <div class="o-pips" role="progressbar" :aria-valuenow="done" aria-valuemin="0" :aria-valuemax="total">
+  <div class="o-pips" :class="markerLeft !== undefined && 'o-pips--marked'" role="progressbar" :aria-valuenow="done" aria-valuemin="0" :aria-valuemax="total">
     <span v-for="i in total" :key="i" class="o-pips__pip" :class="i <= done && 'o-pips__pip--done'" />
     <span v-if="markerLeft !== undefined" class="o-pips__marker" :style="{ left: `${markerLeft}px` }" />
   </div>
@@ -26,7 +26,10 @@ const markerLeft = computed(() => props.marker === undefined
   position: relative;
   display: inline-flex;
   gap: 10px;
-  /* room for the marker above the row */
+}
+
+/* room for the marker above the row */
+.o-pips--marked {
   padding-top: 14px;
 }
 

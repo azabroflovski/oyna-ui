@@ -54,6 +54,7 @@ defineSlots<Partial<Record<string, (props: { row: Row, value: unknown }) => unkn
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--o-text-3);
 }
 
@@ -82,6 +83,8 @@ defineSlots<Partial<Record<string, (props: { row: Row, value: unknown }) => unkn
 .o-table td.o-table__numeric {
   font: 700 20px/1 var(--o-font-display);
   font-variant-numeric: tabular-nums;
+  /* "212 ms" must not break in a narrow table */
+  white-space: nowrap;
 }
 
 .o-table tr[class*='o-table__row--'] {
