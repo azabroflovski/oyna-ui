@@ -29,7 +29,7 @@ useLayer(open)
       <slot />
     </PopoverTrigger>
     <PopoverPortal>
-      <PopoverContent class="o-popover" :side :align :side-offset="8">
+      <PopoverContent class="o-popover" :side :align :side-offset="8" :collision-padding="8">
         <slot name="content" :close="() => (open = false)" />
       </PopoverContent>
     </PopoverPortal>

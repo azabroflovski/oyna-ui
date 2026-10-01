@@ -18,7 +18,7 @@ withDefaults(
         <slot />
       </TooltipTrigger>
       <TooltipPortal>
-        <TooltipContent class="o-tooltip" :side :side-offset="8">
+        <TooltipContent class="o-tooltip" :side :side-offset="8" :collision-padding="8">
           {{ text }}
         </TooltipContent>
       </TooltipPortal>

@@ -40,7 +40,7 @@ useLayer(open)
       </svg>
     </SelectTrigger>
     <SelectPortal>
-      <SelectContent class="o-select__list" position="popper" :side-offset="8">
+      <SelectContent class="o-select__list" position="popper" :side-offset="8" :collision-padding="8">
         <SelectViewport>
           <SelectItem
             v-for="item in items"

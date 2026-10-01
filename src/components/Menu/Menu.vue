@@ -38,7 +38,7 @@ useLayer(open)
       <slot />
     </DropdownMenuTrigger>
     <DropdownMenuPortal>
-      <DropdownMenuContent class="o-menu" :side :align :side-offset="8">
+      <DropdownMenuContent class="o-menu" :side :align :side-offset="8" :collision-padding="8">
         <template v-for="(item, index) in items" :key="index">
           <DropdownMenuSeparator v-if="'separator' in item" class="o-menu__separator" />
           <DropdownMenuItem
