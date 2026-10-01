@@ -34,6 +34,8 @@ defineProps<{
 .o-stat__value {
   font: 700 28px/1 var(--o-font-display);
   font-variant-numeric: tabular-nums;
+  /* "212 ms" must not break in a narrow tile */
+  white-space: nowrap;
 }
 
 .o-stat__value--accent {
