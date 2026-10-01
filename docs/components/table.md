@@ -58,6 +58,16 @@ const rows = [
 
 A slot named after a column's `key` draws that column's cells. It gets the `row` and the cell's `value`.
 
+A column need not be a field of the row. For a column of buttons or a menu, give it any `key` and draw it with the slot:
+
+```vue
+<OTable :columns="[...columns, { key: 'actions', label: 'Actions' }]" :rows="rows">
+  <template #actions="{ row }">
+    <OButton size="sm" @click="open(row)">Open</OButton>
+  </template>
+</OTable>
+```
+
 ## Props
 
 | Prop      | Type                                                  | Default  | Description                           |

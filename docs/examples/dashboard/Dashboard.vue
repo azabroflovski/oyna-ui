@@ -1,13 +1,26 @@
 <script setup lang="ts">
+import { TriangleAlert } from '@lucide/vue'
 import { toast } from 'oyna'
-import { computed, ref } from 'vue'
+import { withBase } from 'vitepress'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 
 import type { Period } from './data'
-import { columns, data, endpoints, environments, periods, projects } from './data'
+import { activity, columns, data, endpoints, environments, periods, projects } from './data'
 
 const period = ref<Period>('week')
 const project = ref('api')
 const live = ref(true)
+const alertShown = ref(true)
+
+// a new period takes a moment to "load": the numbers give way to skeletons of their own size
+const loading = ref(false)
+let loadTimer: ReturnType<typeof setTimeout> | undefined
+watch(period, () => {
+  loading.value = true
+  clearTimeout(loadTimer)
+  loadTimer = setTimeout(() => (loading.value = false), 600)
+})
+onBeforeUnmount(() => clearTimeout(loadTimer))
 
 const current = computed(() => data[period.value])
 const bars = computed(() =>
@@ -45,18 +58,30 @@ function deploy() {
       <OButton variant="primary" hotkey="KeyN" @click="deployOpen = true"> New deploy </OButton>
     </header>
 
-    <section class="dash__stats">
+    <OAlert v-if="alertShown" tone="danger" title="GET /v1/search is degraded" closable @close="alertShown = false">
+      <template #icon><TriangleAlert /></template>
+      p95 is 1.9 s, nine times the usual. It started after v1.4.0 went live.
+      <template #actions>
+        <OButton size="sm" :href="withBase('/examples/incident')">Open the incident</OButton>
+      </template>
+    </OAlert>
+
+    <section class="dash__stats" :aria-busy="loading">
       <OStat label="Requests">
-        {{ current.stats.requests }}
+        <OSkeleton v-if="loading" class="dash__loading" />
+        <template v-else>{{ current.stats.requests }}</template>
       </OStat>
       <OStat label="Median">
-        {{ current.stats.median }}
+        <OSkeleton v-if="loading" class="dash__loading" />
+        <template v-else>{{ current.stats.median }}</template>
       </OStat>
       <OStat label="Errors" tone="danger">
-        {{ current.stats.errors }}
+        <OSkeleton v-if="loading" class="dash__loading" />
+        <template v-else>{{ current.stats.errors }}</template>
       </OStat>
       <OStat label="Uptime" tone="accent">
-        {{ current.stats.uptime }}
+        <OSkeleton v-if="loading" class="dash__loading" />
+        <template v-else>{{ current.stats.uptime }}</template>
       </OStat>
     </section>
 
@@ -87,9 +112,8 @@ function deploy() {
           <OProgress :value="12" tone="danger" aria-label="Quota left" />
         </OCard>
         <OCard class="dash__col">
-          <span class="dash__label">Setup</span>
-          <OPips :done="3" :total="5" aria-label="Setup steps done" />
-          <span class="dash__note">3 of 5 · next: add a webhook</span>
+          <span class="dash__label">Activity</span>
+          <OTimeline :items="activity" />
         </OCard>
       </div>
     </section>
@@ -205,6 +229,12 @@ function deploy() {
 
 .dash__number--small {
   font-size: 34px;
+}
+
+/* as tall as the number it stands for, so the tile does not jump */
+.dash__loading {
+  width: 70%;
+  height: 28px;
 }
 
 .dash__scroll {

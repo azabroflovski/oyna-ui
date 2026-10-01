@@ -23,9 +23,9 @@ It is for interfaces that want character: dashboards, tools, landing pages, side
 
 ## What you get
 
-- **No Tailwind, no UnoCSS.** One plain stylesheet, 5 kB gzipped. Import it and you are done:
+- **No Tailwind, no UnoCSS.** One plain stylesheet, 5.2 kB gzipped. Import it and you are done:
   nothing to configure, no build plugin, no class scanning.
-- **31 components**, each with a docs page and a live example.
+- **32 components**, each with a docs page and a live example.
 - **Themable with CSS variables.** Change the accent, the radius or the fonts on `:root`, or on any
   part of the page.
 - **Hotkeys built in.** A button or a toggle shows its key and reacts to it. Keys are read by their
@@ -87,7 +87,7 @@ Theme with CSS variables:
 - [x] Docs site built with the library itself, with live examples.
 - [x] More components: Select, Tooltip, Toast, KeyCapture, Pips, Sparkline, BarChart, Table.
 - [x] Form controls and layers: Checkbox, Radio, Switch, Textarea, Menu, Popover.
-- [x] Example screens: a dashboard and a settings page.
+- [x] Example screens: a dashboard, an incident, a list of projects and a settings page.
 - [ ] First public release.
 
 ## Development

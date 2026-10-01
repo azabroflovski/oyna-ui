@@ -548,6 +548,71 @@ a {
   }
 }
 
+/* the examples as cards with a real screenshot each */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
+  margin: 20px 0 56px;
+}
+
+.gallery__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: var(--o-radius);
+}
+
+.gallery__item:focus-visible {
+  outline: 2px solid var(--o-accent);
+  outline-offset: 6px;
+}
+
+.gallery__shot {
+  margin-bottom: 6px;
+  padding: 10px;
+  overflow: hidden;
+  transition: background-color var(--o-duration) ease;
+}
+
+/* lit on hover: light, not movement */
+.gallery__item:hover .gallery__shot {
+  background: var(--o-fill-2);
+}
+
+.gallery__shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top left;
+  border-radius: calc(var(--o-radius) - 6px);
+}
+
+.gallery .gallery__title {
+  margin: 0;
+  font: 700 24px/1.1 var(--o-font-display);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.gallery p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--o-text-2);
+}
+
+.section-lead {
+  margin: -8px 0 0;
+  color: var(--o-text-2);
+}
+
+@media (max-width: 700px) {
+  .gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .not-found {
   padding: 96px 0;
   display: flex;
@@ -582,12 +647,13 @@ a {
   font-size: 16px;
 }
 
-.content p,
-.content li {
+/* :where() keeps these weaker than any component's own rule: a <p> inside a component is not prose */
+:where(.content) p,
+:where(.content) li {
   color: var(--o-text-2);
 }
 
-.content p {
+:where(.content) p {
   margin: 10px 0;
 }
 

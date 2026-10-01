@@ -16,8 +16,8 @@ const principles = [
 // refresh on a release: the count from src/index.ts, the size from the `bun run build` output
 const facts = [
   ['CSS framework', 'None'],
-  ['Stylesheet, gzip', '5 kB'],
-  ['Components', '31'],
+  ['Stylesheet, gzip', '5.2 kB'],
+  ['Components', '32'],
   ['Runtime dependencies', '1'],
 ] as const
 
@@ -94,6 +94,10 @@ const claims = [
         </OCard>
       </div>
     </section>
+
+    <h2 class="section">Whole screens</h2>
+    <p class="section-lead">Built only from the library's components. Each one works, and shows its source.</p>
+    <ExamplesGallery />
 
     <h2 class="section">The look</h2>
     <section class="principles">

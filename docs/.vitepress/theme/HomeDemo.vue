@@ -64,7 +64,7 @@ const tone = (status: unknown) => (status === 'Live' ? 'accent' : status === 'Fa
 <template>
   <figure class="demo-frame">
     <figcaption class="demo-frame__caption">
-      <OButton variant="link" :href="withBase('/examples/dashboard')">More examples <ArrowRight /></OButton>
+      <OButton variant="link" :href="withBase('/examples/')">More examples <ArrowRight /></OButton>
     </figcaption>
     <OSurface class="demo-panel">
       <div class="row between">

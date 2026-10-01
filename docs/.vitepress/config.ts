@@ -51,7 +51,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     nav: [
       { text: 'Guide', link: '/guide/installation', match: '/guide/' },
       { text: 'Components', link: '/components/surface', match: '/components/' },
-      { text: 'Examples', link: '/examples/dashboard', match: '/examples/' },
+      { text: 'Examples', link: '/examples/', match: '/examples/' },
       { text: 'Theme', link: '/theme', match: '/theme' },
     ],
     sidebar: [
@@ -102,6 +102,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       {
         text: 'States',
         items: [
+          { text: 'Alert', link: '/components/alert' },
           { text: 'Spinner', link: '/components/spinner' },
           { text: 'Skeleton', link: '/components/skeleton' },
           { text: 'Empty', link: '/components/empty' },
@@ -122,7 +123,10 @@ export default defineConfigWithTheme<ThemeConfig>({
       {
         text: 'Examples',
         items: [
+          { text: 'All examples', link: '/examples/' },
           { text: 'Dashboard', link: '/examples/dashboard' },
+          { text: 'Incident', link: '/examples/incident' },
+          { text: 'Projects', link: '/examples/projects' },
           { text: 'Settings', link: '/examples/settings' },
           { text: 'Theme editor', link: '/theme' },
         ],

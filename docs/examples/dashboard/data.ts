@@ -85,3 +85,10 @@ export const endpoints = [
   },
   { endpoint: 'GET /v1/health', trend: [12, 11, 12, 13, 11, 12, 11], p95: '19 ms', errors: '0%', failing: false },
 ]
+
+export const activity = [
+  { title: 'Error rate over 5% on GET /v1/search', time: '12 min ago', tone: 'danger' as const },
+  { title: 'v1.4.0 is live', time: '24 min ago', text: 'Production · deployed by ada' },
+  { title: 'Quota at 88%', time: '2 h ago' },
+  { title: 'grace joined the project', time: 'yesterday' },
+]

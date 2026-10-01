@@ -8,7 +8,7 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-01: both planned waves are built and documented — tokens, base stylesheet,
-`useHotkey` and 31 components (see `src/index.ts`). The package is ready to publish
+`useHotkey` and 32 components (see `src/index.ts`). The package is ready to publish
 as `0.1.0` (`npm publish` builds it through `prepack`); publishing is the owner's to run. _Oyna_ is Uzbek for "glass". In prose the
 library is always "Oyna UI" (the bare word is too common to search for); `oyna` is only the package
 name, and the short logo in the docs header stays "OYNA". Names, decided by the owner on
@@ -161,6 +161,13 @@ planning/                        inventory.md, mockup.html: what was agreed befo
   (`paths` in tsconfig.json), so neither needs a built `dist`.
 - Headless Chrome's window cannot go narrower than about 500px: a `--window-size=420` screenshot is
   a cropped 500px layout. `scripts/browser.ts` emulates a real phone width instead.
+- The examples gallery (`ExamplesGallery.vue`, on `/examples/` and on the home page) shows a real
+  screenshot of each example from `docs/public/examples/`. After changing an example's look, redraw
+  them: `bun scripts/thumbs.ts <base url>` with the docs running. A new example needs an entry in
+  the gallery, in `scripts/thumbs.ts`, in the sidebar's Examples group and in `scripts/check.ts`.
+- Docs prose rules (`p`, `li`) are written with `:where(.content)` so they never beat a component's
+  own styles: a `<p>` inside a component is not prose.
+- A Table column's `key` need not be a field of the row (a column of actions drawn by its slot).
 - An example lives in `docs/examples/<name>/` (a component plus its data file) with a page
   `docs/examples/<name>.md`. The page shows no code inline: `<ExampleSource dir files>` adds a
   "View source" button (a dialog with a file list, the code of the chosen file, and a link to that
@@ -181,7 +188,7 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 
 ## Next steps
 
-Done: the library (31 components), the docs site with two example screens and a theme editor, the
+Done: the library (32 components), the docs site with four example screens and a theme editor, the
 browser check. The owner has looked at the result in a browser. The scales in
 `planning/inventory.md` were never discussed in detail and remain the working choice.
 
