@@ -116,6 +116,7 @@ export default defineConfigWithTheme<ThemeConfig>({
           { text: 'Sparkline', link: '/components/sparkline' },
           { text: 'BarChart', link: '/components/bar-chart' },
           { text: 'Table', link: '/components/table' },
+          { text: 'Timeline', link: '/components/timeline' },
         ],
       },
       {

@@ -23,9 +23,9 @@ It is for interfaces that want character: dashboards, tools, landing pages, side
 
 ## What you get
 
-- **No Tailwind, no UnoCSS.** One plain stylesheet, 4.8 kB gzipped. Import it and you are done:
+- **No Tailwind, no UnoCSS.** One plain stylesheet, 5 kB gzipped. Import it and you are done:
   nothing to configure, no build plugin, no class scanning.
-- **30 components**, each with a docs page and a live example.
+- **31 components**, each with a docs page and a live example.
 - **Themable with CSS variables.** Change the accent, the radius or the fonts on `:root`, or on any
   part of the page.
 - **Hotkeys built in.** A button or a toggle shows its key and reacts to it. Keys are read by their
