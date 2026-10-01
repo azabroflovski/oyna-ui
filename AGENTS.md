@@ -174,7 +174,8 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 - Not every example is an emergency: most alerts in the examples are plain ones (unsaved changes,
   plan usage, where keys are stored). Danger is for the Incident screen and for real mistakes.
 - An example lives in `docs/examples/<name>/` (a component plus its data file) with a page
-  `docs/examples/<name>.md`. The page shows no code inline: `<ExampleSource dir files>` adds a
+  `docs/examples/<name>.md`. The page is the example and nothing else: no notes under it (the owner
+  removed the "How it is built" sections) and no code inline: `<ExampleSource dir files>` adds a
   "View source" button (a dialog with a file list, the code of the chosen file, and a link to that
   file on GitHub) and a "GitHub" link to the folder. The repository URL and branch are `repo` and
   `branch` in `docs/.vitepress/config.ts`.

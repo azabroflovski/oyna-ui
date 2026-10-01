@@ -10,11 +10,13 @@ const examples = { dashboard: '.dash', incident: '.incident', projects: '.projec
 // what to click first, where the opening view is not the telling one: the settings show the Team tab
 const before: Record<string, string> = { settings: '[role="tab"]:nth-child(2)' }
 // air around the example, so its heading does not touch the edge of the picture
-const margin = 28
+const margin = 56
 
 const page = await launch()
 try {
-  await page.size(1280, 900)
+  // wider than the page's content, so there is room for the margin on both sides: a rectangle that
+  // starts left of the page is not cropped by Chrome, it is silently taken from the top left corner
+  await page.size(1440, 900)
   for (const [name, selector] of Object.entries(examples)) {
     await page.goto(`${base}/examples/${name}`)
     await page.waitFor(selector)
@@ -23,10 +25,10 @@ try {
       await page.wait(300)
     }
     // Every picture is the full width of the page and 16:9, whatever the size of the example, so
-    // the gallery never has to crop one. The row of links above the example is hidden: it would
-    // poke into the margin.
+    // the gallery never has to crop one. The site header and the row of links above the example are hidden:
+    // they would poke into the margin.
     const clip = await page.evaluate<{ x: number; y: number; width: number; height: number }>(`(() => {
-      document.querySelectorAll('.example-nav, .example-source').forEach(el => el.style.visibility = 'hidden')
+      document.querySelectorAll('.top, .example-nav, .example-source').forEach(el => el.style.visibility = 'hidden')
       const frame = document.querySelector('.example').getBoundingClientRect()
       const top = document.querySelector(${JSON.stringify(selector)}).getBoundingClientRect().y + scrollY
       const width = frame.width + ${margin * 2}
