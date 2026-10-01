@@ -14,6 +14,7 @@ import OInput from './components/Input/Input.vue'
 import OKbd from './components/Kbd/Kbd.vue'
 import OKeyCapture from './components/KeyCapture/KeyCapture.vue'
 import OMenu from './components/Menu/Menu.vue'
+import OPinInput from './components/PinInput/PinInput.vue'
 import OPips from './components/Pips/Pips.vue'
 import OPopover from './components/Popover/Popover.vue'
 import OProgress from './components/Progress/Progress.vue'
@@ -54,6 +55,7 @@ export {
   OKbd,
   OKeyCapture,
   OMenu,
+  OPinInput,
   OPips,
   OPopover,
   OProgress,
@@ -89,6 +91,7 @@ const components = {
   OKbd,
   OKeyCapture,
   OMenu,
+  OPinInput,
   OPips,
   OPopover,
   OProgress,
@@ -132,6 +135,7 @@ declare module 'vue' {
     OKbd: typeof OKbd
     OKeyCapture: typeof OKeyCapture
     OMenu: typeof OMenu
+    OPinInput: typeof OPinInput
     OPips: typeof OPips
     OPopover: typeof OPopover
     OProgress: typeof OProgress
