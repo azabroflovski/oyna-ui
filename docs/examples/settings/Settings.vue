@@ -129,6 +129,19 @@ function revoke() {
 const notify = ref({ deploys: true, errors: true, digest: false, marketing: false })
 const emailConfirmed = ref(false)
 
+// confirming the email: a code that checks itself when the last digit is in
+const confirming = ref(false)
+const code = ref('')
+const codeWrong = ref(false)
+function checkCode(value: string) {
+  codeWrong.value = value !== '123456'
+  if (codeWrong.value) return
+  confirming.value = false
+  emailConfirmed.value = true
+  code.value = ''
+  toast('ada@example.com is confirmed', { tone: 'accent' })
+}
+
 // --- keys: two actions on one key is a mistake worth saying out loud
 const keys = ref({ ...defaultKeys })
 const clash = computed(() => {
@@ -299,10 +312,10 @@ function remove() {
         <div class="settings__col settings__narrow">
           <OAlert v-if="!emailConfirmed" title="Confirm ada@example.com">
             <template #icon><Info /></template>
-            Until then, notifications show up here only and no email is sent.
+            We sent a six-digit code. Until it is entered, notifications show up here only and no email is sent.
             <template #actions>
-              <OButton size="sm" @click="toast('The link is on its way')">Send the link again</OButton>
-              <OButton size="sm" variant="ghost" @click="emailConfirmed = true">I have confirmed it</OButton>
+              <OButton size="sm" @click="confirming = true">Enter the code</OButton>
+              <OButton size="sm" variant="ghost" @click="toast('A new code is on its way')">Send it again</OButton>
             </template>
           </OAlert>
 
@@ -361,6 +374,20 @@ function remove() {
           Send the invitation
         </OButton>
       </div>
+    </ODialog>
+
+    <ODialog
+      v-model:open="confirming"
+      title="Confirm the email"
+      description="Enter the six digits we sent to ada@example.com."
+    >
+      <OField
+        label="Code"
+        hint="In this example the code is 123456"
+        :error="codeWrong ? 'Not the code we sent. Try again.' : undefined"
+      >
+        <OPinInput v-model="code" :group="3" @complete="checkCode" @update:model-value="codeWrong = false" />
+      </OField>
     </ODialog>
 
     <ODialog v-model:open="creating" title="New token" description="For a script or a CI job.">

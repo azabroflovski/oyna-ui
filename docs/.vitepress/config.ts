@@ -80,6 +80,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         items: [
           { text: 'Input', link: '/components/input' },
           { text: 'Textarea', link: '/components/textarea' },
+          { text: 'PinInput', link: '/components/pin-input' },
           { text: 'Checkbox', link: '/components/checkbox' },
           { text: 'Radio', link: '/components/radio' },
           { text: 'Switch', link: '/components/switch' },

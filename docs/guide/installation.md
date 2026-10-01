@@ -80,7 +80,7 @@ The glass needs something behind it. Put [`OBackground`](/components/background)
 
 ## Dependencies
 
-Tabs, Dialog, Select, Menu, Popover and Tooltip are built on [Reka UI](https://reka-ui.com), which handles focus and accessibility. It is installed with the library; you don't set it up.
+Tabs, Dialog, Select, Menu, Popover, Tooltip and PinInput are built on [Reka UI](https://reka-ui.com), which handles focus and accessibility. It is installed with the library; you don't set it up.
 
 ## What the stylesheet does to the page
 

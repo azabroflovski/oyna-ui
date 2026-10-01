@@ -8,7 +8,7 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-01: both planned waves are built and documented — tokens, base stylesheet,
-`useHotkey` and 32 components (see `src/index.ts`). The package is ready to publish
+`useHotkey` and 33 components (see `src/index.ts`). The package is ready to publish
 as `0.1.0` (`npm publish` builds it through `prepack`); publishing is the owner's to run. _Oyna_ is Uzbek for "glass". In prose the
 library is always "Oyna UI" (the bare word is too common to search for); `oyna` is only the package
 name, and the short logo in the docs header stays "OYNA". Names, decided by the owner on
@@ -118,7 +118,7 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 - A new component is registered in three places in `src/index.ts` (import, `components`,
   `GlobalComponents`) and gets a page in `docs/components/` plus a sidebar entry in
   `docs/.vitepress/config.ts`.
-- Reka UI is a runtime dependency (Tabs, Dialog, Select, Menu, Popover, Tooltip) and is external in the build. It
+- Reka UI is a runtime dependency (Tabs, Dialog, Select, Menu, Popover, Tooltip, PinInput) and is external in the build. It
   closes layers in order on Esc, so there is no `useEscStack`. What the library adds is
   `useLayer(open)` in `composables/layers.ts`: while a dialog, a popover, a select or a menu is open, `useHotkey` fires
   only for components inside the top layer. Any future modal layer must call it too.
@@ -198,7 +198,7 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 
 ## Next steps
 
-Done: the library (32 components), the docs site with four example screens and a theme editor, the
+Done: the library (33 components), the docs site with four example screens and a theme editor, the
 browser check. The owner has looked at the result in a browser. The scales in
 `planning/inventory.md` were never discussed in detail and remain the working choice.
 
