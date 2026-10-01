@@ -106,7 +106,7 @@ a {
   color: var(--o-text-2);
 }
 
-/* the frame says what the panel is: an example, with the components it is made of */
+/* the link to the examples over the panel is what says it is one */
 .demo-frame {
   margin: 0;
   display: flex;
@@ -116,43 +116,8 @@ a {
 
 .demo-frame__caption {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: flex-end;
   padding: 0 4px;
-}
-
-.demo-frame__caption .label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.demo-frame__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--o-accent);
-}
-
-.demo-frame__used {
-  margin: 0;
-  padding: 0 4px;
-  font-size: 12px;
-  line-height: 1.7;
-  color: var(--o-text-3);
-}
-
-.demo-frame__used a {
-  color: var(--o-text-2);
-  text-decoration: underline;
-  text-decoration-color: rgb(255 255 255 / 0.3);
-  text-underline-offset: 3px;
-}
-
-.demo-frame__used a:hover {
-  color: var(--o-accent);
-  text-decoration-color: currentColor;
 }
 
 /* the product panel on the home page */

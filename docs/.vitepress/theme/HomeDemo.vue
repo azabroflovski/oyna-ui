@@ -58,29 +58,12 @@ function deploy() {
 }
 onBeforeUnmount(() => clearInterval(timer))
 
-/** What the panel is made of: said out loud, so it reads as a demo of the library and not as a product. */
-const used = [
-  ['Select', 'select'],
-  ['Tabs', 'tabs'],
-  ['Toggle', 'toggle'],
-  ['Card', 'surface'],
-  ['Badge', 'badge'],
-  ['Button', 'button'],
-  ['Progress', 'progress'],
-  ['Pips', 'pips'],
-  ['Stat', 'stat'],
-  ['Table', 'table'],
-  ['Toast', 'toast'],
-  ['Kbd', 'kbd'],
-] as const
-
 const tone = (status: unknown) => (status === 'Live' ? 'accent' : status === 'Failed' ? 'danger' : undefined)
 </script>
 
 <template>
   <figure class="demo-frame">
     <figcaption class="demo-frame__caption">
-      <span class="label"><span class="demo-frame__dot" /> Live example</span>
       <OButton variant="link" :href="withBase('/examples/dashboard')">More examples <ArrowRight /></OButton>
     </figcaption>
     <OSurface class="demo-panel">
@@ -132,12 +115,5 @@ const tone = (status: unknown) => (status === 'Live' ? 'accent' : status === 'Fa
         Keys work on any keyboard layout.
       </span>
     </OSurface>
-    <p class="demo-frame__used">
-      Built only from Oyna UI components:
-      <template v-for="([name, page], index) in used" :key="page">
-        <a :href="withBase(`/components/${page}`)">{{ name }}</a
-        ><template v-if="index < used.length - 1">, </template> </template
-      >.
-    </p>
   </figure>
 </template>
