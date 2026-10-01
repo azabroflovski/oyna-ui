@@ -16,7 +16,7 @@ const principles = [
 // refresh on a release: the count from src/index.ts, the size from the `bun run build` output
 const facts = [
   ['CSS framework', 'None'],
-  ['Stylesheet, gzip', '5.6 kB'],
+  ['Stylesheet, gzip', '5.7 kB'],
   ['Components', '34'],
   ['Runtime dependencies', '1'],
 ] as const
@@ -27,6 +27,7 @@ npm install oyna
 
 // main.ts
 import 'oyna/style.css'
+import 'oyna/fonts.css'
 
 <!-- any component -->
 <OButton variant="primary" hotkey="Enter">

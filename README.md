@@ -23,7 +23,7 @@ It is for interfaces that want character: dashboards, tools, landing pages, side
 
 ## What you get
 
-- **No Tailwind, no UnoCSS.** One plain stylesheet, 5.6 kB gzipped. Import it and you are done:
+- **No Tailwind, no UnoCSS.** One plain stylesheet, 5.7 kB gzipped. Import it and you are done:
   nothing to configure, no build plugin, no class scanning.
 - **34 components**, each with a docs page and a live example.
 - **Themable with CSS variables.** Change the accent, the radius or the fonts on `:root`, or on any
@@ -57,6 +57,7 @@ npm install oyna
 import oyna from 'oyna'
 import { createApp } from 'vue'
 import 'oyna/style.css'
+import 'oyna/fonts.css' // the typefaces, from Google Fonts; or load them your own way
 
 createApp(App).use(oyna).mount('#app')
 ```

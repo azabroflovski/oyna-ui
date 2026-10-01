@@ -49,8 +49,51 @@ The stylesheet is plain CSS. You need neither Tailwind nor UnoCSS.
 
 ## Fonts
 
-The library sets font variables and does not bundle font files. Load these families yourself, with
-every weight listed: a missing weight is synthesized by the browser and looks lighter.
+The look relies on two typefaces: a condensed display face for numbers and headings, and a plain sans for text. The library does not bundle font files, so loading them is one more line. Pick one of three ways.
+
+**From Google Fonts, in one import.** The quickest:
+
+```ts
+import 'oyna/style.css'
+import 'oyna/fonts.css'
+```
+
+The files come from Google's servers. If that is a problem for you — privacy rules, an offline app — use the next way.
+
+**Served by you, with Fontsource.** The fonts become part of your own build:
+
+::: code-group
+
+```bash [npm]
+npm install @fontsource/noto-sans @fontsource/barlow-condensed @fontsource/fira-sans-condensed
+```
+
+```bash [pnpm]
+pnpm add @fontsource/noto-sans @fontsource/barlow-condensed @fontsource/fira-sans-condensed
+```
+
+```bash [yarn]
+yarn add @fontsource/noto-sans @fontsource/barlow-condensed @fontsource/fira-sans-condensed
+```
+
+```bash [bun]
+bun add @fontsource/noto-sans @fontsource/barlow-condensed @fontsource/fira-sans-condensed
+```
+
+:::
+
+```ts
+import '@fontsource/noto-sans/400.css'
+import '@fontsource/noto-sans/600.css'
+import '@fontsource/noto-sans/700.css'
+import '@fontsource/barlow-condensed/700.css'
+import '@fontsource/barlow-condensed/800.css'
+// only if your interface has Cyrillic text
+import '@fontsource/fira-sans-condensed/700.css'
+import '@fontsource/fira-sans-condensed/800.css'
+```
+
+**Your own typefaces.** Set `--o-font-sans` and `--o-font-display` to whatever you already load; see [Theming](/guide/theming).
 
 | Family              | Weights       | Used for                      |
 | ------------------- | ------------- | ----------------------------- |
@@ -58,14 +101,11 @@ every weight listed: a missing weight is synthesized by the browser and looks li
 | Barlow Condensed    | 700, 800      | numbers and headings          |
 | Fira Sans Condensed | 700, 800      | Cyrillic numbers and headings |
 
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Fira+Sans+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&display=swap"
-  rel="stylesheet"
-/>
-```
+Load every weight listed: a missing weight is synthesized by the browser and looks lighter.
+
+### Without the fonts
+
+Nothing breaks. Text falls back to the system's own sans, and headings to a condensed face the system has: Avenir Next Condensed on macOS and iOS, Arial Narrow on Windows, Roboto Condensed on Android. It is recognisably the same look, a little less sharp. The same fallbacks show for a moment while the real fonts are on their way.
 
 ## Background
 

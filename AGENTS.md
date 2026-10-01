@@ -30,6 +30,9 @@ These rules are what makes the library recognisable. A component that breaks one
 - **Type.** `display` (Barlow Condensed, with Fira Sans Condensed filling in Cyrillic) for numbers and
   headings; `sans` (Noto Sans) for text. The library sets font variables and does not bundle font
   files. Load every weight the components use: a missing weight is synthesized and looks lighter.
+  Three ways to load them are offered (`oyna/fonts.css`, a one-line import from Google Fonts;
+  Fontsource packages; the consumer's own faces through the variables). Both variables end in system
+  fonts, the display one in condensed system faces, so the look holds up without the web fonts.
 - **Motion.** Light, not movement: no scale or slide on routine changes. Feedback under ~300 ms.
   `prefers-reduced-motion` disables all of it.
 - **Icons.** No emoji. Restrained line icons (Lucide).
@@ -104,6 +107,8 @@ planning/                        inventory.md, mockup.html: what was agreed befo
   layer or to the docs layout: unit tests do not show how things look. Not part of CI (needs Chrome).
 - `bun run build && bun scripts/banner.ts` redraws the README banner from `scripts/banner.html`: static
   markup with the library's class names, styled by `dist/style.css`. Redo it when the look changes.
+- To see the docs without web fonts, block them in a script: `page.block(['*fonts.googleapis.com*',
+'*fonts.gstatic.com*'])` from `scripts/browser.ts`. Check this after touching the font variables.
 - `typecheck` needs Node on `PATH`: `vue-tsc` does not work under the Bun runtime (it patches `tsc`
   through `fs.readFileSync`, which Bun's module loader bypasses). Everything else runs on Bun alone.
 - TypeScript stays on 6.x: `vue-tsc` does not support 7 yet.
@@ -208,9 +213,7 @@ browser check. The owner has looked at the result in a browser. The scales in
 
 1. The owner hosts the docs and points `oyna-ui.com` at them, then publishes `0.1.0` to npm
    (the owner decided to keep polishing first).
-2. Fonts: a consumer who skips loading them gets a visibly worse look; make that one line or pick
-   system fallbacks that hold up.
-3. Not planned (owner's call): a Nuxt module, a light theme, moving invoke.wtf to the library.
+2. Not planned (owner's call): a Nuxt module, a light theme, moving invoke.wtf to the library.
 
 ## Conventions
 
