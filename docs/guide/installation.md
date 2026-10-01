@@ -1,7 +1,5 @@
 # Installation
 
-Oyna UI is not published yet. This page describes how it will be used once it is.
-
 ## Install
 
 ```bash

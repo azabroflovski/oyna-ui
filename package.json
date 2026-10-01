@@ -1,10 +1,19 @@
 {
   "name": "oyna",
   "type": "module",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "description": "Oyna UI — a Vue 3 component library with a dark glass look",
   "license": "MIT",
+  "keywords": [
+    "vue",
+    "vue3",
+    "ui",
+    "components",
+    "component-library",
+    "design-system",
+    "dark",
+    "glass"
+  ],
   "sideEffects": [
     "**/*.css"
   ],
@@ -23,6 +32,7 @@
   "scripts": {
     "dev": "bun --bun vite playground",
     "build": "bun --bun vite build",
+    "prepack": "bun run build",
     "typecheck": "vue-tsc --noEmit",
     "lint": "bun --bun eslint .",
     "lint:fix": "bun --bun eslint . --fix",
@@ -31,7 +41,7 @@
     "docs:build": "bun --bun vitepress build docs"
   },
   "peerDependencies": {
-    "vue": "^3.5.43"
+    "vue": "^3.5.0"
   },
   "dependencies": {
     "reka-ui": "^2.10.5"

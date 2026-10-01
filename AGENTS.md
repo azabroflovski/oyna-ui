@@ -8,13 +8,13 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-01: both planned waves are built and documented — tokens, base stylesheet,
-`useHotkey` and 21 components (see `src/index.ts`). Nothing is published, and `package.json` is
-`private` until the first release. *Oyna* is Uzbek for "glass". In prose the
+`useHotkey` and 21 components (see `src/index.ts`). The package is ready to publish
+as `0.1.0` (`npm publish` builds it through `prepack`); publishing is the owner's to run. *Oyna* is Uzbek for "glass". In prose the
 library is always "Oyna UI" (the bare word is too common to search for); `oyna` is only the package
 name, and the short logo in the docs header stays "OYNA". Names, decided by the owner on
 2026-10-01: the npm package is the unscoped `oyna` (Vue only, so no `@oyna/vue`); the owner holds
-the npm organization `oyna`, kept for later satellites such as `@oyna/nuxt`. The unscoped name is
-held by a placeholder `0.0.0` once the owner publishes it, so the first real release is `0.1.0`.
+the npm organization `oyna`, kept for later satellites such as `@oyna/nuxt`. Until the owner
+publishes, the unscoped name is not held by anyone.
 `oyna` is taken on GitHub: the owner is choosing the repository name. Planned site: `oyna-ui.com`.
 
 ## Design language (the product — don't dilute it)
@@ -109,6 +109,9 @@ planning/                        inventory.md, mockup.html: what was agreed befo
   development, and `class` / attributes stop falling through.
 - The component count and the stylesheet size are quoted in README.md ("What you get") and on the
   docs home (`facts` in `Home.vue`). Refresh both when a component is added and before a release.
+- Before a release: bump `version`, add a section to CHANGELOG.md, then `npm pack` and install the
+  tarball in a fresh Vite project (typecheck + build) — the library is otherwise only tested from
+  inside the repo. License: MIT (`LICENSE`).
 - In docs pages a live example is `<Demo>…</Demo>` followed by the code block showing the same markup.
 
 Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
@@ -119,7 +122,6 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 - GitHub repository name: `oyna` is taken there.
 - Light theme: none planned; decide whether the tokens should allow one.
 - Mobile: the source style is desktop-first; decide how far components must adapt.
-- License: MIT proposed.
 
 ## Next steps
 
@@ -130,7 +132,7 @@ details, so the component list and the scales in `planning/inventory.md` are wor
 1. Owner's review of the look in a real browser: hotkeys, dialog, select, tooltip, toast and narrow
    screens were checked by tests and screenshots only, never by hand.
 2. Icons: decide how Lucide icons reach a component (a slot is enough so far).
-3. Register the npm and GitHub names; drop `private` from `package.json`; first release.
+3. The owner publishes `0.1.0` to npm, picks the GitHub repository name and hosts the docs.
 4. Nuxt module. Full example screens in the docs.
 
 ## Conventions

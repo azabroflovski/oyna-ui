@@ -1,6 +1,6 @@
 # Oyna UI
 
-> Status: early development. Nothing is published yet.
+> Status: early. The API may still change between 0.x versions.
 
 A Vue 3 component library with a dark glass look: translucent surfaces over a rich background,
 no borders, light used as a signal, condensed display type for numbers and headings.
@@ -38,7 +38,7 @@ writing a design system from scratch.
 - **Light, not motion.** Feedback under 300 ms, no bouncing. `prefers-reduced-motion` turns it off.
 - **Keyboard first.** A button can show and own its hotkey; dialogs and layers close in order on Esc.
 
-## Planned usage
+## Usage
 
 ```bash
 bun add oyna
