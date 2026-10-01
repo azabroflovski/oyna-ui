@@ -46,6 +46,7 @@
     "reka-ui": "^2.10.5"
   },
   "devDependencies": {
+    "@lucide/vue": "^1.49.0",
     "@vitejs/plugin-vue": "^6.0.9",
     "@vue/test-utils": "^2.5.1",
     "happy-dom": "^20.14.5",

@@ -1,3 +1,7 @@
+<script setup>
+import { ArrowRight, CircleHelp } from '@lucide/vue'
+</script>
+
 # Button
 
 An action. One accent button per screen is the main thing; the rest stay quiet. A button can display its hotkey and own it.
@@ -26,7 +30,7 @@ Five levels of weight. Use `primary` once per screen.
   <OButton>Secondary</OButton>
   <OButton variant="soft">Soft</OButton>
   <OButton variant="ghost">Ghost</OButton>
-  <OButton variant="link">Link →</OButton>
+  <OButton variant="link">Link <ArrowRight /></OButton>
 </Demo>
 
 ```vue
@@ -60,7 +64,7 @@ Three sizes, a pill shape for navigation, and an icon-only button. Give an icon-
   <OButton>Medium</OButton>
   <OButton size="lg">Large</OButton>
   <OButton shape="pill">Pill</OButton>
-  <OButton icon shape="pill" aria-label="Help">?</OButton>
+  <OButton icon shape="pill" aria-label="Help"><CircleHelp /></OButton>
 </Demo>
 
 ```vue
@@ -128,6 +132,23 @@ Custom label
 </OButton>
 ```
 
+## Loading
+
+Work is under way: the button shows a [spinner](/components/spinner), stays lit, and reacts neither to clicks nor to its hotkey.
+
+<Demo>
+  <OButton loading>Saving</OButton>
+  <OButton variant="primary" loading hotkey="Enter">Deploying</OButton>
+</Demo>
+
+```vue
+<OButton variant="primary" :loading="deploying" hotkey="Enter" @click="deploy">Deploy</OButton>
+```
+
+## Icons
+
+An `<svg>` in the slot takes the size of the text. See [Icons](/guide/icons).
+
 ## Disabled
 
 A disabled button does not react to its hotkey either.
@@ -148,5 +169,6 @@ A disabled button does not react to its hotkey either.
 | `hotkey`      | `string`                                                  | —             | Physical key (`KeyboardEvent.code`) that clicks the button; shown inside it |
 | `hotkeyLabel` | `string`                                                  | from `hotkey` | Text shown for the key                                                      |
 | `disabled`    | `boolean`                                                 | `false`       | Also turns the hotkey off                                                   |
+| `loading`     | `boolean`                                                 | `false`       | Shows a spinner; no clicks, no hotkey                                       |
 | `href`        | `string`                                                  | —             | Renders a link instead of a button                                          |
 | `type`        | `'button' \| 'submit' \| 'reset'`                         | `'button'`    | Set `submit` inside a form                                                  |

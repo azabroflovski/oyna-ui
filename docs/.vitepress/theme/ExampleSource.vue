@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ArrowUpRight, Code } from '@lucide/vue'
 import { useData } from 'vitepress'
 import { computed, onMounted, ref } from 'vue'
 
@@ -26,8 +27,8 @@ const fileUrl = computed(
 <template>
   <!-- sits in the row of the examples switch, at its right end -->
   <div class="example-source">
-    <OButton size="sm" shape="pill" variant="soft" @click="open = true"> View source </OButton>
-    <OButton size="sm" shape="pill" :href="folderUrl" target="_blank" rel="noopener"> GitHub ↗ </OButton>
+    <OButton size="sm" shape="pill" variant="soft" @click="open = true"> <Code /> View source </OButton>
+    <OButton size="sm" shape="pill" :href="folderUrl" target="_blank" rel="noopener"> GitHub <ArrowUpRight /> </OButton>
 
     <ODialog v-model:open="open" title="Source" class="content" style="--o-dialog-width: 1080px">
       <div class="source">
@@ -44,7 +45,7 @@ const fileUrl = computed(
             {{ file }}
           </button>
           <OButton class="source__github" size="sm" :href="fileUrl" target="_blank" rel="noopener">
-            Open on GitHub ↗
+            Open on GitHub <ArrowUpRight />
           </OButton>
         </nav>
         <div v-for="(file, index) in files" v-show="index === current" :key="file" class="source__code">

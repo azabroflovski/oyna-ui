@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ArrowUpRight } from '@lucide/vue'
 import { useData, useRoute, withBase } from 'vitepress'
 import { computed } from 'vue'
 
@@ -28,7 +29,7 @@ const isCurrent = (link: string) => path.value === withBase(link)
         >
           {{ item.text }}
         </OButton>
-        <OButton shape="pill" :href="theme.repo" target="_blank" rel="noopener"> GitHub ↗ </OButton>
+        <OButton shape="pill" :href="theme.repo" target="_blank" rel="noopener"> GitHub <ArrowUpRight /> </OButton>
       </nav>
     </header>
 

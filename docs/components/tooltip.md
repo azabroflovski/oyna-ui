@@ -1,10 +1,14 @@
+<script setup>
+import { CircleHelp } from '@lucide/vue'
+</script>
+
 # Tooltip
 
 A short note about a control, shown on hover and on keyboard focus. For controls whose meaning is not written on them, such as icon buttons.
 
 <Demo>
   <OTooltip text="Help">
-    <OButton icon shape="pill" aria-label="Help">?</OButton>
+    <OButton icon shape="pill" aria-label="Help"><CircleHelp /></OButton>
   </OTooltip>
   <OTooltip text="Shown below" side="bottom">
     <OButton>Bottom</OButton>
@@ -16,7 +20,7 @@ A short note about a control, shown on hover and on keyboard focus. For controls
 
 ```vue
 <OTooltip text="Help">
-  <OButton icon shape="pill" aria-label="Help">?</OButton>
+  <OButton icon shape="pill" aria-label="Help"><CircleHelp /></OButton>
 </OTooltip>
 
 <OTooltip text="Shown below" side="bottom">

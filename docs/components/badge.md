@@ -22,7 +22,7 @@ Expired
 </OBadge>
 ```
 
-Put an icon before the text; the badge sets the gap.
+Put an [icon](/guide/icons) before the text: the badge sizes it and sets the gap.
 
 ## Props
 

@@ -8,7 +8,7 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-01: both planned waves are built and documented — tokens, base stylesheet,
-`useHotkey` and 27 components (see `src/index.ts`). The package is ready to publish
+`useHotkey` and 30 components (see `src/index.ts`). The package is ready to publish
 as `0.1.0` (`npm publish` builds it through `prepack`); publishing is the owner's to run. _Oyna_ is Uzbek for "glass". In prose the
 library is always "Oyna UI" (the bare word is too common to search for); `oyna` is only the package
 name, and the short logo in the docs header stays "OYNA". Names, decided by the owner on
@@ -118,6 +118,10 @@ planning/                        inventory.md, mockup.html: what was agreed befo
   the keyboard work for free. `useSplitAttrs` sends `class` / `style` to the label and the rest to
   the input.
 - Everything that floats (dialog, popover, menu, select list, tooltip, toast) uses `--o-layer`.
+- Icons: the library ships none. An `<svg>` in the slot of Button, Toggle or Badge is sized in `em`;
+  a Menu item takes an icon component. The docs use `@lucide/vue` (a dev dependency only).
+- Loops (Spinner, Skeleton) are the one exception to "every transition uses `--o-duration`": each
+  has its own `prefers-reduced-motion` rule that stops it. They pulse light; nothing rotates or slides.
 - Toast is not Reka: a module-level list (`toast()`) shown by one `OToaster`.
 - `OKeyCapture` takes its key press in the capture phase and stops it, so no hotkey sees it.
 - The closed `OSelect` takes its label from `items`: Reka does not render the options while closed.
@@ -159,12 +163,11 @@ details, so the component list and the scales in `planning/inventory.md` are wor
 
 1. Owner's review of the look in a real browser: hotkeys, dialog, select, tooltip, toast and narrow
    screens were checked by tests and screenshots only, never by hand.
-2. Icons: decide how Lucide icons reach a component (a slot is enough so far).
-3. The owner publishes `0.1.0` to npm, picks the GitHub repository name and hosts the docs.
-4. Docs polish: copy button on code, page outline, favicon and social image, search.
-5. A browser test run that opens the layers (select, menu, popover, tooltip, toast, dialog): they
+2. The owner publishes `0.1.0` to npm, picks the GitHub repository name and hosts the docs.
+3. Docs polish: copy button on code, page outline, favicon and social image, search.
+4. A browser test run that opens the layers (select, menu, popover, tooltip, toast, dialog): they
    have never been looked at, only unit-tested.
-6. Nuxt module.
+5. Nuxt module.
 
 ## Conventions
 

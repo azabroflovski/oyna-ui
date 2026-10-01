@@ -1,4 +1,5 @@
 <script setup>
+import { CircleHelp } from '@lucide/vue'
 import { ref } from 'vue'
 
 const onlyErrors = ref(false)
@@ -21,7 +22,7 @@ A small panel that opens from a button and can hold anything: a few filters, a s
     </template>
   </OPopover>
   <OPopover side="top" align="center">
-    <OButton icon shape="pill" aria-label="What is this?">?</OButton>
+    <OButton icon shape="pill" aria-label="What is this?"><CircleHelp /></OButton>
     <template #content>
       p95 is the time within which 95 % of requests finished.
     </template>

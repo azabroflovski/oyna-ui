@@ -50,6 +50,7 @@ export default defineConfigWithTheme<ThemeConfig>({
           { text: 'Installation', link: '/guide/installation' },
           { text: 'Theming', link: '/guide/theming' },
           { text: 'Hotkeys', link: '/guide/hotkeys' },
+          { text: 'Icons', link: '/guide/icons' },
         ],
       },
       {
@@ -84,6 +85,14 @@ export default defineConfigWithTheme<ThemeConfig>({
           { text: 'Menu', link: '/components/menu' },
           { text: 'Tooltip', link: '/components/tooltip' },
           { text: 'Toast', link: '/components/toast' },
+        ],
+      },
+      {
+        text: 'States',
+        items: [
+          { text: 'Spinner', link: '/components/spinner' },
+          { text: 'Skeleton', link: '/components/skeleton' },
+          { text: 'Empty', link: '/components/empty' },
         ],
       },
       {
