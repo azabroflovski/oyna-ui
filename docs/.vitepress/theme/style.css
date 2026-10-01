@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+/* no pinch or double-tap zoom on a phone; see the viewport tag in the config */
+@media (pointer: coarse) {
+  html {
+    touch-action: pan-x pan-y;
+  }
+}
+
 body {
   min-height: 100dvh;
   font-size: 15px;

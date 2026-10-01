@@ -19,6 +19,9 @@ export default defineConfigWithTheme<ThemeConfig>({
   lang: 'en',
   cleanUrls: true,
   head: [
+    // no pinch zoom on a phone (the owner's choice): the docs are laid out for the width they get.
+    // iOS ignores `user-scalable`, so `touch-action` on the page does the same there (style.css).
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' }],
     ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
     ['meta', { name: 'theme-color', content: '#0b0b0f' }],
     ['meta', { property: 'og:type', content: 'website' }],

@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.1
 
 - Touch screens (`pointer: coarse`): key hints on Button, Toggle and the dialog's close button are
   hidden; small buttons, the crosses of Alert and Tag, checkboxes, radios and switches get a target
