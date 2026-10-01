@@ -122,9 +122,50 @@ a {
   gap: 12px;
 }
 
-.facts-note {
-  margin: 14px 0 40px;
-  max-width: 78ch;
+/* the setup as code on the left, what it means on the right */
+.setup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  margin: 12px 0 48px;
+}
+
+.setup__code {
+  flex: 1;
+  margin: 0;
+  overflow-x: auto;
+  color: var(--o-text-2);
+  font:
+    400 13px/1.7 ui-monospace,
+    'SF Mono',
+    Menlo,
+    monospace;
+}
+
+.setup__more {
+  align-self: flex-start;
+}
+
+.claim {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.claim h3,
+.principles h3 {
+  margin: 0;
+  font: 700 24px/1.1 var(--o-font-display);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.claim p,
+.principles p {
+  margin: 0;
+  font-size: 14px;
   color: var(--o-text-2);
 }
 
@@ -143,16 +184,7 @@ a {
 }
 
 .principles h3 {
-  margin: 0 0 6px;
-  font: 700 24px/1.1 var(--o-font-display);
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.principles p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--o-text-2);
+  margin-bottom: 6px;
 }
 
 /* a docs page */
@@ -709,8 +741,9 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .principles {
-    grid-template-columns: 1fr;
+  .principles,
+  .setup {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   /* minmax(0, …): a wide code block scrolls inside the page instead of stretching it */

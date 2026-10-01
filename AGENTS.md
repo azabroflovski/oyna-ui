@@ -146,7 +146,7 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 - No comment before the root element of a component template: it makes the template a fragment in
   development, and `class` / attributes stop falling through.
 - The component count and the stylesheet size are quoted in README.md ("What you get") and on the
-  docs home (`facts` in `Home.vue`). Refresh both when a component is added and before a release.
+  docs home (`facts` in `Home.vue`, the "Nothing to set up" section). Refresh both when a component is added and before a release.
 - Before a release: bump `version`, add a section to CHANGELOG.md, then `npm pack` and install the
   tarball in a fresh Vite project (typecheck + build) — the library is otherwise only tested from
   inside the repo. License: MIT (`LICENSE`).
