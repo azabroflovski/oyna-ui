@@ -116,7 +116,7 @@ const search = ref('')
     </section>
     <p class="facts-note">
       No Tailwind, no UnoCSS, nothing to configure: import one plain stylesheet and use the components. Theme it with
-      CSS variables. The one dependency is Reka UI, under the dialog, select, tabs and tooltip.
+      CSS variables. The one dependency is Reka UI, so that accessibility is not reinvented here.
     </p>
 
     <h2 class="section">The look</h2>

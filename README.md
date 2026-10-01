@@ -29,8 +29,8 @@ It is for interfaces that want character: dashboards, tools, landing pages, side
 - **Hotkeys built in.** A button or a toggle shows its key and reacts to it. Keys are read by their
   position, so they work on any keyboard layout, and they stay quiet while the user types.
 - **A background out of the box.** Generated in CSS: no image files to ship.
-- **Accessible layers.** Dialog, Popover, Menu, Select, Tabs and Tooltip stand on [Reka UI](https://reka-ui.com),
-  the only runtime dependency: focus, keyboard and screen readers are handled.
+- **Accessibility is not reinvented.** The one runtime dependency is [Reka UI](https://reka-ui.com):
+  it handles focus, the keyboard and screen readers in the dialog, menus and the like.
 - **Tree-shakable and typed.** ESM, one file per component, TypeScript types included.
 - **Reduced motion respected.** One variable turns every transition off.
 
