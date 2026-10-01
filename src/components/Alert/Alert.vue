@@ -137,4 +137,17 @@ defineSlots<{
   stroke-width: 1.8;
   stroke-linecap: round;
 }
+
+/* touch: the target grows past the drawn cross */
+@media (pointer: coarse) {
+  .o-alert__close {
+    position: relative;
+  }
+
+  .o-alert__close::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+  }
+}
 </style>

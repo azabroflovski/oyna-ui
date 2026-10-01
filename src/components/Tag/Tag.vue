@@ -89,4 +89,17 @@ defineEmits<{ remove: [] }>()
   stroke-width: 1.6;
   stroke-linecap: round;
 }
+
+/* touch: the target grows past the drawn cross, over the tag's own edge */
+@media (pointer: coarse) {
+  .o-tag__remove {
+    position: relative;
+  }
+
+  .o-tag__remove::after {
+    content: '';
+    position: absolute;
+    inset: -14px -10px;
+  }
+}
 </style>

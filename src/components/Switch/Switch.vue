@@ -84,4 +84,13 @@ const parts = useSplitAttrs()
   opacity: 0.4;
   cursor: default;
 }
+
+/* touch: the row is a taller target than it draws */
+@media (pointer: coarse) {
+  .o-switch::after {
+    content: '';
+    position: absolute;
+    inset: -10px 0;
+  }
+}
 </style>

@@ -147,4 +147,21 @@ function focusDialog(event: Event) {
   outline: 2px solid var(--o-accent);
   outline-offset: 2px;
 }
+
+/* touch: the word stays, the key goes, and the target grows past the text */
+@media (pointer: coarse) {
+  .o-dialog__close {
+    position: relative;
+  }
+
+  .o-dialog__close .o-kbd {
+    display: none;
+  }
+
+  .o-dialog__close::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+  }
+}
 </style>

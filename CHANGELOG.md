@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Touch screens (`pointer: coarse`): key hints on Button, Toggle and the dialog's close button are
+  hidden; small buttons, the crosses of Alert and Tag, checkboxes, radios and switches get a target
+  of about 44px without changing their shape; segmented tabs are taller; fields use 16px text, so
+  iOS does not zoom the page on focus.
+- Popover, Menu, Select and Tooltip stay 8px off the edge of the screen.
+
 ## 0.1.0
 
 The first release.

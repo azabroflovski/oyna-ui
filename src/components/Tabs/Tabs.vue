@@ -115,4 +115,11 @@ const model = defineModel<T>()
   padding-top: 16px;
   outline: none;
 }
+
+/* touch: a taller tab. Padding, not an invisible target: the list scrolls and would clip one */
+@media (pointer: coarse) {
+  .o-tabs--segmented .o-tabs__tab {
+    padding-block: 10px;
+  }
+}
 </style>

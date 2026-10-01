@@ -222,4 +222,28 @@ useHotkey(
 .o-button[aria-current]:not([aria-current='false']) .o-button__key {
   background: rgb(0 0 0 / 0.15);
 }
+
+/* touch: there is no keyboard to show a key for, and a finger needs a taller target than a small
+   button draws, so the target grows past the shape without changing it */
+@media (pointer: coarse) {
+  .o-button__key {
+    display: none;
+  }
+
+  .o-button--sm,
+  .o-button--link {
+    position: relative;
+  }
+
+  .o-button--sm::after,
+  .o-button--link::after {
+    content: '';
+    position: absolute;
+    inset: -7px 0;
+  }
+
+  .o-button--link::after {
+    inset: -13px 0;
+  }
+}
 </style>

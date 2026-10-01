@@ -89,4 +89,11 @@ useHotkey(
   font: 700 11px/1.5 var(--o-font-sans);
   text-transform: uppercase;
 }
+
+/* touch: no keyboard to show a key for */
+@media (pointer: coarse) {
+  .o-toggle__key {
+    display: none;
+  }
+}
 </style>

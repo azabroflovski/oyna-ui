@@ -54,4 +54,11 @@ const field = inject(fieldKey, undefined)
 .o-input:disabled {
   opacity: 0.4;
 }
+
+/* iOS zooms the page when a field with text under 16px takes focus */
+@media (pointer: coarse) {
+  .o-input {
+    font-size: 16px;
+  }
+}
 </style>

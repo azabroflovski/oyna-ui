@@ -115,4 +115,13 @@ const name = useId()
 .o-radio__option:has(.o-radio__input:disabled) {
   cursor: default;
 }
+
+/* touch: the row is a taller target than it draws */
+@media (pointer: coarse) {
+  .o-radio__option::after {
+    content: '';
+    position: absolute;
+    inset: -3px 0;
+  }
+}
 </style>

@@ -57,3 +57,13 @@ useHotkey('Escape', () => (open.value = false), { enabled: () => open.value })
 `hotkeyLabel(code)` returns what to print for a key: `KeyR` → `R`, `Digit1` → `1`, `Escape` → `Esc`, `ArrowUp` → `↑`, `Slash` → `/`.
 
 The label names the key's position on a QWERTY keyboard. On another layout the same key may carry another letter; pass your own text where that matters.
+
+## On a touch screen
+
+A phone has no keys to show. Where the main pointer is a finger (`pointer: coarse`), Button, Toggle
+and the dialog's close button hide their key; the hotkey itself stays registered, so a tablet with a
+keyboard attached still reacts to it.
+
+The same media query makes the library easier to hit: small buttons, the crosses of Alert and Tag,
+checkboxes, radios and switches get a target of about 44px without changing their shape, segmented
+tabs grow taller, and fields use 16px text, so iOS does not zoom the page on focus.

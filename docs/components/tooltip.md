@@ -6,6 +6,8 @@ import { CircleHelp } from '@lucide/vue'
 
 A short note about a control, shown on hover and on keyboard focus. For controls whose meaning is not written on them, such as icon buttons.
 
+A finger cannot hover, so on a touch screen a tooltip does not open. Keep it for hints a phone user can do without, and give icon buttons an `aria-label`.
+
 <Demo>
   <OTooltip text="Help">
     <OButton icon shape="pill" aria-label="Help"><CircleHelp /></OButton>
