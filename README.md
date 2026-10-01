@@ -1,5 +1,7 @@
 # Oyna UI
 
+![Oyna UI: glass, not boxes. Vue 3 components in plain CSS.](.github/banner.jpg)
+
 > Status: early. The API may still change between 0.x versions.
 
 A Vue 3 component library with a dark glass look: translucent surfaces over a rich background,

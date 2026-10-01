@@ -1,0 +1,210 @@
+<!doctype html>
+<!--
+  The README banner. Static markup with the library's own class names, styled by the built stylesheet.
+  To regenerate .github/banner.jpg: `bun run build`, then `bun scripts/banner.ts`.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dist/style.css" />
+    <style>
+      html,
+      body {
+        width: 1280px;
+        height: 400px;
+        overflow: hidden;
+      }
+
+      .o-background {
+        position: absolute;
+        z-index: 0;
+      }
+
+      .title {
+        position: absolute;
+        z-index: 2;
+        left: 64px;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 18px;
+      }
+
+      .title h1 {
+        margin: 0;
+        font: 800 132px/0.9 var(--o-font-display);
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .title h1 em {
+        font-style: normal;
+        color: var(--o-accent);
+      }
+
+      .title p {
+        margin: 0;
+        font-size: 22px;
+        color: var(--o-text-2);
+      }
+
+      /* the components: a board that runs off the right, top and bottom edges */
+      .board {
+        position: absolute;
+        z-index: 1;
+        top: -22px;
+        right: -40px;
+        width: 760px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        align-items: start;
+        /* fades towards the title, so the words stay readable */
+        mask-image: linear-gradient(to right, transparent 0%, #000 34%);
+      }
+
+      .col {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .between {
+        justify-content: space-between;
+      }
+
+      .label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--o-text-3);
+      }
+
+      .number {
+        font: 700 48px/1 var(--o-font-display);
+      }
+
+      .o-bar-chart {
+        --o-bar-chart-height: 120px;
+        gap: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="o-background"></div>
+
+    <div class="title">
+      <h1>Oyna <em>UI</em></h1>
+      <p>Glass, not boxes. Vue 3 components in plain CSS.</p>
+    </div>
+
+    <div class="board">
+      <div class="col">
+        <div class="o-surface o-surface--strong o-card col">
+          <span class="label">Keys</span>
+          <div class="row">
+            <kbd class="o-kbd o-kbd--cap">Q</kbd><kbd class="o-kbd o-kbd--cap">W</kbd
+            ><kbd class="o-kbd o-kbd--cap">E</kbd>
+          </div>
+        </div>
+        <div class="o-stat"><span class="o-stat__label">Requests</span><span class="o-stat__value">18 204</span></div>
+        <div class="o-surface o-surface--strong o-surface--danger o-card col">
+          <span class="label">Quota runs out in</span>
+          <span class="number">3 days</span>
+          <div class="o-progress o-progress--danger"><div class="o-progress__bar" style="width: 14%"></div></div>
+        </div>
+        <div class="o-surface o-surface--strong o-card col">
+          <span class="label">Setup</span>
+          <div class="o-pips">
+            <span class="o-pips__pip o-pips__pip--done"></span><span class="o-pips__pip o-pips__pip--done"></span
+            ><span class="o-pips__pip o-pips__pip--done"></span><span class="o-pips__pip"></span
+            ><span class="o-pips__pip"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="o-stat">
+          <span class="o-stat__label">Best</span><span class="o-stat__value o-stat__value--accent">96 ms</span>
+        </div>
+        <div class="o-surface o-surface--strong o-surface--accent o-card col">
+          <div class="row between"><span class="label">Your plan</span><span class="o-badge">Pro</span></div>
+          <div class="row between">
+            <span class="number">72%</span>
+            <span class="o-button o-button--soft o-button--md">Upgrade</span>
+          </div>
+          <div class="o-progress o-progress--accent"><div class="o-progress__bar" style="width: 72%"></div></div>
+        </div>
+        <div class="row">
+          <span class="o-button o-button--primary o-button--md">Save <kbd class="o-button__key">Enter</kbd></span>
+          <span class="o-button o-button--secondary o-button--md">Cancel</span>
+        </div>
+        <div class="row">
+          <span class="o-toggle" aria-pressed="true">Sound <kbd class="o-toggle__key">M</kbd></span>
+          <span class="o-toggle" aria-pressed="false">Hints <kbd class="o-toggle__key">H</kbd></span>
+        </div>
+        <div class="o-stat"><span class="o-stat__label">Median</span><span class="o-stat__value">142 ms</span></div>
+      </div>
+
+      <div class="col">
+        <div class="o-surface o-surface--strong o-card col">
+          <span class="label">Requests</span>
+          <ul class="o-bar-chart o-bar-chart--dense">
+            <li class="o-bar-chart__item">
+              <span class="o-bar-chart__track"><span class="o-bar-chart__bar" style="height: 62%"></span></span>
+            </li>
+            <li class="o-bar-chart__item">
+              <span class="o-bar-chart__track"><span class="o-bar-chart__bar" style="height: 74%"></span></span>
+            </li>
+            <li class="o-bar-chart__item">
+              <span class="o-bar-chart__track"
+                ><span class="o-bar-chart__bar o-bar-chart__bar--danger" style="height: 100%"></span
+              ></span>
+            </li>
+            <li class="o-bar-chart__item">
+              <span class="o-bar-chart__track"><span class="o-bar-chart__bar" style="height: 78%"></span></span>
+            </li>
+            <li class="o-bar-chart__item">
+              <span class="o-bar-chart__track"><span class="o-bar-chart__bar" style="height: 86%"></span></span>
+            </li>
+            <li class="o-bar-chart__item">
+              <span class="o-bar-chart__track"
+                ><span class="o-bar-chart__bar o-bar-chart__bar--accent" style="height: 48%"></span
+              ></span>
+            </li>
+            <li class="o-bar-chart__item">
+              <span class="o-bar-chart__track"><span class="o-bar-chart__bar" style="height: 66%"></span></span>
+            </li>
+          </ul>
+        </div>
+        <div class="o-tabs o-tabs--segmented">
+          <div class="o-tabs__list">
+            <span class="o-tabs__tab">Today</span><span class="o-tabs__tab" data-state="active">Week</span
+            ><span class="o-tabs__tab">Month</span>
+          </div>
+        </div>
+        <div class="o-stat">
+          <span class="o-stat__label">Errors</span><span class="o-stat__value o-stat__value--danger">12</span>
+        </div>
+        <div class="o-surface o-surface--strong o-card col">
+          <span class="label">Name</span>
+          <input class="o-input" value="Ada Lovelace" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

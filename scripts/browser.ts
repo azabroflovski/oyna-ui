@@ -93,8 +93,8 @@ export async function launch() {
   return {
     evaluate,
     /** `mobile` makes it a phone: touch, and a width Chrome's window cannot go down to by itself. */
-    async size(width: number, height: number, mobile = false) {
-      await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile })
+    async size(width: number, height: number, mobile = false, scale = 1) {
+      await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: scale, mobile })
     },
     async goto(url: string) {
       const loaded = once('Page.loadEventFired')
@@ -121,8 +121,10 @@ export async function launch() {
       await send('Input.dispatchKeyEvent', { type: 'keyUp', code, key })
     },
     wait: (ms: number) => Bun.sleep(ms),
+    /** A `.jpg` name gives a JPEG (much smaller for a picture full of gradients), anything else a PNG. */
     async screenshot(file: string) {
-      const { data } = await send('Page.captureScreenshot', { format: 'png' })
+      const jpeg = file.endsWith('.jpg')
+      const { data } = await send('Page.captureScreenshot', jpeg ? { format: 'jpeg', quality: 90 } : { format: 'png' })
       await Bun.write(file, Buffer.from(data, 'base64'))
     },
     close() {

@@ -87,7 +87,8 @@ src/
 docs/                            VitePress site with its own theme (.vitepress/theme), built from src/
   examples/                      full screens built only from library components (layout: example)
 playground/                      Vite app for developing components
-scripts/                         browser.ts (a small headless-Chrome driver), check.ts (see Commands)
+scripts/                         browser.ts (a small headless-Chrome driver), check.ts (see Commands),
+                                 banner.html + banner.ts (the README banner, .github/banner.jpg)
 planning/                        inventory.md, mockup.html: what was agreed before building
 ```
 
@@ -101,6 +102,8 @@ planning/                        inventory.md, mockup.html: what was agreed befo
   (select, menu, popover, tooltip, toasts, dialog, search), takes screenshots at desktop and at a real
   phone width, and runs axe-core on a set of pages. Look at the screenshots after any change to a
   layer or to the docs layout: unit tests do not show how things look. Not part of CI (needs Chrome).
+- `bun run build && bun scripts/banner.ts` redraws the README banner from `scripts/banner.html`: static
+  markup with the library's class names, styled by `dist/style.css`. Redo it when the look changes.
 - `typecheck` needs Node on `PATH`: `vue-tsc` does not work under the Bun runtime (it patches `tsc`
   through `fs.readFileSync`, which Bun's module loader bypasses). Everything else runs on Bun alone.
 - TypeScript stays on 6.x: `vue-tsc` does not support 7 yet.
