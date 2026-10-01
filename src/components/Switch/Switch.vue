@@ -52,16 +52,18 @@ const parts = useSplitAttrs()
   padding: 3px;
   border-radius: 999px;
   background: var(--o-fill-3);
-  transition: background-color var(--o-duration) ease;
 }
 
-/* the thumb changes sides at once: light, not movement */
+/*
+  The whole switch changes at once, with no transition at all. The thumb jumps sides (light, not
+  movement), and a colour that fades while the thumb has already jumped reads as a stutter: for a
+  moment a dark thumb sits on a grey track.
+*/
 .o-switch__thumb {
   width: 16px;
   height: 16px;
   border-radius: 50%;
   background: rgb(255 255 255 / 0.7);
-  transition: background-color var(--o-duration) ease;
 }
 
 .o-switch__input:checked + .o-switch__track {
