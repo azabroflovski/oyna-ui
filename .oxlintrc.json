@@ -9,5 +9,5 @@
     "import/no-unassigned-import": "off",
     "unicorn/consistent-function-scoping": "off"
   },
-  "ignorePatterns": ["planning", "dist", "docs/.vitepress/cache", "docs/.vitepress/dist"]
+  "ignorePatterns": ["dist", "docs/.vitepress/cache", "docs/.vitepress/dist"]
 }

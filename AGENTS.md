@@ -45,19 +45,14 @@ These rules are what makes the library recognisable. A component that breaks one
 ## Where the look comes from
 
 The style was first built in the owner's project [invoke.wtf](https://invoke.wtf), a trainer for
-Invoker from Dota 2 (Nuxt 4 + UnoCSS; a private repository, on the owner's machine at
-`~/invoker-game`). The owner wanted a UI kit with this look, found none, drew the interface by hand,
-and then made the library out of it — for himself first, open for anyone who likes it. README.md
-and `docs/guide/why.md` tell this story in his voice. In public text, say the look _comes from_
-invoke.wtf; never say that site is built with Oyna UI — it is not.
+Invoker from Dota 2. The owner wanted a UI kit with this look, found none, drew the interface by
+hand, and then made the library out of it — for himself first, open for anyone who likes it.
+README.md and `docs/guide/why.md` tell this story in his voice. In public text, say the look _comes
+from_ invoke.wtf; never say that site is built with Oyna UI — it is not.
 
-Use that project as a visual reference when porting: `uno.config.ts` (tokens, the `surface` / `card` shortcuts),
-`app/app.vue` (reset, background, reduced-motion rule), `app/components/` (`ToggleChip`, `KeyBindings`,
-`SettingsDialog`, `SummaryChips`, `ProgressPips`, `LimitBar`, `Sparkline`, `SplitsChart`, `AppHeader`),
-`app/composables/useInput.ts` (physical-key handling).
-
-Take the visual language only. Nothing product-specific comes over: no game terms, no game
-components, and none of that project's images, icons or sounds (they are third-party assets).
+Only the visual language came over. Nothing product-specific did: no game terms, no game
+components, and none of that project's images, icons or sounds. Its code is private and is not
+described in this repository.
 
 ## Stack
 
@@ -92,7 +87,6 @@ docs/                            VitePress site with its own theme (.vitepress/t
 playground/                      Vite app for developing components
 scripts/                         browser.ts (a small headless-Chrome driver), check.ts (see Commands),
                                  banner.html + banner.ts (the README banner, .github/banner.jpg)
-planning/                        inventory.md, mockup.html: what was agreed before building
 ```
 
 ## Commands
@@ -152,7 +146,8 @@ planning/                        inventory.md, mockup.html: what was agreed befo
   the background or the text tokens change. Links in running text are underlined, not only coloured.
 - Docs site: `layout: example` (full width, with the examples switch), `layout: wide` (full width,
   used by the theme editor at `/theme`), otherwise sidebar + content + page outline. On a phone the
-  sidebar is hidden and Search (hotkey `/`, page names only) is the navigation. The link-preview
+  sidebar is hidden and Search (hotkey `/`) is the navigation: it finds pages by name and sections by their text, from an
+  index built by `search.data.ts`. The link-preview
   image `docs/public/og.png` is a screenshot of a hand-made HTML page; `site` in the config must be
   the real address of the docs.
 - Toast is not Reka: a module-level list (`toast()`) shown by one `OToaster`.
@@ -209,7 +204,8 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 
 Done: the library (34 components), the docs site with four example screens and a theme editor, the
 browser check. The owner has looked at the result in a browser. The scales in
-`planning/inventory.md` were never discussed in detail and remain the working choice.
+`src/styles/tokens.css` (radii 8 / 14 / 24, four white fills) were proposed by the agent and never
+discussed in detail; they remain the working choice.
 
 1. The owner hosts the docs and points `oyna-ui.com` at them, then publishes `0.1.0` to npm
    (the owner decided to keep polishing first).

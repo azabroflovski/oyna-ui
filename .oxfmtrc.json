@@ -4,5 +4,5 @@
   "singleQuote": true,
   "printWidth": 120,
   "sortImports": true,
-  "ignorePatterns": ["planning", "bun.lock", "dist", "docs/.vitepress/cache", "docs/.vitepress/dist"]
+  "ignorePatterns": ["bun.lock", "dist", "docs/.vitepress/cache", "docs/.vitepress/dist"]
 }
