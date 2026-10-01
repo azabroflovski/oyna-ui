@@ -344,7 +344,7 @@ a {
 
 @media (max-width: 700px) {
   .source {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .source__files {
@@ -858,6 +858,32 @@ a {
   margin: 0;
 }
 
+.table-scroll {
+  overflow-x: auto;
+}
+
+/* a long union type wraps, so the description keeps its room and the table fits the column */
+.table-scroll td code {
+  white-space: normal;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.table-scroll :is(th, td):last-child:not(:first-child) {
+  min-width: 200px;
+}
+
+/* on a phone the table scrolls sideways anyway: whole types and a readable description beat tall rows */
+@media (max-width: 900px) {
+  .table-scroll td code {
+    white-space: nowrap;
+  }
+
+  .table-scroll :is(th, td):last-child:not(:first-child) {
+    min-width: 260px;
+  }
+}
+
 .content table {
   width: 100%;
   margin: 14px 0;
@@ -936,6 +962,15 @@ a {
     max-width: 100%;
     overflow-x: auto;
     scrollbar-width: none;
+  }
+
+  .example-nav {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .example-nav > * {
+    flex-shrink: 0;
   }
 
   .example-source {

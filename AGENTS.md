@@ -150,6 +150,8 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   used by the theme editor at `/theme`), otherwise sidebar + content + page outline. On a phone the
   sidebar is hidden and Search (hotkey `/`) is the navigation: it finds pages by name and sections by their text, from an
   index built by `search.data.ts`. The link-preview
+  A Markdown table is wrapped in `.table-scroll` (`markdown.config` in the config): on a phone a table
+  of props scrolls inside its own box, and no page may scroll sideways at 390px.
   image `docs/public/og.png` is a screenshot of a hand-made HTML page; `site` in the config must be
   the real address of the docs.
 - Toast is not Reka: a module-level list (`toast()`) shown by one `OToaster`.

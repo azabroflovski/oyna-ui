@@ -38,6 +38,11 @@ export default defineConfigWithTheme<ThemeConfig>({
   ],
   markdown: {
     theme: 'vitesse-dark',
+    // a wide table of props scrolls inside its own box instead of stretching the page on a phone
+    config(md) {
+      md.renderer.rules.table_open = () => '<div class="table-scroll"><table>\n'
+      md.renderer.rules.table_close = () => '</table></div>\n'
+    },
   },
   vite: {
     resolve: {
