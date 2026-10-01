@@ -7,9 +7,9 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 **Oyna UI** (npm package `oyna-ui`) — an open-source Vue 3 UI component library with a dark glass look, good docs and examples.
 General purpose: not tied to any product, not an admin-panel kit.
 
-State on 2026-10-01: both planned waves are built and documented — tokens, base stylesheet,
-`useHotkey` and 34 components (see `src/index.ts`). The package is ready to publish
-as `0.1.0` (`npm publish` builds it through `prepack`); publishing is the owner's to run. _Oyna_ is Uzbek for "glass". In prose the
+State on 2026-10-02: both planned waves are built and documented — tokens, base stylesheet,
+`useHotkey` and 34 components (see `src/index.ts`). `0.1.0` is on npm
+(published by the owner on 2026-10-02, tag `v0.1.0`; `npm publish` builds through `prepack` and stays the owner's to run). _Oyna_ is Uzbek for "glass". In prose the
 library is always "Oyna UI" (the bare word is too common to search for); the short logo in the docs
 header stays "OYNA". Names: the npm package is the unscoped `oyna-ui`, the same as the repository
 and the site (the owner's choice on 2026-10-02: npm refuses the bare `oyna` as too similar to `opn`,
@@ -213,9 +213,10 @@ browser check. The owner has looked at the result in a browser. The scales in
 `src/styles/tokens.css` (radii 8 / 14 / 24, four white fills) were proposed by the agent and never
 discussed in detail; they remain the working choice.
 
-1. The owner hosts the docs and points `oyna-ui.org` at them, then publishes `0.1.0` to npm
-   (the owner decided to keep polishing first).
-2. Not planned (owner's call): a Nuxt module, a light theme, moving invoke.wtf to the library.
+The docs are live at `oyna-ui.org` and `0.1.0` is published. Nothing is queued: the owner keeps
+polishing and decides what comes next.
+
+Not planned (owner's call): a Nuxt module, a light theme, moving invoke.wtf to the library.
 
 ## Conventions
 
