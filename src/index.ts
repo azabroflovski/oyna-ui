@@ -28,6 +28,7 @@ import OSurface from './components/Surface/Surface.vue'
 import OSwitch from './components/Switch/Switch.vue'
 import OTable from './components/Table/Table.vue'
 import OTabs from './components/Tabs/Tabs.vue'
+import OTag from './components/Tag/Tag.vue'
 import OTextarea from './components/Textarea/Textarea.vue'
 import OTimeline from './components/Timeline/Timeline.vue'
 import OToaster from './components/Toast/Toaster.vue'
@@ -68,6 +69,7 @@ export {
   OSurface,
   OSwitch,
   OTable,
+  OTag,
   OTabs,
   OTextarea,
   OTimeline,
@@ -104,6 +106,7 @@ const components = {
   OSurface,
   OSwitch,
   OTable,
+  OTag,
   OTabs,
   OTextarea,
   OTimeline,
@@ -148,6 +151,7 @@ declare module 'vue' {
     OSurface: typeof OSurface
     OSwitch: typeof OSwitch
     OTable: typeof OTable
+    OTag: typeof OTag
     OTabs: typeof OTabs
     OTextarea: typeof OTextarea
     OTimeline: typeof OTimeline
