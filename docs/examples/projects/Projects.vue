@@ -200,7 +200,7 @@ function create() {
     </OCard>
 
     <p class="projects__note">
-      <OKbd>N</OKbd> new project · try a filter that matches nothing, archive a project, or delete them all
+      <OKbd code="KeyN">N</OKbd> new project · try a filter that matches nothing, archive a project, or delete them all
     </p>
 
     <ODialog v-model:open="creating" title="New project" description="One service with its deploys and its numbers.">

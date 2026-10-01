@@ -136,7 +136,7 @@ function reopen() {
       </OCard>
     </section>
 
-    <p class="incident__note"><OKbd>R</OKbd> roll back · <OKbd>A</OKbd> acknowledge</p>
+    <p class="incident__note"><OKbd code="KeyR">R</OKbd> roll back · <OKbd code="KeyA">A</OKbd> acknowledge</p>
 
     <ODialog
       v-model:open="rollbackOpen"

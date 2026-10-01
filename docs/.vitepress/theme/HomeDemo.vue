@@ -111,8 +111,9 @@ const tone = (status: unknown) => (status === 'Live' ? 'accent' : status === 'Fa
       </OTable>
 
       <span class="hint">
-        <OKbd>D</OKbd> deploys · <OKbd>L</OKbd> live updates · <OKbd>/</OKbd> search · <OKbd>Enter</OKbd> get started.
-        Keys work on any keyboard layout.
+        <OKbd code="KeyD">D</OKbd> deploys · <OKbd code="KeyL">L</OKbd> live updates ·
+        <OKbd code="Slash">/</OKbd> search · <OKbd code="Enter">Enter</OKbd> get started. Keys work on any keyboard
+        layout.
       </span>
     </OSurface>
   </figure>

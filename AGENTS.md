@@ -128,6 +128,10 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 - Everything that floats (dialog, popover, menu, select list, tooltip, toast) uses `--o-layer`.
 - Icons: the library ships none. An `<svg>` in the slot of Button, Toggle or Badge is sized in `em`;
   a Menu item takes an icon component. The docs use `@lucide/vue` (a dev dependency only).
+- A key looks like a key cap everywhere (`o-kbd`: a face lit from above on a dark lip); KeyCapture and
+  the dialog's close button reuse that class. With a `code` an `OKbd` lights up while that physical
+  key is held (`composables/pressedKeys.ts`, one listener for all). Hints under the docs screens pass
+  the `code`, so pressing the key confirms the hint.
 - A state change is either instant or one fade, never half of each. Switch has no transition at all:
   its thumb jumps sides, and colours fading under a thumb that has already jumped looked like a
   stutter (the owner noticed it).

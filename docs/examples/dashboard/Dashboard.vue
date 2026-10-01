@@ -140,7 +140,8 @@ function deploy() {
     </OCard>
 
     <p class="dash__note">
-      <OKbd>N</OKbd> new deploy · <OKbd>L</OKbd> live updates · <OKbd>Esc</OKbd> closes the dialog
+      <OKbd code="KeyN">N</OKbd> new deploy · <OKbd code="KeyL">L</OKbd> live updates ·
+      <OKbd code="Escape">Esc</OKbd> closes the dialog
     </p>
 
     <ODialog v-model:open="deployOpen" title="New deploy" description="Ships a version to one environment.">

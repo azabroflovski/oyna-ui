@@ -78,9 +78,9 @@ const open = ref(location.hash === '#dialog')
       <h2>Kbd</h2>
       <div class="row">
         <span><OKbd>Esc</OKbd> closes</span>
-        <OKbd variant="outline"> M </OKbd>
-        <OKbd variant="cap"> Q </OKbd>
-        <OKbd variant="cap"> W </OKbd>
+        <OKbd variant="outline" code="KeyM"> M </OKbd>
+        <OKbd variant="cap" code="KeyQ"> Q </OKbd>
+        <OKbd variant="cap" code="KeyW"> W </OKbd>
       </div>
     </OCard>
 
