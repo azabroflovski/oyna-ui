@@ -15,7 +15,7 @@ name, and the short logo in the docs header stays "OYNA". Names, decided by the 
 2026-10-01: the npm package is the unscoped `oyna` (Vue only, so no `@oyna/vue`); the owner holds
 the npm organization `oyna`, kept for later satellites such as `@oyna/nuxt`. Until the owner
 publishes, the unscoped name is not held by anyone.
-`oyna` is taken on GitHub: the owner is choosing the repository name. Planned site: `oyna-ui.com`.
+The repository is `github.com/azabroflovski/oyna-ui`, default branch `master`. Planned site: `oyna-ui.com`.
 
 ## Design language (the product — don't dilute it)
 
@@ -124,8 +124,11 @@ planning/                        inventory.md, mockup.html: what was agreed befo
   (`paths` in tsconfig.json), so neither needs a built `dist`.
 - Headless Chrome cannot go narrower than about 500px: a "phone" screenshot at 420px is a cropped
   500px layout, not a real one.
-- An example page keeps its notes short and puts the code behind `<ExampleSource file="…">` (a
-  "View source" button that opens it in a dialog), not inline.
+- An example lives in `docs/examples/<name>/` (a component plus its data file) with a page
+  `docs/examples/<name>.md`. The page shows no code inline: `<ExampleSource dir files>` adds a
+  "View source" button (a dialog with a file list, the code of the chosen file, and a link to that
+  file on GitHub) and a "GitHub" link to the folder. The repository URL and branch are `repo` and
+  `branch` in `docs/.vitepress/config.ts`.
 - In docs pages a live example is `<Demo>…</Demo>` followed by the code block showing the same markup.
 
 Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
@@ -133,7 +136,6 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 ## Open decisions (the owner's to make)
 
 - npm package (proposed) vs a shadcn-style copy-in registry.
-- GitHub repository name: `oyna` is taken there.
 - Light theme: none planned; decide whether the tokens should allow one.
 - Mobile: the source style is desktop-first; decide how far components must adapt.
 

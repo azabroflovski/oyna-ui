@@ -2,12 +2,7 @@
 import type { MenuItem } from 'oyna'
 import { toast } from 'oyna'
 import { computed, ref } from 'vue'
-
-const sections = [
-  { value: 'profile', label: 'Profile' },
-  { value: 'notifications', label: 'Notifications' },
-  { value: 'keys', label: 'Keys' },
-] as const
+import { densities, languages, sections } from './options'
 
 const name = ref('Ada Lovelace')
 const handle = ref('ada')
@@ -17,16 +12,6 @@ const density = ref('comfortable')
 
 const handleError = computed(() => /^[a-z0-9_]{2,16}$/.test(handle.value) ? undefined : '2–16 characters: a–z, 0–9, underscore')
 const bioError = computed(() => bio.value.length > 160 ? `${bio.value.length - 160} characters too many` : undefined)
-
-const languages = [
-  { value: 'en', label: 'English', hint: 'en' },
-  { value: 'uz', label: 'Oʻzbekcha', hint: 'uz' },
-  { value: 'ru', label: 'Русский', hint: 'ru' },
-]
-const densities = [
-  { value: 'comfortable', label: 'Comfortable', hint: 'More air between rows' },
-  { value: 'compact', label: 'Compact', hint: 'More rows on a screen' },
-]
 
 const notify = ref({ deploys: true, errors: true, digest: false, marketing: false })
 

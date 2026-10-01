@@ -210,6 +210,78 @@ a {
   position: absolute;
   top: -50px;
   right: 0;
+  display: flex;
+  gap: 8px;
+}
+
+/* the source viewer: files on the left, the chosen one's code on the right */
+.source {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.source__files {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* a path, so it is set like one: no capitals, no tracking */
+.source__files .label {
+  padding: 0 12px 8px;
+  font: 400 11px/1.5 ui-monospace, 'SF Mono', Menlo, monospace;
+  letter-spacing: 0;
+  text-transform: none;
+  overflow-wrap: anywhere;
+}
+
+.source__file {
+  margin: 0;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: var(--o-radius-sm);
+  background: none;
+  color: var(--o-text-2);
+  font: 400 13px/1.5 ui-monospace, 'SF Mono', Menlo, monospace;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color var(--o-duration) ease,
+    color var(--o-duration) ease;
+}
+
+.source__file:hover {
+  background: var(--o-fill-1);
+  color: var(--o-text);
+}
+
+.source__file[aria-current] {
+  background: var(--o-fill-3);
+  color: var(--o-text);
+}
+
+.source__file:focus-visible {
+  outline: 2px solid var(--o-accent);
+  outline-offset: -2px;
+}
+
+.source__github {
+  align-self: flex-start;
+  margin-top: 14px;
+}
+
+@media (max-width: 700px) {
+  .source {
+    grid-template-columns: 1fr;
+  }
+
+  .source__files {
+    position: static;
+  }
 }
 
 /* the code fills the dialog instead of sitting in a box inside it */

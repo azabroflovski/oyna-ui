@@ -13,6 +13,6 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
-  "include": ["*.ts", "src/**/*.ts", "src/**/*.vue", "playground/**/*.ts", "playground/**/*.vue", "docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.vue", "docs/examples/**/*.vue"],
+  "include": ["*.ts", "src/**/*.ts", "src/**/*.vue", "playground/**/*.ts", "playground/**/*.vue", "docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.vue", "docs/examples/**/*.vue", "docs/examples/**/*.ts"],
   "exclude": ["docs/.vitepress/cache", "docs/.vitepress/dist"]
 }

@@ -2,6 +2,8 @@ import { fileURLToPath } from 'node:url'
 import { defineConfigWithTheme } from 'vitepress'
 
 export interface ThemeConfig {
+  repo: string
+  branch: string
   nav: { text: string, link: string, match: string }[]
   sidebar: { text: string, items: { text: string, link: string }[] }[]
 }
@@ -26,6 +28,8 @@ export default defineConfigWithTheme<ThemeConfig>({
     },
   },
   themeConfig: {
+    repo: 'https://github.com/azabroflovski/oyna-ui',
+    branch: 'master',
     nav: [
       { text: 'Guide', link: '/guide/installation', match: '/guide/' },
       { text: 'Components', link: '/components/surface', match: '/components/' },

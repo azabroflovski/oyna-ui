@@ -3,13 +3,20 @@ layout: example
 ---
 
 <script setup>
-import Settings from './Settings.vue'
+import Settings from './settings/Settings.vue'
 </script>
 
-<ExampleSource file="docs/examples/Settings.vue">
+<ExampleSource dir="docs/examples/settings" :files="['Settings.vue','options.ts']">
+<template #f0>
 
-<<< ./Settings.vue
+<<< ./settings/Settings.vue
 
+</template>
+<template #f1>
+
+<<< ./settings/options.ts
+
+</template>
 </ExampleSource>
 
 <Settings />

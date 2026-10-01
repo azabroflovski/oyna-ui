@@ -27,6 +27,9 @@ const isCurrent = (link: string) => path.value === withBase(link)
         >
           {{ item.text }}
         </OButton>
+        <OButton shape="pill" :href="theme.repo" target="_blank" rel="noopener">
+          GitHub ↗
+        </OButton>
       </nav>
     </header>
 
