@@ -43,7 +43,7 @@ onBeforeUnmount(stop)
     @click="waiting = !waiting"
     @blur="waiting = false"
   >
-    <kbd class="o-key-capture__key">{{ waiting ? '?' : code ? hotkeyLabel(code) : '—' }}</kbd>
+    <kbd class="o-kbd o-kbd--cap o-key-capture__key">{{ waiting ? '?' : code ? hotkeyLabel(code) : '—' }}</kbd>
     <span v-if="$slots.default" class="o-key-capture__label"><slot /></span>
   </button>
 </template>
@@ -72,33 +72,32 @@ onBeforeUnmount(stop)
   cursor: default;
 }
 
+/* the cap itself comes from `o-kbd o-kbd--cap` in the template: this is only its size here */
 .o-key-capture__key {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   min-width: 48px;
   height: 48px;
-  padding: 0 10px;
-  border-radius: var(--o-radius-sm);
-  background: var(--o-fill-3);
-  /* the edge of a key: one of the allowed 1px lines */
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
-  font: 700 26px/1 var(--o-font-display);
-  transition: box-shadow var(--o-duration) ease;
+  font-size: 26px;
 }
 
 .o-key-capture:hover:not(:disabled) .o-key-capture__key {
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.5);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.4),
+    0 3px 0 rgb(0 0 0 / 0.55);
 }
 
 .o-key-capture:focus-visible .o-key-capture__key {
-  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.7);
+  box-shadow:
+    inset 0 0 0 2px rgb(255 255 255 / 0.7),
+    0 3px 0 rgb(0 0 0 / 0.55);
 }
 
 /* waiting for a key is the main thing on the screen */
 .o-key-capture--waiting .o-key-capture__key,
 .o-key-capture--waiting:hover:not(:disabled) .o-key-capture__key {
-  box-shadow: inset 0 0 0 2px var(--o-accent);
+  background: color-mix(in srgb, var(--o-accent) 18%, transparent);
+  box-shadow:
+    inset 0 0 0 2px var(--o-accent),
+    0 3px 0 rgb(0 0 0 / 0.55);
   color: var(--o-accent);
 }
 

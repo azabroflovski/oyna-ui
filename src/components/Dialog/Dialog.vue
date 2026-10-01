@@ -50,7 +50,7 @@ function focusDialog(event: Event) {
           <DialogTitle class="o-dialog__title">
             {{ title }}
           </DialogTitle>
-          <DialogClose class="o-dialog__close"> <kbd>Esc</kbd> {{ closeLabel }} </DialogClose>
+          <DialogClose class="o-dialog__close"> <kbd class="o-kbd o-kbd--key">Esc</kbd> {{ closeLabel }} </DialogClose>
         </header>
         <DialogDescription v-if="description" class="o-dialog__description">
           {{ description }}
@@ -125,6 +125,9 @@ function focusDialog(event: Event) {
 
 .o-dialog__close {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
   padding: 4px 8px;
   border: 0;
@@ -143,10 +146,5 @@ function focusDialog(event: Event) {
 .o-dialog__close:focus-visible {
   outline: 2px solid var(--o-accent);
   outline-offset: 2px;
-}
-
-.o-dialog__close kbd {
-  font-family: inherit;
-  font-weight: 700;
 }
 </style>
