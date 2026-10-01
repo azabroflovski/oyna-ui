@@ -1,0 +1,59 @@
+# Hotkeys
+
+Hotkeys are read from the physical key (`KeyboardEvent.code`), not from the character it types. `KeyR` is the same key on a QWERTY, an AZERTY and a Russian layout.
+
+A hotkey is ignored:
+
+- while the user types in an `input`, a `textarea`, a `select` or an editable element;
+- with Ctrl, Cmd or Alt held, so browser shortcuts keep working;
+- on key repeat, when the key is held down;
+- for `Enter` and `Space`, when a button or a link has focus: that element handles the key itself.
+
+The numpad Enter counts as `Enter`.
+
+While a [dialog](/components/dialog) is open, only the hotkeys set up inside it work. While a [select](/components/select) is open or a [key capture](/components/key-capture) waits for a key, none do.
+
+## On a button
+
+The simplest way: [`OButton`](/components/button) and [`OToggle`](/components/toggle) take a `hotkey`, show it and react to it.
+
+<Demo>
+  <OButton variant="soft" hotkey="KeyR">Retry</OButton>
+  <input placeholder="Typing here is safe">
+</Demo>
+
+```vue
+<OButton variant="soft" hotkey="KeyR" @click="retry">
+  Retry
+</OButton>
+```
+
+## useHotkey
+
+For anything that is not a button. The listener lives as long as the component.
+
+```vue
+<script setup lang="ts">
+import { useHotkey } from 'oyna'
+import { ref } from 'vue'
+
+const muted = ref(false)
+const open = ref(true)
+
+useHotkey('KeyM', () => muted.value = !muted.value)
+// the key can be reactive, and the hotkey can be switched off
+useHotkey('Escape', () => open.value = false, { enabled: () => open.value })
+</script>
+```
+
+| Argument | Type | Description |
+| --- | --- | --- |
+| `code` | `MaybeRefOrGetter<string \| undefined>` | Physical key, e.g. `KeyR`, `Digit1`, `Enter`, `Escape` |
+| `handler` | `(event: KeyboardEvent) => void` | Called on the key press; the default action is prevented |
+| `options.enabled` | `MaybeRefOrGetter<boolean>` | `false` switches the hotkey off |
+
+## hotkeyLabel
+
+`hotkeyLabel(code)` returns what to print for a key: `KeyR` → `R`, `Digit1` → `1`, `Escape` → `Esc`, `ArrowUp` → `↑`.
+
+The label names the key's position on a QWERTY keyboard. On another layout the same key may carry another letter; pass your own text where that matters.

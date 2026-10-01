@@ -1,0 +1,47 @@
+/* The theme. Override any of these on :root (or on a subtree) to restyle the library. */
+:root {
+  /* the one bright colour, and the "at stake" colour */
+  --o-accent: #a5ff4d;
+  --o-danger: #ff8a8a;
+  /* text on an accent fill */
+  --o-on-accent: #111;
+
+  /* glass: a dark translucent fill over the background */
+  --o-surface: rgb(0 0 0 / 0.3);
+  --o-surface-strong: rgb(0 0 0 / 0.4);
+
+  /* white fills: stripes, controls, hover / active, bars */
+  --o-fill-1: rgb(255 255 255 / 0.04);
+  --o-fill-2: rgb(255 255 255 / 0.08);
+  --o-fill-3: rgb(255 255 255 / 0.12);
+  --o-fill-4: rgb(255 255 255 / 0.22);
+
+  --o-text: #fff;
+  --o-text-2: rgb(255 255 255 / 0.75);
+  --o-text-3: rgb(255 255 255 / 0.5);
+
+  --o-radius-sm: 8px;
+  --o-radius: 14px;
+  --o-radius-lg: 24px;
+
+  /* the library doesn't bundle font files: load these families yourself (weights 400, 600, 700, 800) */
+  --o-font-sans: 'Noto Sans', sans-serif;
+  /* Barlow Condensed has no Cyrillic: Fira Sans Condensed fills in those glyphs only */
+  --o-font-display: 'Barlow Condensed', 'Fira Sans Condensed', sans-serif;
+
+  /* every transition in the library uses this, so reduced motion turns them all off below */
+  --o-duration: 160ms;
+
+  /* OBackground */
+  --o-bg: #0b0b0f;
+  --o-bg-1: #3a4fd0;
+  --o-bg-2: #8a2bb8;
+  --o-bg-3: #0e7f78;
+  --o-bg-4: #b0561a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --o-duration: 0ms;
+  }
+}

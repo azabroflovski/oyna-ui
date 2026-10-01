@@ -1,0 +1,369 @@
+/* The docs site's own layout. Everything that looks like a component comes from the library. */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100dvh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.top {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font: 800 30px/1 var(--o-font-display);
+  letter-spacing: 0.1em;
+}
+
+.top-nav,
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nowrap {
+  flex-wrap: nowrap;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--o-text-3);
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--o-text-3);
+}
+
+.number {
+  font: 700 56px/1 var(--o-font-display);
+}
+
+.number.small {
+  font-size: 34px;
+}
+
+/* home */
+.hero {
+  padding: 64px 0 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.hero h1 {
+  margin: 0;
+  font: 800 clamp(56px, 7.4vw, 104px) / 0.92 var(--o-font-display);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--o-accent);
+}
+
+.hero .lead {
+  margin: 22px 0 30px;
+  max-width: 46ch;
+  font-size: 18px;
+  color: var(--o-text-2);
+}
+
+.showcase {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.showcase .wide {
+  grid-column: 1 / -1;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.facts-note {
+  margin: 14px 0 40px;
+  max-width: 78ch;
+  color: var(--o-text-2);
+}
+
+.section {
+  margin: 24px 0 16px;
+  font: 700 36px/1.1 var(--o-font-display);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding-bottom: 72px;
+}
+
+.principles h3 {
+  margin: 0 0 6px;
+  font: 700 24px/1.1 var(--o-font-display);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.principles p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--o-text-2);
+}
+
+/* a docs page */
+.docs {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 760px);
+  gap: 48px;
+  padding: 28px 0 96px;
+  align-items: start;
+}
+
+.side {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.side .label {
+  padding: 0 12px 6px;
+}
+
+.side a {
+  display: block;
+  padding: 6px 12px;
+  border-radius: var(--o-radius-sm);
+  font-size: 14px;
+  color: var(--o-text-2);
+  transition:
+    background-color var(--o-duration) ease,
+    color var(--o-duration) ease;
+}
+
+.side a:hover {
+  background: var(--o-fill-1);
+  color: var(--o-text);
+}
+
+.side a[aria-current] {
+  background: var(--o-fill-3);
+  color: var(--o-text);
+  font-weight: 600;
+}
+
+.not-found {
+  padding: 96px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.content h1,
+.not-found h1 {
+  margin: 0;
+  font: 800 64px/1 var(--o-font-display);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.content h1 + p {
+  margin: 12px 0 28px;
+  font-size: 17px;
+  color: var(--o-text-2);
+}
+
+.content h2 {
+  margin: 44px 0 6px;
+  font: 700 30px/1.1 var(--o-font-display);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.content h3 {
+  margin: 28px 0 4px;
+  font-size: 16px;
+}
+
+.content p,
+.content li {
+  color: var(--o-text-2);
+}
+
+.content p {
+  margin: 10px 0;
+}
+
+.content :is(p, li) a {
+  color: var(--o-accent);
+}
+
+.content .header-anchor {
+  display: none;
+}
+
+.content :not(pre) > code {
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: var(--o-fill-2);
+  color: var(--o-text);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.content div[class*='language-'] {
+  margin: 14px 0;
+  border-radius: var(--o-radius);
+  background: rgb(0 0 0 / 0.45);
+  overflow: hidden;
+}
+
+.content div[class*='language-'] > :is(button.copy, span.lang) {
+  display: none;
+}
+
+.content pre {
+  margin: 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  background: none !important;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.content code {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+.demo {
+  margin: 14px 0;
+  padding: 36px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* an example and its code read as one block */
+.demo:has(+ div[class*='language-']) {
+  margin-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.demo + div[class*='language-'] {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.demo p {
+  margin: 0;
+}
+
+.content table {
+  width: 100%;
+  margin: 14px 0;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.content th {
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--o-text-3);
+}
+
+.content td {
+  padding: 10px 12px;
+  vertical-align: top;
+  color: var(--o-text-2);
+}
+
+.content tbody tr:nth-child(odd) td {
+  background: var(--o-fill-1);
+}
+
+.content td:first-child {
+  border-radius: var(--o-radius-sm) 0 0 var(--o-radius-sm);
+}
+
+.content td:last-child {
+  border-radius: 0 var(--o-radius-sm) var(--o-radius-sm) 0;
+}
+
+@media (max-width: 900px) {
+  .wrap {
+    padding: 0 16px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 32px;
+  }
+
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .principles,
+  .docs {
+    grid-template-columns: 1fr;
+  }
+
+  .side {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

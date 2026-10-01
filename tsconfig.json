@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "types": ["vite/client"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true
+  },
+  "include": ["*.ts", "src/**/*.ts", "src/**/*.vue", "playground/**/*.ts", "playground/**/*.vue", "docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.vue"],
+  "exclude": ["docs/.vitepress/cache", "docs/.vitepress/dist"]
+}

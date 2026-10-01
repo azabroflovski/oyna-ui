@@ -1,0 +1,17 @@
+/* The page itself: a dark stage with white text. Kept small on purpose. */
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: var(--o-font-sans);
+  color: var(--o-text);
+  background-color: var(--o-bg);
+}
+
+/* scrollbars: thin and translucent like the rest of the UI */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 0.18) transparent;
+}
