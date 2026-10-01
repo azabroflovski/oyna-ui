@@ -154,6 +154,6 @@ useLayer(open)
 .o-select__hint {
   font-size: 12px;
   font-weight: 400;
-  color: rgb(255 255 255 / 0.35);
+  color: var(--o-text-3);
 }
 </style>

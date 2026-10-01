@@ -11,5 +11,7 @@ describe('hotkeyLabel', () => {
     expect(hotkeyLabel('Escape')).toBe('Esc')
     expect(hotkeyLabel('ArrowUp')).toBe('↑')
     expect(hotkeyLabel('Space')).toBe('Space')
+    expect(hotkeyLabel('Slash')).toBe('/')
+    expect(hotkeyLabel('BracketLeft')).toBe('[')
   })
 })

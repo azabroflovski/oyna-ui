@@ -80,8 +80,8 @@ const name = useId()
   height: 20px;
   border-radius: 50%;
   background: var(--o-fill-2);
-  /* the edge of an input: one of the allowed 1px lines */
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
+  /* the edge of an input: one of the allowed 1px lines; strong enough to show an empty dot by itself */
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.4);
   transition: box-shadow var(--o-duration) ease;
 }
 

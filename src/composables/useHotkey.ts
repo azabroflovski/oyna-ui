@@ -27,6 +27,17 @@ const named: Record<string, string> = {
   ArrowLeft: '←',
   ArrowRight: '→',
   Backspace: '⌫',
+  Slash: '/',
+  Backslash: '\\',
+  Comma: ',',
+  Period: '.',
+  Semicolon: ';',
+  Quote: "'",
+  Backquote: '`',
+  BracketLeft: '[',
+  BracketRight: ']',
+  Minus: '-',
+  Equal: '=',
 }
 
 /** What to print for a physical key: `KeyR` → `R`, `Digit1` → `1`, `Escape` → `Esc`. */

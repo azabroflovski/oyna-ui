@@ -120,7 +120,7 @@ useLayer(open)
 
 .o-menu__hint {
   font-size: 12px;
-  color: rgb(255 255 255 / 0.35);
+  color: var(--o-text-3);
 }
 
 /* a line between groups inside one list, not a border around a box */

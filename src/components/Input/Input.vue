@@ -40,7 +40,7 @@ const field = inject(fieldKey, undefined)
 }
 
 .o-input::placeholder {
-  color: rgb(255 255 255 / 0.35);
+  color: var(--o-text-3);
 }
 
 .o-input:focus {

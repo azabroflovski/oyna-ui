@@ -51,8 +51,8 @@ const parts = useSplitAttrs()
   height: 20px;
   border-radius: 6px;
   background: var(--o-fill-2);
-  /* the edge of an input: one of the allowed 1px lines */
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
+  /* the edge of an input: one of the allowed 1px lines; strong enough to show an empty box by itself */
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.4);
   color: transparent;
   transition:
     background-color var(--o-duration) ease,
