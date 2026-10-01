@@ -52,12 +52,11 @@ try {
   await shot('search-open')
 
   await page.goto(`${base}/examples/settings`)
-  await page.click('[role="tab"]:nth-child(2)')
-  await page.wait(200)
-  await shot('settings-notifications')
-  await page.click('[role="tab"]:nth-child(3)')
-  await page.wait(200)
-  await shot('settings-keys')
+  for (const [index, name] of ['profile', 'team', 'tokens', 'notifications', 'keys'].entries()) {
+    await page.click(`[role="tab"]:nth-child(${index + 1})`)
+    await page.wait(200)
+    await shot(`settings-${name}`)
+  }
 
   await page.goto(`${base}/theme`)
   await shot('theme-default')

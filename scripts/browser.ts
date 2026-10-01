@@ -143,18 +143,9 @@ export async function launch() {
     },
     wait: (ms: number) => Bun.sleep(ms),
     /** A `.jpg` name gives a JPEG (much smaller for a picture full of gradients), anything else a PNG. */
-    async screenshot(file: string, selector?: string, maxHeight = Infinity) {
+    async screenshot(file: string, clip?: { x: number; y: number; width: number; height: number }) {
       const jpeg = file.endsWith('.jpg')
-      if (selector) await waitFor(selector)
-      // with a selector, only that element (from its top, up to maxHeight) is captured
-      const clip = selector
-        ? await evaluate<{ x: number; y: number; width: number; height: number }>(`(() => {
-            const el = document.querySelector(${JSON.stringify(selector)})
-            el.scrollIntoView({ block: 'start' })
-            const box = el.getBoundingClientRect()
-            return { x: box.x + scrollX, y: box.y + scrollY, width: box.width, height: Math.min(box.height, ${maxHeight}) }
-          })()`)
-        : undefined
+      // with a clip, that rectangle of the page (in page coordinates) is captured instead of the window
       const { data } = await send('Page.captureScreenshot', {
         ...(jpeg ? { format: 'jpeg', quality: 88 } : { format: 'png' }),
         ...(clip && { clip: { ...clip, scale: 1 }, captureBeyondViewport: true }),
