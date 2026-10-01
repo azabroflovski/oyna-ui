@@ -41,8 +41,14 @@ These rules are what makes the library recognisable. A component that breaks one
 
 ## Where the look comes from
 
-The style was first built in the owner's private project at `~/invoker-game` (Nuxt 4 + UnoCSS). Use it
-as a visual reference when porting: `uno.config.ts` (tokens, the `surface` / `card` shortcuts),
+The style was first built in the owner's project [invoke.wtf](https://invoke.wtf), a trainer for
+Invoker from Dota 2 (Nuxt 4 + UnoCSS; a private repository, on the owner's machine at
+`~/invoker-game`). The owner wanted a UI kit with this look, found none, drew the interface by hand,
+and then made the library out of it — for himself first, open for anyone who likes it. README.md
+and `docs/guide/why.md` tell this story in his voice. In public text, say the look *comes from*
+invoke.wtf; never say that site is built with Oyna UI — it is not.
+
+Use that project as a visual reference when porting: `uno.config.ts` (tokens, the `surface` / `card` shortcuts),
 `app/app.vue` (reset, background, reduced-motion rule), `app/components/` (`ToggleChip`, `KeyBindings`,
 `SettingsDialog`, `SummaryChips`, `ProgressPips`, `LimitBar`, `Sparkline`, `SplitsChart`, `AppHeader`),
 `app/composables/useInput.ts` (physical-key handling).

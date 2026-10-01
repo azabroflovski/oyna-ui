@@ -39,6 +39,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       {
         text: 'Guide',
         items: [
+          { text: 'Why Oyna UI', link: '/guide/why' },
           { text: 'Installation', link: '/guide/installation' },
           { text: 'Theming', link: '/guide/theming' },
           { text: 'Hotkeys', link: '/guide/hotkeys' },

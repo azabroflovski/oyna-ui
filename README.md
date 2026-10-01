@@ -7,11 +7,17 @@ no borders, light used as a signal, condensed display type for numbers and headi
 
 *Oyna* is Uzbek for "glass" — and for "window" and "mirror".
 
-## Why
+## Why it exists
 
-Most Vue UI kits look like admin panels: white cards, grey borders, the same blue button. Oyna UI is
-for interfaces that want character — landing pages, dashboards, tools, side projects — without
-writing a design system from scratch.
+I was building [invoke.wtf](https://invoke.wtf), a trainer for Invoker from Dota 2, and wanted a UI
+kit that looked the way I had in mind: dark glass over a rich background, no grey borders, light
+instead of lines. I did not find one — most Vue UI kits look like admin panels — so I drew the
+interface by hand.
+
+Oyna UI is that look taken out of the project and made into a library. I made it for myself. If it
+suits your project, use it too.
+
+It is for interfaces that want character: dashboards, tools, landing pages, side projects.
 
 ## What you get
 
