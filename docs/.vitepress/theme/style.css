@@ -202,6 +202,21 @@ a {
   padding: 20px 0 96px;
 }
 
+/*
+  In the row of the examples switch, at its right end. VitePress wraps the page content in a
+  positioned div that starts under that row (30px high, 20px margin), hence the negative top.
+*/
+.example-source {
+  position: absolute;
+  top: -50px;
+  right: 0;
+}
+
+/* the code fills the dialog instead of sitting in a box inside it */
+.o-dialog.content div[class*='language-'] {
+  margin: 0;
+}
+
 .example-nav {
   display: flex;
   gap: 8px;

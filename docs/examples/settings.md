@@ -6,6 +6,12 @@ layout: example
 import Settings from './Settings.vue'
 </script>
 
+<ExampleSource file="docs/examples/Settings.vue">
+
+<<< ./Settings.vue
+
+</ExampleSource>
+
 <Settings />
 
 ## How it is built
@@ -16,5 +22,3 @@ Every control on this screen is a library component; the example adds only layou
 - The delete button of the dialog is the primary one, yet it stays disabled until the checkbox is ticked.
 - On the Keys tab, a key you are choosing never triggers anything else on the page.
 - Nothing here has a ring: a settings page has no "main thing" and nothing at stake until you open the delete dialog.
-
-<<< ./Settings.vue

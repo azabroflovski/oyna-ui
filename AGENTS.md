@@ -124,6 +124,8 @@ planning/                        inventory.md, mockup.html: what was agreed befo
   (`paths` in tsconfig.json), so neither needs a built `dist`.
 - Headless Chrome cannot go narrower than about 500px: a "phone" screenshot at 420px is a cropped
   500px layout, not a real one.
+- An example page keeps its notes short and puts the code behind `<ExampleSource file="…">` (a
+  "View source" button that opens it in a dialog), not inline.
 - In docs pages a live example is `<Demo>…</Demo>` followed by the code block showing the same markup.
 
 Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.

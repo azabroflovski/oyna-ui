@@ -6,6 +6,12 @@ layout: example
 import Dashboard from './Dashboard.vue'
 </script>
 
+<ExampleSource file="docs/examples/Dashboard.vue">
+
+<<< ./Dashboard.vue
+
+</ExampleSource>
+
 <Dashboard />
 
 ## How it is built
@@ -15,5 +21,3 @@ Every control on this screen is a library component; the example adds only layou
 - The period tabs switch the stats and the chart.
 - <OKbd>N</OKbd> opens the dialog. While it is open, <OKbd>L</OKbd> does nothing: hotkeys behind a dialog are off.
 - The accent ring is on one card and the danger ring on one card and one table row. Everything else has no ring.
-
-<<< ./Dashboard.vue
