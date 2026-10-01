@@ -15,7 +15,9 @@ name, and the short logo in the docs header stays "OYNA". Names, decided by the 
 2026-10-01: the npm package is the unscoped `oyna` (Vue only, so no `@oyna/vue`); the owner holds
 the npm organization `oyna`, kept for later satellites such as `@oyna/nuxt`. Until the owner
 publishes, the unscoped name is not held by anyone.
-The repository is `github.com/azabroflovski/oyna-ui`, default branch `master`. Planned site: `oyna-ui.com`.
+The repository is `github.com/azabroflovski/oyna-ui`, default branch `master`. Site: `oyna-ui.org`
+(the owner chose `.org` over `.com` on 2026-10-02, to avoid a commercial association). The docs are
+hosted on Cloudflare Workers as static assets (`wrangler.jsonc`), built from `master` by Cloudflare.
 
 ## Design language (the product — don't dilute it)
 
@@ -207,7 +209,7 @@ browser check. The owner has looked at the result in a browser. The scales in
 `src/styles/tokens.css` (radii 8 / 14 / 24, four white fills) were proposed by the agent and never
 discussed in detail; they remain the working choice.
 
-1. The owner hosts the docs and points `oyna-ui.com` at them, then publishes `0.1.0` to npm
+1. The owner hosts the docs and points `oyna-ui.org` at them, then publishes `0.1.0` to npm
    (the owner decided to keep polishing first).
 2. Not planned (owner's call): a Nuxt module, a light theme, moving invoke.wtf to the library.
 

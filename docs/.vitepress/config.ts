@@ -10,7 +10,7 @@ export interface ThemeConfig {
 }
 
 // where the docs are meant to live; link previews need absolute addresses
-const site = 'https://oyna-ui.com'
+const site = 'https://oyna-ui.org'
 const description = 'A Vue 3 component library with a dark glass look. Plain CSS, no Tailwind.'
 
 export default defineConfigWithTheme<ThemeConfig>({
