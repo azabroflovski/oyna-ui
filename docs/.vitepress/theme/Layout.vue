@@ -33,6 +33,18 @@ const isCurrent = (link: string) => path.value === withBase(link)
     <Home v-if="frontmatter.layout === 'home'" />
 
     <main v-else-if="frontmatter.layout === 'example'" class="example content">
+      <nav class="example-nav" aria-label="Examples">
+        <OButton
+          v-for="item in theme.sidebar.find(group => group.text === 'Examples')?.items"
+          :key="item.link"
+          size="sm"
+          shape="pill"
+          :href="withBase(item.link)"
+          :aria-current="isCurrent(item.link) ? 'page' : undefined"
+        >
+          {{ item.text }}
+        </OButton>
+      </nav>
       <Content />
     </main>
 

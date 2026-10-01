@@ -202,6 +202,12 @@ a {
   padding: 20px 0 96px;
 }
 
+.example-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
 .example > div > :is(h2, p, ul, div[class*='language-']) {
   max-width: 760px;
 }

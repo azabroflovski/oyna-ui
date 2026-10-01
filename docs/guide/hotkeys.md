@@ -4,14 +4,14 @@ Hotkeys are read from the physical key (`KeyboardEvent.code`), not from the char
 
 A hotkey is ignored:
 
-- while the user types in an `input`, a `textarea`, a `select` or an editable element;
+- while the user types in an `input`, a `textarea`, a `select` or an editable element (a checkbox, a radio and a switch count: Space belongs to them);
 - with Ctrl, Cmd or Alt held, so browser shortcuts keep working;
 - on key repeat, when the key is held down;
 - for `Enter` and `Space`, when a button or a link has focus: that element handles the key itself.
 
 The numpad Enter counts as `Enter`.
 
-While a [dialog](/components/dialog) is open, only the hotkeys set up inside it work. While a [select](/components/select) is open or a [key capture](/components/key-capture) waits for a key, none do.
+While a [dialog](/components/dialog) or a [popover](/components/popover) is open, only the hotkeys set up inside it work. While a [select](/components/select) or a [menu](/components/menu) is open, or a [key capture](/components/key-capture) waits for a key, none do.
 
 ## On a button
 

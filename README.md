@@ -15,15 +15,15 @@ writing a design system from scratch.
 
 ## What you get
 
-- **No Tailwind, no UnoCSS.** One plain stylesheet, 3.9 kB gzipped. Import it and you are done:
+- **No Tailwind, no UnoCSS.** One plain stylesheet, 4.5 kB gzipped. Import it and you are done:
   nothing to configure, no build plugin, no class scanning.
-- **21 components**, each with a docs page and a live example.
+- **27 components**, each with a docs page and a live example.
 - **Themable with CSS variables.** Change the accent, the radius or the fonts on `:root`, or on any
   part of the page.
 - **Hotkeys built in.** A button or a toggle shows its key and reacts to it. Keys are read by their
   position, so they work on any keyboard layout, and they stay quiet while the user types.
 - **A background out of the box.** Generated in CSS: no image files to ship.
-- **Accessible layers.** Dialog, Select, Tabs and Tooltip stand on [Reka UI](https://reka-ui.com),
+- **Accessible layers.** Dialog, Popover, Menu, Select, Tabs and Tooltip stand on [Reka UI](https://reka-ui.com),
   the only runtime dependency: focus, keyboard and screen readers are handled.
 - **Tree-shakable and typed.** ESM, one file per component, TypeScript types included.
 - **Reduced motion respected.** One variable turns every transition off.
@@ -79,6 +79,8 @@ Theme with CSS variables:
 - [x] First components: Surface / Card, Button, Kbd, Input / Field, Toggle, Tabs, Dialog, Stat, Progress, Badge.
 - [x] Docs site built with the library itself, with live examples.
 - [x] More components: Select, Tooltip, Toast, KeyCapture, Pips, Sparkline, BarChart, Table.
+- [x] Form controls and layers: Checkbox, Radio, Switch, Textarea, Menu, Popover.
+- [x] Example screens: a dashboard and a settings page.
 - [ ] Nuxt module.
 - [ ] First public release.
 

@@ -8,7 +8,7 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-01: both planned waves are built and documented — tokens, base stylesheet,
-`useHotkey` and 21 components (see `src/index.ts`). The package is ready to publish
+`useHotkey` and 27 components (see `src/index.ts`). The package is ready to publish
 as `0.1.0` (`npm publish` builds it through `prepack`); publishing is the owner's to run. *Oyna* is Uzbek for "glass". In prose the
 library is always "Oyna UI" (the bare word is too common to search for); `oyna` is only the package
 name, and the short logo in the docs header stays "OYNA". Names, decided by the owner on
@@ -98,10 +98,14 @@ planning/                        inventory.md, mockup.html: what was agreed befo
 - A new component is registered in three places in `src/index.ts` (import, `components`,
   `GlobalComponents`) and gets a page in `docs/components/` plus a sidebar entry in
   `docs/.vitepress/config.ts`.
-- Reka UI is a runtime dependency (Tabs, Dialog, Select, Tooltip) and is external in the build. It
+- Reka UI is a runtime dependency (Tabs, Dialog, Select, Menu, Popover, Tooltip) and is external in the build. It
   closes layers in order on Esc, so there is no `useEscStack`. What the library adds is
-  `useLayer(open)` in `composables/layers.ts`: while a dialog or a select is open, `useHotkey` fires
+  `useLayer(open)` in `composables/layers.ts`: while a dialog, a popover, a select or a menu is open, `useHotkey` fires
   only for components inside the top layer. Any future modal layer must call it too.
+- Checkbox, Radio and Switch are native inputs kept invisible over a drawn shape, not Reka: forms and
+  the keyboard work for free. `useSplitAttrs` sends `class` / `style` to the label and the rest to
+  the input.
+- Everything that floats (dialog, popover, menu, select list, tooltip, toast) uses `--o-layer`.
 - Toast is not Reka: a module-level list (`toast()`) shown by one `OToaster`.
 - `OKeyCapture` takes its key press in the capture phase and stops it, so no hotkey sees it.
 - The closed `OSelect` takes its label from `items`: Reka does not render the options while closed.
@@ -141,8 +145,9 @@ details, so the component list and the scales in `planning/inventory.md` are wor
    screens were checked by tests and screenshots only, never by hand.
 2. Icons: decide how Lucide icons reach a component (a slot is enough so far).
 3. The owner publishes `0.1.0` to npm, picks the GitHub repository name and hosts the docs.
-4. More example screens (settings, a landing page); the dashboard is done.
-5. Missing basic controls: Checkbox, Switch, Textarea, Radio, a dropdown menu, Popover.
+4. Docs polish: copy button on code, page outline, favicon and social image, search.
+5. A browser test run that opens the layers (select, menu, popover, tooltip, toast, dialog): they
+   have never been looked at, only unit-tested.
 6. Nuxt module.
 
 ## Conventions

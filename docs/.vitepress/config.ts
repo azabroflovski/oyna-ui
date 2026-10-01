@@ -54,6 +54,10 @@ export default defineConfigWithTheme<ThemeConfig>({
         text: 'Controls',
         items: [
           { text: 'Input', link: '/components/input' },
+          { text: 'Textarea', link: '/components/textarea' },
+          { text: 'Checkbox', link: '/components/checkbox' },
+          { text: 'Radio', link: '/components/radio' },
+          { text: 'Switch', link: '/components/switch' },
           { text: 'Toggle', link: '/components/toggle' },
           { text: 'Tabs', link: '/components/tabs' },
           { text: 'Select', link: '/components/select' },
@@ -64,6 +68,8 @@ export default defineConfigWithTheme<ThemeConfig>({
         text: 'Layers',
         items: [
           { text: 'Dialog', link: '/components/dialog' },
+          { text: 'Popover', link: '/components/popover' },
+          { text: 'Menu', link: '/components/menu' },
           { text: 'Tooltip', link: '/components/tooltip' },
           { text: 'Toast', link: '/components/toast' },
         ],
@@ -77,6 +83,13 @@ export default defineConfigWithTheme<ThemeConfig>({
           { text: 'Sparkline', link: '/components/sparkline' },
           { text: 'BarChart', link: '/components/bar-chart' },
           { text: 'Table', link: '/components/table' },
+        ],
+      },
+      {
+        text: 'Examples',
+        items: [
+          { text: 'Dashboard', link: '/examples/dashboard' },
+          { text: 'Settings', link: '/examples/settings' },
         ],
       },
     ],

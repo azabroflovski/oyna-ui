@@ -32,6 +32,7 @@ Every colour, radius and font is a CSS variable. Override them on `:root`, or on
 | `--o-on-accent` | `#111` | Text on an accent fill |
 | `--o-surface` | `rgb(0 0 0 / 0.3)` | Glass |
 | `--o-surface-strong` | `rgb(0 0 0 / 0.4)` | Darker glass, for text-heavy content |
+| `--o-layer` | `rgb(20 20 26 / 0.97)` | What floats over the page: dialog, popover, menu, tooltip, toast |
 | `--o-fill-1` … `--o-fill-4` | white at 4, 8, 12, 22 % | Stripes, controls, hover, bars |
 | `--o-text`, `--o-text-2`, `--o-text-3` | white at 100, 75, 50 % | Text |
 | `--o-radius-sm`, `--o-radius`, `--o-radius-lg` | `8px`, `14px`, `24px` | Small controls, cards, dialogs |
