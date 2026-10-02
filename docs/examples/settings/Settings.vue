@@ -251,6 +251,7 @@ function remove() {
               row-key="email"
               :signal="(row) => (row.you ? 'accent' : undefined)"
               :row-menu="memberActions"
+              hoverable
             >
               <template #name="{ row }">
                 <div class="settings__member">

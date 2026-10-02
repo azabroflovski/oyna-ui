@@ -16,6 +16,8 @@ const props = defineProps<{
   rowKey?: keyof Row & string
   /** A ring for a row that means something: `accent` is the user's own row, `danger` is one at stake. */
   signal?: (row: Row) => 'accent' | 'danger' | undefined
+  /** Lights the row under the pointer: for a table whose rows can be acted on. */
+  hoverable?: boolean
   /** The actions of a row, opened by a right click on it. Give the same ones a visible place too. */
   rowMenu?: (row: Row) => readonly DropdownMenuItem[]
 }>()
@@ -29,7 +31,7 @@ defineSlots<Partial<Record<string, (props: { row: Row; value: unknown }) => unkn
 </script>
 
 <template>
-  <table class="o-table">
+  <table class="o-table" :class="hoverable && 'o-table--hoverable'">
     <thead>
       <tr>
         <th v-for="column in columns" :key="column.key" scope="col" :class="column.numeric && 'o-table__numeric'">
@@ -127,5 +129,28 @@ defineSlots<Partial<Record<string, (props: { row: Row; value: unknown }) => unkn
 
 .o-table tbody .o-table__row--danger td {
   background: color-mix(in srgb, var(--o-danger) 8%, transparent);
+}
+
+/*
+  The row under the pointer is lit a little: light, not movement. Only where there is a pointer that
+  hovers: on a touch screen the light would stay on the last row touched.
+*/
+@media (hover: hover) {
+  .o-table--hoverable td {
+    transition: background-color var(--o-duration) ease;
+  }
+
+  .o-table--hoverable tbody tr:hover td {
+    background: var(--o-fill-2);
+  }
+
+  /* a row with a signal keeps its colour and only gets brighter */
+  .o-table--hoverable tbody .o-table__row--accent:hover td {
+    background: color-mix(in srgb, var(--o-accent) 16%, transparent);
+  }
+
+  .o-table--hoverable tbody .o-table__row--danger:hover td {
+    background: color-mix(in srgb, var(--o-danger) 14%, transparent);
+  }
 }
 </style>

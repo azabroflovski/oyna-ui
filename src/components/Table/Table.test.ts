@@ -54,6 +54,11 @@ describe('oTable', () => {
     expect(wrapper.findAll('tbody b').map((b) => b.text())).toEqual(['@ada', '@you'])
   })
 
+  it('is marked hoverable only when asked', () => {
+    expect(mount(OTable, { props: { columns, rows } }).classes()).not.toContain('o-table--hoverable')
+    expect(mount(OTable, { props: { columns, rows, hoverable: true } }).classes()).toContain('o-table--hoverable')
+  })
+
   describe('row menu', () => {
     afterEach(() => document.body.replaceChildren())
     const rowMenu = (row: Record<string, unknown>) => [{ label: `Rename ${String(row.name)}` }]

@@ -228,6 +228,8 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - Docs prose rules (`p`, `li`) are written with `:where(.content)` so they never beat a component's
   own styles: a `<p>` inside a component is not prose.
 - A Table column's `key` need not be a field of the row (a column of actions drawn by its slot).
+  `hoverable` lights the row under the pointer (`--o-fill-2`, inside `@media (hover: hover)` so a
+  touch screen keeps no stuck light); it is for tables whose rows can be acted on, and off by default.
 - Not every example is an emergency: most alerts in the examples are plain ones (unsaved changes,
   plan usage, where keys are stored). Danger is for the Incident screen and for real mistakes.
 - The examples page (`ExamplesIndex.vue`) has two tabs: the library's example screens, and "Sites",

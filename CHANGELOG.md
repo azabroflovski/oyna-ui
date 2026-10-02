@@ -14,6 +14,7 @@
 - Pagination: page numbers with arrows for a long list.
 - ContextMenu: the items of a dropdown menu on a right click, or a long press on a touch screen.
 - Table takes `row-menu`: the actions of a row, opened by a right click on it.
+- Table takes `hoverable`: the row under the pointer is lit a little.
 - Popover focuses its panel on open, not its first control, as Dialog does: Enter reaches the hotkey
   of the main button instead of pressing whatever comes first.
 - Combobox inside a Field takes its label, hint and error from it.

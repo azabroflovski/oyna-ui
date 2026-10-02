@@ -188,6 +188,7 @@ function create() {
         row-key="name"
         :signal="(row) => (row.failing ? 'danger' : undefined)"
         :row-menu="actionsOf"
+        hoverable
       >
         <template #name="{ row }">
           <code>{{ row.name }}</code> <OBadge v-if="row.failing" tone="danger">Failing</OBadge>
