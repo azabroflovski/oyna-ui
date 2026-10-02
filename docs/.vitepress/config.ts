@@ -83,6 +83,7 @@ export default defineConfigWithTheme<ThemeConfig>({
           { text: 'Kbd', link: '/components/kbd' },
           { text: 'Badge', link: '/components/badge' },
           { text: 'Tag', link: '/components/tag' },
+          { text: 'Avatar', link: '/components/avatar' },
         ],
       },
       {
@@ -97,6 +98,8 @@ export default defineConfigWithTheme<ThemeConfig>({
           { text: 'Toggle', link: '/components/toggle' },
           { text: 'Tabs', link: '/components/tabs' },
           { text: 'Select', link: '/components/select' },
+          { text: 'Combobox', link: '/components/combobox' },
+          { text: 'Slider', link: '/components/slider' },
           { text: 'KeyCapture', link: '/components/key-capture' },
         ],
       },
@@ -104,6 +107,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         text: 'Layers',
         items: [
           { text: 'Dialog', link: '/components/dialog' },
+          { text: 'Command', link: '/components/command' },
           { text: 'Popover', link: '/components/popover' },
           { text: 'Menu', link: '/components/menu' },
           { text: 'Tooltip', link: '/components/tooltip' },

@@ -537,12 +537,6 @@ a {
   border-radius: var(--o-radius-sm);
 }
 
-.editor input[type='range'] {
-  width: 100%;
-  margin: 0;
-  accent-color: var(--o-accent);
-}
-
 .editor__reset {
   align-self: flex-start;
 }

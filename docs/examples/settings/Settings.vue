@@ -239,13 +239,16 @@ function remove() {
               :signal="(row) => (row.you ? 'accent' : undefined)"
             >
               <template #name="{ row }">
-                <div class="settings__person">
-                  <span>
-                    <b>{{ row.name }}</b>
-                    <OBadge v-if="row.you" tone="accent">You</OBadge>
-                    <OBadge v-else-if="row.invited">Invited</OBadge>
-                  </span>
-                  <span class="settings__note">{{ row.email }}</span>
+                <div class="settings__member">
+                  <OAvatar :name="row.name" />
+                  <div class="settings__person">
+                    <span>
+                      <b>{{ row.name }}</b>
+                      <OBadge v-if="row.you" tone="accent">You</OBadge>
+                      <OBadge v-else-if="row.invited">Invited</OBadge>
+                    </span>
+                    <span class="settings__note">{{ row.email }}</span>
+                  </div>
                 </div>
               </template>
               <template #role="{ row }">
@@ -485,6 +488,12 @@ function remove() {
 
 .settings__scroll {
   overflow-x: auto;
+}
+
+.settings__member {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .settings__person {

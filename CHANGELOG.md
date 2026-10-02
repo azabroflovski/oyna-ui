@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Command: a palette of everything the app can do, opened with a key and searched by typing.
+- Combobox: a choice from a long list, found by typing.
+- Slider: a number picked by dragging.
+- Avatar: a person as a picture or as initials.
+
 ## 0.1.1
 
 - Touch screens (`pointer: coarse`): key hints on Button, Toggle and the dialog's close button are

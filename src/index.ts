@@ -1,12 +1,15 @@
 import type { App } from 'vue'
 
 import OAlert from './components/Alert/Alert.vue'
+import OAvatar from './components/Avatar/Avatar.vue'
 import OBackground from './components/Background/Background.vue'
 import OBadge from './components/Badge/Badge.vue'
 import OBarChart from './components/BarChart/BarChart.vue'
 import OButton from './components/Button/Button.vue'
 import OCard from './components/Card/Card.vue'
 import OCheckbox from './components/Checkbox/Checkbox.vue'
+import OCombobox from './components/Combobox/Combobox.vue'
+import OCommand from './components/Command/Command.vue'
 import ODialog from './components/Dialog/Dialog.vue'
 import OEmpty from './components/Empty/Empty.vue'
 import OField from './components/Field/Field.vue'
@@ -21,6 +24,7 @@ import OProgress from './components/Progress/Progress.vue'
 import ORadio from './components/Radio/Radio.vue'
 import OSelect from './components/Select/Select.vue'
 import OSkeleton from './components/Skeleton/Skeleton.vue'
+import OSlider from './components/Slider/Slider.vue'
 import OSparkline from './components/Sparkline/Sparkline.vue'
 import OSpinner from './components/Spinner/Spinner.vue'
 import OStat from './components/Stat/Stat.vue'
@@ -38,17 +42,21 @@ import OTooltip from './components/Tooltip/Tooltip.vue'
 import './styles/tokens.css'
 import './styles/base.css'
 
+export type { CommandItem } from './components/Command/Command.vue'
 export type { MenuItem } from './components/Menu/Menu.vue'
 export { dismissToast, toast } from './components/Toast/toast'
 export { hotkeyLabel, useHotkey } from './composables/useHotkey'
 export {
   OAlert,
+  OAvatar,
   OBackground,
   OBadge,
   OBarChart,
   OButton,
   OCard,
   OCheckbox,
+  OCombobox,
+  OCommand,
   ODialog,
   OEmpty,
   OField,
@@ -63,14 +71,15 @@ export {
   ORadio,
   OSelect,
   OSkeleton,
+  OSlider,
   OSparkline,
   OSpinner,
   OStat,
   OSurface,
   OSwitch,
   OTable,
-  OTag,
   OTabs,
+  OTag,
   OTextarea,
   OTimeline,
   OToaster,
@@ -80,12 +89,15 @@ export {
 
 const components = {
   OAlert,
+  OAvatar,
   OBackground,
   OBadge,
   OBarChart,
   OButton,
   OCard,
   OCheckbox,
+  OCombobox,
+  OCommand,
   ODialog,
   OEmpty,
   OField,
@@ -100,14 +112,15 @@ const components = {
   ORadio,
   OSelect,
   OSkeleton,
+  OSlider,
   OSparkline,
   OSpinner,
   OStat,
   OSurface,
   OSwitch,
   OTable,
-  OTag,
   OTabs,
+  OTag,
   OTextarea,
   OTimeline,
   OToaster,
@@ -125,12 +138,15 @@ export default {
 declare module 'vue' {
   interface GlobalComponents {
     OAlert: typeof OAlert
+    OAvatar: typeof OAvatar
     OBackground: typeof OBackground
     OBadge: typeof OBadge
     OBarChart: typeof OBarChart
     OButton: typeof OButton
     OCard: typeof OCard
     OCheckbox: typeof OCheckbox
+    OCombobox: typeof OCombobox
+    OCommand: typeof OCommand
     ODialog: typeof ODialog
     OEmpty: typeof OEmpty
     OField: typeof OField
@@ -145,14 +161,15 @@ declare module 'vue' {
     ORadio: typeof ORadio
     OSelect: typeof OSelect
     OSkeleton: typeof OSkeleton
+    OSlider: typeof OSlider
     OSparkline: typeof OSparkline
     OSpinner: typeof OSpinner
     OStat: typeof OStat
     OSurface: typeof OSurface
     OSwitch: typeof OSwitch
     OTable: typeof OTable
-    OTag: typeof OTag
     OTabs: typeof OTabs
+    OTag: typeof OTag
     OTextarea: typeof OTextarea
     OTimeline: typeof OTimeline
     OToaster: typeof OToaster

@@ -8,7 +8,7 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-02: both planned waves are built and documented — tokens, base stylesheet,
-`useHotkey` and 34 components (see `src/index.ts`). `0.1.0` and `0.1.1` are on npm
+`useHotkey` and 38 components (see `src/index.ts`). `0.1.0` and `0.1.1` are on npm
 (published by the owner on 2026-10-02, tags `v0.1.0`, `v0.1.1`; `npm publish` builds through `prepack` and stays the owner's to run). _Oyna_ is Uzbek for "glass". In prose the
 library is always "Oyna UI" (the bare word is too common to search for); the short logo in the docs
 header stays "OYNA". Names: the npm package is the unscoped `oyna-ui`, the same as the repository
@@ -119,9 +119,9 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - A new component is registered in three places in `src/index.ts` (import, `components`,
   `GlobalComponents`) and gets a page in `docs/components/` plus a sidebar entry in
   `docs/.vitepress/config.ts`.
-- Reka UI is a runtime dependency (Tabs, Dialog, Select, Menu, Popover, Tooltip, PinInput) and is external in the build. It
+- Reka UI is a runtime dependency (Tabs, Dialog, Select, Menu, Popover, Tooltip, PinInput, Combobox, Listbox under Command, Slider, Avatar) and is external in the build. It
   closes layers in order on Esc, so there is no `useEscStack`. What the library adds is
-  `useLayer(open)` in `composables/layers.ts`: while a dialog, a popover, a select or a menu is open, `useHotkey` fires
+  `useLayer(open)` in `composables/layers.ts`: while a dialog (Command is one), a popover, a select, a combobox or a menu is open, `useHotkey` fires
   only for components inside the top layer. Any future modal layer must call it too.
 - Checkbox, Radio and Switch are native inputs kept invisible over a drawn shape, not Reka: forms and
   the keyboard work for free. `useSplitAttrs` sends `class` / `style` to the label and the rest to
@@ -140,6 +140,15 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   them instead of hand-made header rows. Tag is for what the user applied (a filter, a label) and can
   be removed; Badge is for what the system says (a status). Tag has squarer corners to tell them apart.
 - The owner said the component set is enough for now (2026-10-02): do not add components unasked.
+  Later the same day he asked for four more: Command, Combobox, Slider, Avatar. Considered and left
+  out: DatePicker (too costly), Divider (a neutral line), Breadcrumb / Stepper / Carousel (admin-panel
+  territory); Drawer, Accordion and Pagination are the next candidates if he asks.
+- Command is an `ODialog` holding a Reka Listbox; it filters by itself (every typed word must occur
+  in the label, group or keywords) and keeps the first row lit, so Enter always runs something: Reka
+  unlights a row when the pointer leaves the list, also when the row under it is filtered away. It
+  has no opening key of its own. The docs Search is older and still hand-made, not an `OCommand`.
+- Combobox's list reuses the select's classes (`o-select__list`, `o-select__option`); its field is
+  an `o-input`. Slider's model is one number (Reka's is a list); `aria-label` goes to its thumb.
 - A key looks like a key cap everywhere (`o-kbd`: a face lit from above on a dark lip); KeyCapture and
   the dialog's close button reuse that class. With a `code` an `OKbd` lights up while that physical
   key is held (`composables/pressedKeys.ts`, one listener for all). Hints under the docs screens pass
@@ -218,7 +227,7 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 
 ## Next steps
 
-Done: the library (34 components), the docs site with four example screens and a theme editor, the
+Done: the library (38 components), the docs site with four example screens and a theme editor, the
 browser check. The owner has looked at the result in a browser. The scales in
 `src/styles/tokens.css` (radii 8 / 14 / 24, four white fills) were proposed by the agent and never
 discussed in detail; they remain the working choice.

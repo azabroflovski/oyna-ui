@@ -140,13 +140,13 @@ const rows = [
       </div>
 
       <div class="editor__group">
-        <label class="label" for="editor-radius">Radius · {{ theme.radius }}px</label>
-        <input id="editor-radius" v-model.number="theme.radius" type="range" min="0" max="24" />
+        <span class="label">Radius · {{ theme.radius }}px</span>
+        <OSlider v-model="theme.radius" :max="24" aria-label="Radius" />
       </div>
 
       <div class="editor__group">
-        <label class="label" for="editor-glass">Glass darkness · {{ theme.glass }}%</label>
-        <input id="editor-glass" v-model.number="theme.glass" type="range" min="10" max="70" step="5" />
+        <span class="label">Glass darkness · {{ theme.glass }}%</span>
+        <OSlider v-model="theme.glass" :min="10" :max="70" :step="5" aria-label="Glass darkness" />
       </div>
 
       <OButton variant="ghost" size="sm" class="editor__reset" @click="use({})"> <RotateCcw /> Reset </OButton>
