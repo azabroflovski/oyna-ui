@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {
   DropdownMenuContent,
-  DropdownMenuItem,
+  DropdownMenuItem as RekaItem,
   DropdownMenuPortal,
   DropdownMenuRoot,
   DropdownMenuSeparator,
@@ -12,14 +12,14 @@ import { ref } from 'vue'
 
 import { useLayer } from '../../composables/layers'
 
-export type MenuItem =
+export type DropdownMenuItem =
   | { label: string; icon?: Component; hint?: string; tone?: 'danger'; disabled?: boolean; onSelect?: () => void }
   | { separator: true }
 
 withDefaults(
   defineProps<{
     /** `hint` is a dim note at the end of an item. `{ separator: true }` draws a line between groups. */
-    items: readonly MenuItem[]
+    items: readonly DropdownMenuItem[]
     side?: 'top' | 'right' | 'bottom' | 'left'
     align?: 'start' | 'center' | 'end'
   }>(),
@@ -38,22 +38,22 @@ useLayer(open)
       <slot />
     </DropdownMenuTrigger>
     <DropdownMenuPortal>
-      <DropdownMenuContent class="o-menu" :side :align :side-offset="8" :collision-padding="8">
+      <DropdownMenuContent class="o-dropdown-menu" :side :align :side-offset="8" :collision-padding="8">
         <template v-for="(item, index) in items" :key="index">
-          <DropdownMenuSeparator v-if="'separator' in item" class="o-menu__separator" />
-          <DropdownMenuItem
+          <DropdownMenuSeparator v-if="'separator' in item" class="o-dropdown-menu__separator" />
+          <RekaItem
             v-else
-            class="o-menu__item"
-            :class="item.tone && `o-menu__item--${item.tone}`"
+            class="o-dropdown-menu__item"
+            :class="item.tone && `o-dropdown-menu__item--${item.tone}`"
             :disabled="item.disabled"
             @select="item.onSelect?.()"
           >
-            <span class="o-menu__label">
+            <span class="o-dropdown-menu__label">
               <component :is="item.icon" v-if="item.icon" aria-hidden="true" />
               {{ item.label }}
             </span>
-            <span v-if="item.hint" class="o-menu__hint">{{ item.hint }}</span>
-          </DropdownMenuItem>
+            <span v-if="item.hint" class="o-dropdown-menu__hint">{{ item.hint }}</span>
+          </RekaItem>
         </template>
       </DropdownMenuContent>
     </DropdownMenuPortal>
@@ -61,13 +61,13 @@ useLayer(open)
 </template>
 
 <style>
-@keyframes o-menu-in {
+@keyframes o-dropdown-menu-in {
   from {
     opacity: 0;
   }
 }
 
-.o-menu {
+.o-dropdown-menu {
   z-index: 110;
   box-sizing: border-box;
   min-width: 180px;
@@ -79,10 +79,10 @@ useLayer(open)
   box-shadow: 0 16px 40px rgb(0 0 0 / 0.5);
   color: var(--o-text-2);
   font: 400 14px/1.4 var(--o-font-sans);
-  animation: o-menu-in var(--o-duration) ease;
+  animation: o-dropdown-menu-in var(--o-duration) ease;
 }
 
-.o-menu__item {
+.o-dropdown-menu__item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -93,40 +93,40 @@ useLayer(open)
   user-select: none;
 }
 
-.o-menu__item[data-highlighted] {
+.o-dropdown-menu__item[data-highlighted] {
   background: var(--o-fill-2);
   color: var(--o-text);
 }
 
-.o-menu__item--danger,
-.o-menu__item--danger[data-highlighted] {
+.o-dropdown-menu__item--danger,
+.o-dropdown-menu__item--danger[data-highlighted] {
   color: var(--o-danger);
 }
 
-.o-menu__item[data-disabled] {
+.o-dropdown-menu__item[data-disabled] {
   opacity: 0.4;
   cursor: default;
 }
 
-.o-menu__label {
+.o-dropdown-menu__label {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.o-menu__label svg {
+.o-dropdown-menu__label svg {
   flex-shrink: 0;
   width: 16px;
   height: 16px;
 }
 
-.o-menu__hint {
+.o-dropdown-menu__hint {
   font-size: 12px;
   color: var(--o-text-3);
 }
 
 /* a line between groups inside one list, not a border around a box */
-.o-menu__separator {
+.o-dropdown-menu__separator {
   height: 1px;
   margin: 6px 14px;
   background: rgb(255 255 255 / 0.1);

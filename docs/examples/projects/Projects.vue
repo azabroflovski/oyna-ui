@@ -12,7 +12,7 @@ import {
   SearchX,
   Trash2,
 } from '@lucide/vue'
-import type { MenuItem } from 'oyna-ui'
+import type { DropdownMenuItem } from 'oyna-ui'
 import { toast } from 'oyna-ui'
 import { computed, onBeforeUnmount, ref } from 'vue'
 
@@ -44,7 +44,7 @@ function clearFilters() {
 }
 
 /** The actions of one row: an archived project can only come back or be deleted. */
-function actionsOf(project: Project): MenuItem[] {
+function actionsOf(project: Project): DropdownMenuItem[] {
   return [
     { label: 'Details', icon: PanelRight, onSelect: () => show(project) },
     project.archived
@@ -201,9 +201,9 @@ function create() {
           />
         </template>
         <template #actions="{ row }">
-          <OMenu :items="actionsOf(row)" align="end">
+          <ODropdownMenu :items="actionsOf(row)" align="end">
             <OButton icon size="sm" variant="ghost" :aria-label="`Actions for ${row.name}`"><Ellipsis /></OButton>
-          </OMenu>
+          </ODropdownMenu>
         </template>
       </OTable>
 

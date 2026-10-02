@@ -111,7 +111,7 @@ export default defineConfigWithTheme<ThemeConfig>({
           { text: 'Command', link: '/components/command' },
           { text: 'Drawer', link: '/components/drawer' },
           { text: 'Popover', link: '/components/popover' },
-          { text: 'Menu', link: '/components/menu' },
+          { text: 'DropdownMenu', link: '/components/dropdown-menu' },
           { text: 'Tooltip', link: '/components/tooltip' },
           { text: 'Toast', link: '/components/toast' },
         ],

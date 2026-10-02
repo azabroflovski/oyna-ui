@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CircleCheck, Copy, Ellipsis, PhoneCall, TriangleAlert, Undo2 } from '@lucide/vue'
-import type { MenuItem } from 'oyna-ui'
+import type { DropdownMenuItem } from 'oyna-ui'
 import { toast } from 'oyna-ui'
 import { computed, onBeforeUnmount, ref } from 'vue'
 
@@ -31,7 +31,7 @@ const rows = computed(() =>
   ),
 )
 
-const actions: MenuItem[] = [
+const actions: DropdownMenuItem[] = [
   { label: 'Copy the link', icon: Copy, onSelect: () => toast('Link copied') },
   { label: 'Page the on-call again', icon: PhoneCall, onSelect: () => toast('Paged ada') },
 ]
@@ -79,9 +79,9 @@ function reopen() {
       <OBadge :tone="resolved ? 'accent' : 'danger'">{{ resolved ? 'Resolved' : 'Ongoing · 12 min' }}</OBadge>
       <span class="incident__spacer" />
       <OToggle v-model="acknowledged" hotkey="KeyA" :disabled="resolved">Acknowledged</OToggle>
-      <OMenu :items="actions" align="end">
+      <ODropdownMenu :items="actions" align="end">
         <OButton icon shape="pill" aria-label="More actions"><Ellipsis /></OButton>
-      </OMenu>
+      </ODropdownMenu>
       <OButton v-if="resolved" @click="reopen">Start over</OButton>
       <OButton v-else variant="primary" hotkey="KeyR" @click="rollbackOpen = true"><Undo2 /> Roll back</OButton>
     </header>

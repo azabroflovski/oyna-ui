@@ -51,10 +51,10 @@ A small panel that opens from a button and can hold anything: a few filters, a s
 
 The default slot takes exactly one element that can receive focus; it becomes the trigger. The `content` slot gets a `close` function.
 
-## Popover, tooltip, dialog or menu
+## Popover, tooltip, dialog or dropdown menu
 
 - **[Tooltip](/components/tooltip)** — one line, on hover, nothing to click.
-- **[Menu](/components/menu)** — a list of actions.
+- **[DropdownMenu](/components/dropdown-menu)** — a list of actions.
 - **Popover** — anything else that is small and belongs to one place on the page.
 - **[Dialog](/components/dialog)** — something that needs the whole of the user's attention.
 

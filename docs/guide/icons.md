@@ -51,7 +51,7 @@ import { ArrowRight, Check, Rocket, Settings } from '@lucide/vue'
 | Component                                                                              | How                                                |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------- |
 | [Button](/components/button), [Toggle](/components/toggle), [Badge](/components/badge) | An `<svg>` in the slot                             |
-| [Menu](/components/menu)                                                               | `icon` of an item: the component itself, not a tag |
+| [DropdownMenu](/components/dropdown-menu)                                              | `icon` of an item: the component itself, not a tag |
 | [Empty](/components/empty)                                                             | The `icon` slot                                    |
 
 Anywhere else an icon is just an element in your own layout.

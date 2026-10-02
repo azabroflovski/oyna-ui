@@ -11,25 +11,25 @@ const items = [
 ]
 </script>
 
-# Menu
+# DropdownMenu
 
-A list of actions behind a button. Arrow keys move through it, typing jumps to an item, <OKbd>Esc</OKbd> closes it.
+A menu of actions that drops down from a button. Arrow keys move through it, typing jumps to an item, <OKbd>Esc</OKbd> closes it.
 
 <Demo>
-  <OMenu :items="items">
+  <ODropdownMenu :items="items">
     <OButton>Actions</OButton>
-  </OMenu>
-  <OMenu :items="items" align="end">
+  </ODropdownMenu>
+  <ODropdownMenu :items="items" align="end">
     <OButton icon shape="pill" aria-label="More"><Ellipsis /></OButton>
-  </OMenu>
+  </ODropdownMenu>
 </Demo>
 
 ```vue
 <script setup lang="ts">
-import type { MenuItem } from 'oyna-ui'
+import type { DropdownMenuItem } from 'oyna-ui'
 import { Archive, Copy, Pencil, Trash2 } from '@lucide/vue'
 
-const items: MenuItem[] = [
+const items: DropdownMenuItem[] = [
   { label: 'Rename', icon: Pencil, hint: 'F2', onSelect: rename },
   { label: 'Duplicate', icon: Copy, onSelect: duplicate },
   { label: 'Archive', icon: Archive, disabled: true },
@@ -39,9 +39,9 @@ const items: MenuItem[] = [
 </script>
 
 <template>
-  <OMenu :items="items">
+  <ODropdownMenu :items="items">
     <OButton>Actions</OButton>
-  </OMenu>
+  </ODropdownMenu>
 </template>
 ```
 
@@ -59,7 +59,7 @@ While the menu is open, page hotkeys are off.
 
 | Prop    | Type                                     | Default    | Description                                                                     |
 | ------- | ---------------------------------------- | ---------- | ------------------------------------------------------------------------------- |
-| `items` | `MenuItem[]`                             | required   | `{ label, icon?, hint?, tone?, disabled?, onSelect? }` or `{ separator: true }` |
+| `items` | `DropdownMenuItem[]`                     | required   | `{ label, icon?, hint?, tone?, disabled?, onSelect? }` or `{ separator: true }` |
 | `side`  | `'top' \| 'right' \| 'bottom' \| 'left'` | `'bottom'` | Flips when there is no room                                                     |
 | `align` | `'start' \| 'center' \| 'end'`           | `'start'`  | Which edge of the trigger the menu lines up with                                |
 

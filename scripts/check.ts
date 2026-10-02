@@ -36,7 +36,7 @@ try {
   await shot('drawer-open')
   await page.press('Escape')
 
-  await page.goto(`${base}/components/menu`)
+  await page.goto(`${base}/components/dropdown-menu`)
   await page.click('.demo .o-button')
   await page.wait(300)
   await shot('menu-open')

@@ -4,16 +4,16 @@ import { defineComponent, h, nextTick, ref } from 'vue'
 
 import OButton from '../Button/Button.vue'
 import OPopover from '../Popover/Popover.vue'
-import OMenu from './Menu.vue'
+import ODropdownMenu from './DropdownMenu.vue'
 
 const press = (code: string) =>
   window.dispatchEvent(new KeyboardEvent('keydown', { code, bubbles: true, cancelable: true }))
 
-describe('oMenu', () => {
+describe('oDropdownMenu', () => {
   afterEach(() => document.body.replaceChildren())
 
   it('makes its child the trigger of a closed menu', () => {
-    const wrapper = mount(OMenu, {
+    const wrapper = mount(ODropdownMenu, {
       props: { items: [{ label: 'Rename' }, { separator: true }, { label: 'Delete', tone: 'danger' }] },
       slots: { default: () => h(OButton, () => 'Actions') },
       attachTo: document.body,
@@ -22,7 +22,7 @@ describe('oMenu', () => {
       'aria-haspopup': 'menu',
       'aria-expanded': 'false',
     })
-    expect(document.querySelector('.o-menu')).toBeNull()
+    expect(document.querySelector('.o-dropdown-menu')).toBeNull()
     wrapper.unmount()
   })
 })

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Copy, Ellipsis, Info, KeyRound, MailCheck, RotateCcw, Trash2, TriangleAlert, UserPlus } from '@lucide/vue'
-import type { MenuItem } from 'oyna-ui'
+import type { DropdownMenuItem } from 'oyna-ui'
 import { hotkeyLabel, toast } from 'oyna-ui'
 import { computed, reactive, ref } from 'vue'
 
@@ -67,7 +67,7 @@ function invite() {
   inviteEmail.value = ''
 }
 
-function memberActions(member: Member): MenuItem[] {
+function memberActions(member: Member): DropdownMenuItem[] {
   return [
     ...(member.invited
       ? [{ label: 'Send the invitation again', icon: MailCheck, onSelect: () => toast(`Sent to ${member.email}`) }]
@@ -168,7 +168,7 @@ const keysChanged = computed(() => JSON.stringify(keys.value) !== JSON.stringify
 const deleteOpen = ref(false)
 const understood = ref(false)
 
-const accountActions: MenuItem[] = [
+const accountActions: DropdownMenuItem[] = [
   { label: 'Sign out everywhere else', onSelect: () => toast('Signed out of 2 other sessions') },
   { label: 'Export my data', hint: 'JSON', onSelect: () => toast('The export will arrive by email') },
   { separator: true },
@@ -186,9 +186,9 @@ function remove() {
   <div class="settings">
     <header class="settings__head">
       <h1>Settings</h1>
-      <OMenu :items="accountActions" align="end">
+      <ODropdownMenu :items="accountActions" align="end">
         <OButton>Account</OButton>
-      </OMenu>
+      </ODropdownMenu>
     </header>
 
     <OTabs :items="sections" variant="underline">
@@ -268,9 +268,9 @@ function remove() {
                 <OSelect v-model="row.role" :items="roles" :disabled="row.you" :aria-label="`Role of ${row.name}`" />
               </template>
               <template #actions="{ row }">
-                <OMenu :items="memberActions(row)" align="end">
+                <ODropdownMenu :items="memberActions(row)" align="end">
                   <OButton icon size="sm" variant="ghost" :aria-label="`Actions for ${row.name}`"><Ellipsis /></OButton>
-                </OMenu>
+                </ODropdownMenu>
               </template>
             </OTable>
           </OCard>

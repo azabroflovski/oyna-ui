@@ -119,7 +119,7 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - A new component is registered in three places in `src/index.ts` (import, `components`,
   `GlobalComponents`) and gets a page in `docs/components/` plus a sidebar entry in
   `docs/.vitepress/config.ts`.
-- Reka UI is a runtime dependency (Tabs, Dialog, Select, Menu, Popover, Tooltip, PinInput, Combobox, Listbox under Command, Slider, Avatar, Accordion, Pagination) and is external in the build. It
+- Reka UI is a runtime dependency (Tabs, Dialog, Select, DropdownMenu, Popover, Tooltip, PinInput, Combobox, Listbox under Command, Slider, Avatar, Accordion, Pagination) and is external in the build. It
   closes layers in order on Esc, so there is no `useEscStack`. What the library adds is
   `useLayer(open)` in `composables/layers.ts`: while a dialog (Command is one), a popover, a select, a combobox or a menu is open, `useHotkey` fires
   only for components inside the top layer. Any future modal layer must call it too.
@@ -139,7 +139,7 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   does not open on touch; the docs say so. `scripts/browser.ts` emulates a coarse pointer when
   `size()` is called with `mobile`.
 - Icons: the library ships none. An `<svg>` in the slot of Button, Toggle or Badge is sized in `em`;
-  a Menu item takes an icon component. The docs use `@lucide/vue` (a dev dependency only).
+  a DropdownMenu item takes an icon component. The docs use `@lucide/vue` (a dev dependency only).
 - Card has an optional header (`label`, `title`, an `actions` slot) and a `footer` slot; examples use
   them instead of hand-made header rows. Tag is for what the user applied (a filter, a label) and can
   be removed; Badge is for what the system says (a status). Tag has squarer corners to tell them apart.
@@ -147,6 +147,10 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   Later the same day he asked for seven more: Command, Combobox, Slider, Avatar, then Drawer,
   Accordion, Pagination. Considered and left out: DatePicker (too costly), Divider (a neutral line),
   Breadcrumb / Stepper / Carousel (admin-panel territory).
+- The menu of actions is `ODropdownMenu` (it was `OMenu` until 0.2.0; the owner renamed it on
+  2026-10-02 to match Reka, Radix and shadcn, and to tell it from Select and Combobox). Its type is
+  `DropdownMenuItem`, its classes `.o-dropdown-menu`; inside the component Reka's own item is imported
+  as `RekaItem`. `/components/menu` redirects to the new page (`docs/public/_redirects`).
 - No Popconfirm (decided with the owner on 2026-10-02): Reka has no such primitive, and a popover
   with two buttons is one already. The Popover page has the recipe; add a component only when a real
   project repeats that popover in several places.

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- **Breaking:** `OMenu` is now `ODropdownMenu`, its type `MenuItem` is `DropdownMenuItem`, and its
+  classes are `.o-dropdown-menu…` instead of `.o-menu…`. Rename them in your code; nothing else about
+  the component changed.
 - Command: a palette of everything the app can do, opened with a key and searched by typing.
 - Combobox: a choice from a long list, found by typing.
 - Slider: a number picked by dragging.

@@ -11,7 +11,7 @@ A hotkey is ignored:
 
 The numpad Enter counts as `Enter`.
 
-While a [dialog](/components/dialog) or a [popover](/components/popover) is open, only the hotkeys set up inside it work. While a [select](/components/select) or a [menu](/components/menu) is open, or a [key capture](/components/key-capture) waits for a key, none do.
+While a [dialog](/components/dialog) or a [popover](/components/popover) is open, only the hotkeys set up inside it work. While a [select](/components/select) or a [dropdown menu](/components/dropdown-menu) is open, or a [key capture](/components/key-capture) waits for a key, none do.
 
 ## On a button
 

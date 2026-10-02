@@ -13,12 +13,12 @@ import OCombobox from './components/Combobox/Combobox.vue'
 import OCommand from './components/Command/Command.vue'
 import ODialog from './components/Dialog/Dialog.vue'
 import ODrawer from './components/Drawer/Drawer.vue'
+import ODropdownMenu from './components/DropdownMenu/DropdownMenu.vue'
 import OEmpty from './components/Empty/Empty.vue'
 import OField from './components/Field/Field.vue'
 import OInput from './components/Input/Input.vue'
 import OKbd from './components/Kbd/Kbd.vue'
 import OKeyCapture from './components/KeyCapture/KeyCapture.vue'
-import OMenu from './components/Menu/Menu.vue'
 import OPagination from './components/Pagination/Pagination.vue'
 import OPinInput from './components/PinInput/PinInput.vue'
 import OPips from './components/Pips/Pips.vue'
@@ -46,7 +46,7 @@ import './styles/tokens.css'
 import './styles/base.css'
 
 export type { CommandItem } from './components/Command/Command.vue'
-export type { MenuItem } from './components/Menu/Menu.vue'
+export type { DropdownMenuItem } from './components/DropdownMenu/DropdownMenu.vue'
 export { dismissToast, toast } from './components/Toast/toast'
 export { hotkeyLabel, useHotkey } from './composables/useHotkey'
 export {
@@ -63,12 +63,12 @@ export {
   OCommand,
   ODialog,
   ODrawer,
+  ODropdownMenu,
   OEmpty,
   OField,
   OInput,
   OKbd,
   OKeyCapture,
-  OMenu,
   OPagination,
   OPinInput,
   OPips,
@@ -107,12 +107,12 @@ const components = {
   OCommand,
   ODialog,
   ODrawer,
+  ODropdownMenu,
   OEmpty,
   OField,
   OInput,
   OKbd,
   OKeyCapture,
-  OMenu,
   OPagination,
   OPinInput,
   OPips,
@@ -159,12 +159,12 @@ declare module 'vue' {
     OCommand: typeof OCommand
     ODialog: typeof ODialog
     ODrawer: typeof ODrawer
+    ODropdownMenu: typeof ODropdownMenu
     OEmpty: typeof OEmpty
     OField: typeof OField
     OInput: typeof OInput
     OKbd: typeof OKbd
     OKeyCapture: typeof OKeyCapture
-    OMenu: typeof OMenu
     OPagination: typeof OPagination
     OPinInput: typeof OPinInput
     OPips: typeof OPips
