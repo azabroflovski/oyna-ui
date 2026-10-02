@@ -21,6 +21,14 @@ const open = defineModel<boolean>('open', { default: false })
 
 // hotkeys inside the popover work; the ones behind it are off while it is open
 useLayer(open)
+
+// Focus goes to the panel itself, not to its first control, as in a dialog: otherwise Enter would
+// press whatever button comes first instead of reaching the hotkey of the main one.
+function focusPanel(event: Event) {
+  event.preventDefault()
+  // the event comes from the wrapper that positions the panel, so the panel is looked up from it
+  if (event.target instanceof HTMLElement) event.target.querySelector<HTMLElement>('.o-popover')?.focus()
+}
 </script>
 
 <template>
@@ -29,7 +37,15 @@ useLayer(open)
       <slot />
     </PopoverTrigger>
     <PopoverPortal>
-      <PopoverContent class="o-popover" :side :align :side-offset="8" :collision-padding="8">
+      <PopoverContent
+        class="o-popover"
+        tabindex="-1"
+        :side
+        :align
+        :side-offset="8"
+        :collision-padding="8"
+        @open-auto-focus="focusPanel"
+      >
         <slot name="content" :close="() => (open = false)" />
       </PopoverContent>
     </PopoverPortal>

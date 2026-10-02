@@ -1,9 +1,17 @@
 <script setup>
 import { CircleHelp } from '@lucide/vue'
+import { toast } from 'oyna-ui'
 import { ref } from 'vue'
 
 const onlyErrors = ref(false)
 const slow = ref(true)
+const cacheCleared = ref(false)
+
+function clearCache(close) {
+  close()
+  cacheCleared.value = true
+  toast('Cache cleared', { tone: 'accent' })
+}
 </script>
 
 # Popover
@@ -49,6 +57,39 @@ The default slot takes exactly one element that can receive focus; it becomes th
 - **[Menu](/components/menu)** — a list of actions.
 - **Popover** — anything else that is small and belongs to one place on the page.
 - **[Dialog](/components/dialog)** — something that needs the whole of the user's attention.
+
+## Confirming an action
+
+There is no separate "popconfirm" component: a popover with a line of text and two buttons is one. Give the confirming button `hotkey="Enter"`, so the question can be answered without the mouse; <OKbd>Esc</OKbd> is the "no".
+
+<Demo>
+  <OPopover align="center">
+    <OButton>Clear the cache</OButton>
+    <template #content="{ close }">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <span>Clear the cache of <b>public-api</b>? The next requests will be slower until it fills again.</span>
+        <div style="display: flex; justify-content: flex-end; gap: 8px">
+          <OButton size="sm" variant="ghost" @click="close">Keep it</OButton>
+          <OButton size="sm" variant="primary" hotkey="Enter" @click="clearCache(close)">Clear</OButton>
+        </div>
+      </div>
+    </template>
+  </OPopover>
+</Demo>
+
+```vue
+<OPopover align="center">
+  <OButton>Clear the cache</OButton>
+
+  <template #content="{ close }">
+    <span>Clear the cache of <b>public-api</b>? The next requests will be slower until it fills again.</span>
+    <OButton size="sm" variant="ghost" @click="close">Keep it</OButton>
+    <OButton size="sm" variant="primary" hotkey="Enter" @click="clearCache(close)">Clear</OButton>
+  </template>
+</OPopover>
+```
+
+Keep this for small things that can be done again or undone. Something that cannot be taken back — deleting a project, revoking a token — deserves a [dialog](/components/dialog): it has room to say what will be lost, and it cannot be dismissed by a stray click.
 
 ## Hotkeys and width
 

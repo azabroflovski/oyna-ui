@@ -143,6 +143,9 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   Later the same day he asked for seven more: Command, Combobox, Slider, Avatar, then Drawer,
   Accordion, Pagination. Considered and left out: DatePicker (too costly), Divider (a neutral line),
   Breadcrumb / Stepper / Carousel (admin-panel territory).
+- No Popconfirm (decided with the owner on 2026-10-02): Reka has no such primitive, and a popover
+  with two buttons is one already. The Popover page has the recipe; add a component only when a real
+  project repeats that popover in several places.
 - Drawer is an `ODialog` with a class that moves it to an edge (`side`: right, left, bottom), so it
   shares the dialog's header, focus, layer and touch rules; it uses Reka's Dialog, not Reka's Drawer
   (swipes and snap points are movement). It fades and does not slide. Accordion follows Tabs (`items`
@@ -181,6 +184,8 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - `OKeyCapture` takes its key press in the capture phase and stops it, so no hotkey sees it.
 - The closed `OSelect` takes its label from `items`: Reka does not render the options while closed.
 - A dialog focuses itself on open, not its first control, so Enter reaches the hotkey of its main button.
+  A popover does the same (its panel has `tabindex="-1"`); Reka sends that focus event from the
+  wrapper that positions the panel, so the panel is looked up inside the event's target.
 - No comment before the root element of a component template: it makes the template a fragment in
   development, and `class` / attributes stop falling through.
 - The component count and the stylesheet size are quoted in README.md ("What you get") and on the
