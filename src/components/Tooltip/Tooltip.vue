@@ -39,6 +39,8 @@ withDefaults(
   padding: 6px 10px;
   border-radius: var(--o-radius-sm);
   background: var(--o-layer);
+  -webkit-backdrop-filter: blur(var(--o-layer-blur));
+  backdrop-filter: blur(var(--o-layer-blur));
   box-shadow: 0 8px 24px rgb(0 0 0 / 0.5);
   color: var(--o-text);
   font: 400 12px/1.4 var(--o-font-sans);

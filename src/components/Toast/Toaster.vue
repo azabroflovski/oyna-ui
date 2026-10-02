@@ -48,6 +48,8 @@ import { dismissToast, toasts } from './toast'
   border: 0;
   border-radius: 12px;
   background: var(--o-layer);
+  -webkit-backdrop-filter: blur(var(--o-layer-blur));
+  backdrop-filter: blur(var(--o-layer-blur));
   box-shadow: 0 16px 40px rgb(0 0 0 / 0.5);
   color: var(--o-text);
   font: 400 14px/1.4 var(--o-font-sans);

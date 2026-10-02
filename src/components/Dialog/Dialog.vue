@@ -73,7 +73,8 @@ function focusDialog(event: Event) {
   inset: 0;
   z-index: 100;
   background: rgb(0 0 0 / 0.6);
-  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   animation: o-fade-in var(--o-duration) ease;
 }
 
@@ -92,6 +93,8 @@ function focusDialog(event: Event) {
   padding: 28px;
   border-radius: var(--o-radius-lg);
   background: var(--o-layer);
+  -webkit-backdrop-filter: blur(var(--o-layer-blur));
+  backdrop-filter: blur(var(--o-layer-blur));
   box-shadow: 0 30px 80px rgb(0 0 0 / 0.6);
   color: var(--o-text);
   font-family: var(--o-font-sans);

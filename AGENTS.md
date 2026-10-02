@@ -126,7 +126,11 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - Checkbox, Radio and Switch are native inputs kept invisible over a drawn shape, not Reka: forms and
   the keyboard work for free. `useSplitAttrs` sends `class` / `style` to the label and the rest to
   the input.
-- Everything that floats (dialog, popover, menu, select list, tooltip, toast) uses `--o-layer`.
+- Everything that floats (dialog, popover, menu, select list, tooltip, toast) uses `--o-layer` and
+  blurs the page under it with `backdrop-filter: blur(var(--o-layer-blur))`, with the `-webkit-`
+  twin for older Safari (the owner asked for it on 2026-10-02: text under a layer must not show as
+  it is). A new floating thing needs both lines. `--o-layer` is 0.8 opaque for that reason; do not
+  lower it without rechecking that `--o-text-3` still reads over the brightest glow.
 - Touch (the owner's decision on 2026-10-02): the library adapts to a finger only inside
   `@media (pointer: coarse)`, at the end of each component's `<style>`; the desktop look does not
   change. There: key hints are hidden (the hotkey stays registered), a small control grows its
