@@ -154,7 +154,8 @@ export async function launch() {
     },
     /** Presses a physical key, e.g. `KeyD`, `Escape`, `Enter`. */
     async press(code: string) {
-      const key = code.replace(/^Key/, '').toLowerCase()
+      // a letter is its lower case; a named key (`Enter`, `Escape`) is spelled as the browser spells it
+      const key = code.startsWith('Key') ? code.slice(3).toLowerCase() : code
       await send('Input.dispatchKeyEvent', { type: 'keyDown', code, key })
       await send('Input.dispatchKeyEvent', { type: 'keyUp', code, key })
     },

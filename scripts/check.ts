@@ -19,6 +19,17 @@ try {
   await page.wait(300)
   await shot('select-open')
 
+  await page.goto(`${base}/components/combobox`)
+  await page.click('.demo .o-combobox__input')
+  await page.wait(300)
+  await shot('combobox-open')
+
+  await page.goto(`${base}/components/command`)
+  await page.press('KeyK')
+  await page.wait(300)
+  await shot('command-open')
+  await page.press('Escape')
+
   await page.goto(`${base}/components/menu`)
   await page.click('.demo .o-button')
   await page.wait(300)
@@ -127,6 +138,10 @@ try {
     '/components/card',
     '/components/tag',
     '/components/timeline',
+    '/components/avatar',
+    '/components/slider',
+    '/components/combobox',
+    '/components/command',
     '/theme',
     '/guide/why',
   ]) {
