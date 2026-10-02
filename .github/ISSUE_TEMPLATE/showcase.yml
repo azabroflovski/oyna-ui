@@ -1,0 +1,38 @@
+name: Add a site to the showcase
+description: Built something with Oyna UI? Get it listed on oyna-ui.org.
+title: 'Showcase: '
+labels: [showcase]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: What the site or the app is called.
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Address
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: about
+    attributes:
+      label: What it is
+      description: One or two sentences, as they should appear on the page.
+    validations:
+      required: true
+  - type: textarea
+    id: usage
+    attributes:
+      label: How it uses Oyna UI
+      description: The package as it is, a custom theme, a few components next to your own?
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before you send
+      options:
+        - label: The site is public and I am its author, or I have the author's say-so.
+          required: true

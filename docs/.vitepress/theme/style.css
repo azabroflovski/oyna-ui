@@ -619,6 +619,83 @@ a {
   color: var(--o-text-2);
 }
 
+/* the examples page: the library's own screens in one tab, real sites in the other */
+.examples-tabs {
+  margin-top: 16px;
+}
+
+.examples-tabs .section-lead {
+  margin: 4px 0 0;
+  max-width: 760px;
+}
+
+.sites {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0 56px;
+}
+
+.sites__item {
+  display: flex;
+  border-radius: var(--o-radius);
+}
+
+.sites__item:focus-visible {
+  outline: 2px solid var(--o-accent);
+  outline-offset: 4px;
+}
+
+.sites__card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 24px;
+  transition: background-color var(--o-duration) ease;
+}
+
+/* lit on hover: light, not movement */
+.sites__item:hover .sites__card {
+  background: var(--o-fill-2);
+}
+
+.sites__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sites .sites__name {
+  margin: 0;
+  font: 700 24px/1.1 var(--o-font-display);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.sites__arrow {
+  width: 18px;
+  height: 18px;
+  color: var(--o-text-3);
+}
+
+.sites p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--o-text-2);
+}
+
+.sites__add .o-button {
+  margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+  .sites {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .section-lead {
   margin: -8px 0 0;
   color: var(--o-text-2);
