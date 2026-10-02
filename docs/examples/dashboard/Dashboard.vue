@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ArrowRight, TriangleAlert } from '@lucide/vue'
+import { ArrowRight, Command, FolderOpen, Radio, Rocket, Settings, Siren, TriangleAlert } from '@lucide/vue'
+import type { CommandItem } from 'oyna-ui'
 import { toast } from 'oyna-ui'
-import { withBase } from 'vitepress'
+import { useRouter, withBase } from 'vitepress'
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 
 import type { Period } from './data'
@@ -45,6 +46,38 @@ function deploy() {
   toast(`Deploying ${version.value} to ${environment.value}`, { tone: 'accent' })
   version.value = ''
 }
+
+// everything this screen can do, one key away
+const router = useRouter()
+const commandsOpen = ref(false)
+const commands = computed<CommandItem[]>(() => [
+  { value: 'deploy', label: 'New deploy', group: 'Actions', icon: Rocket, hint: 'N' },
+  {
+    value: 'live',
+    label: live.value ? 'Pause live updates' : 'Resume live updates',
+    group: 'Actions',
+    icon: Radio,
+    hint: 'L',
+    keywords: 'live updates',
+  },
+  ...periods.map((item) => ({
+    value: `period:${item.value}`,
+    label: `Show ${item.label.toLowerCase()}`,
+    group: 'Period',
+    disabled: item.value === period.value,
+    hint: item.value === period.value ? 'shown' : undefined,
+  })),
+  { value: '/examples/incident', label: 'Incident 482', group: 'Go to', icon: Siren, keywords: 'search degraded' },
+  { value: '/examples/projects', label: 'Projects', group: 'Go to', icon: FolderOpen },
+  { value: '/examples/settings', label: 'Settings', group: 'Go to', icon: Settings, keywords: 'profile team tokens' },
+])
+
+function run({ value }: CommandItem) {
+  if (value === 'deploy') deployOpen.value = true
+  else if (value === 'live') live.value = !live.value
+  else if (value.startsWith('period:')) period.value = value.slice(7) as Period
+  else router.go(withBase(value))
+}
 </script>
 
 <template>
@@ -54,6 +87,7 @@ function deploy() {
       <OSelect v-model="project" :items="projects" aria-label="Project" />
       <OTabs v-model="period" :items="periods" />
       <span class="dash__spacer" />
+      <OButton hotkey="KeyK" @click="commandsOpen = true"><Command /> Commands</OButton>
       <OToggle v-model="live" hotkey="KeyL"> Live </OToggle>
       <OButton variant="primary" hotkey="KeyN" @click="deployOpen = true"> New deploy </OButton>
     </header>
@@ -138,9 +172,11 @@ function deploy() {
     </OCard>
 
     <p class="dash__note">
-      <OKbd code="KeyN">N</OKbd> new deploy · <OKbd code="KeyL">L</OKbd> live updates ·
-      <OKbd code="Escape">Esc</OKbd> closes the dialog
+      <OKbd code="KeyK">K</OKbd> commands · <OKbd code="KeyN">N</OKbd> new deploy · <OKbd code="KeyL">L</OKbd> live
+      updates · <OKbd code="Escape">Esc</OKbd> closes the dialog
     </p>
+
+    <OCommand v-model:open="commandsOpen" :items="commands" @select="run" />
 
     <ODialog v-model:open="deployOpen" title="New deploy" description="Ships a version to one environment.">
       <OField label="Version" hint="For example 1.4.0" :error="versionError">

@@ -212,6 +212,14 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - A Table column's `key` need not be a field of the row (a column of actions drawn by its slot).
 - Not every example is an emergency: most alerts in the examples are plain ones (unsaved changes,
   plan usage, where keys are stored). Danger is for the Incident screen and for real mistakes.
+- The examples page (`ExamplesIndex.vue`) has two tabs: the library's example screens, and "Sites",
+  real sites with this look (`/examples/#sites` opens it). A site is sent through the issue form
+  `.github/ISSUE_TEMPLATE/showcase.yml` (the "Add your site" button) and added to `sites` in that
+  component by hand. invoke.wtf is listed there as where the look comes from, not as a site built
+  with the library: see "Where the look comes from".
+- Every component added on 2026-10-02 has a place in an example: Command in Dashboard (K), Combobox
+  (time zone), Slider (spike threshold) and Avatar in Settings, Drawer with Pagination in Projects
+  (a project's details, from its row menu), Accordion in Incident (the runbook).
 - An example lives in `docs/examples/<name>/` (a component plus its data file) with a page
   `docs/examples/<name>.md`. The page is the example and nothing else: no notes under it (the owner
   removed the "How it is built" sections) and no code inline: `<ExampleSource dir files>` adds a

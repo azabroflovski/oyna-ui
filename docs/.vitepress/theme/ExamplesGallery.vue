@@ -9,22 +9,22 @@ const examples = [
   {
     name: 'dashboard',
     title: 'Dashboard',
-    text: 'An API overview: numbers that load, a chart, an alert, an activity feed, a deploy dialog.',
+    text: 'An API overview: numbers that load, a chart, an alert, an activity feed, a deploy dialog, and a command palette on K.',
   },
   {
     name: 'incident',
     title: 'Incident',
-    text: 'Something is at stake. Danger tells one story in five places, and a rollback turns the page calm.',
+    text: 'Something is at stake. Danger tells one story in five places, a runbook says what to do, and a rollback turns the page calm.',
   },
   {
     name: 'projects',
     title: 'Projects',
-    text: 'A list and all its states: loading, filtered to nothing, empty, with a menu on every row.',
+    text: 'A list and all its states: loading, filtered to nothing, empty, with a menu on every row and the details of a project in a drawer.',
   },
   {
     name: 'settings',
     title: 'Settings',
-    text: 'Five tabs: a form that knows it is unsaved, a team, API tokens shown once, notifications, key bindings.',
+    text: 'Five tabs: a form that knows it is unsaved, a team, API tokens shown once, notifications with a threshold, key bindings.',
   },
 ]
 </script>

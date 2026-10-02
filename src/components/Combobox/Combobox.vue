@@ -10,10 +10,11 @@ import {
   ComboboxTrigger,
   ComboboxViewport,
 } from 'reka-ui'
-import { ref } from 'vue'
+import { inject, ref } from 'vue'
 
 import { useLayer } from '../../composables/layers'
 import { useSplitAttrs } from '../../composables/splitAttrs'
+import { fieldKey } from '../Field/context'
 
 defineOptions({ inheritAttrs: false })
 
@@ -32,6 +33,8 @@ const props = withDefaults(
 const model = defineModel<T>()
 // `class` and `style` go to the wrapper; `aria-label`, `name` and the rest to the field itself
 const attrs = useSplitAttrs()
+// inside an `OField` the field takes its label, its message and its error, as an input does
+const field = inject(fieldKey, undefined)
 
 // the field shows the label of the chosen item, not its value
 const labelOf = (value: T | undefined) => props.items.find((item) => item.value === value)?.label ?? ''
@@ -49,7 +52,10 @@ function selectText(event: FocusEvent) {
   <ComboboxRoot v-model="model" v-model:open="open" :disabled open-on-click>
     <ComboboxAnchor class="o-combobox" v-bind="attrs.root">
       <ComboboxInput
+        :id="field?.id"
         class="o-input o-combobox__input"
+        :aria-invalid="field?.invalid.value || undefined"
+        :aria-describedby="field?.messageId.value"
         v-bind="attrs.control"
         :display-value="labelOf"
         :placeholder

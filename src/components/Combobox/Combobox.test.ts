@@ -1,7 +1,8 @@
 import { mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
-import { nextTick } from 'vue'
+import { h, nextTick } from 'vue'
 
+import OField from '../Field/Field.vue'
 import OCombobox from './Combobox.vue'
 
 const items = [
@@ -31,6 +32,20 @@ describe('oCombobox', () => {
     const wrapper = mount(OCombobox, { props: { items, placeholder: 'Region' }, attachTo: document.body })
     expect(wrapper.find('input').attributes('placeholder')).toBe('Region')
     expect(document.querySelector('.o-combobox__list')).toBeNull()
+    wrapper.unmount()
+  })
+
+  it('takes its label and its error from a field around it', async () => {
+    const wrapper = mount(OField, {
+      props: { label: 'Region', error: 'Choose a region' },
+      slots: { default: () => h(OCombobox, { items }) },
+      attachTo: document.body,
+    })
+    await nextTick()
+    const field = wrapper.find('input')
+    expect(wrapper.find('label').attributes('for')).toBe(field.attributes('id'))
+    expect(field.attributes('aria-invalid')).toBe('true')
+    expect(document.getElementById(field.attributes('aria-describedby')!)?.textContent?.trim()).toBe('Choose a region')
     wrapper.unmount()
   })
 

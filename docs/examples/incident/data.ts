@@ -39,6 +39,14 @@ export const endpoints = [
   },
 ]
 
+/** What the person on call does, in order; the steps open one at a time. */
+export const runbook = [
+  { value: 'check', label: '1. Look at the last deploy' },
+  { value: 'rollback', label: '2. Roll back' },
+  { value: 'tell', label: '3. Tell the customers' },
+  { value: 'after', label: '4. Write it down' },
+] as const
+
 export const events = [
   {
     title: 'Error rate over 5% on GET /v1/search',

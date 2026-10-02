@@ -16,10 +16,18 @@ import {
   sections,
   tokenColumns,
   tokens as initialTokens,
+  zones,
 } from './options'
 
 // --- profile: a form that knows when it differs from what is saved
-const saved = ref({ name: 'Ada Lovelace', handle: 'ada', bio: '', language: 'en', density: 'comfortable' })
+const saved = ref({
+  name: 'Ada Lovelace',
+  handle: 'ada',
+  bio: '',
+  language: 'en',
+  zone: 'Asia/Tashkent',
+  density: 'comfortable',
+})
 const form = reactive({ ...saved.value })
 const dirty = computed(() => JSON.stringify(form) !== JSON.stringify(saved.value))
 
@@ -127,6 +135,8 @@ function revoke() {
 
 // --- notifications
 const notify = ref({ deploys: true, errors: true, digest: false, marketing: false })
+// an error spike is a rate over this many percent
+const threshold = ref(5)
 const emailConfirmed = ref(false)
 
 // confirming the email: a code that checks itself when the last digit is in
@@ -214,6 +224,9 @@ function remove() {
               <div>
                 <OSelect v-model="form.language" :items="languages" aria-label="Language" />
               </div>
+              <OField label="Time zone" hint="Type a city to find it">
+                <OCombobox v-model="form.zone" :items="zones" />
+              </OField>
             </div>
             <ORadio v-model="form.density" :items="densities" label="Density" />
           </OCard>
@@ -325,6 +338,16 @@ function remove() {
           <OCard class="settings__col">
             <OSwitch v-model="notify.deploys">Deploys</OSwitch>
             <OSwitch v-model="notify.errors">Error spikes</OSwitch>
+            <div class="settings__col settings__threshold">
+              <span class="settings__note">A spike is an error rate over {{ threshold }}%</span>
+              <OSlider
+                v-model="threshold"
+                :min="1"
+                :max="20"
+                :disabled="!notify.errors"
+                aria-label="Error rate that counts as a spike, in percent"
+              />
+            </div>
             <OSwitch v-model="notify.digest">Weekly digest</OSwitch>
             <div class="settings__row">
               <OSwitch v-model="notify.marketing" class="settings__grow">Product news</OSwitch>
@@ -488,6 +511,10 @@ function remove() {
 
 .settings__scroll {
   overflow-x: auto;
+}
+
+.settings__threshold {
+  gap: 8px;
 }
 
 .settings__member {

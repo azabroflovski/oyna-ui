@@ -6,6 +6,7 @@ import {
   FolderOpen,
   Info,
   ListFilter,
+  PanelRight,
   Plus,
   RefreshCw,
   SearchX,
@@ -16,7 +17,7 @@ import { toast } from 'oyna-ui'
 import { computed, onBeforeUnmount, ref } from 'vue'
 
 import type { Project } from './data'
-import { columns, initial, regions, tabs } from './data'
+import { columns, deployColumns, deploys, initial, regions, tabs } from './data'
 
 const projects = ref<Project[]>(initial.map((project) => ({ ...project })))
 
@@ -45,6 +46,7 @@ function clearFilters() {
 /** The actions of one row: an archived project can only come back or be deleted. */
 function actionsOf(project: Project): MenuItem[] {
   return [
+    { label: 'Details', icon: PanelRight, onSelect: () => show(project) },
     project.archived
       ? { label: 'Restore', icon: ArchiveRestore, onSelect: () => setArchived(project, false) }
       : { label: 'Archive', icon: Archive, onSelect: () => setArchived(project, true) },
@@ -56,6 +58,18 @@ function actionsOf(project: Project): MenuItem[] {
 function setArchived(project: Project, archived: boolean) {
   project.archived = archived
   toast(archived ? `${project.name} archived` : `${project.name} restored`)
+}
+
+// the details of one project stand at the side, the list stays in view behind them
+const shownProject = ref<Project>()
+const deployPage = ref(1)
+const deploysPerPage = 5
+const deployRows = computed(() =>
+  deploys.slice((deployPage.value - 1) * deploysPerPage, deployPage.value * deploysPerPage),
+)
+function show(project: Project) {
+  deployPage.value = 1
+  shownProject.value = project
 }
 
 // deleting asks first
@@ -216,7 +230,8 @@ function create() {
     </OCard>
 
     <p class="projects__note">
-      <OKbd code="KeyN">N</OKbd> new project · try a filter that matches nothing, archive a project, or delete them all
+      <OKbd code="KeyN">N</OKbd> new project · open a project's details from its menu, try a filter that matches
+      nothing, archive a project, or delete them all
     </p>
 
     <ODialog v-model:open="creating" title="New project" description="One service with its deploys and its numbers.">
@@ -228,6 +243,40 @@ function create() {
         <OButton variant="primary" hotkey="Enter" :disabled="!name || !!nameError" @click="create">Create</OButton>
       </div>
     </ODialog>
+
+    <ODrawer
+      :open="!!shownProject"
+      :title="shownProject?.name ?? ''"
+      :description="`${shownProject?.region} · last deploy ${shownProject?.deployed}`"
+      @update:open="shownProject = undefined"
+    >
+      <template v-if="shownProject">
+        <div class="projects__row">
+          <OBadge v-if="shownProject.failing" tone="danger">Failing</OBadge>
+          <OBadge v-else-if="shownProject.archived">Archived</OBadge>
+          <OBadge v-else tone="accent">Healthy</OBadge>
+          <OSparkline
+            :values="shownProject.requests"
+            :tone="shownProject.failing ? 'danger' : 'accent'"
+            :width="180"
+            :height="36"
+            :label="`Requests of ${shownProject.name} over 7 days`"
+          />
+        </div>
+        <span class="projects__label">Deploys</span>
+        <OTable :columns="deployColumns" :rows="deployRows" row-key="version">
+          <template #by="{ row }">
+            <span class="projects__person"><OAvatar :name="row.by" size="sm" /> {{ row.by.split(' ')[0] }}</span>
+          </template>
+        </OTable>
+        <OPagination
+          v-model:page="deployPage"
+          :total="deploys.length"
+          :page-size="deploysPerPage"
+          label="Deploys, pages"
+        />
+      </template>
+    </ODrawer>
 
     <ODialog
       :open="!!deleting"
@@ -300,6 +349,20 @@ function create() {
 /* as tall as a table row, so the list does not jump when the rows come back */
 .projects__skeleton {
   height: 46px;
+}
+
+.projects__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--o-text-3);
+}
+
+.projects__person {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .projects__note {

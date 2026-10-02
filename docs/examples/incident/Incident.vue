@@ -4,10 +4,12 @@ import type { MenuItem } from 'oyna-ui'
 import { toast } from 'oyna-ui'
 import { computed, onBeforeUnmount, ref } from 'vue'
 
-import { columns, endpoints, errorRate, events, versions } from './data'
+import { columns, endpoints, errorRate, events, runbook, versions } from './data'
 
 const acknowledged = ref(false)
 const resolved = ref(false)
+// the step of the runbook that is open; it moves on once the rollback is done
+const step = ref<(typeof runbook)[number]['value'] | undefined>('rollback')
 
 const timeline = ref<{ title: string; time: string; text?: string; tone?: 'accent' | 'danger' }[]>([...events])
 
@@ -46,6 +48,7 @@ function rollBack() {
     rolling.value = false
     rollbackOpen.value = false
     resolved.value = true
+    step.value = 'tell'
     acknowledged.value = true
     timeline.value = [
       {
@@ -63,6 +66,7 @@ onBeforeUnmount(() => clearTimeout(timer))
 
 function reopen() {
   resolved.value = false
+  step.value = 'rollback'
   acknowledged.value = false
   timeline.value = [...events]
 }
@@ -130,10 +134,32 @@ function reopen() {
         </OCard>
       </div>
 
-      <OCard class="incident__col">
-        <span class="incident__label">What happened</span>
-        <OTimeline :items="timeline" />
-      </OCard>
+      <div class="incident__col">
+        <OCard class="incident__col">
+          <span class="incident__label">What happened</span>
+          <OTimeline :items="timeline" />
+        </OCard>
+        <OCard class="incident__col">
+          <span class="incident__label">Runbook</span>
+          <OAccordion v-model="step" :items="runbook">
+            <template #check>
+              Most incidents start with a deploy. If one went live less than an hour before the errors, it is the first
+              suspect: here it is v1.4.0, at 14:05.
+            </template>
+            <template #rollback>
+              Do not debug in production. Go back to the last healthy version first (<OKbd code="KeyR">R</OKbd>), then
+              find the cause in peace.
+            </template>
+            <template #tell
+              >Post on the status page within fifteen minutes, even if all there is to say is "we are
+              looking".</template
+            >
+            <template #after>
+              Within two days: what broke, how it was noticed, what will catch it next time. No names, no blame.
+            </template>
+          </OAccordion>
+        </OCard>
+      </div>
     </section>
 
     <p class="incident__note"><OKbd code="KeyR">R</OKbd> roll back · <OKbd code="KeyA">A</OKbd> acknowledge</p>

@@ -52,6 +52,19 @@ export const initial: Project[] = [
   },
 ]
 
+export const deployColumns = [
+  { key: 'version', label: 'Version' },
+  { key: 'when', label: 'When' },
+  { key: 'by', label: 'By' },
+] as const
+
+/** The deploys of a project, newest first: the same made-up history for each of them. */
+export const deploys = Array.from({ length: 17 }, (_, index) => ({
+  version: `v1.${Math.floor((16 - index) / 5) + 1}.${(16 - index) % 5}`,
+  when: index === 0 ? 'latest' : `${index * 2} days earlier`,
+  by: ['Ada Lovelace', 'Grace Hopper', 'Linus Torvalds'][index % 3]!,
+}))
+
 export const tabs = [
   { value: 'active', label: 'Active' },
   { value: 'archived', label: 'Archived' },

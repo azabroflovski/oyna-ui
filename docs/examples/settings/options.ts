@@ -14,6 +14,23 @@ export const languages = [
   { value: 'ru', label: 'Русский', hint: 'ru' },
 ]
 
+export const zones = [
+  { value: 'America/Los_Angeles', label: 'Los Angeles', hint: 'UTC−8' },
+  { value: 'America/Denver', label: 'Denver', hint: 'UTC−7' },
+  { value: 'America/Chicago', label: 'Chicago', hint: 'UTC−6' },
+  { value: 'America/New_York', label: 'New York', hint: 'UTC−5' },
+  { value: 'America/Sao_Paulo', label: 'São Paulo', hint: 'UTC−3' },
+  { value: 'Europe/London', label: 'London', hint: 'UTC+0' },
+  { value: 'Europe/Berlin', label: 'Berlin', hint: 'UTC+1' },
+  { value: 'Europe/Istanbul', label: 'Istanbul', hint: 'UTC+3' },
+  { value: 'Asia/Dubai', label: 'Dubai', hint: 'UTC+4' },
+  { value: 'Asia/Tashkent', label: 'Tashkent', hint: 'UTC+5' },
+  { value: 'Asia/Kolkata', label: 'Kolkata', hint: 'UTC+5:30' },
+  { value: 'Asia/Singapore', label: 'Singapore', hint: 'UTC+8' },
+  { value: 'Asia/Tokyo', label: 'Tokyo', hint: 'UTC+9' },
+  { value: 'Australia/Sydney', label: 'Sydney', hint: 'UTC+10' },
+]
+
 export const densities = [
   { value: 'comfortable', label: 'Comfortable', hint: 'More air between rows' },
   { value: 'compact', label: 'Compact', hint: 'More rows on a screen' },
