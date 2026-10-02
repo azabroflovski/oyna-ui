@@ -228,6 +228,11 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   screenshot of each example from `docs/public/examples/`. After changing an example's look, redraw
   them: `bun scripts/thumbs.ts <base url>` with the docs running. A new example needs an entry in
   the gallery, in `scripts/thumbs.ts`, in the sidebar's Examples group and in `scripts/check.ts`.
+- The docs build also writes them for AI assistants (`docs/.vitepress/llms.ts`, from `buildEnd`):
+  `/llms.txt` (an index with the rules that are easy to get wrong), `/llms-full.txt` and a `.md` next
+  to every page, all made from the same Markdown with the live demos and Vue parts taken out. The
+  list of rules at the top of `llms.txt` is written by hand in that file: update it when a rule or a
+  name changes. They exist only in a build, not in `docs:dev`.
 - Docs prose rules (`p`, `li`) are written with `:where(.content)` so they never beat a component's
   own styles: a `<p>` inside a component is not prose.
 - A Table column's `key` need not be a field of the row (a column of actions drawn by its slot).

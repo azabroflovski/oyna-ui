@@ -126,3 +126,13 @@ Tabs, Dialog, Select, DropdownMenu, Popover, Tooltip and PinInput are built on [
 
 Besides the components, `style.css` sets on `body` a zero margin, the text font, white text and the
 dark background colour, and makes scrollbars thin and translucent. Nothing else is reset.
+
+## With an AI assistant
+
+An assistant has not seen this library while it was trained, so point it at the docs written for it:
+
+- [`/llms.txt`](https://oyna-ui.org/llms.txt) — what the library is, the rules that are easy to get wrong, and a list of every page;
+- [`/llms-full.txt`](https://oyna-ui.org/llms-full.txt) — the whole documentation in one file;
+- every page of this site also exists as plain Markdown: add `.md` to its address, as in `/components/button.md`.
+
+Paste the first address into the chat, or add a line to your project's instructions for the assistant: "This project uses Oyna UI; read https://oyna-ui.org/llms.txt before writing interface code."

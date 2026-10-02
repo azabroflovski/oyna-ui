@@ -2,6 +2,8 @@ import { fileURLToPath } from 'node:url'
 
 import { defineConfigWithTheme } from 'vitepress'
 
+import { writeLlms } from './llms'
+
 export interface ThemeConfig {
   repo: string
   branch: string
@@ -20,6 +22,10 @@ export default defineConfigWithTheme<ThemeConfig>({
   cleanUrls: true,
   // for search engines: every page of the docs, at the address the site really lives at
   sitemap: { hostname: site },
+  // the docs once more, as plain text for AI assistants: /llms.txt and a .md next to every page
+  async buildEnd(config) {
+    await writeLlms({ srcDir: config.srcDir, outDir: config.outDir, site, description, theme: config.site.themeConfig })
+  },
   head: [
     // no pinch zoom on a phone (the owner's choice): the docs are laid out for the width they get.
     // iOS ignores `user-scalable`, so `touch-action` on the page does the same there (style.css).

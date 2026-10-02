@@ -9,7 +9,8 @@ no borders, light used as a signal, condensed display type for numbers and headi
 
 _Oyna_ is Uzbek for "glass" — and for "window" and "mirror".
 
-Docs and live examples: [oyna-ui.org](https://oyna-ui.org).
+Docs and live examples: [oyna-ui.org](https://oyna-ui.org). For an AI assistant:
+[oyna-ui.org/llms.txt](https://oyna-ui.org/llms.txt).
 
 ## Why it exists
 
