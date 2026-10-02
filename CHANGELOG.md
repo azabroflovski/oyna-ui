@@ -5,7 +5,9 @@
 - **Breaking:** `OMenu` is now `ODropdownMenu`, its type `MenuItem` is `DropdownMenuItem`, and its
   classes are `.o-dropdown-menu…` instead of `.o-menu…`. Rename them in your code; nothing else about
   the component changed.
-- Command: a palette of everything the app can do, opened with a key and searched by typing.
+- Command: a palette of everything the app can do, opened with a key and searched by typing. It can
+  also front a search of your own (`:filter="false"` with `v-model:query`); an item may have a
+  `description`, and there is a `footer` slot.
 - Combobox: a choice from a long list, found by typing.
 - Slider: a number picked by dragging.
 - Avatar: a person as a picture or as initials.

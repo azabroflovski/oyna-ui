@@ -59,6 +59,25 @@ describe('oCommand', () => {
     wrapper.unmount()
   })
 
+  it('shows the items as given and tells what is typed when the page filters them itself', async () => {
+    const wrapper = mount(OCommand, {
+      props: {
+        items: [{ value: '/a', label: 'Button', description: 'An action, with a hotkey' }],
+        open: true,
+        filter: false,
+      },
+      slots: { footer: 'Enter to open' },
+      attachTo: document.body,
+    })
+    await nextTick()
+    await type('zzz')
+    expect(rows()).toHaveLength(1)
+    expect(document.querySelector('.o-command__description')!.textContent).toBe('An action, with a hotkey')
+    expect(wrapper.emitted('update:query')!.at(-1)).toEqual(['zzz'])
+    expect(document.querySelector('.o-command')!.textContent).toContain('Enter to open')
+    wrapper.unmount()
+  })
+
   it('renders nothing while closed', () => {
     const wrapper = mount(OCommand, { props: { items }, attachTo: document.body })
     expect(document.querySelector('.o-command')).toBeNull()

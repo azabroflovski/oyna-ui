@@ -167,7 +167,8 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - Command is an `ODialog` holding a Reka Listbox; it filters by itself (every typed word must occur
   in the label, group or keywords) and keeps the first row lit, so Enter always runs something: Reka
   unlights a row when the pointer leaves the list, also when the row under it is filtered away. It
-  has no opening key of its own. The docs Search is older and still hand-made, not an `OCommand`.
+  has no opening key of its own. The docs Search is an `OCommand` with `:filter="false"`: it does its
+  own search over the index and hands the palette the results (`description` is the excerpt).
 - Combobox's list reuses the select's classes (`o-select__list`, `o-select__option`); its field is
   an `o-input`. Slider's model is one number (Reka's is a list); `aria-label` goes to its thumb.
 - A key looks like a key cap everywhere (`o-kbd`: a face lit from above on a dark lip); KeyCapture and

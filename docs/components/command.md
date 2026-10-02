@@ -66,6 +66,41 @@ Every typed word must occur in the item's `label`, `group` or `keywords`, in any
 
 The palette has no key of its own. Open it from a button that owns a hotkey, as above, or with [`useHotkey`](/guide/hotkeys). Hotkeys are single physical keys, so the palette here opens on <OKbd code="KeyK">K</OKbd>; a combination such as Ctrl+K is yours to listen for.
 
+## Your own search
+
+By default the palette filters `items` itself. With `:filter="false"` it shows them as given, and tells you what is typed through `v-model:query`: the search is then yours — a request to a server, or one with its own idea of what comes first. An item's `description` is a second, dimmer line under its label, for the words around a match.
+
+```vue
+<script setup lang="ts">
+import type { CommandItem } from 'oyna-ui'
+import { ref, watch } from 'vue'
+
+const open = ref(false)
+const query = ref('')
+const results = ref<CommandItem[]>([])
+
+watch(query, async (text) => {
+  const found = await search(text)
+  results.value = found.map((page) => ({
+    value: page.url,
+    label: page.title,
+    hint: page.section,
+    description: page.excerpt,
+  }))
+})
+</script>
+
+<template>
+  <OCommand v-model:open="open" v-model:query="query" :items="results" :filter="false" title="Search" @select="go">
+    <template #footer>
+      <span><OKbd>↑</OKbd> <OKbd>↓</OKbd> to choose · <OKbd>Enter</OKbd> to open</span>
+    </template>
+  </OCommand>
+</template>
+```
+
+The `footer` slot stands under the list. The search of this site (press <OKbd code="Slash">/</OKbd>) is built exactly this way.
+
 ## Without groups
 
 Items without a `group` form one plain list. `title`, `placeholder` and `empty-text` set the words.
@@ -95,25 +130,34 @@ Items without a `group` form one plain list. `title`, `placeholder` and `empty-t
 
 ## Props
 
-| Prop           | Type            | Default            | Description                         |
-| -------------- | --------------- | ------------------ | ----------------------------------- |
-| `items`        | `CommandItem[]` | required           |                                     |
-| `v-model:open` | `boolean`       | `false`            |                                     |
-| `title`        | `string`        | `'Commands'`       | The dialog's title                  |
-| `placeholder`  | `string`        | `'Type a command'` |                                     |
-| `emptyText`    | `string`        | `'Nothing found'`  | Shown when nothing matches the text |
+| Prop            | Type            | Default            | Description                                                |
+| --------------- | --------------- | ------------------ | ---------------------------------------------------------- |
+| `items`         | `CommandItem[]` | required           |                                                            |
+| `v-model:open`  | `boolean`       | `false`            |                                                            |
+| `title`         | `string`        | `'Commands'`       | The dialog's title                                         |
+| `placeholder`   | `string`        | `'Type a command'` |                                                            |
+| `emptyText`     | `string`        | `'Nothing found'`  | Shown when nothing matches the text                        |
+| `filter`        | `boolean`       | `true`             | `false` shows the items as given: you narrow them yourself |
+| `v-model:query` | `string`        | `''`               | What is typed in the field                                 |
 
 ## CommandItem
 
-| Field      | Type        | Description                                             |
-| ---------- | ----------- | ------------------------------------------------------- |
-| `value`    | `string`    | What tells the items apart                              |
-| `label`    | `string`    | The text of the row                                     |
-| `group`    | `string`    | Items with the same group stand together under its name |
-| `hint`     | `string`    | A dim note at the end of the row                        |
-| `keywords` | `string`    | Extra words the item is found by                        |
-| `icon`     | `Component` | An icon component, e.g. from Lucide                     |
-| `disabled` | `boolean`   |                                                         |
+| Field         | Type        | Description                                             |
+| ------------- | ----------- | ------------------------------------------------------- |
+| `value`       | `string`    | What tells the items apart                              |
+| `label`       | `string`    | The text of the row                                     |
+| `group`       | `string`    | Items with the same group stand together under its name |
+| `hint`        | `string`    | A dim note at the end of the row                        |
+| `description` | `string`    | A second, dimmer line under the label                   |
+| `keywords`    | `string`    | Extra words the item is found by                        |
+| `icon`        | `Component` | An icon component, e.g. from Lucide                     |
+| `disabled`    | `boolean`   |                                                         |
+
+## Slots
+
+| Slot     | Description                                   |
+| -------- | --------------------------------------------- |
+| `footer` | Under the list: a hint about the keys, a link |
 
 ## Events
 

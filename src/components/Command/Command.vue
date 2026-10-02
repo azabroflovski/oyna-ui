@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ListboxContent, ListboxFilter, ListboxGroup, ListboxGroupLabel, ListboxItem, ListboxRoot } from 'reka-ui'
 import type { Component } from 'vue'
-import { computed, nextTick, ref, useTemplateRef, watch } from 'vue'
+import { computed, nextTick, useTemplateRef, watch } from 'vue'
 
 import ODialog from '../Dialog/Dialog.vue'
 
@@ -12,6 +12,8 @@ export interface CommandItem {
   group?: string
   /** A dim note at the end of the row, e.g. the keys that do the same. */
   hint?: string
+  /** A second, dimmer line under the label, cut at the end of the row. */
+  description?: string
   /** Extra words the item is found by, besides its label and group. */
   keywords?: string
   icon?: Component
@@ -26,19 +28,31 @@ const props = withDefaults(
     placeholder?: string
     /** Shown when nothing matches what was typed. */
     emptyText?: string
+    /**
+     * `false` when the search is yours: the items are shown as given, and you narrow them yourself by
+     * `v-model:query` (a search on a server, or one with its own idea of relevance).
+     */
+    filter?: boolean
   }>(),
-  { title: 'Commands', placeholder: 'Type a command', emptyText: 'Nothing found' },
+  { title: 'Commands', placeholder: 'Type a command', emptyText: 'Nothing found', filter: true },
 )
+
+defineSlots<{
+  /** Under the list: a hint about the keys, a link. */
+  footer?: () => unknown
+}>()
 
 const emit = defineEmits<{ select: [item: CommandItem] }>()
 const open = defineModel<boolean>('open', { default: false })
 
-const query = ref('')
+/** What is typed in the field; emptied every time the palette opens. */
+const query = defineModel<string>('query', { default: '' })
 const list = useTemplateRef<{ highlightFirstItem: () => void }>('list')
 const field = useTemplateRef<{ $el: HTMLInputElement }>('field')
 
 // every typed word must occur somewhere in the item: "dep prod" finds "Deploy to production"
 const found = computed(() => {
+  if (!props.filter) return props.items
   const words = query.value.toLowerCase().split(/\s+/).filter(Boolean)
   return props.items.filter((item) => {
     const text = `${item.label} ${item.group ?? ''} ${item.keywords ?? ''}`.toLowerCase()
@@ -59,7 +73,8 @@ const groups = computed(() => {
 // Enter must always have something to run: the first row is lit whenever the list changes, and again
 // when the pointer leaves the list (Reka unlights the row it was on, also when the row is filtered away)
 const highlightFirst = () => nextTick(() => list.value?.highlightFirstItem())
-watch(query, highlightFirst)
+// by the query when the palette filters itself, by the items when the page does
+watch(found, highlightFirst)
 watch(open, async (isOpen) => {
   if (!isOpen) return
   query.value = ''
@@ -91,12 +106,16 @@ function choose(item: CommandItem) {
             @select="choose(item)"
           >
             <component :is="item.icon" v-if="item.icon" class="o-command__icon" aria-hidden="true" />
-            <span class="o-command__text">{{ item.label }}</span>
+            <span class="o-command__text">
+              {{ item.label }}
+              <span v-if="item.description" class="o-command__description">{{ item.description }}</span>
+            </span>
             <span v-if="item.hint" class="o-command__hint">{{ item.hint }}</span>
           </ListboxItem>
         </ListboxGroup>
       </ListboxContent>
       <p v-else class="o-command__empty">{{ emptyText }}</p>
+      <slot name="footer" />
     </ListboxRoot>
   </ODialog>
 </template>
@@ -158,6 +177,17 @@ function choose(item: CommandItem) {
 
 .o-command__text {
   flex-grow: 1;
+  /* lets the second line be cut instead of widening the row */
+  min-width: 0;
+}
+
+.o-command__description {
+  display: block;
+  overflow: hidden;
+  font-size: 12px;
+  color: var(--o-text-3);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .o-command__hint {

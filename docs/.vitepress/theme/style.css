@@ -408,55 +408,6 @@ a {
   }
 }
 
-/* the page finder */
-.search__list {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  max-height: min(340px, 50dvh);
-  margin: 0;
-  padding: 0;
-  overflow-y: auto;
-  list-style: none;
-}
-
-.search__item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 8px 12px;
-  border-radius: var(--o-radius-sm);
-  color: var(--o-text-2);
-  font-size: 14px;
-}
-
-.search__title {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.search__title span {
-  flex-shrink: 0;
-  font-size: 12px;
-  color: var(--o-text-3);
-}
-
-/* the words around the match: one line, cut at the end */
-.search__snippet {
-  overflow: hidden;
-  font-size: 12px;
-  color: var(--o-text-3);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.search__item[aria-current] {
-  background: var(--o-fill-3);
-  color: var(--o-text);
-}
-
 /* the theme editor: controls on the left, a board of components on the right */
 .editor {
   display: grid;
