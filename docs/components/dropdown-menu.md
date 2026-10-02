@@ -51,7 +51,7 @@ The slot takes exactly one element that can receive focus; it becomes the trigge
 - `hint` is a dim note at the end of an item. It only shows text: binding the key is up to you.
 - `tone: 'danger'` is for the action that destroys something. One per menu, last, after a separator.
 
-A menu is for actions. To choose a value, use a [select](/components/select).
+A menu is for actions. To choose a value, use a [select](/components/select). For the same items on a right click, there is a [context menu](/components/context-menu).
 
 While the menu is open, page hotkeys are off.
 

@@ -148,6 +148,7 @@ try {
     '/components/slider',
     '/components/combobox',
     '/components/command',
+    '/components/context-menu',
     '/components/drawer',
     '/components/accordion',
     '/components/pagination',

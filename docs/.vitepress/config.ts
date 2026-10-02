@@ -112,6 +112,7 @@ export default defineConfigWithTheme<ThemeConfig>({
           { text: 'Drawer', link: '/components/drawer' },
           { text: 'Popover', link: '/components/popover' },
           { text: 'DropdownMenu', link: '/components/dropdown-menu' },
+          { text: 'ContextMenu', link: '/components/context-menu' },
           { text: 'Tooltip', link: '/components/tooltip' },
           { text: 'Toast', link: '/components/toast' },
         ],

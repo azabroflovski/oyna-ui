@@ -17,7 +17,7 @@ const principles = [
 const facts = [
   ['CSS framework', 'None'],
   ['Stylesheet, gzip', '6.7 kB'],
-  ['Components', '41'],
+  ['Components', '42'],
   ['Runtime dependencies', '1'],
 ] as const
 

@@ -11,6 +11,7 @@ import OCard from './components/Card/Card.vue'
 import OCheckbox from './components/Checkbox/Checkbox.vue'
 import OCombobox from './components/Combobox/Combobox.vue'
 import OCommand from './components/Command/Command.vue'
+import OContextMenu from './components/ContextMenu/ContextMenu.vue'
 import ODialog from './components/Dialog/Dialog.vue'
 import ODrawer from './components/Drawer/Drawer.vue'
 import ODropdownMenu from './components/DropdownMenu/DropdownMenu.vue'
@@ -61,6 +62,7 @@ export {
   OCheckbox,
   OCombobox,
   OCommand,
+  OContextMenu,
   ODialog,
   ODrawer,
   ODropdownMenu,
@@ -105,6 +107,7 @@ const components = {
   OCheckbox,
   OCombobox,
   OCommand,
+  OContextMenu,
   ODialog,
   ODrawer,
   ODropdownMenu,
@@ -157,6 +160,7 @@ declare module 'vue' {
     OCheckbox: typeof OCheckbox
     OCombobox: typeof OCombobox
     OCommand: typeof OCommand
+    OContextMenu: typeof OContextMenu
     ODialog: typeof ODialog
     ODrawer: typeof ODrawer
     ODropdownMenu: typeof ODropdownMenu

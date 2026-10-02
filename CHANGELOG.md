@@ -12,6 +12,7 @@
 - Drawer: a dialog standing at the right, the left or the bottom edge of the screen.
 - Accordion: sections that open one under another, one at a time or several.
 - Pagination: page numbers with arrows for a long list.
+- ContextMenu: the items of a dropdown menu on a right click, or a long press on a touch screen.
 - Popover focuses its panel on open, not its first control, as Dialog does: Enter reaches the hotkey
   of the main button instead of pressing whatever comes first.
 - Combobox inside a Field takes its label, hint and error from it.

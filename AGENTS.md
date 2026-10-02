@@ -8,7 +8,7 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-02: both planned waves are built and documented — tokens, base stylesheet,
-`useHotkey` and 41 components (see `src/index.ts`). `0.1.0` and `0.1.1` are on npm
+`useHotkey` and 42 components (see `src/index.ts`). `0.1.0` and `0.1.1` are on npm
 (published by the owner on 2026-10-02, tags `v0.1.0`, `v0.1.1`; `npm publish` builds through `prepack` and stays the owner's to run). _Oyna_ is Uzbek for "glass". In prose the
 library is always "Oyna UI" (the bare word is too common to search for); the short logo in the docs
 header stays "OYNA". Names: the npm package is the unscoped `oyna-ui`, the same as the repository
@@ -119,9 +119,9 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - A new component is registered in three places in `src/index.ts` (import, `components`,
   `GlobalComponents`) and gets a page in `docs/components/` plus a sidebar entry in
   `docs/.vitepress/config.ts`.
-- Reka UI is a runtime dependency (Tabs, Dialog, Select, DropdownMenu, Popover, Tooltip, PinInput, Combobox, Listbox under Command, Slider, Avatar, Accordion, Pagination) and is external in the build. It
+- Reka UI is a runtime dependency (Tabs, Dialog, Select, DropdownMenu, Popover, Tooltip, PinInput, Combobox, Listbox under Command, Slider, Avatar, Accordion, Pagination, ContextMenu) and is external in the build. It
   closes layers in order on Esc, so there is no `useEscStack`. What the library adds is
-  `useLayer(open)` in `composables/layers.ts`: while a dialog (Command is one), a popover, a select, a combobox or a menu is open, `useHotkey` fires
+  `useLayer(open)` in `composables/layers.ts`: while a dialog (Command is one), a popover, a select, a combobox, a dropdown menu or a context menu is open, `useHotkey` fires
   only for components inside the top layer. Any future modal layer must call it too.
 - Checkbox, Radio and Switch are native inputs kept invisible over a drawn shape, not Reka: forms and
   the keyboard work for free. `useSplitAttrs` sends `class` / `style` to the label and the rest to
@@ -151,6 +151,10 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   2026-10-02 to match Reka, Radix and shadcn, and to tell it from Select and Combobox). Its type is
   `DropdownMenuItem`, its classes `.o-dropdown-menu`; inside the component Reka's own item is imported
   as `RekaItem`. `/components/menu` redirects to the new page (`docs/public/_redirects`).
+- ContextMenu takes the same `DropdownMenuItem[]` and draws itself with the dropdown menu's classes
+  (`o-dropdown-menu…` plus `o-context-menu` on the panel), so the two never drift apart in look; only
+  the Reka primitives differ. No example uses it yet: a table row cannot be its trigger, since
+  `OTable` draws its own rows.
 - No Popconfirm (decided with the owner on 2026-10-02): Reka has no such primitive, and a popover
   with two buttons is one already. The Popover page has the recipe; add a component only when a real
   project repeats that popover in several places.
@@ -253,7 +257,7 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 
 ## Next steps
 
-Done: the library (41 components), the docs site with four example screens and a theme editor, the
+Done: the library (42 components), the docs site with four example screens and a theme editor, the
 browser check. The owner has looked at the result in a browser. The scales in
 `src/styles/tokens.css` (radii 8 / 14 / 24, four white fills) were proposed by the agent and never
 discussed in detail; they remain the working choice.
