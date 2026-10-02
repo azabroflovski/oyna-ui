@@ -1,0 +1,42 @@
+/*
+  The tokens of Oyna UI as Tailwind utilities (Tailwind 4), so your own blocks match the components:
+
+    @import 'tailwindcss';
+    @import 'oyna-ui/tailwind.css';
+
+  Then `bg-o-surface`, `text-o-text-2`, `ring-o-accent`, `rounded-o`, `font-o-display`, `duration-o`.
+  Every name starts with `o-`, so nothing of your own theme is replaced. The values are the library's
+  CSS variables: change `--o-accent` and the utilities follow, with no rebuild.
+
+  The library itself does not use Tailwind and does not need this file.
+*/
+@theme inline {
+  --color-o-accent: var(--o-accent);
+  --color-o-danger: var(--o-danger);
+  --color-o-on-accent: var(--o-on-accent);
+
+  --color-o-surface: var(--o-surface);
+  --color-o-surface-strong: var(--o-surface-strong);
+  --color-o-layer: var(--o-layer);
+
+  --color-o-fill-1: var(--o-fill-1);
+  --color-o-fill-2: var(--o-fill-2);
+  --color-o-fill-3: var(--o-fill-3);
+  --color-o-fill-4: var(--o-fill-4);
+
+  --color-o-text: var(--o-text);
+  --color-o-text-2: var(--o-text-2);
+  --color-o-text-3: var(--o-text-3);
+
+  --color-o-bg: var(--o-bg);
+
+  --radius-o-sm: var(--o-radius-sm);
+  --radius-o: var(--o-radius);
+  --radius-o-lg: var(--o-radius-lg);
+
+  --font-o-sans: var(--o-font-sans);
+  --font-o-display: var(--o-font-display);
+
+  --blur-o-layer: var(--o-layer-blur);
+  --transition-duration-o: var(--o-duration);
+}

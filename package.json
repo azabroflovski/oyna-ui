@@ -22,7 +22,10 @@
   },
   "files": [
     "dist",
-    "fonts.css"
+    "fonts.css",
+    "tailwind.css",
+    "unocss.js",
+    "unocss.d.ts"
   ],
   "type": "module",
   "sideEffects": [
@@ -36,7 +39,12 @@
       "import": "./dist/index.js"
     },
     "./style.css": "./dist/style.css",
-    "./fonts.css": "./fonts.css"
+    "./fonts.css": "./fonts.css",
+    "./tailwind.css": "./tailwind.css",
+    "./unocss": {
+      "types": "./unocss.d.ts",
+      "import": "./unocss.js"
+    }
   },
   "scripts": {
     "dev": "bun --bun vite playground",

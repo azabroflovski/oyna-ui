@@ -62,8 +62,12 @@ described in this repository.
   ESM only, `vue` as a peer dependency, per-component entry points so imports tree-shake.
 - **Styling: plain CSS with CSS variables** (`--o-*`) in the components, shipped as one `style.css`.
   Decided by the owner on 2026-10-01: no UnoCSS or Tailwind in the library, neither as a consumer
-  requirement nor compiled at build time. Optional presets that expose the tokens to UnoCSS /
-  Tailwind users can come later.
+  requirement nor compiled at build time. For consumers who use one there are two optional files in
+  the root of the package, written by hand and not built: `tailwind.css` (a Tailwind 4 `@theme inline`
+  block) and `unocss.js` with `unocss.d.ts` (`presetOyna`, a plain object: it imports nothing). Both
+  only name the `--o-*` variables as `o-…` utilities. A new token is added to both and to the table
+  in `docs/guide/theming.md`. In `unocss.js` a numbered colour is nested (`text: { 2: … }`): UnoCSS
+  reads a number at the end of a colour's name as a shade.
 - **Reka UI** (headless) under Dialog, Tabs, Dropdown, Tooltip and the like: accessibility and focus
   handling are not rewritten here.
 - **VitePress** for the docs, built with the library itself, with live examples.

@@ -20,6 +20,9 @@
 - Popover focuses its panel on open, not its first control, as Dialog does: Enter reaches the hotkey
   of the main button instead of pressing whatever comes first.
 - Combobox inside a Field takes its label, hint and error from it.
+- The tokens as utilities for projects that use Tailwind 4 (`oyna-ui/tailwind.css`) or UnoCSS
+  (`presetOyna` from `oyna-ui/unocss`): `bg-o-surface`, `text-o-text-2`, `rounded-o`, `font-o-display`.
+  The library itself still needs neither.
 - Hotkeys work while a checkbox, a radio or a switch has the focus: nobody types into those. Space
   and the arrow keys still belong to the control.
 - Layers are glass too: dialog, drawer, popover, menu, select and combobox lists, tooltip and toast
