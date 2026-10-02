@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
-import { describe, expect, it } from 'vitest'
-import { h } from 'vue'
+import { afterEach, describe, expect, it } from 'vitest'
+import { h, nextTick } from 'vue'
 
 import OTable from './Table.vue'
 
@@ -52,5 +52,27 @@ describe('oTable', () => {
       slots: { name: ({ value }: { value: unknown }) => h('b', `@${value}`) },
     })
     expect(wrapper.findAll('tbody b').map((b) => b.text())).toEqual(['@ada', '@you'])
+  })
+
+  describe('row menu', () => {
+    afterEach(() => document.body.replaceChildren())
+    const rowMenu = (row: Record<string, unknown>) => [{ label: `Rename ${String(row.name)}` }]
+    const labels = () => [...document.querySelectorAll('[role="menuitem"]')].map((item) => item.textContent?.trim())
+
+    it('opens the actions of the row that was right-clicked', async () => {
+      const wrapper = mount(OTable, { props: { columns, rows, rowMenu }, attachTo: document.body })
+      await wrapper.findAll('tbody tr')[1]!.find('td').trigger('contextmenu', { clientX: 20, clientY: 20 })
+      await nextTick()
+      expect(labels()).toEqual(['Rename you'])
+      wrapper.unmount()
+    })
+
+    it('leaves the right click alone without a row menu', async () => {
+      const wrapper = mount(OTable, { props: { columns, rows }, attachTo: document.body })
+      await wrapper.find('tbody td').trigger('contextmenu', { clientX: 20, clientY: 20 })
+      await nextTick()
+      expect(labels()).toEqual([])
+      wrapper.unmount()
+    })
   })
 })

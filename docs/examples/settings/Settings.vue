@@ -250,6 +250,7 @@ function remove() {
               :rows="members"
               row-key="email"
               :signal="(row) => (row.you ? 'accent' : undefined)"
+              :row-menu="memberActions"
             >
               <template #name="{ row }">
                 <div class="settings__member">

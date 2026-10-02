@@ -153,8 +153,9 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   as `RekaItem`. `/components/menu` redirects to the new page (`docs/public/_redirects`).
 - ContextMenu takes the same `DropdownMenuItem[]` and draws itself with the dropdown menu's classes
   (`o-dropdown-menu…` plus `o-context-menu` on the panel), so the two never drift apart in look; only
-  the Reka primitives differ. No example uses it yet: a table row cannot be its trigger, since
-  `OTable` draws its own rows.
+  the Reka primitives differ. `OTable` has `row-menu` for it: one context menu around the whole
+  `<tbody>`, with the row noted by a `contextmenu` listener on its `<tr>` before the event reaches
+  the body. Projects and the team in Settings use it, fed by the same function as the row's button.
 - No Popconfirm (decided with the owner on 2026-10-02): Reka has no such primitive, and a popover
   with two buttons is one already. The Popover page has the recipe; add a component only when a real
   project repeats that popover in several places.

@@ -187,6 +187,7 @@ function create() {
         :rows="shown"
         row-key="name"
         :signal="(row) => (row.failing ? 'danger' : undefined)"
+        :row-menu="actionsOf"
       >
         <template #name="{ row }">
           <code>{{ row.name }}</code> <OBadge v-if="row.failing" tone="danger">Failing</OBadge>
@@ -230,8 +231,8 @@ function create() {
     </OCard>
 
     <p class="projects__note">
-      <OKbd code="KeyN">N</OKbd> new project · open a project's details from its menu, try a filter that matches
-      nothing, archive a project, or delete them all
+      <OKbd code="KeyN">N</OKbd> new project · open a project's details from its menu or with a right click on its row,
+      try a filter that matches nothing, archive a project, or delete them all
     </p>
 
     <ODialog v-model:open="creating" title="New project" description="One service with its deploys and its numbers.">

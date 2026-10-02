@@ -68,13 +68,44 @@ A column need not be a field of the row. For a column of buttons or a menu, give
 </OTable>
 ```
 
+## Row menu
+
+`row-menu` is a function that gives the actions of a row; a right click on the row, or a long press on a touch screen, opens them as a [context menu](/components/context-menu). The items are the ones a [dropdown menu](/components/dropdown-menu) takes, so one function can feed both: the menu behind a button in the row, for everyone, and the right click, for those who look for it.
+
+```vue
+<script setup lang="ts">
+import type { DropdownMenuItem } from 'oyna-ui'
+
+function actionsOf(project: Project): DropdownMenuItem[] {
+  return [
+    { label: 'Archive', onSelect: () => archive(project) },
+    { separator: true },
+    { label: 'Delete', tone: 'danger', onSelect: () => remove(project) },
+  ]
+}
+</script>
+
+<template>
+  <OTable :columns :rows row-key="name" :row-menu="actionsOf">
+    <template #actions="{ row }">
+      <ODropdownMenu :items="actionsOf(row)" align="end">
+        <OButton icon size="sm" variant="ghost" :aria-label="`Actions for ${row.name}`"><Ellipsis /></OButton>
+      </ODropdownMenu>
+    </template>
+  </OTable>
+</template>
+```
+
+The [Projects](/examples/projects) example does exactly this.
+
 ## Props
 
-| Prop      | Type                                                  | Default  | Description                           |
-| --------- | ----------------------------------------------------- | -------- | ------------------------------------- |
-| `columns` | `{ key: string, label: string, numeric?: boolean }[]` | required |                                       |
-| `rows`    | `object[]`                                            | required |                                       |
-| `rowKey`  | `string`                                              | position | The field that identifies a row       |
-| `signal`  | `(row) => 'accent' \| 'danger' \| undefined`          | —        | A ring for a row that means something |
+| Prop      | Type                                                  | Default  | Description                            |
+| --------- | ----------------------------------------------------- | -------- | -------------------------------------- |
+| `columns` | `{ key: string, label: string, numeric?: boolean }[]` | required |                                        |
+| `rows`    | `object[]`                                            | required |                                        |
+| `rowKey`  | `string`                                              | position | The field that identifies a row        |
+| `signal`  | `(row) => 'accent' \| 'danger' \| undefined`          | —        | A ring for a row that means something  |
+| `rowMenu` | `(row) => DropdownMenuItem[]`                         | —        | The actions of a row, on a right click |
 
 The table does not sort, page or scroll by itself. On a narrow screen, wrap it in an element with `overflow-x: auto`.

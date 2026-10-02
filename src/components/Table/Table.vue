@@ -1,5 +1,10 @@
 <script setup lang="ts" generic="Row extends Record<string, unknown>">
-defineProps<{
+import { computed, shallowRef } from 'vue'
+
+import OContextMenu from '../ContextMenu/ContextMenu.vue'
+import type { DropdownMenuItem } from '../DropdownMenu/DropdownMenu.vue'
+
+const props = defineProps<{
   /**
    * `key` is usually a field of the row, but need not be: a column that is all slot (a menu of
    * actions) takes any name. `numeric` sets the column in the display face, right-aligned, with
@@ -11,7 +16,14 @@ defineProps<{
   rowKey?: keyof Row & string
   /** A ring for a row that means something: `accent` is the user's own row, `danger` is one at stake. */
   signal?: (row: Row) => 'accent' | 'danger' | undefined
+  /** The actions of a row, opened by a right click on it. Give the same ones a visible place too. */
+  rowMenu?: (row: Row) => readonly DropdownMenuItem[]
 }>()
+
+// One menu for the whole body, not one per row: the row under the pointer is noted on its way up,
+// before the right click reaches the body and opens the menu.
+const menuRow = shallowRef<Row>()
+const menuItems = computed(() => (menuRow.value && props.rowMenu ? props.rowMenu(menuRow.value) : []))
 
 defineSlots<Partial<Record<string, (props: { row: Row; value: unknown }) => unknown>>>()
 </script>
@@ -25,20 +37,23 @@ defineSlots<Partial<Record<string, (props: { row: Row; value: unknown }) => unkn
         </th>
       </tr>
     </thead>
-    <tbody>
-      <tr
-        v-for="(row, index) in rows"
-        :key="rowKey ? String(row[rowKey]) : index"
-        :class="signal?.(row) && `o-table__row--${signal(row)}`"
-      >
-        <td v-for="column in columns" :key="column.key" :class="column.numeric && 'o-table__numeric'">
-          <!-- a slot named after the column's key replaces the cell's content -->
-          <slot :name="column.key" :row :value="row[column.key]">
-            {{ row[column.key] }}
-          </slot>
-        </td>
-      </tr>
-    </tbody>
+    <OContextMenu :items="menuItems" :disabled="!rowMenu">
+      <tbody>
+        <tr
+          v-for="(row, index) in rows"
+          :key="rowKey ? String(row[rowKey]) : index"
+          :class="signal?.(row) && `o-table__row--${signal(row)}`"
+          @contextmenu="menuRow = row"
+        >
+          <td v-for="column in columns" :key="column.key" :class="column.numeric && 'o-table__numeric'">
+            <!-- a slot named after the column's key replaces the cell's content -->
+            <slot :name="column.key" :row :value="row[column.key]">
+              {{ row[column.key] }}
+            </slot>
+          </td>
+        </tr>
+      </tbody>
+    </OContextMenu>
   </table>
 </template>
 
