@@ -18,6 +18,8 @@ export default defineConfigWithTheme<ThemeConfig>({
   description,
   lang: 'en',
   cleanUrls: true,
+  // for search engines: every page of the docs, at the address the site really lives at
+  sitemap: { hostname: site },
   head: [
     // no pinch zoom on a phone (the owner's choice): the docs are laid out for the width they get.
     // iOS ignores `user-scalable`, so `touch-action` on the page does the same there (style.css).

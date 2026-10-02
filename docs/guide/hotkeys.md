@@ -4,7 +4,7 @@ Hotkeys are read from the physical key (`KeyboardEvent.code`), not from the char
 
 A hotkey is ignored:
 
-- while the user types in an `input`, a `textarea`, a `select` or an editable element (a checkbox, a radio and a switch count: Space belongs to them);
+- while the user types in an `input`, a `textarea`, a `select` or an editable element. A checkbox, a radio and a switch are not typed into, so hotkeys work on them, except Space and the arrow keys, which are their own;
 - with Ctrl, Cmd or Alt held, so browser shortcuts keep working;
 - on key repeat, when the key is held down;
 - for `Enter` and `Space`, when a button or a link has focus: that element handles the key itself.

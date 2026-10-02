@@ -195,6 +195,9 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   the real address of the docs.
 - Toast is not Reka: a module-level list (`toast()`) shown by one `OToaster`.
 - `OKeyCapture` takes its key press in the capture phase and stops it, so no hotkey sees it.
+- `useHotkey` is off in fields that are typed into. A checkbox, a radio, a switch and a slider are
+  not: hotkeys work while one has the focus (Enter reaches the main button of a popover full of
+  switches), except Space, the arrows, Home/End and Page Up/Down, which the control uses itself.
 - The closed `OSelect` takes its label from `items`: Reka does not render the options while closed.
 - A dialog focuses itself on open, not its first control, so Enter reaches the hotkey of its main button.
   A popover does the same (its panel has `tabindex="-1"`); Reka sends that focus event from the

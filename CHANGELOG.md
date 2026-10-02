@@ -18,6 +18,8 @@
 - Popover focuses its panel on open, not its first control, as Dialog does: Enter reaches the hotkey
   of the main button instead of pressing whatever comes first.
 - Combobox inside a Field takes its label, hint and error from it.
+- Hotkeys work while a checkbox, a radio or a switch has the focus: nobody types into those. Space
+  and the arrow keys still belong to the control.
 - Layers are glass too: dialog, drawer, popover, menu, select and combobox lists, tooltip and toast
   blur the page under them (`--o-layer-blur`, 16px) and `--o-layer` is more see-through (0.8, was
   0.97). The page behind a dialog is blurred more (8px, was 4px).

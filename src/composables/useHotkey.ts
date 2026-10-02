@@ -3,11 +3,24 @@ import { inject, onBeforeUnmount, onMounted, toValue } from 'vue'
 
 import { layerKey, openLayers } from './layers'
 
+/** Inputs nobody types into: a key pressed on one of them is not text. */
+const notText = ['checkbox', 'radio', 'range', 'button', 'submit', 'reset', 'color', 'file', 'image']
+
 /** Typing in a field must not trigger hotkeys. */
 function isEditable(target: EventTarget | null) {
+  if (!(target instanceof HTMLElement)) return false
+  if (target instanceof HTMLInputElement) return !notText.includes(target.type)
+  return target.isContentEditable || ['TEXTAREA', 'SELECT'].includes(target.tagName)
+}
+
+/**
+ * A checkbox, a radio or a slider is not typed into, but a few keys are its own: Space ticks it, the
+ * arrows move it. Those stay with the control; any other key (Enter, a letter) is free to be a hotkey.
+ */
+function usedByControl(code: string, target: EventTarget | null) {
   return (
-    target instanceof HTMLElement &&
-    (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName))
+    target instanceof HTMLInputElement &&
+    (code === 'Space' || code.startsWith('Arrow') || ['Home', 'End', 'PageUp', 'PageDown'].includes(code))
   )
 }
 
@@ -47,7 +60,7 @@ export function hotkeyLabel(code: string) {
 
 /**
  * Runs `handler` when the physical key `code` (`KeyboardEvent.code`) is pressed, so it works on any
- * keyboard layout. Ignored while typing in a field, with Ctrl / Cmd / Alt held, and on key repeat.
+ * keyboard layout. Ignored while typing in a field (a checkbox or a switch keeps only Space and the arrows), with Ctrl / Cmd / Alt held, and on key repeat.
  * The numpad Enter counts as `Enter`. While a dialog is open, only hotkeys set up inside it work.
  */
 export function useHotkey(
@@ -65,7 +78,8 @@ export function useHotkey(
     if (openLayers.at(-1) !== layer) return
     // leave browser shortcuts (Cmd+R, Ctrl+W, ...) alone
     if (event.ctrlKey || event.metaKey || event.altKey) return
-    if (isEditable(event.target) || activatesTarget(pressed, event.target)) return
+    if (isEditable(event.target) || usedByControl(pressed, event.target) || activatesTarget(pressed, event.target))
+      return
     event.preventDefault()
     handler(event)
   }
