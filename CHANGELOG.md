@@ -6,6 +6,9 @@
 - Combobox: a choice from a long list, found by typing.
 - Slider: a number picked by dragging.
 - Avatar: a person as a picture or as initials.
+- Drawer: a dialog standing at the right, the left or the bottom edge of the screen.
+- Accordion: sections that open one under another, one at a time or several.
+- Pagination: page numbers with arrows for a long list.
 
 ## 0.1.1
 

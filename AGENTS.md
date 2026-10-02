@@ -8,7 +8,7 @@ Guide for AI coding agents working in this repo. Keep it up to date when the str
 General purpose: not tied to any product, not an admin-panel kit.
 
 State on 2026-10-02: both planned waves are built and documented — tokens, base stylesheet,
-`useHotkey` and 38 components (see `src/index.ts`). `0.1.0` and `0.1.1` are on npm
+`useHotkey` and 41 components (see `src/index.ts`). `0.1.0` and `0.1.1` are on npm
 (published by the owner on 2026-10-02, tags `v0.1.0`, `v0.1.1`; `npm publish` builds through `prepack` and stays the owner's to run). _Oyna_ is Uzbek for "glass". In prose the
 library is always "Oyna UI" (the bare word is too common to search for); the short logo in the docs
 header stays "OYNA". Names: the npm package is the unscoped `oyna-ui`, the same as the repository
@@ -119,7 +119,7 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - A new component is registered in three places in `src/index.ts` (import, `components`,
   `GlobalComponents`) and gets a page in `docs/components/` plus a sidebar entry in
   `docs/.vitepress/config.ts`.
-- Reka UI is a runtime dependency (Tabs, Dialog, Select, Menu, Popover, Tooltip, PinInput, Combobox, Listbox under Command, Slider, Avatar) and is external in the build. It
+- Reka UI is a runtime dependency (Tabs, Dialog, Select, Menu, Popover, Tooltip, PinInput, Combobox, Listbox under Command, Slider, Avatar, Accordion, Pagination) and is external in the build. It
   closes layers in order on Esc, so there is no `useEscStack`. What the library adds is
   `useLayer(open)` in `composables/layers.ts`: while a dialog (Command is one), a popover, a select, a combobox or a menu is open, `useHotkey` fires
   only for components inside the top layer. Any future modal layer must call it too.
@@ -140,9 +140,14 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   them instead of hand-made header rows. Tag is for what the user applied (a filter, a label) and can
   be removed; Badge is for what the system says (a status). Tag has squarer corners to tell them apart.
 - The owner said the component set is enough for now (2026-10-02): do not add components unasked.
-  Later the same day he asked for four more: Command, Combobox, Slider, Avatar. Considered and left
-  out: DatePicker (too costly), Divider (a neutral line), Breadcrumb / Stepper / Carousel (admin-panel
-  territory); Drawer, Accordion and Pagination are the next candidates if he asks.
+  Later the same day he asked for seven more: Command, Combobox, Slider, Avatar, then Drawer,
+  Accordion, Pagination. Considered and left out: DatePicker (too costly), Divider (a neutral line),
+  Breadcrumb / Stepper / Carousel (admin-panel territory).
+- Drawer is an `ODialog` with a class that moves it to an edge (`side`: right, left, bottom), so it
+  shares the dialog's header, focus, layer and touch rules; it uses Reka's Dialog, not Reka's Drawer
+  (swipes and snap points are movement). It fades and does not slide. Accordion follows Tabs (`items`
+  plus a slot per `value`); its section fades in at full height, its chevron flips at once.
+  Pagination takes the number of items, not of pages, and does not cut the list itself.
 - Command is an `ODialog` holding a Reka Listbox; it filters by itself (every typed word must occur
   in the label, group or keywords) and keeps the first row lit, so Enter always runs something: Reka
   unlights a row when the pointer leaves the list, also when the row under it is filtered away. It
@@ -227,7 +232,7 @@ Component prefix: `O` (`<OButton>`, `<OCard>`). CSS variable prefix: `--o-`.
 
 ## Next steps
 
-Done: the library (38 components), the docs site with four example screens and a theme editor, the
+Done: the library (41 components), the docs site with four example screens and a theme editor, the
 browser check. The owner has looked at the result in a browser. The scales in
 `src/styles/tokens.css` (radii 8 / 14 / 24, four white fills) were proposed by the agent and never
 discussed in detail; they remain the working choice.

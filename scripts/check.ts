@@ -30,6 +30,12 @@ try {
   await shot('command-open')
   await page.press('Escape')
 
+  await page.goto(`${base}/components/drawer`)
+  await page.press('KeyF')
+  await page.wait(300)
+  await shot('drawer-open')
+  await page.press('Escape')
+
   await page.goto(`${base}/components/menu`)
   await page.click('.demo .o-button')
   await page.wait(300)
@@ -142,6 +148,9 @@ try {
     '/components/slider',
     '/components/combobox',
     '/components/command',
+    '/components/drawer',
+    '/components/accordion',
+    '/components/pagination',
     '/theme',
     '/guide/why',
   ]) {

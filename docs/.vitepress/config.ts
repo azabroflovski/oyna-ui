@@ -97,6 +97,7 @@ export default defineConfigWithTheme<ThemeConfig>({
           { text: 'Switch', link: '/components/switch' },
           { text: 'Toggle', link: '/components/toggle' },
           { text: 'Tabs', link: '/components/tabs' },
+          { text: 'Accordion', link: '/components/accordion' },
           { text: 'Select', link: '/components/select' },
           { text: 'Combobox', link: '/components/combobox' },
           { text: 'Slider', link: '/components/slider' },
@@ -108,6 +109,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         items: [
           { text: 'Dialog', link: '/components/dialog' },
           { text: 'Command', link: '/components/command' },
+          { text: 'Drawer', link: '/components/drawer' },
           { text: 'Popover', link: '/components/popover' },
           { text: 'Menu', link: '/components/menu' },
           { text: 'Tooltip', link: '/components/tooltip' },
@@ -132,6 +134,7 @@ export default defineConfigWithTheme<ThemeConfig>({
           { text: 'Sparkline', link: '/components/sparkline' },
           { text: 'BarChart', link: '/components/bar-chart' },
           { text: 'Table', link: '/components/table' },
+          { text: 'Pagination', link: '/components/pagination' },
           { text: 'Timeline', link: '/components/timeline' },
         ],
       },
