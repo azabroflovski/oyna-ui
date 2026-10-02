@@ -133,23 +133,24 @@ defineSlots<Partial<Record<string, (props: { row: Row; value: unknown }) => unkn
 
 /*
   The row under the pointer is lit a little: light, not movement. Only where there is a pointer that
-  hovers: on a touch screen the light would stay on the last row touched.
+  hovers: on a touch screen the light would stay on the last row touched. Both classes, so a page's
+  own rule for striped rows of the same weight cannot switch the light off on every other row.
 */
 @media (hover: hover) {
-  .o-table--hoverable td {
+  .o-table.o-table--hoverable td {
     transition: background-color var(--o-duration) ease;
   }
 
-  .o-table--hoverable tbody tr:hover td {
+  .o-table.o-table--hoverable tbody tr:hover td {
     background: var(--o-fill-2);
   }
 
   /* a row with a signal keeps its colour and only gets brighter */
-  .o-table--hoverable tbody .o-table__row--accent:hover td {
+  .o-table.o-table--hoverable tbody .o-table__row--accent:hover td {
     background: color-mix(in srgb, var(--o-accent) 16%, transparent);
   }
 
-  .o-table--hoverable tbody .o-table__row--danger:hover td {
+  .o-table.o-table--hoverable tbody .o-table__row--danger:hover td {
     background: color-mix(in srgb, var(--o-danger) 14%, transparent);
   }
 }

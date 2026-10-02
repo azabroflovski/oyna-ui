@@ -984,7 +984,8 @@ a {
   color: var(--o-text-2);
 }
 
-.content tbody tr:nth-child(odd) td {
+/* the stripes of a table written in Markdown; a component's table brings its own */
+.table-scroll tbody tr:nth-child(odd) td {
   background: var(--o-fill-1);
 }
 
