@@ -1,33 +1,45 @@
 # Changelog
 
-## Unreleased
+## 0.2.0
 
-- **Breaking:** `OMenu` is now `ODropdownMenu`, its type `MenuItem` is `DropdownMenuItem`, and its
-  classes are `.o-dropdown-menu…` instead of `.o-menu…`. Rename them in your code; nothing else about
-  the component changed.
+Eight new components, glass layers, and one rename.
+
+**Breaking**
+
+- `OMenu` is now `ODropdownMenu`, its type `MenuItem` is `DropdownMenuItem`, and its classes are
+  `.o-dropdown-menu…` instead of `.o-menu…`. Rename them in your code; nothing else about the
+  component changed.
+- `--o-layer` is more see-through (0.8, was 0.97): see "Layers are glass too" below. If you set this
+  variable yourself, your value still wins.
+
+**New components**
+
 - Command: a palette of everything the app can do, opened with a key and searched by typing. It can
   also front a search of your own (`:filter="false"` with `v-model:query`); an item may have a
   `description`, and there is a `footer` slot.
-- Combobox: a choice from a long list, found by typing.
+- Combobox: a choice from a long list, found by typing. Inside a Field it takes its label, hint and
+  error from it.
 - Slider: a number picked by dragging.
 - Avatar: a person as a picture or as initials.
 - Drawer: a dialog standing at the right, the left or the bottom edge of the screen.
 - Accordion: sections that open one under another, one at a time or several.
 - Pagination: page numbers with arrows for a long list.
 - ContextMenu: the items of a dropdown menu on a right click, or a long press on a touch screen.
+
+**Changes**
+
+- Layers are glass too: dialog, drawer, popover, menu, select and combobox lists, tooltip and toast
+  blur the page under them (`--o-layer-blur`, 16px). The page behind a dialog is blurred more (8px,
+  was 4px).
 - Table takes `row-menu`: the actions of a row, opened by a right click on it.
 - Table takes `hoverable`: the row under the pointer is lit a little.
 - Popover focuses its panel on open, not its first control, as Dialog does: Enter reaches the hotkey
   of the main button instead of pressing whatever comes first.
-- Combobox inside a Field takes its label, hint and error from it.
+- Hotkeys work while a checkbox, a radio or a switch has the focus: nobody types into those. Space
+  and the arrow keys still belong to the control.
 - The tokens as utilities for projects that use Tailwind 4 (`oyna-ui/tailwind.css`) or UnoCSS
   (`presetOyna` from `oyna-ui/unocss`): `bg-o-surface`, `text-o-text-2`, `rounded-o`, `font-o-display`.
   The library itself still needs neither.
-- Hotkeys work while a checkbox, a radio or a switch has the focus: nobody types into those. Space
-  and the arrow keys still belong to the control.
-- Layers are glass too: dialog, drawer, popover, menu, select and combobox lists, tooltip and toast
-  blur the page under them (`--o-layer-blur`, 16px) and `--o-layer` is more see-through (0.8, was
-  0.97). The page behind a dialog is blurred more (8px, was 4px).
 
 ## 0.1.1
 
