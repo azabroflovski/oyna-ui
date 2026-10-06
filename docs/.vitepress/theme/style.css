@@ -243,25 +243,11 @@ a {
 .steps {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  gap: 16px;
 }
 
-/* a big number, then what to do and where; the code sits right on the page, not in a second box */
+/* a file name, then its code right on the page, not in a second box */
 .step {
-  display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
-  gap: 12px;
-}
-
-.step__number {
-  font: 800 40px/1 var(--o-font-display);
-  color: var(--o-text-3);
-}
-
-.step__body {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -273,15 +259,13 @@ a {
   color: var(--o-text-3);
 }
 
-/* both classes: the docs' code block margin comes later in this file and would win otherwise */
-.step__body .content div[class*='language-'] {
-  margin: 0;
+.steps__more {
+  align-self: flex-start;
 }
 
-/* the link under the steps lines up with their text, not with the numbers */
-.step--more {
-  display: block;
-  padding-left: 52px;
+/* both classes: the docs' code block margin comes later in this file and would win otherwise */
+.step .content div[class*='language-'] {
+  margin: 0;
 }
 
 /* beside the steps, and like them right on the page: no cards stretched to the code's height */

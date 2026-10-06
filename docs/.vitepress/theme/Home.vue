@@ -80,21 +80,16 @@ const misfits = [
 
     <h2 class="section">Try it now</h2>
     <section class="setup">
-      <ol class="steps">
-        <li v-for="(step, i) in facts.setup" :key="step.file" class="step">
-          <span class="step__number" aria-hidden="true">{{ i + 1 }}</span>
-          <div class="step__body">
-            <span class="step__file">{{ step.file }}</span>
-            <!-- highlighted at build time (home.data.ts); .content gives it the docs' code block look -->
-            <div class="content" v-html="step.html" />
-          </div>
-        </li>
-        <li class="step step--more">
-          <OButton variant="link" :href="withBase('/guide/installation')">
-            Installation guide: fonts, imports by name <ArrowRight />
-          </OButton>
-        </li>
-      </ol>
+      <div class="steps">
+        <div v-for="step in facts.setup" :key="step.file" class="step">
+          <span class="step__file">{{ step.file }}</span>
+          <!-- highlighted at build time (home.data.ts); .content gives it the docs' code block look -->
+          <div class="content" v-html="step.html" />
+        </div>
+        <OButton variant="link" class="steps__more" :href="withBase('/guide/installation')">
+          Installation guide <ArrowRight />
+        </OButton>
+      </div>
       <div class="claims">
         <div v-for="claim in claims" :key="claim.title" class="claim">
           <h3>{{ claim.title }}</h3>
