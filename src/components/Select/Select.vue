@@ -9,9 +9,10 @@ import {
   SelectValue,
   SelectViewport,
 } from 'reka-ui'
-import { computed, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
 
 import { useLayer } from '../../composables/layers'
+import { fieldKey } from '../Field/context'
 
 defineOptions({ inheritAttrs: false })
 
@@ -20,10 +21,15 @@ const props = defineProps<{
   items: readonly { value: T; label: string; hint?: string; disabled?: boolean }[]
   placeholder?: string
   disabled?: boolean
+  /** A danger ring. Inside an `OField` with an error it is set for you. */
+  invalid?: boolean
 }>()
 
 const model = defineModel<T>()
 // the list is not rendered while closed, so the trigger takes the label from the items itself
+// inside an `OField` the trigger takes its label, its message and its error, as an input does
+const field = inject(fieldKey, undefined)
+
 const current = computed(() => props.items.find((item) => item.value === model.value))
 
 // typing in an open list searches it; page hotkeys must not fire on those keys
@@ -33,7 +39,13 @@ useLayer(open)
 
 <template>
   <SelectRoot v-model="model" v-model:open="open" :disabled>
-    <SelectTrigger class="o-select" v-bind="$attrs">
+    <SelectTrigger
+      :id="field?.id"
+      class="o-select"
+      :aria-invalid="props.invalid || field?.invalid.value || undefined"
+      :aria-describedby="field?.messageId.value"
+      v-bind="$attrs"
+    >
       <SelectValue>{{ current?.label ?? placeholder }}</SelectValue>
       <svg class="o-select__chevron" viewBox="0 0 12 12" aria-hidden="true">
         <path d="M2.5 4.5 6 8l3.5-3.5" />
@@ -89,6 +101,13 @@ useLayer(open)
   color: var(--o-text-3);
 }
 
+.o-select[aria-invalid='true'] {
+  box-shadow: inset 0 0 0 2px var(--o-danger);
+}
+/* in a field's column the select keeps its own width instead of stretching */
+.o-field > .o-select {
+  align-self: flex-start;
+}
 .o-select:disabled {
   opacity: 0.4;
   cursor: default;

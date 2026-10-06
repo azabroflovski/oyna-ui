@@ -26,6 +26,8 @@ const props = withDefaults(
     disabled?: boolean
     /** Shown in the list when nothing matches what was typed. */
     emptyText?: string
+    /** A danger ring. Inside an `OField` with an error it is set for you. */
+    invalid?: boolean
   }>(),
   { emptyText: 'Nothing found' },
 )
@@ -54,7 +56,7 @@ function selectText(event: FocusEvent) {
       <ComboboxInput
         :id="field?.id"
         class="o-input o-combobox__input"
-        :aria-invalid="field?.invalid.value || undefined"
+        :aria-invalid="props.invalid || field?.invalid.value || undefined"
         :aria-describedby="field?.messageId.value"
         v-bind="attrs.control"
         :display-value="labelOf"

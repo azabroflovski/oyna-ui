@@ -86,13 +86,14 @@ It looks like an [input](/components/input) and takes the full width of its cont
 
 ## Props
 
-| Prop          | Type                                                                    | Default           | Description                         |
-| ------------- | ----------------------------------------------------------------------- | ----------------- | ----------------------------------- |
-| `items`       | `{ value: string, label: string, hint?: string, disabled?: boolean }[]` | required          |                                     |
-| `v-model`     | `string`                                                                | —                 | The chosen item's `value`           |
-| `placeholder` | `string`                                                                | —                 | Shown while nothing is chosen       |
-| `emptyText`   | `string`                                                                | `'Nothing found'` | Shown when nothing matches the text |
-| `disabled`    | `boolean`                                                               | `false`           |                                     |
+| Prop          | Type                                                                    | Default           | Description                                                       |
+| ------------- | ----------------------------------------------------------------------- | ----------------- | ----------------------------------------------------------------- |
+| `items`       | `{ value: string, label: string, hint?: string, disabled?: boolean }[]` | required          |                                                                   |
+| `v-model`     | `string`                                                                | —                 | The chosen item's `value`                                         |
+| `placeholder` | `string`                                                                | —                 | Shown while nothing is chosen                                     |
+| `emptyText`   | `string`                                                                | `'Nothing found'` | Shown when nothing matches the text                               |
+| `disabled`    | `boolean`                                                               | `false`           |                                                                   |
+| `invalid`     | `boolean`                                                               | `false`           | A danger ring. Inside an `OField` with an error it is set for you |
 
 `class` and `style` go to the wrapper; other attributes (`aria-label`, `name`) go to the field.
 

@@ -219,11 +219,9 @@ function remove() {
 
           <OCard class="settings__pair">
             <div class="settings__col">
-              <span class="settings__label">Language</span>
-              <!-- a wrapper, so the select keeps its own width in the column -->
-              <div>
-                <OSelect v-model="form.language" :items="languages" aria-label="Language" />
-              </div>
+              <OField label="Language">
+                <OSelect v-model="form.language" :items="languages" />
+              </OField>
               <OField label="Time zone" hint="Type a city to find it">
                 <OCombobox v-model="form.zone" :items="zones" />
               </OField>

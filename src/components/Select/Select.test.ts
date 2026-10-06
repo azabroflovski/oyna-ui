@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { h } from 'vue'
 
 import OButton from '../Button/Button.vue'
+import OField from '../Field/Field.vue'
 import OTooltip from '../Tooltip/Tooltip.vue'
 import OSelect from './Select.vue'
 
@@ -29,6 +30,19 @@ describe('oSelect', () => {
   it('shows the placeholder without a value', () => {
     const wrapper = mount(OSelect, { props: { items, placeholder: 'Language' }, attachTo: document.body })
     expect(wrapper.find('button.o-select').text()).toBe('Language')
+    wrapper.unmount()
+  })
+
+  it('takes its label and error from a field', () => {
+    const wrapper = mount(OField, {
+      props: { label: 'Language', error: 'Pick a language' },
+      slots: { default: () => h(OSelect, { items }) },
+      attachTo: document.body,
+    })
+    const trigger = wrapper.find('button.o-select')
+    expect(wrapper.find('label').attributes('for')).toBe(trigger.attributes('id'))
+    expect(trigger.attributes('aria-describedby')).toBe(wrapper.find('.o-field__message').attributes('id'))
+    expect(trigger.attributes('aria-invalid')).toBe('true')
     wrapper.unmount()
   })
 })
