@@ -15,30 +15,21 @@ async function copyInstall() {
   toast('Copied')
 }
 
-const meta = [
-  `v${facts.version}`,
-  'MIT',
-  'Vue 3.5+',
-  'TypeScript',
-  `${facts.components} components`,
-  `${facts.css} kB CSS gzipped`,
-  '1 dependency',
-]
+const meta = [`v${facts.version}`, 'MIT', `${facts.components} components`, `${facts.css} kB CSS gzipped`]
 
 const claims = [
   {
-    title: 'Plain CSS',
-    text: 'One stylesheet. No Tailwind or UnoCSS needed; if you use one, the tokens are there as its utilities.',
-    link: { text: 'Theming', href: '/guide/theming' },
+    title: 'No Tailwind, no UnoCSS',
+    text: 'One plain stylesheet. No build plugin, no class scanning, no config file to keep in step with ours.',
   },
   {
-    title: 'CSS variables',
-    text: 'Colours, radii and fonts are --o-* variables. Set them on :root, or on one part of the page.',
-    link: { text: 'Theme editor', href: '/theme' },
+    title: 'Your colours',
+    text: 'Every colour, radius and font is a CSS variable. Change them and the whole library follows.',
+    link: { text: 'Open the theme editor', href: '/theme' },
   },
   {
-    title: 'Reka UI underneath',
-    text: 'Dialogs, menus, selects and tooltips use Reka UI for focus, keyboard navigation and ARIA. It is the only runtime dependency.',
+    title: 'Accessibility, not reinvented',
+    text: 'The one dependency is Reka UI. It handles focus, the keyboard and screen readers, where there is nothing to look at.',
   },
 ]
 
@@ -110,12 +101,6 @@ const misfits = [
       </div>
     </section>
 
-    <h2 class="section">Examples</h2>
-    <p class="section-lead">
-      Four screens built only from the library's components. Each one works and shows its source.
-    </p>
-    <ExamplesGallery />
-
     <h2 class="section">Is it for you</h2>
     <section class="fit">
       <OCard>
@@ -131,6 +116,12 @@ const misfits = [
         </ul>
       </OCard>
     </section>
+
+    <h2 class="section">Examples</h2>
+    <p class="section-lead">
+      Four screens built only from the library's components. Each one works and shows its source.
+    </p>
+    <ExamplesGallery />
 
     <h2 class="section">Why it exists</h2>
     <section class="story">

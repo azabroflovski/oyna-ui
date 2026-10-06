@@ -296,6 +296,11 @@ a {
   color: var(--o-text-3);
 }
 
+/* the gallery ends without a margin of its own; the next section keeps the page's rhythm */
+.gallery + .section {
+  margin-top: 64px;
+}
+
 .story {
   max-width: 68ch;
 }
