@@ -91,7 +91,7 @@ src/
 docs/                            VitePress site with its own theme (.vitepress/theme), built from src/
   examples/                      full screens built only from library components (layout: example)
 playground/                      Vite app for developing components
-scripts/                         browser.ts (a small headless-Chrome driver), check.ts (see Commands),
+scripts/                         browser.ts (a small headless-Chrome driver), check.ts and pack-check.ts (see Commands),
                                  banner.html + banner.ts (the README banner, .github/banner.jpg)
 ```
 
@@ -100,7 +100,11 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - `bun run dev` — playground. `bun run docs:dev` — docs site.
 - `bun run fmt` formats everything; run it before committing.
 - `bun run lint`, `bun run fmt:check`, `bun run typecheck`, `bun run test`, `bun run build`,
-  `bun run docs:build` — what CI runs.
+  `bun run docs:build`, `bun run pack:check` — what CI runs.
+- `bun run pack:check` (`scripts/pack-check.ts`) — builds, packs the library as npm would publish it,
+  installs the tarball with npm in a fresh Vite project, typechecks it (a wrong prop must be an error)
+  and builds it. Inside the repo `oyna-ui` resolves to `src/`, so this is the only check of `dist`,
+  `exports` and `files`. Runs in CI as a job of its own; `--keep` leaves the project to look at.
 - `bun scripts/check.ts <folder> [base url]`, with `bun run docs:dev` running: opens every layer
   (select, menu, popover, tooltip, toasts, dialog, search), takes screenshots at desktop and at a real
   phone width, and runs axe-core on a set of pages. Look at the screenshots after any change to a
@@ -211,9 +215,8 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   development, and `class` / attributes stop falling through.
 - The component count and the stylesheet size are quoted in README.md ("What you get") and on the
   docs home (`facts` in `Home.vue`, the "Nothing to set up" section). Refresh both when a component is added and before a release.
-- Before a release: bump `version`, add a section to CHANGELOG.md, then `npm pack` and install the
-  tarball in a fresh Vite project (typecheck + build) — the library is otherwise only tested from
-  inside the repo. License: MIT (`LICENSE`).
+- Before a release: bump `version`, turn CHANGELOG.md's `Unreleased` into the version's section,
+  then `bun run pack:check` (CI runs it too, but run it on the commit you publish). License: MIT (`LICENSE`).
 - A release, in this order: push `master`; the owner runs `npm publish`; only then tag that commit
   `vX.Y.Z`, push the tag and create a GitHub Release with the version's CHANGELOG section as its
   notes (`gh release create`). The tag comes after a successful publish, so it never points at a

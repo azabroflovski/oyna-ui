@@ -58,7 +58,8 @@
     "fmt:check": "oxfmt --check",
     "test": "bun --bun vitest run",
     "docs:dev": "bun --bun vitepress dev docs",
-    "docs:build": "bun --bun vitepress build docs"
+    "docs:build": "bun --bun vitepress build docs",
+    "pack:check": "bun scripts/pack-check.ts"
   },
   "dependencies": {
     "reka-ui": "^2.10.5"

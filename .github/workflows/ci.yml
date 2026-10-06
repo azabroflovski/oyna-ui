@@ -18,3 +18,16 @@ jobs:
       - run: bun run test
       - run: bun run build
       - run: bun run docs:build
+
+  # the packed library in a fresh Vite project, installed with npm: a job of its own, so it runs
+  # alongside the checks above
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: bun install --frozen-lockfile
+      - run: bun run pack:check
