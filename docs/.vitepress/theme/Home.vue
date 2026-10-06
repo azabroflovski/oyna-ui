@@ -25,25 +25,6 @@ const meta = [
   '1 dependency',
 ]
 
-/** Everything a consumer writes to start; shown as it is. */
-const setup = `# or: pnpm add, yarn add, bun add
-npm install oyna-ui
-
-// main.ts
-import oyna from 'oyna-ui'
-import 'oyna-ui/style.css'
-import 'oyna-ui/fonts.css' // from Google Fonts
-import { createApp } from 'vue'
-import App from './App.vue'
-
-createApp(App).use(oyna).mount('#app')
-
-<!-- App.vue -->
-<OBackground />
-<OButton variant="primary" hotkey="Enter">
-  Save
-</OButton>`
-
 const claims = [
   {
     title: 'Plain CSS',
@@ -109,7 +90,11 @@ const misfits = [
     <section class="setup">
       <OCard class="col">
         <span class="label">All of it</span>
-        <pre class="setup__code" tabindex="0" aria-label="Setup code">{{ setup }}</pre>
+        <!-- highlighted at build time (home.data.ts); .content gives it the docs' code block look -->
+        <div v-for="block in facts.setup" :key="block.file" class="content setup__block">
+          <span class="setup__file">{{ block.file }}</span>
+          <div v-html="block.html" />
+        </div>
         <OButton variant="link" class="setup__more" :href="withBase('/guide/installation')">
           Installation guide <ArrowRight />
         </OButton>

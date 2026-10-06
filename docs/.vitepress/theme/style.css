@@ -215,16 +215,20 @@ a {
   margin: 12px 0 48px;
 }
 
-.setup__code {
-  flex: 1;
+.setup__block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.setup__file {
+  font-size: 12px;
+  color: var(--o-text-3);
+}
+
+/* both classes: the docs' code block margin comes later in this file and would win otherwise */
+.setup__block.content div[class*='language-'] {
   margin: 0;
-  overflow-x: auto;
-  color: var(--o-text-2);
-  font:
-    400 13px/1.7 ui-monospace,
-    'SF Mono',
-    Menlo,
-    monospace;
 }
 
 .setup__more {
