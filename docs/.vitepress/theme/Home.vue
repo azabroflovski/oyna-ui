@@ -5,6 +5,7 @@ import { useData, withBase } from 'vitepress'
 
 import { data as facts } from './home.data'
 import HomeDemo from './HomeDemo.vue'
+import Logo from './Logo.vue'
 
 const { theme } = useData()
 
@@ -77,19 +78,25 @@ const misfits = [
       <HomeDemo />
     </section>
 
-    <h2 class="section">Setup</h2>
+    <h2 class="section">Three steps</h2>
     <section class="setup">
-      <OCard class="col">
-        <span class="label">All of it</span>
-        <!-- highlighted at build time (home.data.ts); .content gives it the docs' code block look -->
-        <div v-for="block in facts.setup" :key="block.file" class="content setup__block">
-          <span class="setup__file">{{ block.file }}</span>
-          <div v-html="block.html" />
-        </div>
-        <OButton variant="link" class="setup__more" :href="withBase('/guide/installation')">
-          Installation guide <ArrowRight />
-        </OButton>
-      </OCard>
+      <ol class="steps">
+        <li v-for="(step, i) in facts.setup" :key="step.title" class="step">
+          <span class="step__number" aria-hidden="true">{{ i + 1 }}</span>
+          <div class="step__body">
+            <h3>
+              {{ step.title }} <span class="step__file">{{ step.file }}</span>
+            </h3>
+            <!-- highlighted at build time (home.data.ts); .content gives it the docs' code block look -->
+            <div class="content" v-html="step.html" />
+          </div>
+        </li>
+        <li class="step step--more">
+          <OButton variant="link" :href="withBase('/guide/installation')">
+            Installation guide: fonts, imports by name <ArrowRight />
+          </OButton>
+        </li>
+      </ol>
       <div class="col">
         <OCard v-for="claim in claims" :key="claim.title" class="claim">
           <h3>{{ claim.title }}</h3>
@@ -138,7 +145,7 @@ const misfits = [
     </section>
 
     <footer class="home-footer">
-      <span>Oyna UI {{ facts.version }} · MIT</span>
+      <Logo />
       <nav aria-label="Project links">
         <a :href="theme.repo">GitHub</a>
         <a href="https://www.npmjs.com/package/oyna-ui">npm</a>

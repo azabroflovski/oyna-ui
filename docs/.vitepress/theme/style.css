@@ -236,28 +236,62 @@ a {
 .setup {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 12px;
+  gap: 32px 48px;
   margin: 12px 0 48px;
 }
 
-.setup__block {
+.steps {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.setup__file {
-  font-size: 12px;
+/* a big number, then what to do and where; the code sits right on the page, not in a second box */
+.step {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.step__number {
+  font: 800 40px/1 var(--o-font-display);
+  color: var(--o-text-3);
+}
+
+.step__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.step h3 {
+  margin: 0;
+  font: 700 22px/1.2 var(--o-font-display);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.step__file {
+  margin-left: 6px;
+  font: 400 13px var(--o-font-sans);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--o-text-3);
 }
 
 /* both classes: the docs' code block margin comes later in this file and would win otherwise */
-.setup__block.content div[class*='language-'] {
+.step__body .content div[class*='language-'] {
   margin: 0;
 }
 
-.setup__more {
-  align-self: flex-start;
+/* the link under the steps lines up with their text, not with the numbers */
+.step--more {
+  display: block;
+  padding-left: 52px;
 }
 
 .claim {
@@ -352,6 +386,7 @@ a {
 .home-footer {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   gap: 12px 24px;
   margin-top: 72px;
@@ -360,19 +395,30 @@ a {
   color: var(--o-text-3);
 }
 
+.home-footer .brand {
+  gap: 10px;
+  color: var(--o-text);
+  font-size: 22px;
+}
+
+.home-footer .brand__mark {
+  width: 24px;
+  height: 24px;
+}
+
 .home-footer nav {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 20px;
 }
 
-.home-footer a {
+.home-footer nav a {
   color: var(--o-text-2);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.home-footer a:hover {
+.home-footer nav a:hover {
   color: var(--o-text);
 }
 

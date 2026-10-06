@@ -224,12 +224,14 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   `vX.Y.Z`, push the tag and create a GitHub Release with the version's CHANGELOG section as its
   notes (`gh release create`). The tag comes after a successful publish, so it never points at a
   commit that is not on npm. No publishing from CI for now.
-- The docs home, top to bottom: hero (the title "Press D to ship" is an instruction the panel beside
-  it obeys, "Tap Deploy to ship" on a touch screen; one plain line; the install command; version / licence /
-  size), Setup (the complete code, nothing left out), Examples, "Is it for you"
-  (what it is for and when to take another library), "Why it exists" (the owner's story, first
-  person), a footer. Its text is plain and checkable: no slogans, no "feel", no
-  "rich", no objects that "know" things. The rules of the look live in `docs/guide/why.md`.
+- The docs home, top to bottom: hero (the title "Press D to ship" is an instruction the panel
+  beside it obeys, "Tap Deploy to ship" on a touch screen; one plain line; the install command;
+  version / licence / count / size), "Three steps" (install, register, use: numbered, each with its
+  file and its code highlighted at build time in `home.data.ts`) beside three claim cards, "Is it
+  for you" (what it is for and when to take another library), Examples, "Why it exists" (the
+  owner's story, first person), a footer with the logo (`Logo.vue`, shared with the header). Its
+  text is plain and checkable: no slogans, no "feel", no "rich", no objects that "know" things. The
+  rules of the look live in `docs/guide/why.md`.
 - The panel on the docs home (`HomeDemo.vue`) is one small product screen, a deploy console, not a
   pile of unrelated components: pressing D runs a fake deploy through Button's loading state,
   Progress, Pips, a new Table row and a Toast. Sample content everywhere is from a developer's world

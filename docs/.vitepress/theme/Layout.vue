@@ -5,6 +5,7 @@ import { computed } from 'vue'
 
 import type { ThemeConfig } from '../config'
 import Home from './Home.vue'
+import Logo from './Logo.vue'
 import Outline from './Outline.vue'
 import Search from './Search.vue'
 
@@ -20,14 +21,7 @@ const isCurrent = (link: string) => path.value === withBase(link)
   <OToaster />
   <div class="wrap">
     <header class="top">
-      <a class="brand" :href="withBase('/')" aria-label="Oyna UI">
-        <!-- the favicon's mark; the ring takes the accent, so a theme recolours it -->
-        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
-          <rect width="32" height="32" rx="8" />
-          <circle cx="16" cy="16" r="8" />
-        </svg>
-        OYNA <span class="brand__ui">UI</span>
-      </a>
+      <Logo />
       <nav class="top-nav">
         <Search />
         <OButton
