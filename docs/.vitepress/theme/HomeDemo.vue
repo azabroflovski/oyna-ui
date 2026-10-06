@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ArrowRight, Rocket } from '@lucide/vue'
+import { Rocket } from '@lucide/vue'
 import { toast } from 'oyna-ui'
-import { withBase } from 'vitepress'
 import { computed, onBeforeUnmount, ref } from 'vue'
 
 /** The panel on the home page: one small product screen instead of a pile of unrelated components. */
@@ -62,60 +61,54 @@ const tone = (status: unknown) => (status === 'Live' ? 'accent' : status === 'Fa
 </script>
 
 <template>
-  <figure class="demo-frame">
-    <OSurface class="demo-panel">
-      <div class="row demo-panel__top">
-        <OSelect v-model="project" :items="projects" aria-label="Project" />
-        <!-- a wrapper: on a phone the tabs move to a row of their own, at their own width -->
-        <div class="demo-panel__env">
-          <OTabs v-model="environment" :items="environments" />
-        </div>
-        <OToggle v-model="live" hotkey="KeyL">Live</OToggle>
+  <OSurface class="demo-panel">
+    <div class="row demo-panel__top">
+      <OSelect v-model="project" :items="projects" aria-label="Project" />
+      <!-- a wrapper: on a phone the tabs move to a row of their own, at their own width -->
+      <div class="demo-panel__env">
+        <OTabs v-model="environment" :items="environments" />
       </div>
+      <OToggle v-model="live" hotkey="KeyL">Live</OToggle>
+    </div>
 
-      <OCard signal="accent" class="col">
-        <div class="row between">
-          <span class="label">Next release</span>
-          <OBadge>3 commits · main</OBadge>
-        </div>
-        <div class="row between">
-          <span class="number">{{ next }}</span>
-          <OButton variant="primary" hotkey="KeyD" :loading="progress !== undefined" @click="deploy">
-            <Rocket v-if="progress === undefined" /> {{ progress === undefined ? 'Deploy' : steps[step - 1] }}
-          </OButton>
-        </div>
-        <OProgress :value="progress ?? 0" aria-label="Deploy progress" />
-        <div class="row between">
-          <OPips :done="step" :total="3" aria-label="Deploy steps done" />
-          <span class="hint">{{ progress === undefined ? 'Build · Test · Ship' : `${steps[step - 1]}…` }}</span>
-        </div>
-      </OCard>
-
-      <div class="demo-panel__stats">
-        <OStat label="Requests">{{ stats[environment].requests }}</OStat>
-        <OStat label="p95">{{ stats[environment].p95 }}</OStat>
-        <OStat label="Errors" :tone="environment === 'staging' ? 'danger' : undefined">
-          {{ stats[environment].errors }}
-        </OStat>
+    <OCard signal="accent" class="col">
+      <div class="row between">
+        <span class="label">Next release</span>
+        <OBadge>3 commits · main</OBadge>
       </div>
+      <div class="row between">
+        <span class="number">{{ next }}</span>
+        <OButton variant="primary" hotkey="KeyD" :loading="progress !== undefined" @click="deploy">
+          <Rocket v-if="progress === undefined" /> {{ progress === undefined ? 'Deploy' : steps[step - 1] }}
+        </OButton>
+      </div>
+      <OProgress :value="progress ?? 0" aria-label="Deploy progress" />
+      <div class="row between">
+        <OPips :done="step" :total="3" aria-label="Deploy steps done" />
+        <span class="hint">{{ progress === undefined ? 'Build · Test · Ship' : `${steps[step - 1]}…` }}</span>
+      </div>
+    </OCard>
 
-      <OTable :columns :rows="deploys" row-key="version">
-        <template #version="{ value }">
-          <code>{{ value }}</code>
-        </template>
-        <template #status="{ value }">
-          <OBadge :tone="tone(value)">{{ value }}</OBadge>
-        </template>
-      </OTable>
+    <div class="demo-panel__stats">
+      <OStat label="Requests">{{ stats[environment].requests }}</OStat>
+      <OStat label="p95">{{ stats[environment].p95 }}</OStat>
+      <OStat label="Errors" :tone="environment === 'staging' ? 'danger' : undefined">
+        {{ stats[environment].errors }}
+      </OStat>
+    </div>
 
-      <span class="hint">
-        <OKbd code="KeyD">D</OKbd> deploy · <OKbd code="KeyL">L</OKbd> live updates · <OKbd code="Slash">/</OKbd> search
-        · <OKbd code="Enter">Enter</OKbd> installation
-      </span>
-    </OSurface>
-    <figcaption class="demo-frame__caption">
-      <span>A deploy console made of 12 components.</span>
-      <OButton variant="link" :href="withBase('/examples/')">More examples <ArrowRight /></OButton>
-    </figcaption>
-  </figure>
+    <OTable :columns :rows="deploys" row-key="version">
+      <template #version="{ value }">
+        <code>{{ value }}</code>
+      </template>
+      <template #status="{ value }">
+        <OBadge :tone="tone(value)">{{ value }}</OBadge>
+      </template>
+    </OTable>
+
+    <span class="hint">
+      <OKbd code="KeyD">D</OKbd> deploy · <OKbd code="KeyL">L</OKbd> live updates · <OKbd code="Slash">/</OKbd> search ·
+      <OKbd code="Enter">Enter</OKbd> install
+    </span>
+  </OSurface>
 </template>
