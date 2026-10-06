@@ -107,6 +107,7 @@ Things that are easy to get wrong:
 - A hotkey is a physical key code, \`KeyboardEvent.code\`: \`hotkey="KeyD"\`, \`hotkey="Enter"\`, \`hotkey="Slash"\`; never a character such as \`"d"\`, and never a combination.
 - The library ships no icons. Pass an \`<svg>\` or a component from \`@lucide/vue\` in a slot.
 - Colour is a signal: one accent (\`variant="primary"\`, \`tone="accent"\`) for the main thing on a screen, \`tone="danger"\` for something at stake. Do not add borders or other colours.
+- There is no form component or validation. Wrap a control in \`<OField label hint error>\` (Input, Textarea, PinInput, Select, Combobox): it ties the label and the message to the control and sets its danger ring; do not pass ids or \`invalid\` by hand.
 - \`OMenu\` was renamed to \`ODropdownMenu\` in 0.2.0.
 
 ${groups

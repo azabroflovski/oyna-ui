@@ -44,17 +44,18 @@ const languages = [
 </template>
 ```
 
-`hint` is a dim note at the end of an option. Give the select an `aria-label`, or put it in an [`OField`](/components/input)-like layout with your own label.
+`hint` is a dim note at the end of an option. Give the select an `aria-label`, or put it in an [`OField`](/components/input#field): the field's label, hint and error are tied to it, as to an input. A whole form is on the [Forms](/guide/forms) page.
 
 While the list is open, page hotkeys are off: typing a letter searches the list and must not trigger a button.
 
 ## Props
 
-| Prop          | Type                                                                    | Default  | Description                   |
-| ------------- | ----------------------------------------------------------------------- | -------- | ----------------------------- |
-| `items`       | `{ value: string, label: string, hint?: string, disabled?: boolean }[]` | required |                               |
-| `v-model`     | `string`                                                                | —        | The chosen item's `value`     |
-| `placeholder` | `string`                                                                | —        | Shown while nothing is chosen |
-| `disabled`    | `boolean`                                                               | `false`  |                               |
+| Prop          | Type                                                                    | Default  | Description                                                       |
+| ------------- | ----------------------------------------------------------------------- | -------- | ----------------------------------------------------------------- |
+| `items`       | `{ value: string, label: string, hint?: string, disabled?: boolean }[]` | required |                                                                   |
+| `v-model`     | `string`                                                                | —        | The chosen item's `value`                                         |
+| `placeholder` | `string`                                                                | —        | Shown while nothing is chosen                                     |
+| `disabled`    | `boolean`                                                               | `false`  |                                                                   |
+| `invalid`     | `boolean`                                                               | `false`  | A danger ring. Inside an `OField` with an error it is set for you |
 
 Built on [Reka UI](https://reka-ui.com) Select.

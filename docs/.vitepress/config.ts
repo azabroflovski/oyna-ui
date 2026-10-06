@@ -78,6 +78,7 @@ export default defineConfigWithTheme<ThemeConfig>({
           { text: 'Installation', link: '/guide/installation' },
           { text: 'Theming', link: '/guide/theming' },
           { text: 'Hotkeys', link: '/guide/hotkeys' },
+          { text: 'Forms', link: '/guide/forms' },
           { text: 'Icons', link: '/guide/icons' },
         ],
       },
