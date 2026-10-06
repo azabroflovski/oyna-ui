@@ -79,10 +79,10 @@ const misfits = [
       <div>
         <!-- an instruction the panel next to it obeys: D runs its deploy; on a phone, its button -->
         <h1>
-          <span class="hero__keys">Press <em>D</em></span>
-          <span class="hero__touch">Tap <em>Deploy</em></span>
+          <span class="hero__keys">Press <em>D</em><br />to ship</span>
+          <span class="hero__touch">Tap <em>Deploy</em><br />to ship</span>
         </h1>
-        <p class="lead">Dark glass components for Vue&nbsp;3. Plain CSS, hotkeys built in.</p>
+        <p class="lead">A Vue&nbsp;3 component library. Plain CSS, hotkeys built in.</p>
         <div class="hero__install">
           <code>{{ install }}</code>
           <OButton variant="ghost" size="sm" icon aria-label="Copy the install command" @click="copyInstall">

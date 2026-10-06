@@ -224,8 +224,8 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   `vX.Y.Z`, push the tag and create a GitHub Release with the version's CHANGELOG section as its
   notes (`gh release create`). The tag comes after a successful publish, so it never points at a
   commit that is not on npm. No publishing from CI for now.
-- The docs home, top to bottom: hero (the title "Press D" is an instruction the panel beside it
-  obeys, "Tap Deploy" on a touch screen; one plain line; the install command; version / licence /
+- The docs home, top to bottom: hero (the title "Press D to ship" is an instruction the panel beside
+  it obeys, "Tap Deploy to ship" on a touch screen; one plain line; the install command; version / licence /
   size), Setup (the complete code, nothing left out), Examples, "Is it for you"
   (what it is for and when to take another library), "Why it exists" (the owner's story, first
   person), a footer. Its text is plain and checkable: no slogans, no "feel", no
