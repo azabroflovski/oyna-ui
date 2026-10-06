@@ -53,8 +53,8 @@ bun run pack:check   # the packed library in a fresh Vite project
 The repository is developed with [Bun](https://bun.sh); to use the library, any package manager works.
 `typecheck` needs Node on your `PATH`; the rest runs on Bun alone.
 
-[AGENTS.md](./AGENTS.md) has the structure, the conventions and the open decisions. Changes are in
-[CHANGELOG.md](./CHANGELOG.md).
+How to propose a change: [CONTRIBUTING.md](./CONTRIBUTING.md). [AGENTS.md](./AGENTS.md) has the
+structure, the conventions and the open decisions. Changes are in [CHANGELOG.md](./CHANGELOG.md).
 
 ## License
 

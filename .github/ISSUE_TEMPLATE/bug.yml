@@ -1,0 +1,31 @@
+name: Report a bug
+description: Something does not work as the docs say.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: input
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: A link to a StackBlitz, a repository or a gist that shows it. Without one a bug is hard to fix.
+      placeholder: https://
+  - type: input
+    id: version
+    attributes:
+      label: Oyna UI version
+      placeholder: '0.2.0'
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and system
+      placeholder: Chrome 140, macOS 26
+    validations:
+      required: true
