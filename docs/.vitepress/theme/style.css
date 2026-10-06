@@ -38,8 +38,33 @@ a {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font: 800 30px/1 var(--o-font-display);
   letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.brand__mark {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.brand__mark rect {
+  fill: var(--o-surface-strong);
+}
+
+.brand__mark circle {
+  fill: none;
+  stroke: var(--o-accent);
+  stroke-width: 3.5;
+}
+
+.brand__ui {
+  margin-left: -0.15em;
+  color: var(--o-text-3);
 }
 
 .top-nav,

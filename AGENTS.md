@@ -10,8 +10,8 @@ General purpose: not tied to any product, not an admin-panel kit.
 State on 2026-10-02: both planned waves are built and documented — tokens, base stylesheet,
 `useHotkey` and 42 components (see `src/index.ts`). `0.1.0`, `0.1.1` and `0.2.0` are on npm
 (published by the owner on 2026-10-02, tags `v0.1.0`, `v0.1.1`, `v0.2.0`; `npm publish` builds through `prepack` and stays the owner's to run). _Oyna_ is Uzbek for "glass". In prose the
-library is always "Oyna UI" (the bare word is too common to search for); the short logo in the docs
-header stays "OYNA". Names: the npm package is the unscoped `oyna-ui`, the same as the repository
+library is always "Oyna UI" (the bare word is too common to search for); the logo in the docs
+header is the favicon's ring mark plus "OYNA UI". Names: the npm package is the unscoped `oyna-ui`, the same as the repository
 and the site (the owner's choice on 2026-10-02: npm refuses the bare `oyna` as too similar to `opn`,
 `ora` and `yn`). Vue only, so no `@oyna/vue`; the owner holds the npm organization `oyna`, kept for
 later satellites such as `@oyna/nuxt`.
