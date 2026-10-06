@@ -1,53 +1,76 @@
 <script setup lang="ts">
-import { ArrowRight } from '@lucide/vue'
-import { withBase } from 'vitepress'
+import { ArrowRight, Check, Copy, X } from '@lucide/vue'
+import { toast } from 'oyna-ui'
+import { useData, withBase } from 'vitepress'
 
+import { data as facts } from './home.data'
 import HomeDemo from './HomeDemo.vue'
 
-const principles = [
-  ['Glass, not boxes', 'A card is a translucent dark fill over the background. No neutral borders.'],
-  ['A ring is a signal', 'An outline appears only when it means something: the main thing, or something at stake.'],
-  ['One accent', 'A single bright accent on a dark stage. Everything else is white at different opacities.'],
-  ['Two typefaces', 'A condensed display face for numbers and headings, a plain sans for text.'],
-  ['Light, not motion', 'Feedback under 300 ms, nothing bounces. Reduced motion turns it all off.'],
-  ['Keyboard first', 'A button can show and own its hotkey, read from the physical key.'],
-] as const
+const { theme } = useData()
 
-// refresh on a release: the count from src/index.ts, the size from the `bun run build` output
-const facts = [
-  ['CSS framework', 'None'],
-  ['Stylesheet, gzip', '6.8 kB'],
-  ['Components', '42'],
-  ['Runtime dependencies', '1'],
-] as const
+const install = 'npm install oyna-ui'
+
+async function copyInstall() {
+  await navigator.clipboard.writeText(install)
+  toast('Copied')
+}
+
+const meta = [
+  `v${facts.version}`,
+  'MIT',
+  'Vue 3.5+',
+  'TypeScript',
+  `${facts.components} components`,
+  `${facts.css} kB CSS gzipped`,
+  '1 dependency',
+]
 
 /** Everything a consumer writes to start; shown as it is. */
-const setup = `# or pnpm, yarn, bun
+const setup = `# or: pnpm add, yarn add, bun add
 npm install oyna-ui
 
 // main.ts
+import oyna from 'oyna-ui'
 import 'oyna-ui/style.css'
-import 'oyna-ui/fonts.css'
+import 'oyna-ui/fonts.css' // from Google Fonts
+import { createApp } from 'vue'
+import App from './App.vue'
 
-<!-- any component -->
+createApp(App).use(oyna).mount('#app')
+
+<!-- App.vue -->
+<OBackground />
 <OButton variant="primary" hotkey="Enter">
   Save
 </OButton>`
 
 const claims = [
   {
-    title: 'No Tailwind, no UnoCSS',
-    text: 'One plain stylesheet. No build plugin, no class scanning, no config file to keep in step with ours.',
+    title: 'Plain CSS',
+    text: 'One stylesheet. No Tailwind or UnoCSS needed; if you use one, the tokens are there as its utilities.',
+    link: { text: 'Theming', href: '/guide/theming' },
   },
   {
-    title: 'Your colours',
-    text: 'Every colour, radius and font is a CSS variable. Change them and the whole library follows.',
-    link: { text: 'Open the theme editor', href: '/theme' },
+    title: 'CSS variables',
+    text: 'Colours, radii and fonts are --o-* variables. Set them on :root, or on one part of the page.',
+    link: { text: 'Theme editor', href: '/theme' },
   },
   {
-    title: 'Accessibility, not reinvented',
-    text: 'The one dependency is Reka UI. It handles focus, the keyboard and screen readers, where there is nothing to look at.',
+    title: 'Reka UI underneath',
+    text: 'Dialogs, menus, selects and tooltips use Reka UI for focus, keyboard navigation and ARIA. It is the only runtime dependency.',
   },
+]
+
+const fits = [
+  'Dashboards, developer tools, internal tools',
+  'Side projects and landing pages that want a look of their own',
+  'Screens used from the keyboard: buttons show their hotkeys and react to them',
+]
+const misfits = [
+  'You need a light theme. There is none, and none is planned.',
+  'You need a data grid, a date picker or a tree view. PrimeVue, Naive UI and Element Plus have them.',
+  'You need an API that will not change. This is 0.x.',
+  'You are not on Vue 3.',
 ]
 </script>
 
@@ -57,32 +80,38 @@ const claims = [
       <div>
         <h1>Glass,<br />not <em>boxes</em></h1>
         <p class="lead">
-          A Vue 3 component library with a dark glass look: translucent surfaces over a rich background, no borders,
-          light used as a signal, and a keyboard-first feel.
+          Vue 3 components for dark interfaces: translucent surfaces over a generated background, one accent colour, and
+          hotkeys on buttons that work on any keyboard layout.
         </p>
-        <div class="row">
-          <OButton variant="primary" size="lg" hotkey="Enter" :href="withBase('/guide/installation')">
-            Get started
+        <div class="hero__install">
+          <code>{{ install }}</code>
+          <OButton variant="ghost" size="sm" icon aria-label="Copy the install command" @click="copyInstall">
+            <Copy />
           </OButton>
-          <OButton size="lg" :href="withBase('/components/button')"> Components </OButton>
         </div>
+        <div class="row hero__actions">
+          <OButton variant="primary" size="lg" hotkey="Enter" :href="withBase('/guide/installation')">
+            Installation
+          </OButton>
+          <OButton size="lg" :href="withBase('/components/button')">Components</OButton>
+        </div>
+        <p class="hero__meta">
+          <span v-for="(item, i) in meta" :key="item"
+            >{{ i ? ' · ' : '' }}<span>{{ item }}</span></span
+          >
+        </p>
       </div>
 
       <HomeDemo />
     </section>
 
-    <h2 class="section">Nothing to set up</h2>
-    <section class="facts">
-      <OStat v-for="[label, value] in facts" :key="label" :label>
-        {{ value }}
-      </OStat>
-    </section>
+    <h2 class="section">Setup</h2>
     <section class="setup">
       <OCard class="col">
-        <span class="label">The whole setup</span>
+        <span class="label">All of it</span>
         <pre class="setup__code" tabindex="0" aria-label="Setup code">{{ setup }}</pre>
         <OButton variant="link" class="setup__more" :href="withBase('/guide/installation')">
-          Installation <ArrowRight />
+          Installation guide <ArrowRight />
         </OButton>
       </OCard>
       <div class="col">
@@ -96,16 +125,50 @@ const claims = [
       </div>
     </section>
 
-    <h2 class="section">Whole screens</h2>
-    <p class="section-lead">Built only from the library's components. Each one works, and shows its source.</p>
+    <h2 class="section">Examples</h2>
+    <p class="section-lead">
+      Four screens built only from the library's components. Each one works and shows its source.
+    </p>
     <ExamplesGallery />
 
-    <h2 class="section">The look</h2>
-    <section class="principles">
-      <OCard v-for="[title, text] in principles" :key="title">
-        <h3>{{ title }}</h3>
-        <p>{{ text }}</p>
+    <h2 class="section">Is it for you</h2>
+    <section class="fit">
+      <OCard>
+        <h3>Use it for</h3>
+        <ul>
+          <li v-for="item in fits" :key="item"><Check aria-hidden="true" /> {{ item }}</li>
+        </ul>
+      </OCard>
+      <OCard>
+        <h3>Look elsewhere if</h3>
+        <ul>
+          <li v-for="item in misfits" :key="item"><X aria-hidden="true" /> {{ item }}</li>
+        </ul>
       </OCard>
     </section>
+
+    <h2 class="section">Why it exists</h2>
+    <section class="story">
+      <p>
+        I was building <a href="https://invoke.wtf">invoke.wtf</a>, a trainer for Invoker from Dota 2, and wanted dark
+        glass, no grey borders and everything on the keyboard. The Vue kits I tried all looked like admin panels, so I
+        drew the interface by hand. This library is that look taken out of the project. I made it for myself; if it
+        suits your project, use it too.
+      </p>
+      <p class="story__sign">
+        — <a href="https://github.com/azabroflovski">azabroflovski</a> ·
+        <a :href="withBase('/guide/why')">more on why</a>
+      </p>
+    </section>
+
+    <footer class="home-footer">
+      <span>Oyna UI {{ facts.version }} · MIT</span>
+      <nav aria-label="Project links">
+        <a :href="theme.repo">GitHub</a>
+        <a href="https://www.npmjs.com/package/oyna-ui">npm</a>
+        <a :href="`${theme.repo}/blob/${theme.branch}/CHANGELOG.md`">Changelog</a>
+        <a :href="withBase('/llms.txt')">llms.txt</a>
+      </nav>
+    </footer>
   </main>
 </template>

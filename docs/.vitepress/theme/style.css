@@ -107,13 +107,45 @@ a {
 }
 
 .hero .lead {
-  margin: 22px 0 30px;
+  margin: 22px 0 24px;
   max-width: 46ch;
   font-size: 18px;
   color: var(--o-text-2);
 }
 
-/* the link to the examples over the panel is what says it is one */
+/* the install command, to copy in one click */
+.hero__install {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 4px 4px 4px 14px;
+  border-radius: var(--o-radius-sm);
+  background: var(--o-fill-1);
+}
+
+.hero__install code {
+  color: var(--o-text);
+  font:
+    400 14px ui-monospace,
+    'SF Mono',
+    Menlo,
+    monospace;
+}
+
+.hero__meta {
+  margin: 20px 0 0;
+  max-width: 56ch;
+  font-size: 13px;
+  color: var(--o-text-3);
+}
+
+/* a fact is never split across two lines */
+.hero__meta span span {
+  white-space: nowrap;
+}
+
+/* what the panel is, and the way to the other examples, under it */
 .demo-frame {
   margin: 0;
   display: flex;
@@ -123,8 +155,13 @@ a {
 
 .demo-frame__caption {
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 16px;
   padding: 0 4px;
+  font-size: 13px;
+  color: var(--o-text-3);
 }
 
 /* the product panel on the home page */
@@ -134,6 +171,10 @@ a {
   gap: 12px;
   padding: 16px;
   border-radius: 20px;
+}
+
+.demo-panel__env {
+  margin-right: auto;
 }
 
 .demo-panel__stats {
@@ -148,12 +189,6 @@ a {
     'SF Mono',
     Menlo,
     monospace;
-}
-
-.facts {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
 }
 
 /* the setup as code on the left, what it means on the right */
@@ -189,15 +224,14 @@ a {
 }
 
 .claim h3,
-.principles h3 {
+.fit h3 {
   margin: 0;
   font: 700 24px/1.1 var(--o-font-display);
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
-.claim p,
-.principles p {
+.claim p {
   margin: 0;
   font-size: 14px;
   color: var(--o-text-2);
@@ -210,15 +244,86 @@ a {
   text-transform: uppercase;
 }
 
-.principles {
+/* who it is for, and who should take another library */
+.fit {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
-  padding-bottom: 72px;
+  margin-bottom: 48px;
 }
 
-.principles h3 {
-  margin-bottom: 6px;
+.fit ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fit li {
+  display: flex;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--o-text-2);
+}
+
+.fit li svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  color: var(--o-text-3);
+}
+
+.story {
+  max-width: 68ch;
+}
+
+.story p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--o-text-2);
+}
+
+.story a {
+  color: var(--o-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.story .story__sign {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--o-text-3);
+}
+
+.home-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-top: 72px;
+  padding: 24px 0 40px;
+  font-size: 13px;
+  color: var(--o-text-3);
+}
+
+.home-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.home-footer a {
+  color: var(--o-text-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.home-footer a:hover {
+  color: var(--o-text);
 }
 
 /* a docs page */
@@ -958,15 +1063,33 @@ a {
     padding-top: 32px;
   }
 
-  .facts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .demo-panel__stats {
     gap: 8px;
   }
 
-  .principles,
+  /* the project and Live on one row, the environments under them */
+  .demo-panel__top {
+    justify-content: space-between;
+  }
+
+  .demo-panel__env {
+    order: 1;
+    flex-basis: 100%;
+  }
+
+  /* the two buttons share one row */
+  .hero__actions {
+    flex-wrap: nowrap;
+  }
+
+  .hero__actions > * {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    padding-inline: 12px;
+  }
+
+  .fit,
   .setup {
     grid-template-columns: minmax(0, 1fr);
   }

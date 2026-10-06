@@ -63,13 +63,11 @@ const tone = (status: unknown) => (status === 'Live' ? 'accent' : status === 'Fa
 
 <template>
   <figure class="demo-frame">
-    <figcaption class="demo-frame__caption">
-      <OButton variant="link" :href="withBase('/examples/')">More examples <ArrowRight /></OButton>
-    </figcaption>
     <OSurface class="demo-panel">
-      <div class="row between">
-        <div class="row">
-          <OSelect v-model="project" :items="projects" aria-label="Project" />
+      <div class="row demo-panel__top">
+        <OSelect v-model="project" :items="projects" aria-label="Project" />
+        <!-- a wrapper: on a phone the tabs move to a row of their own, at their own width -->
+        <div class="demo-panel__env">
           <OTabs v-model="environment" :items="environments" />
         </div>
         <OToggle v-model="live" hotkey="KeyL">Live</OToggle>
@@ -111,10 +109,13 @@ const tone = (status: unknown) => (status === 'Live' ? 'accent' : status === 'Fa
       </OTable>
 
       <span class="hint">
-        <OKbd code="KeyD">D</OKbd> deploys · <OKbd code="KeyL">L</OKbd> live updates ·
-        <OKbd code="Slash">/</OKbd> search · <OKbd code="Enter">Enter</OKbd> get started. Keys work on any keyboard
-        layout.
+        <OKbd code="KeyD">D</OKbd> deploy · <OKbd code="KeyL">L</OKbd> live updates · <OKbd code="Slash">/</OKbd> search
+        · <OKbd code="Enter">Enter</OKbd> installation
       </span>
     </OSurface>
+    <figcaption class="demo-frame__caption">
+      <span>A deploy console made of 12 components.</span>
+      <OButton variant="link" :href="withBase('/examples/')">More examples <ArrowRight /></OButton>
+    </figcaption>
   </figure>
 </template>

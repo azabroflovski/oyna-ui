@@ -213,14 +213,22 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   wrapper that positions the panel, so the panel is looked up inside the event's target.
 - No comment before the root element of a component template: it makes the template a fragment in
   development, and `class` / attributes stop falling through.
-- The component count and the stylesheet size are quoted in README.md ("What you get") and on the
-  docs home (`facts` in `Home.vue`, the "Nothing to set up" section). Refresh both when a component is added and before a release.
+- The docs home works out its own numbers at build time (`docs/.vitepress/theme/home.data.ts`): the
+  version, the components in `const components` of `src/index.ts`, and the gzipped size of a
+  stylesheet it builds with the library's Vite settings (Cloudflare builds the docs only, with no
+  `dist`). README.md ("What you get") quotes the count and the size by hand: refresh it when a
+  component is added and before a release.
 - Before a release: bump `version`, turn CHANGELOG.md's `Unreleased` into the version's section,
   then `bun run pack:check` (CI runs it too, but run it on the commit you publish). License: MIT (`LICENSE`).
 - A release, in this order: push `master`; the owner runs `npm publish`; only then tag that commit
   `vX.Y.Z`, push the tag and create a GitHub Release with the version's CHANGELOG section as its
   notes (`gh release create`). The tag comes after a successful publish, so it never points at a
   commit that is not on npm. No publishing from CI for now.
+- The docs home, top to bottom: hero (the one "X, not Y" line on the page, the install command,
+  version / licence / size), Setup (the complete code, nothing left out), Examples, "Is it for you"
+  (what it is for and when to take another library), "Why it exists" (the owner's story, first
+  person), a footer. Its text is plain and checkable: no slogans past the title, no "feel", no
+  "rich", no objects that "know" things. The rules of the look live in `docs/guide/why.md`.
 - The panel on the docs home (`HomeDemo.vue`) is one small product screen, a deploy console, not a
   pile of unrelated components: pressing D runs a fake deploy through Button's loading state,
   Progress, Pips, a new Table row and a Toast. Sample content everywhere is from a developer's world
