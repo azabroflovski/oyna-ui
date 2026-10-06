@@ -22,19 +22,17 @@ export interface HomeData {
   /** The gzipped size of `oyna-ui/style.css`, in kB, one decimal. */
   css: string
   /** The whole setup, one highlighted block per file. */
-  setup: { title: string; file: string; html: string }[]
+  setup: { file: string; html: string }[]
 }
 
 const setup = [
   {
-    title: 'Install',
     file: 'terminal',
     lang: 'sh',
     code: `npm install oyna-ui
 # or: pnpm add, yarn add, bun add`,
   },
   {
-    title: 'Register',
     file: 'main.ts',
     lang: 'ts',
     code: `import oyna from 'oyna-ui'
@@ -46,7 +44,6 @@ import App from './App.vue'
 createApp(App).use(oyna).mount('#app')`,
   },
   {
-    title: 'Use',
     file: 'App.vue',
     lang: 'vue',
     code: `<template>
@@ -90,8 +87,7 @@ export default {
     const md = await createMarkdownRenderer(`${root}docs`, { theme: 'vitesse-dark' })
 
     return {
-      setup: setup.map(({ title, file, lang, code }) => ({
-        title,
+      setup: setup.map(({ file, lang, code }) => ({
         file,
         html: md.render(`\`\`\`${lang}\n${code}\n\`\`\``),
       })),

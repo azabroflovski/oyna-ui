@@ -268,18 +268,8 @@ a {
   min-width: 0;
 }
 
-.step h3 {
-  margin: 0;
-  font: 700 22px/1.2 var(--o-font-display);
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
 .step__file {
-  margin-left: 6px;
-  font: 400 13px var(--o-font-sans);
-  letter-spacing: 0;
-  text-transform: none;
+  font-size: 13px;
   color: var(--o-text-3);
 }
 
@@ -294,8 +284,15 @@ a {
   padding-left: 52px;
 }
 
+/* beside the steps, and like them right on the page: no cards stretched to the code's height */
+.claims {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 4px;
+}
+
 .claim {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -312,7 +309,8 @@ a {
 
 .claim p {
   margin: 0;
-  font-size: 14px;
+  max-width: 52ch;
+  font-size: 15px;
   color: var(--o-text-2);
 }
 

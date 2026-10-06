@@ -226,8 +226,8 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   commit that is not on npm. No publishing from CI for now.
 - The docs home, top to bottom: hero (the title "Press D to ship" is an instruction the panel
   beside it obeys, "Tap Deploy to ship" on a touch screen; one plain line; the install command;
-  version / licence / count / size), "Three steps" (install, register, use: numbered, each with its
-  file and its code highlighted at build time in `home.data.ts`) beside three claim cards, "Is it
+  version / licence / count / size), "Try it now" (three numbered steps, each with its file name and its
+  code highlighted at build time in `home.data.ts`) beside three claims, on the page, not in cards, "Is it
   for you" (what it is for and when to take another library), Examples, "Why it exists" (the
   owner's story, first person), a footer with the logo (`Logo.vue`, shared with the header). Its
   text is plain and checkable: no slogans, no "feel", no "rich", no objects that "know" things. The

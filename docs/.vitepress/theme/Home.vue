@@ -78,15 +78,13 @@ const misfits = [
       <HomeDemo />
     </section>
 
-    <h2 class="section">Three steps</h2>
+    <h2 class="section">Try it now</h2>
     <section class="setup">
       <ol class="steps">
-        <li v-for="(step, i) in facts.setup" :key="step.title" class="step">
+        <li v-for="(step, i) in facts.setup" :key="step.file" class="step">
           <span class="step__number" aria-hidden="true">{{ i + 1 }}</span>
           <div class="step__body">
-            <h3>
-              {{ step.title }} <span class="step__file">{{ step.file }}</span>
-            </h3>
+            <span class="step__file">{{ step.file }}</span>
             <!-- highlighted at build time (home.data.ts); .content gives it the docs' code block look -->
             <div class="content" v-html="step.html" />
           </div>
@@ -97,14 +95,14 @@ const misfits = [
           </OButton>
         </li>
       </ol>
-      <div class="col">
-        <OCard v-for="claim in claims" :key="claim.title" class="claim">
+      <div class="claims">
+        <div v-for="claim in claims" :key="claim.title" class="claim">
           <h3>{{ claim.title }}</h3>
           <p>{{ claim.text }}</p>
           <OButton v-if="claim.link" variant="link" :href="withBase(claim.link.href)">
             {{ claim.link.text }} <ArrowRight />
           </OButton>
-        </OCard>
+        </div>
       </div>
     </section>
 
