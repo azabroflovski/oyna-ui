@@ -86,59 +86,61 @@ a {
 }
 
 /* home */
-.intro {
+.hero {
+  padding: 64px 0 48px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 24px 48px;
-  align-items: end;
-  padding: 56px 0 28px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
 }
 
-.intro h1 {
+.hero h1 {
   margin: 0;
-  font: 800 clamp(64px, 9vw, 128px) / 0.9 var(--o-font-display);
+  font: 800 clamp(56px, 7.4vw, 104px) / 0.92 var(--o-font-display);
   letter-spacing: 0.01em;
   text-transform: uppercase;
 }
 
-.intro h1 em {
+.hero h1 em {
   font-style: normal;
   color: var(--o-accent);
 }
 
-/* the title names the way to start the deploy below: a key, or on a phone the button */
-.intro__touch {
+/* the title names the way to start the deploy in the panel: a key, or on a phone the button */
+.hero__touch {
   display: none;
 }
 
 @media (pointer: coarse) {
-  .intro__keys {
+  .hero__keys {
     display: none;
   }
 
-  .intro__touch {
+  .hero__touch {
     display: inline;
   }
 }
 
-.intro .lead {
-  margin: 0 0 16px;
+.hero .lead {
+  margin: 22px 0 24px;
   text-wrap: balance;
-  font-size: 20px;
+  max-width: 46ch;
+  font-size: 18px;
   color: var(--o-text-2);
 }
 
 /* the install command, to copy in one click */
-.intro__install {
+.hero__install {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  margin-bottom: 16px;
   padding: 4px 4px 4px 14px;
   border-radius: var(--o-radius-sm);
   background: var(--o-fill-1);
 }
 
-.intro__install code {
+.hero__install code {
   color: var(--o-text);
   font:
     400 14px ui-monospace,
@@ -147,35 +149,35 @@ a {
     monospace;
 }
 
-/* the live panel, and its markup next to it */
-.stage {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: 12px;
-  align-items: stretch;
-  margin-bottom: 48px;
+.hero__meta {
+  margin: 20px 0 0;
+  max-width: 56ch;
+  font-size: 13px;
+  color: var(--o-text-3);
 }
 
-.stage__code {
+/* a fact is never split across two lines */
+.hero__meta span span {
+  white-space: nowrap;
+}
+
+/* what the panel is, and the way to the other examples, under it */
+.demo-frame {
+  margin: 0;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  gap: 10px;
 }
 
-/* as tall as the panel: `contain: size` keeps the code out of the row's height, so the panel sets it
-   and the code scrolls inside */
-.stage__code pre {
-  flex: 1;
-  contain: size;
-  min-height: 320px;
-  margin: 0;
-  overflow: auto;
-  color: var(--o-text-2);
-  font:
-    400 12px/1.6 ui-monospace,
-    'SF Mono',
-    Menlo,
-    monospace;
+.demo-frame__caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 0 4px;
+  font-size: 13px;
+  color: var(--o-text-3);
 }
 
 /* the product panel on the home page */
@@ -205,63 +207,12 @@ a {
     monospace;
 }
 
-/* every component, by group: a table of contents, not a sales pitch */
-.inventory {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 24px 16px;
-  margin-bottom: 48px;
-}
-
-.inventory > div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-}
-
-.inventory .label {
-  margin-bottom: 6px;
-}
-
-.inventory a {
-  padding: 2px 0;
-  font-size: 15px;
-  color: var(--o-text-2);
-  transition: color var(--o-duration) ease;
-}
-
-.inventory a:hover {
-  color: var(--o-accent);
-}
-
-.specs {
+/* the setup as code on the left, what it means on the right */
+.setup {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 12px 48px;
-  margin: 24px 0 48px;
-}
-
-.spec {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
-  gap: 12px 24px;
-  margin: 0;
-  font-size: 15px;
-}
-
-.spec dt {
-  padding-top: 2px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--o-text-3);
-}
-
-.spec dd {
-  margin: 0;
-  color: var(--o-text-2);
+  gap: 12px;
+  margin: 12px 0 48px;
 }
 
 .setup__code {
@@ -280,11 +231,65 @@ a {
   align-self: flex-start;
 }
 
+.claim {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.claim h3,
+.fit h3 {
+  margin: 0;
+  font: 700 24px/1.1 var(--o-font-display);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.claim p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--o-text-2);
+}
+
 .section {
   margin: 24px 0 16px;
   font: 700 36px/1.1 var(--o-font-display);
   letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+
+/* who it is for, and who should take another library */
+.fit {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.fit ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fit li {
+  display: flex;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--o-text-2);
+}
+
+.fit li svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  color: var(--o-text-3);
 }
 
 .story {
@@ -1069,19 +1074,9 @@ a {
     padding: 0 16px;
   }
 
-  .intro,
-  .stage,
-  .specs {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .intro {
+  .hero {
+    grid-template-columns: 1fr;
     padding-top: 32px;
-  }
-
-  .stage__code pre {
-    flex: none;
-    height: 360px;
   }
 
   .demo-panel__stats {
@@ -1096,6 +1091,23 @@ a {
   .demo-panel__env {
     order: 1;
     flex-basis: 100%;
+  }
+
+  /* the two buttons share one row */
+  .hero__actions {
+    flex-wrap: nowrap;
+  }
+
+  .hero__actions > * {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    padding-inline: 12px;
+  }
+
+  .fit,
+  .setup {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   /* minmax(0, …): a wide code block scrolls inside the page instead of stretching it */
