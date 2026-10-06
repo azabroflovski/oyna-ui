@@ -2,111 +2,90 @@
 
 ![Oyna UI](.github/banner.jpg)
 
-A Vue 3 component library with a dark glass look: translucent surfaces over a rich background,
-no borders, light used as a signal, condensed display type for numbers and headings.
+[![npm](https://img.shields.io/npm/v/oyna-ui)](https://www.npmjs.com/package/oyna-ui)
+[![CI](https://img.shields.io/github/actions/workflow/status/azabroflovski/oyna-ui/ci.yml?branch=master&label=CI)](https://github.com/azabroflovski/oyna-ui/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
-_Oyna_ is Uzbek for "glass" — and for "window" and "mirror".
+A Vue 3 component library. Plain CSS, hotkeys built in.
 
 Docs and live examples: [oyna-ui.org](https://oyna-ui.org). For an AI assistant:
 [oyna-ui.org/llms.txt](https://oyna-ui.org/llms.txt).
 
-## Why it exists
-
-I was building [invoke.wtf](https://invoke.wtf), a trainer for Invoker from Dota 2, and wanted a UI
-kit that looked the way I had in mind: dark glass over a rich background, no grey borders, light
-instead of lines. I did not find one — most Vue UI kits look like admin panels — so I drew the
-interface by hand.
-
-Oyna UI is that look taken out of the project and made into a library. I made it for myself. If it
-suits your project, use it too.
-
-It is for interfaces that want character: dashboards, tools, landing pages, side projects.
-
-## What you get
-
-- **No Tailwind, no UnoCSS.** One plain stylesheet, 6.7 kB gzipped. Import it and you are done:
-  nothing to configure, no build plugin, no class scanning.
-- **42 components**, each with a docs page and a live example.
-- **Themable with CSS variables.** Change the accent, the radius or the fonts on `:root`, or on any
-  part of the page.
-- **Hotkeys built in.** A button or a toggle shows its key and reacts to it. Keys are read by their
-  position, so they work on any keyboard layout, and they stay quiet while the user types.
-- **A background out of the box.** Generated in CSS: no image files to ship.
-- **Accessibility is not reinvented.** The one runtime dependency is [Reka UI](https://reka-ui.com):
-  it handles focus, the keyboard and screen readers in the dialog, menus and the like.
-- **Tree-shakable and typed.** ESM, one file per component, TypeScript types included.
-- **Reduced motion respected.** One variable turns every transition off.
-
-## The look
-
-- **Glass, not boxes.** A card is a translucent dark fill over the background. No neutral borders.
-- **A ring is a signal.** An outline appears only when it means something: the main thing on the
-  screen (accent) or something at stake (danger). Never decoration.
-- **Two typefaces.** A condensed display face for numbers and headings, a plain sans for text.
-- **One accent.** A single bright accent on a dark stage; everything else stays quiet.
-- **Light, not motion.** Feedback under 300 ms, no bouncing. `prefers-reduced-motion` turns it off.
-- **Keyboard first.** A button can show and own its hotkey; dialogs and layers close in order on Esc.
-
-## Usage
+## Install
 
 ```bash
 npm install oyna-ui
 # or: pnpm add oyna-ui · yarn add oyna-ui · bun add oyna-ui
 ```
 
+`main.ts`:
+
 ```ts
 import oyna from 'oyna-ui'
-import { createApp } from 'vue'
 import 'oyna-ui/style.css'
-import 'oyna-ui/fonts.css' // the typefaces, from Google Fonts; or load them your own way
+import 'oyna-ui/fonts.css' // from Google Fonts; or load the fonts your own way
+import { createApp } from 'vue'
+import App from './App.vue'
 
 createApp(App).use(oyna).mount('#app')
 ```
 
+`App.vue`:
+
 ```vue
 <template>
-  <OCard>
-    <OButton hotkey="Enter" @click="save"> Save </OButton>
-  </OCard>
+  <OBackground />
+  <OButton variant="primary" hotkey="Enter" @click="save">Save</OButton>
 </template>
 ```
 
-Theme with CSS variables:
+Components can also be imported by name (`import { OButton } from 'oyna-ui'`); the rest stays out of
+the bundle. More in the [installation guide](https://oyna-ui.org/guide/installation).
 
-```css
-:root {
-  --o-accent: #a5ff4d;
-  --o-danger: #ff8a8a;
-  --o-surface: rgb(0 0 0 / 0.3);
-  --o-radius: 14px;
-}
-```
+## What you get
 
-## Roadmap
+- **42 components**, each with a docs page and a live example.
+- **Plain CSS.** One stylesheet, about 7 kB gzipped. No Tailwind or UnoCSS, no build plugin, no
+  config file. If you use one of them, the tokens are there as its utilities.
+- **CSS variables.** Colours, radii and fonts are `--o-*` variables: set them on `:root` or on one
+  part of the page. There is a [theme editor](https://oyna-ui.org/theme).
+- **Hotkeys.** A button or a toggle shows its key and reacts to it. Keys are read by position, so
+  they work on any keyboard layout, and they are off while the user types.
+- **A background.** Generated in CSS, no image files.
+- **Reka UI underneath.** The one runtime dependency. Dialogs, menus, selects and tooltips get focus
+  handling, keyboard navigation and ARIA from it.
+- **ESM, typed, tree-shakable.** One file per component, TypeScript types included.
+- **Reduced motion.** One variable turns every transition off.
 
-- [x] Tokens, the base stylesheet and the default background.
-- [x] First components: Surface / Card, Button, Kbd, Input / Field, Toggle, Tabs, Dialog, Stat, Progress, Badge.
-- [x] Docs site built with the library itself, with live examples.
-- [x] More components: Select, Tooltip, Toast, KeyCapture, Pips, Sparkline, BarChart, Table.
-- [x] Form controls and layers: Checkbox, Radio, Switch, Textarea, Menu, Popover.
-- [x] Example screens: a dashboard, an incident, a list of projects and a settings page.
-- [x] First public release.
-- [x] Command, Combobox, Slider, Avatar, Drawer, Accordion, Pagination, ContextMenu.
+Not included, and not planned: a light theme, a data grid, a date picker, a tree view.
+
+## Why it exists
+
+I was building [invoke.wtf](https://invoke.wtf), a trainer for Invoker from Dota 2, and wanted a UI
+kit that looked the way I had in mind: dark glass, no grey borders, everything on the keyboard. The
+Vue kits I tried all looked like admin panels, so I drew the interface by hand.
+
+Oyna UI is that look taken out of the project and made into a library. I made it for myself. If it
+suits your project, use it too. _Oyna_ is Uzbek for "glass", and also for "window" and "mirror".
+
+The rules the components follow are on [Why Oyna UI](https://oyna-ui.org/guide/why).
 
 ## Development
 
 ```bash
 bun install
-bun run dev        # playground
-bun run docs:dev   # docs site
-bun run fmt        # format with oxfmt
+bun run dev          # playground
+bun run docs:dev     # docs site
+bun run fmt          # format with oxfmt
 bun run lint && bun run typecheck && bun run test && bun run build
+bun run pack:check   # the packed library in a fresh Vite project
 ```
 
-The repository itself is developed with [Bun](https://bun.sh); to use the library, any package manager
-works. `typecheck` needs Node on your `PATH`; the rest runs on Bun alone.
+The repository is developed with [Bun](https://bun.sh); to use the library, any package manager works.
+`typecheck` needs Node on your `PATH`; the rest runs on Bun alone.
 
-See [AGENTS.md](./AGENTS.md) for the structure, conventions and open decisions.
+[AGENTS.md](./AGENTS.md) has the structure, the conventions and the open decisions. Changes are in
+[CHANGELOG.md](./CHANGELOG.md).
 
 ## License
 

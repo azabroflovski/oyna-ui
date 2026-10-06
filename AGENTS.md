@@ -217,8 +217,8 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
 - The docs home works out its own numbers at build time (`docs/.vitepress/theme/home.data.ts`): the
   version, the components in `const components` of `src/index.ts`, and the gzipped size of a
   stylesheet it builds with the library's Vite settings (Cloudflare builds the docs only, with no
-  `dist`). README.md ("What you get") quotes the count and the size by hand: refresh it when a
-  component is added and before a release.
+  `dist`). README.md ("What you get") quotes the component count by hand and the size rounded
+  ("about 7 kB"): refresh them when a component is added and before a release.
 - Before a release: bump `version`, turn CHANGELOG.md's `Unreleased` into the version's section,
   then `bun run pack:check` (CI runs it too, but run it on the commit you publish). License: MIT (`LICENSE`).
 - A release, in this order: push `master`; the owner runs `npm publish`; only then tag that commit
