@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.2.1
+
+Select in a field, and a plainer README. Nothing breaks.
 
 - `OSelect` works inside `OField`, as `OInput` and `OCombobox` do: the field's label points at it,
   its hint and error are tied to it, and an error gives it the danger ring. In the field's column it
@@ -8,6 +10,9 @@
 - `OSelect` and `OCombobox` take `invalid`, the danger ring without a field, like `OInput`.
 - Docs: a [Forms](https://oyna-ui.org/guide/forms) page, with a form in plain Vue, the same form
   with VeeValidate and Zod, and errors that come from the server.
+- `exports` has a `default` condition next to `import`, for tools that do not pass `import` (some
+  Jest setups, older `moduleResolution`).
+- The README is shorter: what it is, what you get, why it exists. Installation lives in the docs.
 
 ## 0.2.0
 
