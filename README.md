@@ -8,39 +8,8 @@
 
 A Vue 3 component library. Plain CSS, hotkeys built in.
 
-Docs and live examples: [oyna-ui.org](https://oyna-ui.org). For an AI assistant:
+Docs, installation and live examples: [oyna-ui.org](https://oyna-ui.org). For an AI assistant:
 [oyna-ui.org/llms.txt](https://oyna-ui.org/llms.txt).
-
-## Install
-
-```bash
-npm install oyna-ui
-# or: pnpm add oyna-ui · yarn add oyna-ui · bun add oyna-ui
-```
-
-`main.ts`:
-
-```ts
-import oyna from 'oyna-ui'
-import 'oyna-ui/style.css'
-import 'oyna-ui/fonts.css' // from Google Fonts; or load the fonts your own way
-import { createApp } from 'vue'
-import App from './App.vue'
-
-createApp(App).use(oyna).mount('#app')
-```
-
-`App.vue`:
-
-```vue
-<template>
-  <OBackground />
-  <OButton variant="primary" hotkey="Enter" @click="save">Save</OButton>
-</template>
-```
-
-Components can also be imported by name (`import { OButton } from 'oyna-ui'`); the rest stays out of
-the bundle. More in the [installation guide](https://oyna-ui.org/guide/installation).
 
 ## What you get
 
