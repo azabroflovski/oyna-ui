@@ -10,7 +10,7 @@ export default defineConfig({
       formats: ['es'],
       cssFileName: 'style',
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: ['vue', /^reka-ui/],
       // one file per module, so importing one component doesn't pull in the rest
       output: { preserveModules: true, preserveModulesRoot: 'src', entryFileNames: '[name].js' },
