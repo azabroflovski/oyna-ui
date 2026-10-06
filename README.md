@@ -2,8 +2,6 @@
 
 ![Oyna UI](.github/banner.jpg)
 
-> Status: early. The API may still change between 0.x versions.
-
 A Vue 3 component library with a dark glass look: translucent surfaces over a rich background,
 no borders, light used as a signal, condensed display type for numbers and headings.
 

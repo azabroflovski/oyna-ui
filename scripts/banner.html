@@ -43,9 +43,9 @@
         text-transform: uppercase;
       }
 
-      .title h1 em {
-        font-style: normal;
-        color: var(--o-accent);
+      /* as in the docs header: the name in full white, UI dimmed */
+      .title h1 .ui {
+        color: var(--o-text-3);
       }
 
       /* the components: a board that runs off the right, top and bottom edges */
@@ -131,7 +131,7 @@
     <div class="title">
       <div class="lockup">
         <span class="mark"></span>
-        <h1>Oyna <em>UI</em></h1>
+        <h1>Oyna <span class="ui">UI</span></h1>
       </div>
     </div>
 
@@ -140,8 +140,8 @@
         <div class="o-surface o-surface--strong o-card col">
           <span class="label">Keys</span>
           <div class="row">
-            <kbd class="o-kbd o-kbd--cap">Q</kbd><kbd class="o-kbd o-kbd--cap">W</kbd
-            ><kbd class="o-kbd o-kbd--cap">E</kbd>
+            <kbd class="o-kbd o-kbd--cap">D</kbd><kbd class="o-kbd o-kbd--cap">L</kbd
+            ><kbd class="o-kbd o-kbd--cap">/</kbd>
           </div>
         </div>
         <div class="o-stat"><span class="o-stat__label">Requests</span><span class="o-stat__value">18 204</span></div>

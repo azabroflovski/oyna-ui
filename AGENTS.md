@@ -92,7 +92,7 @@ docs/                            VitePress site with its own theme (.vitepress/t
   examples/                      full screens built only from library components (layout: example)
 playground/                      Vite app for developing components
 scripts/                         browser.ts (a small headless-Chrome driver), check.ts and pack-check.ts (see Commands),
-                                 banner.html + banner.ts (the README banner, .github/banner.jpg)
+                                 banner.html, og.html + banner.ts (the README banner and the link preview)
 ```
 
 ## Commands
@@ -109,8 +109,9 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   (select, menu, popover, tooltip, toasts, dialog, search), takes screenshots at desktop and at a real
   phone width, and runs axe-core on a set of pages. Look at the screenshots after any change to a
   layer or to the docs layout: unit tests do not show how things look. Not part of CI (needs Chrome).
-- `bun run build && bun scripts/banner.ts` redraws the README banner from `scripts/banner.html`: static
-  markup with the library's class names, styled by `dist/style.css`. Redo it when the look changes.
+- `bun run build && bun scripts/banner.ts` redraws the README banner (`scripts/banner.html`) and the
+  link preview `docs/public/og.png` (`scripts/og.html`): static markup with the library's class
+  names, styled by `dist/style.css`. Redo them when the look, the logo or the home title changes.
 - To see the docs without web fonts, block them in a script: `page.block(['*fonts.googleapis.com*',
 '*fonts.gstatic.com*'])` from `scripts/browser.ts`. Check this after touching the font variables.
 - `typecheck` needs Node on `PATH`: `vue-tsc` does not work under the Bun runtime (it patches `tsc`
@@ -200,8 +201,8 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   `touch-action` on `html`. axe-core reports it as `meta-viewport`; that finding is expected.
   A Markdown table is wrapped in `.table-scroll` (`markdown.config` in the config): on a phone a table
   of props scrolls inside its own box, and no page may scroll sideways at 390px.
-  image `docs/public/og.png` is a screenshot of a hand-made HTML page; `site` in the config must be
-  the real address of the docs.
+  The link preview image `docs/public/og.png` is drawn from `scripts/og.html` and says what the home
+  page says; `site` in the config must be the real address of the docs.
 - Toast is not Reka: a module-level list (`toast()`) shown by one `OToaster`.
 - `OKeyCapture` takes its key press in the capture phase and stops it, so no hotkey sees it.
 - `useHotkey` is off in fields that are typed into. A checkbox, a radio, a switch and a slider are

@@ -1,0 +1,99 @@
+<!doctype html>
+<!--
+  The link preview image (docs/public/og.png). Static markup with the library's own class names, styled by
+  the built stylesheet; it says what the docs home says. To regenerate: `bun run build`, then
+  `bun scripts/banner.ts`.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dist/style.css" />
+    <style>
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .o-background {
+        position: absolute;
+        z-index: 0;
+      }
+
+      .page {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 72px;
+        font-family: var(--o-font-sans);
+        color: var(--o-text);
+      }
+
+      /* the docs header's logo: the favicon's ring, then the name with UI dimmed */
+      .lockup {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font: 800 40px/1 var(--o-font-display);
+        letter-spacing: 0.1em;
+      }
+
+      .mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 11px;
+        background: rgb(0 0 0 / 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mark::before {
+        content: '';
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 5px var(--o-accent);
+      }
+
+      .ui {
+        color: var(--o-text-3);
+      }
+
+      h1 {
+        margin: 0;
+        font: 800 150px/0.9 var(--o-font-display);
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+      }
+
+      h1 em {
+        font-style: normal;
+        color: var(--o-accent);
+      }
+
+      p {
+        margin: 0;
+        font-size: 30px;
+        color: var(--o-text-2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="o-background"></div>
+    <div class="page">
+      <div class="lockup"><span class="mark"></span>OYNA <span class="ui">UI</span></div>
+      <h1>Press <em>D</em><br />to ship</h1>
+      <p>A Vue 3 component library. Plain CSS, hotkeys built in.</p>
+    </div>
+  </body>
+</html>
