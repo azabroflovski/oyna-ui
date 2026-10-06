@@ -22,12 +22,12 @@ export interface HomeData {
   /** The gzipped size of `oyna-ui/style.css`, in kB, one decimal. */
   css: string
   /** The whole setup, one highlighted block per file. */
-  setup: { file: string; html: string }[]
+  /** The install command has no file, so no name over it. */
+  setup: { file?: string; html: string }[]
 }
 
 const setup = [
   {
-    file: 'terminal',
     lang: 'sh',
     code: `npm install oyna-ui
 # or: pnpm add, yarn add, bun add`,

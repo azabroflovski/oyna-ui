@@ -81,8 +81,8 @@ const misfits = [
     <h2 class="section">Try it now</h2>
     <section class="setup">
       <div class="steps">
-        <div v-for="step in facts.setup" :key="step.file" class="step">
-          <span class="step__file">{{ step.file }}</span>
+        <div v-for="(step, i) in facts.setup" :key="i" class="step">
+          <span v-if="step.file" class="step__file">{{ step.file }}</span>
           <!-- highlighted at build time (home.data.ts); .content gives it the docs' code block look -->
           <div class="content" v-html="step.html" />
         </div>
@@ -101,7 +101,7 @@ const misfits = [
       </div>
     </section>
 
-    <h2 class="section">Is it for you</h2>
+    <h2 class="section">Where it fits</h2>
     <section class="fit">
       <OCard>
         <h3>Use it for</h3>
