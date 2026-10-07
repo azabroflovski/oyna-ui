@@ -253,6 +253,11 @@ scripts/                         browser.ts (a small headless-Chrome driver), ch
   to every page, all made from the same Markdown with the live demos and Vue parts taken out. The
   list of rules at the top of `llms.txt` is written by hand in that file: update it when a rule or a
   name changes. They exist only in a build, not in `docs:dev`.
+- A docs build keeps the JS and CSS of earlier deploys (`docs/.vitepress/keepAssets.ts`, from
+  `buildEnd`): it lists its files in `/assets.json`, and on Cloudflare (`WORKERS_CI`) it downloads
+  the files the live site lists there, for a month after the last build that made them. Googlebot
+  renders a page's HTML days after fetching it; without the old chunks VitePress showed its 404 and
+  Google indexed pages titled "404". Builds elsewhere only write the list.
 - Docs prose rules (`p`, `li`) are written with `:where(.content)` so they never beat a component's
   own styles: a `<p>` inside a component is not prose.
 - A Table column's `key` need not be a field of the row (a column of actions drawn by its slot).

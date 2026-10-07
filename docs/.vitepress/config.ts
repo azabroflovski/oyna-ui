@@ -2,6 +2,7 @@ import { fileURLToPath } from 'node:url'
 
 import { defineConfigWithTheme } from 'vitepress'
 
+import { keepAssets } from './keepAssets'
 import { writeLlms } from './llms'
 
 export interface ThemeConfig {
@@ -22,9 +23,11 @@ export default defineConfigWithTheme<ThemeConfig>({
   cleanUrls: true,
   // for search engines: every page of the docs, at the address the site really lives at
   sitemap: { hostname: site },
-  // the docs once more, as plain text for AI assistants: /llms.txt and a .md next to every page
   async buildEnd(config) {
+    // the docs once more, as plain text for AI assistants: /llms.txt and a .md next to every page
     await writeLlms({ srcDir: config.srcDir, outDir: config.outDir, site, description, theme: config.site.themeConfig })
+    // the chunks of earlier deploys, for HTML that a search engine fetched before this one
+    await keepAssets(config.outDir, site)
   },
   head: [
     // no pinch zoom on a phone (the owner's choice): the docs are laid out for the width they get.
